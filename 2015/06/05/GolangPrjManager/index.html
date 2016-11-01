@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Golang工程管理 | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Go工程管理&amp;#160; &amp;#160; &amp;#160; &amp;#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.&amp;#160; &amp;#160; &amp;#160; &amp;#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang工程管理">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/06/05/GolangPrjManager/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="#Go工程管理&amp;#160; &amp;#160; &amp;#160; &amp;#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.&amp;#160; &amp;#160; &amp;#160; &amp;#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包">
+<meta property="og:updated_time" content="2015-06-05T12:14:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang工程管理">
+<meta name="twitter:description" content="#Go工程管理&amp;#160; &amp;#160; &amp;#160; &amp;#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.&amp;#160; &amp;#160; &amp;#160; &amp;#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-GolangPrjManager" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/06/05/GolangPrjManager/" class="article-date">
+  	<time datetime="2015-06-05T01:34:07.000Z" itemprop="datePublished">Jun 5 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Golang工程管理
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程管理/">工程管理</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>#Go工程管理<br>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
+<p>#相关概念<br>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br><a id="more"></a><br>&#160; &#160; &#160; &#160;Go中只有两个路径:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   GOROOT:<span class="keyword">go</span>安装路径,官方包路径根据这个设置自动匹配</div><div class="line">GOPATH:工作路径</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;<span class="color">Tips:</span>Go中是没有项目路径这个概念的,只有包.可执行包只是特殊的一种,即是我们常说的项目,GOPATH可以设置多个(不建议).不管是可执行包还是非可执行包,都应该置于$GOPATH/src下.<br>&#160; &#160; &#160; &#160;对于$GOBIN,在之后实践的时候再细说.</p>
+<p>#Go项目目录<br>&#160; &#160; &#160; &#160;Go官网中有过介绍,Go项目的目录结构一般包含以下几个:</p>
+<ul>
+<li><strong>src:包含项目的源文件</strong></li>
+<li><strong>pkg:包含编译后生成的包/库文件</strong></li>
+<li><strong>bin:包含编译后生成的可执行文件</strong><br>&#160; &#160; &#160; &#160;下面,一步步来看Go是如何进行工程目录的组织管理的,不过在此之前,我们要先配置好环境变量,以及工程目录结构,这里我的工程目录结构是:(GOPATH=E:\code\GoProject)<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   bin</div><div class="line">  ...</div><div class="line">pkg</div><div class="line">  ...</div><div class="line">src</div><div class="line">  ...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#第一个执行程序(包)、项目<br>&#160; &#160; &#160; &#160;前面已经说了,Go的可执行package就项目与项目.建一个可执行包hello(项目),其中包含一个源文件hello.go,目录结构如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   bin</div><div class="line">   ...</div><div class="line">pkg</div><div class="line">   ...</div><div class="line">   src</div><div class="line">   hello</div><div class="line">  |-hello.<span class="keyword">go</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;代码如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>##go build<br>&#160; &#160; &#160; &#160;使用go build,你会发现并没有按照期待的,生成在bin目录下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">go</span> build src/hello                        生成在根目录下</div><div class="line">cd src/hello  <span class="keyword">go</span> build hello.<span class="keyword">go</span>           生成在子包目录下</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;正确的做法是使用go install命令:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> install hello</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;之后的目录结构:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   bin</div><div class="line">   |-hello.<span class="keyword">go</span>      <span class="comment">//bin中生成执行程序</span></div><div class="line">pkg</div><div class="line">   ...</div><div class="line">   src</div><div class="line">   hello</div><div class="line">  |-hello.<span class="keyword">go</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;<span class="color">Tips:</span>需要注意的是如果设置了环境变量GOBIN,hello程序将被安装到GOBIN目录</p>
+<p>#第一个程序库(library)<br>&#160; &#160; &#160; &#160;上面讲了一个可执行包(项目)的管理,接下来看看一个非可执行包(lib库)的管理.首先创建一个库utils,目录结构如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   bin</div><div class="line">   |-hello.exe      <span class="comment">//bin中生成执行程序</span></div><div class="line">pkg</div><div class="line">   ...</div><div class="line">   src</div><div class="line">   hello</div><div class="line">  |-hello.<span class="keyword">go</span></div><div class="line">utils</div><div class="line">  |-utils.<span class="keyword">go</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;代码如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> utils</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">System</span><span class="params">(str <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	fmt.Println(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;同样的,我们使用go install命令进行编译,之后的目录结构如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   bin</div><div class="line">   |-hello.exe      <span class="comment">//bin中生成执行程序</span></div><div class="line">pkg</div><div class="line">   |-windows-amd64</div><div class="line">  |-utils.a</div><div class="line">   src</div><div class="line">   hello</div><div class="line">  |-hello.<span class="keyword">go</span></div><div class="line">utils</div><div class="line">  |-utils.<span class="keyword">go</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;在其它包使用它也很简单,一个例子:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"utils"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	utils.System(<span class="string">"hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;上面提及了go build、go install,两者有什么区别呢?</p>
+<ul>
+<li><strong>go build:编译包,如果是main包则在当前目录下生成可执行文件,其他包不产生.a文件;</strong></li>
+<li><strong>go install:编译包,同时复制结果到$GOPATH/bin,$GOPATH.pkg等对应的目录下;</strong></li>
+<li><strong>go run gofiles编译列出的文件,并生成可执行文件然后执行,只能作用于main包,否则会出现go run:cannot run non-main pakcage的错误.</strong><br>&#160; &#160; &#160; &#160;此外应该知道的是,go run是不需要设置$GOPATH的,但go build、go install必须设置,所以go run常用来测试一些功能,这些代码一般不包含在最终的项目中(生产环境中)<br>#自动化文档<br>&#160; &#160; &#160; &#160;Go的注释可以自动转换成文档.只需要将注释写在package、func之前,中间不能有空格,简单的例子:<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//utils工具包</span></div><div class="line"><span class="keyword">package</span> utils</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">//输出字符串到控制台</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">System</span><span class="params">(str <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	fmt.Println(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#160; &#160; &#160; &#160;在代码中这样写入注释之后,就可以使用godoc utils查看文档了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">PACKAGE DOCUMENTATION</div><div class="line"></div><div class="line">package utils</div><div class="line">	import <span class="string">"utils"</span></div><div class="line"></div><div class="line">	utils工具包</div><div class="line"></div><div class="line">FUNCTIONS</div><div class="line"></div><div class="line">func System(str string)</div><div class="line">	输出字符串到控制台</div></pre></td></tr></table></figure></p>
+<p>#测试框架<br>&#160; &#160; &#160; &#160;Go本身是支持测试的,测试源码的命名必须采用如下格式,建议以文件未单位,对应的测试文件未fileName_test.go<br>&#160; &#160; &#160; &#160;测试源码必须包含testing,测试函数必须按照”TestFuncName”的方式命名,一个简单的测试例子.<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> utils</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"testing"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSystem</span><span class="params">(t *testing.T)</span></span> &#123;</div><div class="line">	<span class="comment">//</span></div><div class="line">	System(<span class="string">"test"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;之后运行如下命令进行测试:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> test uitls   <span class="comment">//测试指定包的测试程序</span></div><div class="line"><span class="keyword">go</span> test         <span class="comment">//执行所有测试程序</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;测试结果像这样:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">E:\code\GoProject&gt;go <span class="built_in">test</span> utils</div><div class="line">ok      utils   0.111s</div></pre></td></tr></table></figure></p>
+<p>#Benchmark<br>&#160; &#160; &#160; &#160;Benchmark是测试框架的一部分,用于函数的运行效率相关信息.<br>&#160; &#160; &#160; &#160;以刚才的例子为例,首先在uitls中添加如下函数:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Add</span><span class="params">(var1,var2 <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> var1+var2</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;之后在测试文件中添加Benchmark测试代码:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMulti</span><span class="params">(b *testing.B)</span></span> &#123;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;b.N;i++ &#123;</div><div class="line">	   Add(<span class="number">1</span>,<span class="number">2</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;执行test,并执行Benchmark:go test utils -bench=BenchmarkMulti ,执行结果如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">E:\code\GoProject&gt;<span class="keyword">go</span> test utils -bench=BenchmarkMulti</div><div class="line">test</div><div class="line">PASS</div><div class="line">BenchmarkMulti  <span class="number">2000000000</span>               <span class="number">1.56</span> ns/op</div><div class="line">ok      utils   <span class="number">3.390s</span></div></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;Tips:如果测试没有通过,Benchmark也不会执行,不过我们可以通过如下命令跳过test,直接执行Benchmark:go test uitls -run=XXX -bench=BenchmarkMulti,执行结果如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">E:\code\GoProject&gt;<span class="keyword">go</span> test utils -run=XXX -bench=BenchmarkMulti</div><div class="line">PASS            <span class="comment">//test直接被pass掉了</span></div><div class="line">BenchmarkMulti  <span class="number">2000000000</span>               <span class="number">1.85</span> ns/op</div><div class="line">ok      utils   <span class="number">3.986s</span></div></pre></td></tr></table></figure></p>
+<p>#最佳实践</p>
+<ol>
+<li>做好GO工程的管理(包的管理),不然杂乱无章的代码,会有深深的挫败感.</li>
+<li>建议使用一个$GOPATH,一个项目一个$GOPATH并不可取,包无法很好的管理起来.</li>
+<li>尽量使用go install,而不是go build,这样能够规范项目的整体结构(不会造成编译生成的可执行文件到处乱跑)go install作用于包级别<br>#注意事项<br>&#160; &#160; &#160; &#160;Go工程管理的时候,稍有不慎就会出现错误,下面是一些比较常见的错误.<br>##一个文件夹下面包含多个不同包的源文件<br>&#160; &#160; &#160; &#160;这种情况下执行go install或者go build ,go run 都会错误:<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">can<span class="string">'t load package: package myfunc: found packages myfunc (a.go) and main (b.go)</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#160; &#160; &#160; &#160;<span class="color"><b>每个子目录只能存在一个pakcage,否则会报错.但是可以存在多个源文件,(属于同一package)</b></span></p>
+<p>##一个项目不能包含多个main()函数<br>&#160; &#160; &#160; &#160;实际上编译是没有问题的,但是这并不是一种正确的做法,一个项目只能有一个入口函数.</p>
+<p>#参考资料<br>&#160; &#160; &#160; &#160;<a href="http://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go" target="_blank" rel="external">how-to-write-benchmarks-in-go</a><br>&#160; &#160; &#160; &#160;<a href="https://groups.google.com/forum/?fromgroups=#!searchin/golang-nuts/why$20use$20go$20install/golang-nuts/qysy2bM_o1I/khIRe3AJ_wEJ" target="_blank" rel="external">Running multi-file main package</a></p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/06/18/Oracle导出、导入、备份/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Oracle导出、导入、备份
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/04/GolangArraySlice/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go语言数组&amp;数组切片整理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-GolangPrjManager" data-title="Golang工程管理" data-url="http://http://kiritor.github.io/2015/06/05/GolangPrjManager/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

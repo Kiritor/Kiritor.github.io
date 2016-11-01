@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Shiro简介 | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shiro简介">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/09/18/shiro/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+<meta property="og:image" content="http://kiritor.github.io/img/shiro_features.png">
+<meta property="og:image" content="http://kiritor.github.io/img/shiro_high.png">
+<meta property="og:image" content="http://kiritor.github.io/img/shiro_detail.png">
+<meta property="og:updated_time" content="2015-09-18T07:21:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shiro简介">
+<meta name="twitter:description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+<meta name="twitter:image" content="http://kiritor.github.io/img/shiro_features.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-shiro" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/09/18/shiro/" class="article-date">
+  	<time datetime="2015-09-18T07:35:01.000Z" itemprop="datePublished">Sep 18 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Shiro简介
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>##简介<br>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
+<p>Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.</p>
+<p>##Shiro Features<br>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br><a id="more"></a></p>
+<p><center><img src="http://kiritor.github.io/img/shiro_features.png" alt="Shiro Features"></center><br>Shiro开发团队把身份验证、授权、会话管理、加密作为核心关注点–应用程序四大基石.</p>
+<ul>
+<li><strong>Authentication:</strong> 身份认证/登录,验证用户是不是具有相应的身份;</li>
+<li><strong>Authorization:</strong> 访问控制,授权,即是权限验证,验证用户是否具有某项权限;</li>
+<li><strong>Session Management:</strong>  会话管理,管理用户特定的会话,适用于JavaSE环境、Web环境;</li>
+<li><strong>Cryptography:</strong>  通过加密算法保证数据安全性,同时易于使用;<br>Shiro同样提供了额外的功能来加强在不同环境所关注的方面;</li>
+<li><strong>Web Support:</strong>  Web支持的API能够非常容易的集成到web环境中去;</li>
+<li><strong>Caching:</strong>  缓存,提高查询效率;</li>
+<li><strong>Concurrency:</strong>  并发特性,支持多线程应用;</li>
+<li><strong>Testing:</strong>  提供测试支持;</li>
+<li><strong>Run As:</strong>  允许一个用户假设为另一个用户的功能;</li>
+<li><strong>Remember me:</strong>  记住我,十分常用的功能,登录之后,下次就不用登录了;<br><strong>Shiro提供了这么多的可插拔化的功能,使用时可以根据需要来选择,但是,Shiro不会去维护系统用户,更不会去维护系统的权限规则.针对不同系统,结合自身业务权限设计模型千差万别,Shiro不可能统一维护,也不会提供一套方案.因此对于权限仍然需要我们自行设计/提供,然后通过相应的接口注入给Shiro.</strong><br>##Shiro Architecture<br>Shiro的架构主要有3个主要的概念:Subject，SecurityManager,Realms.<br>###High-Level Overview<br>下面的关系图是关于上面上个组件是如何交互的高级概述:<br><center><img src="http://kiritor.github.io/img/shiro_high.png" alt="shiro_high"></center><br>可以看到,直接交互对象是Subject,其每个对象的含义:<br><strong>Subject:</strong> 主体,代表了当前”用户”,这是一个抽象概念,代表了和应用交互的任何东西,所有的Subject都绑定到SecurityManager,与Subject的交互都委托给SecurityManager,SecurityManager是实际的执行者.<br><strong>SecurityManager:</strong> 安全管理器:即所有的与安全有关的操作都会与SecurityManager交互,他是Shiro架构的心脏,控制着所有的Subject协调内部的安全组件之间的交互.<br><strong>Realm:</strong> 域,shiro通过Realm获取安全数据(用户、角色、权限规则等),例如SecurityMananger要验证身份,需要从Realm得到用户的相应信息来确定用户信息是否合法.可以把Realm看做是安全数据源DataSource.从这个意义上来说,Realm本质上是一个特定安全的Dao,它封装了数据源的连接详细信息.shiro提供了立即可用的Realms来连接一些安全数据源(LDAP,数据库,文本配置源ini)<br>对于我们来说,一个Shiro应用:<blockquote>
+<p>  1、应用代码通过Subject来进行认证和授权,Subject委托给SecurityManager;<br>  2、SecurityMananger通过Realm得到合法的用户及权限;</p>
+</blockquote>
+</li>
+</ul>
+<p>上面说到了Shiro不维护用户/权限,而是通过Realm让开发人员自己注入.</p>
+<p>###Shiro Architecture<br>下图展示的是Shiro内部详细的架构图:</p>
+<p><center><img src="http://kiritor.github.io/img/shiro_detail.png" alt="shiro_detail"></center></p>
+<ul>
+<li><strong>Subject:*</strong> 主体,当前与软件进行交互的实体(用户,第三方服务)等.</li>
+<li><strong>SecurityManager:</strong> SecurityManager是Shiro的心脏,协调其管理的组件,确保他们能够一起顺利的工作,执行每个Suject的安全操作.</li>
+<li><strong>Athenticator:</strong> 认证器,负责主题认证,这是一个可扩展点,可以自定义实现;其需要认证策略(Authentication Strategy),及什么时候用户认证通过.</li>
+<li><strong>Authrizer:</strong> 访问控制器,决定主体是否有权限进行相应的操作,控制用户能访问应用程序的哪些功能.</li>
+<li><strong>Realm:</strong> 可以有一个或者多个实现, 安全数据源,用于获取安全实体;可以是JDBC实现,也可以是LDAP实现等.上面也说道了Shiro不维护用户/权限,因此我们一般应用中都需要实现自己的Realm;</li>
+<li><strong>SessionManager:</strong> 管理用户session生命周期,shiro可以在任何环境下本地化管理用户的session,及时没有可用的Web/servlet容器,他将会使用内置的企业级会话管理来提供同样的编程体验.</li>
+<li><strong>SessionDao:</strong> SessionDao完成session的持久化操作(CRUD),例如放入数据库中,memcached中;另外SessionDao中可以使用缓存,已提高性能.</li>
+<li><strong>CacheManger:</strong> 缓存管理,管理用户,角色、权限等缓存,这类数据一般较少改变,使用缓存可以提升性能.</li>
+<li><strong>Cryptography</strong> 加密模块,安全框架的自然补充,提供了一些常见的加密组件用于如密码的加密/解密.<br>到此为止,对于Shiro框架有了一个大致的了解,接下来也就是跟着资料文档,一步步去实践其各个组件功能了.这也是近期的目标.</li>
+</ul>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/09/28/shiro-Authentication/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Shiro-Authentication(身份验证)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/11/SpringMVC-i18n/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring MVC + Velocity实现国际化配置</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-shiro" data-title="Shiro简介" data-url="http://http://kiritor.github.io/2015/09/18/shiro/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

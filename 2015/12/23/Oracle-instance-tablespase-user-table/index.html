@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Oracle-数据库实例、表空间、用户、表之间的关系(转) | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="完整的Oracle数据库通常由两部分组成:Oracle数据库和数据库实例。
+
+   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;
+
+在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle-数据库实例、表空间、用户、表之间的关系(转)">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/12/23/Oracle-instance-tablespase-user-table/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="完整的Oracle数据库通常由两部分组成:Oracle数据库和数据库实例。
+
+   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;
+
+在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库">
+<meta property="og:updated_time" content="2016-01-18T12:45:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle-数据库实例、表空间、用户、表之间的关系(转)">
+<meta name="twitter:description" content="完整的Oracle数据库通常由两部分组成:Oracle数据库和数据库实例。
+
+   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;
+
+在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-Oracle-instance-tablespase-user-table" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" class="article-date">
+  	<time datetime="2015-12-23T08:28:19.000Z" itemprop="datePublished">Dec 23 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle-数据库实例、表空间、用户、表之间的关系(转)
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库实例/">数据库实例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用户/">用户</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表空间/">表空间</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、数据库、表空间、数据文件"><span class="toc-number">1.</span> <span class="toc-text">一、数据库、表空间、数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、数据库"><span class="toc-number">1.1.</span> <span class="toc-text">1、数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、数据库实例"><span class="toc-number">1.2.</span> <span class="toc-text">2、数据库实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、表空间"><span class="toc-number">1.3.</span> <span class="toc-text">3、表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、用户"><span class="toc-number">1.4.</span> <span class="toc-text">4、用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、表"><span class="toc-number">1.5.</span> <span class="toc-text">5、表</span></a></li></ol></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>完整的Oracle数据库通常由两部分组成:<strong>Oracle数据库</strong>和<strong>数据库实例</strong>。</p>
+<blockquote>
+<p>   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);<br>   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;</p>
+</blockquote>
+<p>在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库实例来访问和控制磁盘中的数据文件。Oracle有一个很大的内存块,称为全局区(SGA)<br><a id="more"></a></p>
+<h2 id="一、数据库、表空间、数据文件"><a href="#一、数据库、表空间、数据文件" class="headerlink" title="一、数据库、表空间、数据文件"></a>一、数据库、表空间、数据文件</h2><h3 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h3><p>数据库是数据集合,oracle是一种关系型的数据库管理系统。<br>通常情况下我们称的数据库,并不仅仅指的是物理的数据集合,他包含物理数据、数据管理系统。也即物理数据、内存、操作系统进程的组合体。<br>安装过oracle数据库就知道,我们在安装数据库时会让我们选择启动数据库(即默认的全局数据库):<br>全局数据库:就是一个数据库的标识,在安装时指定,以后一般不会修改.一旦安装,数据库名就写进了控制文件,数据库表,很多地方都会用到这个数据库名。<br>启动数据库:也叫全局数据库,是数据库系统的入口,它会内置一些高级权限的用户如SYS,SYSTEM等。我们用这些搞基权限账号登陆就可以在数据库实例中创建表空间，用户，表。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--查询当前数据库名</span></div><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> v$<span class="keyword">database</span></div></pre></td></tr></table></figure></p>
+<h3 id="2、数据库实例"><a href="#2、数据库实例" class="headerlink" title="2、数据库实例"></a>2、数据库实例</h3><p>oracle官方描述:实例是访问Oracle数据库所需的一部分计算机内存和辅助处理后台进程,是由进程和这些进程所使用的内存(SGA)所构成的一个集合。<br>其实就是用来访问和使用数据库的一块进程,只存在于内存中。<br>我们访问oracle都是通过实例来访问到的,如果这个实例关联了数据库文件是可以访问的，否则就会得到实例名不可用的错误。<br>实例名指的是用于响应某个数据库操作的数据库管理系统的名称。同时也叫SID.实例名由参数instance_name决定的。<br>查询当前数据库实例名:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--查询数据库实例名</span></div><div class="line"><span class="keyword">select</span> instance_name <span class="keyword">from</span> v$<span class="keyword">instance</span>;</div></pre></td></tr></table></figure></p>
+<p>数据库实例名(instance_name)用于对外部连接。在操作系统中要取得与数据库的联系,必须使用数据库实例名。比如我们做开发,要连接数据库,就得连接数据库实例名:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jdbc:oracle:thin:@localhost:1521:orcl（orcl就为数据库实例名）</div></pre></td></tr></table></figure></p>
+<p>一个数据库可以有多个实例,在做数据库服务集群的时候可以用到。</p>
+<h3 id="3、表空间"><a href="#3、表空间" class="headerlink" title="3、表空间"></a>3、表空间</h3><p>Oracle数据库是通过表空间来存储物理表的,一个数据库实例可以有多个表空间,表空间下可以有多个表。<br>表空间是数据库的逻辑划分,每个数据库至少有一个表空间(SYSTEM表空间)。为了便于管理和提供运行效率,可以使用一些附加表空间来划分用户和应用程序。例如:USER表空间提供一般用户使用，RBS表空间供回滚段使用。一个表空间只能是属于一个数据库。<br>创建表空间语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Create</span> <span class="keyword">TableSpace</span> 表空间名称  </div><div class="line"><span class="keyword">DataFile</span>          表空间数据文件路径  </div><div class="line"><span class="keyword">Size</span>              表空间初始大小  </div><div class="line"><span class="keyword">Autoextend</span> <span class="keyword">on</span></div></pre></td></tr></table></figure></p>
+<p>如:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">tablespace</span> db_test  </div><div class="line"><span class="keyword">datafile</span> <span class="string">'D:\oracle\product\10.2.0\userdata\db_test.dbf'</span>  </div><div class="line"><span class="keyword">size</span> <span class="number">50</span>m  </div><div class="line"><span class="keyword">autoextend</span> <span class="keyword">on</span>;</div></pre></td></tr></table></figure></p>
+<p>查看已经创建好的表空间:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> default_tablespace, temporary_tablespace, d.username  </div><div class="line"><span class="keyword">from</span> dba_users d</div></pre></td></tr></table></figure></p>
+<h3 id="4、用户"><a href="#4、用户" class="headerlink" title="4、用户"></a>4、用户</h3><p>Oracle数据库建好之后，要想在数据库里建表,必须先为数据库建立用户,并未用户指定表空间(一般指定和表空间一样的名字)<br>创建新用户:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>          用户名  </div><div class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span>        密码  </div><div class="line"><span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span>   表空间(默认<span class="keyword">USERS</span>)  </div><div class="line"><span class="keyword">TEMPORARY</span> <span class="keyword">TABLESPACE</span> 临时表空间(默认TEMP)</div></pre></td></tr></table></figure></p>
+<p>如:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> utest  </div><div class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> utestpwd  </div><div class="line"><span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span> db_test  </div><div class="line"><span class="keyword">TEMPORARY</span> <span class="keyword">TABLESPACE</span> temp;</div></pre></td></tr></table></figure></p>
+<p>有了用户,要想使用用户账号管理自己的表空间,还的授权:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> <span class="keyword">CONNECT</span> <span class="keyword">TO</span> utest;</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">RESOURCE</span> <span class="keyword">TO</span> utest;</div><div class="line"><span class="keyword">GRANT</span> dba <span class="keyword">TO</span> utest;<span class="comment">--dba为最高权限，可以创建数据库，表等。</span></div></pre></td></tr></table></figure></p>
+<p>查看数据库用户:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dba_users;</div></pre></td></tr></table></figure></p>
+<h3 id="5、表"><a href="#5、表" class="headerlink" title="5、表"></a>5、表</h3><p>有了数据库，表空间和用户，就可以用自定义的用户在自己的表空间创建表了。</p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2016/03/10/shiro-Authorization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Shiro-Authorization(授权)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/28/shiro-Authentication/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Shiro-Authentication(身份验证)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-Oracle-instance-tablespase-user-table" data-title="Oracle-数据库实例、表空间、用户、表之间的关系(转)" data-url="http://http://kiritor.github.io/2015/12/23/Oracle-instance-tablespase-user-table/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

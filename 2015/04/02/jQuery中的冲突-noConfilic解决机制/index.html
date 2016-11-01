@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>jQuery中的冲突-noConfilic解决机制 | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。
+   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery中的冲突-noConfilic解决机制">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。
+   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
+<meta property="og:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134225.png">
+<meta property="og:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134652.png">
+<meta property="og:updated_time" content="2015-04-02T06:49:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery中的冲突-noConfilic解决机制">
+<meta name="twitter:description" content="许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。
+   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
+<meta name="twitter:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134225.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-jQuery中的冲突-noConfilic解决机制" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/" class="article-date">
+  	<time datetime="2015-04-02T06:24:04.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery中的冲突-noConfilic解决机制
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noConfilic/">noConfilic</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
+<p>   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是window.jQuery对象的一个引用,因此即使被删除,jQuery依然能保证整个类库的完整性。<br><a id="more"></a></p>
+<p>   jQuery的设计充分考虑了多框架之间的引用冲突。我们可以使用jQuery.noConflict方法来轻松实现控制权的转交。</p>
+<p>   在论述如何解决jQuery冲突之前,我们有必要先对noConflict函数做一个了解,解决冲突的方法就藏在里面。<br>jQuery.noConflict</p>
+<p>jQuery.noConflict([removeAll]);</p>
+<p>   缺省参数情况下:</p>
+<p>   运行这个函数将变量$的控制权让渡给第一个实现它的库。在运行完这个函数之后,就只能使用jQuery变量访问jQuery对象(函数不带参数),例如jQuery(“div p”)。不过需要注意的是该函数必须在你导入jQuery文件之后,并且在导入另一个导致冲突的库”之前”使用。当然也应该在其他冲突库被使用之前,除非jQuery是最后一个导入的。</p>
+<p>   当参数为true时,执行noConflict则会将$和jQuery对象本省的控制权全部移交给第一个产生他们的库。</p>
+<p>   不过具体的移交机制是如何实现的呢?查阅源码即可发现,在jQuery源码中定义了两个私有变量<em>jQuery,</em>。具体如下截图:</p>
+   <center><img src="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134225.png" alt=""></center>
+
+<p>   容易理解的是,jQuery通过上面两个私有的变量映射了window环境下的jQuery和$两个对象,防止了变量被强行覆盖。一旦noConflict被调用,jquery可以通过<em>jQuery,</em>,jQuery,四者之间的差异,来决定控制权的移交方式,具体代码如下图:</p>
+   <center><img src="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134652.png" alt=""></center>
+
+<p>   接下来看看参数设定问题,如果deep没有设置,_覆盖了window,此时jQuery的别名失效了,但是jQuery变量未失效,仍可使用。此时如果有其他库或代码重新定义了$变量的话,其控制权就转交出去了。反之deep设置为true时，_jQuery进一步覆盖window.jQuery,此时和jQuery都将失效。</p>
+<p>   这种操作的好处是,不管是框架混用还是jQuery多版本共存这种高度冲突的执行环境,由于noConflict的控制权移交机制,以及本身返回违背覆盖的私有变量jQuery对象,完全能够通过变量映射的方式解决冲突。<br>示例</p>
+<p>   了解了jQuery内部解决冲突的实现方式,接下来看看一些实际的情况吧。</p>
+<p>   1、将$引用的对象映射回原始的对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();</div><div class="line">// 使用 jQuery</div><div class="line">jQuery(<span class="string">"div p"</span>).hide();</div><div class="line">// 使用其他库的 $()</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div></pre></td></tr></table></figure></p>
+<p>   2、恢复使用别名$,然后创建并执行一个函数,在这个函数的作用域中仍然将$作为jQuery的别名来使用。在这个函数中,原来的$对象是无效的。这个函数对于大多数不依赖于其他库的插件都十分有效。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();</div><div class="line">(<span class="keyword">function</span>($) &#123; </div><div class="line">  $(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 使用 $ 作为 jQuery 别名的代码</div><div class="line">  &#125;);</div><div class="line">&#125;)(jQuery);</div><div class="line">// 其他用 $ 作为别名的库的代码</div></pre></td></tr></table></figure></p>
+<p>   3、创建一个新的别名用来在接下来的库中使用jQuery对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var j = jQuery.noConflict();</div><div class="line">// 基于 jQuery 的代码</div><div class="line">j(<span class="string">"div p"</span>).hide();</div><div class="line">// 基于其他库的 $() 代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div></pre></td></tr></table></figure></p>
+<p>   基于这种方式,所有的jQuery代码都通过j进行调用,避免了冲突的可能。</p>
+<p>   4、完全将jQuery移到一个新的命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<p>   结果:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
+<p>#解决冲突方式</p>
+<p> 冲突的方式无非3中情况：<br> 1、其他库先于jQuery引用(被占用).<br>  最简单的我们可以在任何地方调用jQuery.noConflict函数,之后使用jQuery()座位jQuery对象的制造工厂。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       //将变量$的控制权移交给先导入的库</div><div class="line"> jQuery(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	 jQuery(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //使用jQuery变量 </div><div class="line">		 </div><div class="line">	 &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
+<p> 此外,如果你想确保jQuery不会与其他库冲突,但又想使用一个类似”$”的快捷方式,可以使用如下代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$mj</span>=jQuery.noConflict();       //自定义快捷变量</div><div class="line"> <span class="variable">$mj</span>(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	 <span class="variable">$mj</span>(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //使用jQuery变量 </div><div class="line">		 </div><div class="line">	 &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
+<p>如果你不想给jQuery自定义名称,却想使用$，有不与其他库冲突.可以有两种解决方式:<br> 其一:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       </div><div class="line">jQuery(<span class="keyword">function</span>($)&#123;</div><div class="line">  $(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //在函数内部继续使用</div><div class="line">		 </div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
+<p>其二:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       //将变量$控制权让渡</div><div class="line">(<span class="keyword">function</span>($)&#123;               //定义匿名函数形参为$</div><div class="line">	$(<span class="function"><span class="title">function</span></span>()&#123;      //匿名函数内部均为jQuery的$</div><div class="line">           $(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">           </div><div class="line">           &#125;);</div><div class="line">        &#125;);</div><div class="line">&#125;)(jQuery);                //执行匿名函数且传递实参jQuery</div><div class="line"> $(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
+<p> 这是较为理想的方式,因为可以改变最少的代码来实现全面的兼容性<br> 2、其他库后于jQuery被引用<br>你可以参考上述做一些冲突解决的方法,其实其根本就不冲突,你可以使用jQuery变量做一些jQuery的处理工作。同时可以使用()方法作为其他库的快捷方式。<br> 3、不同版本jQuery、且有其他库<br>可以参考上述示例,将jQuery完全移到另一个命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
+<p> #最后<br>   jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。</p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/04/03/Golang-Import的理解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Golang Import的理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery对象、DOM对象?傻傻分不清楚</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-jQuery中的冲突-noConfilic解决机制" data-title="jQuery中的冲突-noConfilic解决机制" data-url="http://http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

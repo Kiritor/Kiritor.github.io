@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Golang操作MySQL数据库,使用mymysql驱动 | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql
+##MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang操作MySQL数据库,使用mymysql驱动">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql
+##MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1">
+<meta property="og:updated_time" content="2015-04-09T03:56:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang操作MySQL数据库,使用mymysql驱动">
+<meta name="twitter:description" content="玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql
+##MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-Golang操作MySQL数据库-使用mymysql驱动" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
+  	<time datetime="2015-04-09T01:34:07.000Z" itemprop="datePublished">Apr 9 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Golang操作MySQL数据库,使用mymysql驱动
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mymysql/">mymysql</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+<p>##MyMySQL驱动<br>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql" target="_blank" rel="external">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br><a id="more"></a></p>
+<p>##安装<br>安装mymysql包必须要先安装如下包:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql/thrsafe</div><div class="line">go get github.com/ziutek/mymysql/autorc</div><div class="line">go get github.com/ziutek/mymysql/godrv</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql</div></pre></td></tr></table></figure>
+<p>打开gopath目录下的mymysql包可以看见如下的几部分:</p>
+<p>####1、mysql:go实现的mysql客户端(没有额外的依赖模块)</p>
+<p>####2、native:线程不安全的引擎</p>
+<p>####3、thrsafe:线程安全的引擎</p>
+<p>####4、autorc：自动重新连接接口</p>
+<p>####5、godrv:go提供的database/sql的实现<br>OK,也就是说,使用mymysql驱动,我们可以灵活多样的操作mysql数据库了,下面看一些实际的例子。</p>
+<p>##实例<br>上面已经说了,mymysql提供了5个子包,我们可以选择灵活的搭配来操作数据库,例如线程安全与非线程安全(到底如何选择这点是基于业务是否要求多线程,线程安全必然更加耗费性能)。</p>
+<p>##mysql+thrsafe/native<br>首先尝试一下mysql子包的用法,通过查阅文档,编写的代码如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">	//<span class="string">"github.com/ziutek/mymysql/autorc"</span>  //自动连接</div><div class="line">    <span class="string">"github.com/ziutek/mymysql/mysql"</span></div><div class="line">    _ <span class="string">"github.com/ziutek/mymysql/native"</span> // 线程不安全</div><div class="line">    // _ <span class="string">"github.com/ziutek/mymysql/thrsafe"</span> // 线程安全</div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    //得到一个连接</div><div class="line">    db := mysql.New(<span class="string">"tcp"</span>, <span class="string">""</span>, <span class="string">"127.0.0.1:3306"</span>, <span class="string">"root"</span>, <span class="string">"root"</span>, <span class="string">"webdemo"</span>)</div><div class="line">    //建立连接</div><div class="line">    err := db.Connect()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    //查询</div><div class="line">    rows, result, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, row := range rows &#123;</div><div class="line">        fmt.Println(row.Str(0)+<span class="string">":"</span>+row.Str(1)+<span class="string">":"</span>+row.Str(2))  //打印</div><div class="line">    &#125;</div><div class="line">	fmt.Println(result.AffectedRows())  //影响行数</div><div class="line">	fmt.Println(result.Message())</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码只是一个非常简单的操作,详细的细节处理(预处理,元数据),可以查阅文档。</p>
+<p>##database/sql+godrv<br>mymysql也提供了golang原生的操作mysql的实现,使用这种方式的兼容性更加可靠,也是推荐的做法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"database/sql"</span></div><div class="line">    <span class="string">"github.com/ziutek/mymysql/godrv"</span></div><div class="line">)</div><div class="line">// 用户结构</div><div class="line"><span class="built_in">type</span> User struct &#123;</div><div class="line">    uid int</div><div class="line">    username string</div><div class="line">    password string</div><div class="line">&#125;</div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    // 设置连接编码</div><div class="line">    godrv.Register(<span class="string">"SET NAMES utf8"</span>)</div><div class="line">    // 连接数据库</div><div class="line">    db, err := sql.Open(<span class="string">"mymysql"</span>, <span class="string">"tcp:127.0.0.1:3306*webdemo/root/root"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer db.Close()</div><div class="line">    // 插入数据</div><div class="line">    stmt, err := db.Prepare(<span class="string">"insert into user values(null, ?, ?)"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer stmt.Close()</div><div class="line">    // sql参数</div><div class="line">    result, err := stmt.Exec(<span class="string">"LCore"</span>, <span class="string">"LCore"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    // 获取影响的行数</div><div class="line">    affect, err := result.RowsAffected()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    fmt.Printf(<span class="string">"%d\n"</span>, affect)</div><div class="line">    // 获取自增id</div><div class="line">    id, err := result.LastInsertId()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    fmt.Printf(<span class="string">"%d\n"</span>, id)</div><div class="line">    // 查询数据</div><div class="line">    rows, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer rows.Close()</div><div class="line">    // 获取的用户</div><div class="line">    users := []User&#123;&#125;</div><div class="line">    // 读取数据</div><div class="line">    <span class="keyword">for</span> rows.<span class="function"><span class="title">Next</span></span>() &#123;</div><div class="line">        user := User&#123;&#125;</div><div class="line">        err := rows.Scan(&amp;user.uid, &amp;user.username, &amp;user.password)</div><div class="line">        <span class="keyword">if</span> nil != err &#123;</div><div class="line">            panic(err)</div><div class="line">        &#125;</div><div class="line">        users = append(users, user)</div><div class="line">    &#125;</div><div class="line">    // 显示用户信息</div><div class="line">    <span class="keyword">for</span> _, user := range users &#123;</div><div class="line">        fmt.Printf(<span class="string">"%d, %s, %s\n"</span>, user.uid, user.username, user.password)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>##事务处理<br>mymysql驱动同样支持事务处理,一个简单的例子(基于mysql子包):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"github.com/ziutek/mymysql/mysql"</span></div><div class="line">    //_ <span class="string">"github.com/ziutek/mymysql/native"</span> // 线程不安全</div><div class="line">     _ <span class="string">"github.com/ziutek/mymysql/thrsafe"</span> // 线程安全</div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    db := mysql.New(<span class="string">"tcp"</span>, <span class="string">""</span>, <span class="string">"127.0.0.1:3306"</span>, <span class="string">"root"</span>, <span class="string">"root"</span>, <span class="string">"webdemo"</span>)</div><div class="line"></div><div class="line">    err := db.Connect()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    rows, result, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, row := range rows &#123;</div><div class="line">        fmt.Println(row.Str(0)+<span class="string">":"</span>+row.Str(1)+<span class="string">":"</span>+row.Str(2))</div><div class="line">    &#125;</div><div class="line">	fmt.Println(result.AffectedRows())</div><div class="line">	fmt.Println(result.Message())</div><div class="line">	ins,err:=db.Prepare(<span class="string">"insert into user values(?,?,?)"</span>)</div><div class="line">	<span class="keyword">if</span> err!=nil &#123;</div><div class="line">		fmt.Println(err)</div><div class="line">	&#125;</div><div class="line">	//开启事务,db处于lock状态,只有当事务提交或者回滚之后才会解锁</div><div class="line">	tr,_:=db.Begin()</div><div class="line">	//处于事务且线程安全</div><div class="line">	/**</div><div class="line">      start方法属于db,因此下面两条插入语句都不会执行</div><div class="line">    */</div><div class="line">	go <span class="function"><span class="title">func</span></span>()&#123;</div><div class="line">		tr.Start(<span class="string">"insert user valies(50,'LCore','LCore')"</span>)</div><div class="line">	&#125;()</div><div class="line">	tr.Start(<span class="string">"insert user valies(70,'LCore','LCore')"</span>)</div><div class="line">	tr.Do(ins).Run(60,<span class="string">"LCore"</span>,<span class="string">"LCore"</span>)</div><div class="line">	tr.Commit()   //事务提交</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>##Type Mapping<br>我们可以使用格式化的方式嵌入到查询sql中去,例如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rows, res, err := db.Query(<span class="string">"select * from X where id &gt; %d"</span>, id)</div></pre></td></tr></table></figure></p>
+<p>mymysql的查询结果对应在[]byte类型中,因此需要自己转换为对应的类型<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fmt.Println(string(rows[0][1].([]byte)))</div></pre></td></tr></table></figure></p>
+<p>或者使用Str函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fmt.Println(rows[0].Str(1))</div><div class="line">fmt.Pritnln(rows[0].int(1))</div></pre></td></tr></table></figure></p>
+<p>以上的例子都是返回结果矩阵中的第0行,第一列(下标0开始),但是一般情况下,我们习惯于通过列名进行访问.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name := res.Map(<span class="string">"name"</span>)</div><div class="line">fmt.Print(rows[0].Str(name))</div></pre></td></tr></table></figure></p>
+<p>MySQL服务器映射/转换特定MySQL存储类型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">         string  --&gt;  MYSQL_TYPE_STRING</div><div class="line">         []byte  --&gt;  MYSQL_TYPE_VAR_STRING</div><div class="line">    int8, uint8  --&gt;  MYSQL_TYPE_TINY</div><div class="line">  int16, uint16  --&gt;  MYSQL_TYPE_SHORT</div><div class="line">  int32, uint32  --&gt;  MYSQL_TYPE_LONG</div><div class="line">  int64, uint64  --&gt;  MYSQL_TYPE_LONGLONG</div><div class="line">      int, uint  --&gt;  protocol <span class="built_in">integer</span> <span class="built_in">type</span> <span class="built_in">which</span> match size of int</div><div class="line">           bool  --&gt;  MYSQL_TYPE_TINY</div><div class="line">        <span class="built_in">float</span>32  --&gt;  MYSQL_TYPE_FLOAT</div><div class="line">        <span class="built_in">float</span>64  --&gt;  MYSQL_TYPE_DOUBLE</div><div class="line">      time.Time  --&gt;  MYSQL_TYPE_DATETIME</div><div class="line">mysql.Timestamp  --&gt;  MYSQL_TYPE_TIMESTAMP</div><div class="line">     mysql.Date  --&gt;  MYSQL_TYPE_DATE</div><div class="line">  time.Duration  --&gt;  MYSQL_TYPE_TIME</div><div class="line">     mysql.Blob  --&gt;  MYSQL_TYPE_BLOB</div><div class="line">            nil  --&gt;  MYSQL_TYPE_NULL</div></pre></td></tr></table></figure></p>
+<p>收到结果MySQL存储类型被映射到/ mymysql类型如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">                             TINYINT  --&gt;  int8</div><div class="line">                    UNSIGNED TINYINT  --&gt;  uint8</div><div class="line">                            SMALLINT  --&gt;  int16</div><div class="line">                   UNSIGNED SMALLINT  --&gt;  uint16</div><div class="line">                      MEDIUMINT, INT  --&gt;  int32</div><div class="line">    UNSIGNED MEDIUMINT, UNSIGNED INT  --&gt;  uint32</div><div class="line">                              BIGINT  --&gt;  int64</div><div class="line">                     UNSIGNED BIGINT  --&gt;  uint64</div><div class="line">                               FLOAT  --&gt;  <span class="built_in">float</span>32</div><div class="line">                              DOUBLE  --&gt;  <span class="built_in">float</span>64</div><div class="line">                             DECIMAL  --&gt;  <span class="built_in">float</span>64</div><div class="line">                 TIMESTAMP, DATETIME  --&gt;  time.Time</div><div class="line">                                DATE  --&gt;  mysql.Date</div><div class="line">                                TIME  --&gt;  time.Duration</div><div class="line">                                YEAR  --&gt;  int16</div><div class="line">    CHAR, VARCHAR, BINARY, VARBINARY  --&gt;  []byte</div><div class="line"> TEXT, TINYTEXT, MEDIUMTEXT, LONGTEX  --&gt;  []byte</div><div class="line">BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB  --&gt;  []byte</div><div class="line">                                 BIT  --&gt;  []byte</div><div class="line">                           SET, ENUM  --&gt;  []byte</div><div class="line">                                NULL  --&gt;  nil</div></pre></td></tr></table></figure></p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/04/10/Go语言日志处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Go语言日志处理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/03/Golang-Import的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Golang Import的理解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-Golang操作MySQL数据库-使用mymysql驱动" data-title="Golang操作MySQL数据库,使用mymysql驱动" data-url="http://http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

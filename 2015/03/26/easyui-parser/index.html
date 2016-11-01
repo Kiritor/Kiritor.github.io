@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>EasyUI基础入门之Parser(解析器) | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#前言JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EasyUI基础入门之Parser(解析器)">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/03/26/easyui-parser/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="#前言JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)">
+<meta property="og:updated_time" content="2015-03-31T03:17:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EasyUI基础入门之Parser(解析器)">
+<meta name="twitter:description" content="#前言JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-easyui-parser" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/03/26/easyui-parser/" class="article-date">
+  	<time datetime="2015-03-26T15:58:08.000Z" itemprop="datePublished">Mar 26 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      EasyUI基础入门之Parser(解析器)
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Parser/">Parser</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>#前言<br>JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)<br><a id="more"></a></p>
+<p>#EasyUI体系结构<br>EasyUI所有的插件主要分为六大部分。Base基础、Layout布局、Menu&amp;Button、Form表单、Window窗口等。从最基础的开始先掌握EasyUI基础部分。Base部分包含了八个基础插件分别为:</p>
+<pre><code>1. parser(解析器)
+2. easyloader(加载器)
+3. draggable(拖动)
+4. droppable(放置)
+5. resizable(大小调整)
+6. pagination(分页)
+7. progressbar(进度条)
+8. searchbox(搜索框) 
+</code></pre><p>我们先从parser开始。</p>
+<p>#Parser(解析器)<br>解析器是easyui非常重要的基础组件,在easyui中我们能够简单的通过class定义一个组件,从而渲染出非常好的交互效果。就是通过parser进行解析的。parser会获取所有在指定范围内定义为easyui组件的class定义,并且根据后缀定义把当前节点解析渲染成特定的组件。<br>parser可以有两种使用方法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1、$.parser.parse();不带参数,默认解析该页面中所有被定义为easyui组件的节点。 </div><div class="line">2、$.parser.parse(<span class="string">'#cc'</span>);带一个jquery选择器，使用这种方式我们可以单独解析局部的easyui组件节点。</div></pre></td></tr></table></figure></p>
+<p>不过这里要说明的是这个jquery选择器必须是你解析组件的父级以上的节点。也就是说这个查找出来的节点相当于一个容器,它只会解析容器里面的内容。<br>parser属性:</p>
+<p>名称                 类型         描述                       默认值<br>$.parser.auto     boolean    定义是否自动解析easyui组件    true</p>
+<p>名称    参数    描述<br>$.parser.onComplete     context    当语法解析完成之后触发的event</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;EasyUI基础之Parser&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"js/jquery.easyui.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">closes</span></span>() &#123;</div><div class="line">            $(<span class="string">"#Loading"</span>).fadeOut(<span class="string">"normal"</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line"></div><div class="line">                $(this).remove();</div><div class="line">                alert(<span class="string">"数据加载完成"</span>);</div><div class="line"></div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        var pc;</div><div class="line">        $.parser.onComplete = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            <span class="keyword">if</span> (pc) &#123;</div><div class="line">                clearTimeout(pc);</div><div class="line">            &#125;</div><div class="line">            pc = <span class="built_in">set</span>Timeout(closes, 1000);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=<span class="string">'Loading'</span>&gt;</div><div class="line">    &lt;image src=<span class="string">'images/loading.gif'</span>/&gt;</div><div class="line">    &lt;font color=<span class="string">"#2bd4cd"</span> size=<span class="string">"4"</span>&gt;页面正在加载中···&lt;/font&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>上面的例子实际运行的效果是,当dom节点在解析的过程中,界面上会弹出类似”数据正在加载中”,parser解析完毕之后,遮罩层就消失，正常显示页面内（弹出数据加载完成弹出框）。</p>
+<p>#Parser(解析器)应用场景<br>上面的学习中我们知道,easyui根据class就能正常的渲染页面都是靠parser。通常情况下我们在开发的时候并不会用到解析器。下面来看看神马时候我们需要用到解析器。</p>
+<p>##自动调用parser<br>最主要的运用场景,只要我们书写相应的class,easyui就能成功的渲染页面,这是因为解析器在默认情况下,会在dom加载完成的时候($(docunment).ready)被调用,而且是渲染整个页面。</p>
+<p>##手动调用parser<br>需要手动调用的情况是:当页面已经加载完成,但是此时我们使用js生成的DOM中包含了easyui支持的class,并且我们也有将其渲染成easyui组件的需求。在这种情况下手动调用parser就不可避免了。<br>以如下代码为例:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"easyui-accordion"</span> id=<span class="string">"tt"</span>&gt;</div><div class="line">    &lt;div title=<span class="string">"title1"</span>&gt;1&lt;/div&gt;</div><div class="line">	&lt;div title=<span class="string">"title2"</span>&gt;2&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>当上述代码的生成在easyui渲染界面之后,由于easyui不会一直监听页面,所以该段代码并不会并渲染成“手风琴DIV”的样式,这时候就需要我们手动去结下了。不过这里需注意如下方面，上面也有提及。</p>
+<pre><code>1. 解析目标位指定DOM的所有子孙元素,不包好该DOM本身:因此正确的写法为:$parser.parser($(&apos;tt&apos;).parent()),并非
+   $.parser.parse($(&apos;#tt&apos;));    
+2. 尽量不要多次解析同一个DOM元素(ID):页面初始化就已经主动渲染过dom节点了,你再次手动解析该dom节点时该dom已经被parser重构,得到的        DOM就并非是你料想的结果，该方式应该尽量避免。
+</code></pre>
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/03/27/easyui-loader/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          EasyUI基础入门之easyloader(加载器)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/26/colleage-life/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">毕业随照</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-easyui-parser" data-title="EasyUI基础入门之Parser(解析器)" data-url="http://http://kiritor.github.io/2015/03/26/easyui-parser/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

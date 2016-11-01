@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>自己动手开发jQuery插件 | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自己动手开发jQuery插件">
+<meta property="og:url" content="http://http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作">
+<meta property="og:updated_time" content="2015-07-13T15:04:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自己动手开发jQuery插件">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-jQueryPlugindevGuide" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/05/06/jQueryPlugindevGuide/" class="article-date">
+  	<time datetime="2015-05-06T13:14:05.000Z" itemprop="datePublished">May 6 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      自己动手开发jQuery插件
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plugin/">plugin</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br><a id="more"></a></p>
+<p>##插件基础<br>&nbsp;&nbsp;&nbsp;&nbsp;在最基础的水平上,创建jQuery插件是非常简单的,但是需要明白的是:简单并不意味正确,遵循一些最佳实践能够改善性能,减少错误,提升交互性,参考jQuery编码规范:<a href="http://kiritor.github.io/2015/04/02/%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84jQuery%E7%9A%84%E5%BB%BA%E8%AE%AE-%E8%BD%AC/" target="_blank" rel="external">编写更好的jQuery的建议</a></p>
+<p>###命名规范<br>&nbsp;&nbsp;&nbsp;&nbsp;一般情况下,插件(开发环境)的命名形式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jquery.pluginName.js</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;生产环境下(压缩之后的),插件的命名形式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jquery.pluginName.min.js</div></pre></td></tr></table></figure></p>
+<p>##jQuery插件开发模式<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery高级编程中提到了3中插件开发模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;1. 通过jQuery.fn向jQuery添加新方法.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 通过jQuery.extend()扩展jQuery.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. 通过jQuery.widget()应用jQueryUI的部件工厂方法创建.<br>&nbsp;&nbsp;&nbsp;&nbsp;先从简单的第二种方法开始,这种插件开发的方式仅仅是在jQuery命名空间(jQuery)上添加了一个静态方法,可以直接通过美元符号(jquery编码的符号,页面解析不出来,用”美元符号代替”)调用,一个简单的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.extend(&#123;</div><div class="line">   <span class="attr">log</span>:<span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"日志:"</span>+text)</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//直接通过$符号进行调用</span></div><div class="line">$.log(<span class="string">"简单的日志插件"</span>)</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;jquery最令人惊叹的便是强大的选择器了,显然这种方式无法利用jquery的选择器,而且这并非是一个规范的做法。jquery.extend用于扩展自身方法,而jquery.fn则是用于扩展jquery类,包括了对方法和对象的操作。为了保持jquery的完整性,推荐使用第一种方法进行插件开发,尽量不要使用第二种。至于第三种方式,则是用于开发更高级jquery部件的,这里就不再细说了,下面重点总结下第一种方式如何进行插件的开发。</p>
+<p>##插件开发-雏形<br>1、开始<br>&nbsp;&nbsp;&nbsp;&nbsp;根据开篇的命名规范,最初的插件原型可能如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">jQuery.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="comment">//do something</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;但是为了确保你的插件与其他插件的美元符号不冲突,最好使用一个立即执行的匿名函数,这样就可以放心的使用美元符号了。结构如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">;<span class="comment">//可以事先加一个";",这是一个好习惯,可以避免与别人的函数相连,造成报错</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"> $ </span>)</span>&#123;  </div><div class="line">	</div><div class="line">  $.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">    <span class="comment">//do something</span></div><div class="line">  &#125;;  </div><div class="line">	</div><div class="line">&#125;)( jQuery );</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery高级编程中提及了一种更加安全、结构良好、有序的方式(笔者认为上面的方式已经没问题了)供参考:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">$, window, document,undefined</span>) </span>&#123;</div><div class="line">   </div><div class="line">    $.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">       </div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;)(jQuery, <span class="built_in">window</span>, <span class="built_in">document</span>);</div></pre></td></tr></table></figure></p>
+<p>2、基本开发<br>&nbsp;&nbsp;&nbsp;&nbsp;准备工作做的差不多了,至少来写一个简单的插件了吧。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   给某个元素提示信息</div><div class="line">*/</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"> $ </span>)</span>&#123;  </div><div class="line">	</div><div class="line">  $.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">      <span class="keyword">var</span> $tip = $(<span class="string">'&lt;span&gt;'</span>+<span class="keyword">this</span>.text()+<span class="string">'&lt;/span&gt;'</span>);</div><div class="line">	  $tip.css(&#123;</div><div class="line">	      <span class="attr">color</span>:<span class="string">'red'</span>,</div><div class="line">		  <span class="attr">fontSize</span>:<span class="string">'10px'</span></div><div class="line">	  &#125;);</div><div class="line">	  <span class="keyword">this</span>.append($tip);</div><div class="line">	  </div><div class="line">  &#125;;  </div><div class="line">	</div><div class="line">&#125;)( jQuery );  </div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">'#id'</span>).toolTip();</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;元素调用该插件之后,后面会跟一个提示信息(元素的text信息),字体颜色为红色,size为10px。插件已经初具雏形了!</p>
+<p>##插件形态二(默认值和选项)<br>&nbsp;&nbsp;&nbsp;&nbsp;上面的事例仅仅是一个插件的雏形,远没有达到插件所要求的那样,不够灵活,不易扩展(调整字体的大小，颜色必须修改插件源码)。<br>&nbsp;&nbsp;&nbsp;&nbsp;为了一些复杂的,可定制化的插件,合理的做法是提供一套默认值,在被调用的时候扩展默认值。这样在实际使用插件时,根据不同的时候配置不同的参数,合理、方便。接上面的插件,实现插件的使用者,自己定义tooltip字体的颜色和大小,可以这样做:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   给某个空间提示信息</div><div class="line">*/</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</div><div class="line"></div><div class="line">    $.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> settings = $.extend(&#123;&#125;, $.fn.toolTip.defaults, options);</div><div class="line">        <span class="keyword">var</span> $tip = $(<span class="string">'&lt;span&gt;'</span> + <span class="keyword">this</span>.text() + <span class="string">'&lt;/span&gt;'</span>);</div><div class="line">        $tip.css(&#123;</div><div class="line">            <span class="attr">color</span>: settings.color,</div><div class="line">            <span class="attr">fontSize</span>: settings.fontSize</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">this</span>.append($tip);</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">//插件默认参数</span></div><div class="line">    $.fn.toolTip.defaults = &#123;</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">        <span class="attr">fontSize</span>: <span class="string">'8px'</span></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">&#125;)(jQuery);</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(&#123;</div><div class="line">     <span class="attr">color</span>: <span class="string">'#000'</span>,</div><div class="line">     <span class="attr">fontSize</span>: <span class="string">'30px'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这样一来的话,就可以通过注入不同的参数来使用插件了,插件真正的做到了灵活扩展,不过离一个强大的插件还不够!</p>
+<p>##插件形态三(方法、事件、数据)<br>&nbsp;&nbsp;&nbsp;&nbsp;在此之前先理解一下命名空间,正确的命名空间对于插件开发是十分重要的,这样能确保你的插件不被其他插件重写,也能够避免被页面上其他代码重写。命名空间记录了插件的方法、事件和数据。</p>
+<p>##A、插件方法<br>&nbsp;&nbsp;&nbsp;&nbsp;千万不在一个插件中为jquery.fn增加多个方法,错误的做法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"> $ </span>)</span>&#123;  </div><div class="line">  </div><div class="line">  $.fn.tooltip = <span class="function"><span class="keyword">function</span>(<span class="params"> options </span>) </span>&#123; &#125;;  </div><div class="line">  $.fn.tooltipShow = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>) </span>&#123;   &#125;;  </div><div class="line">  $.fn.tooltipHide = <span class="function"><span class="keyword">function</span>(<span class="params"> </span>) </span>&#123;   &#125;;  </div><div class="line">  $.fn.tooltipUpdate = <span class="function"><span class="keyword">function</span>(<span class="params"> content </span>) </span>&#123;   &#125;;  </div><div class="line">  </div><div class="line">&#125;)( jQuery );</div></pre></td></tr></table></figure></p>
+<p>污染了命名空间,可以把所有的方法放在一个对象中,通过参数来调用,正确的姿势如下:(改进上述代码)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   给某个控件提示信息</div><div class="line">*/</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</div><div class="line"></div><div class="line">	</div><div class="line">	<span class="comment">//插件初始化</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">target,options</span>)</span>&#123;</div><div class="line">	    <span class="keyword">var</span> settings = $.extend(&#123;&#125;, $.fn.toolTip.defaults, options);</div><div class="line">        <span class="keyword">var</span> $tip = $(<span class="string">'&lt;span&gt;'</span> + settings.text+ <span class="string">'&lt;/span&gt;'</span>);</div><div class="line">		<span class="keyword">var</span> hidden = <span class="string">''</span>;</div><div class="line">		<span class="keyword">if</span>(settings.show==<span class="literal">true</span>)&#123;</div><div class="line">		    hidden=<span class="string">'inline-block'</span>;</div><div class="line">		&#125;<span class="keyword">else</span></div><div class="line">			hidden=<span class="string">'none'</span>;</div><div class="line">		$tip.css(&#123;</div><div class="line">            <span class="attr">color</span>: settings.color,</div><div class="line">            <span class="attr">fontSize</span>: settings.fontSize,</div><div class="line">			<span class="attr">display</span>:hidden</div><div class="line">        &#125;);</div><div class="line">        $(target).append($tip);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/*</span></div><div class="line">	   显示消息提示</div><div class="line">	   param:isShow是否显示</div><div class="line">	*/</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">target,isShow</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(isShow==<span class="literal">true</span>)</div><div class="line">	       $(target).find(<span class="string">'span'</span>).css(<span class="string">'display'</span>,<span class="string">'inline-block'</span>);</div><div class="line">		<span class="keyword">else</span></div><div class="line">		   $(target).find(<span class="string">'span'</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>);</div><div class="line">	 </div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">    $.fn.toolTip = <span class="function"><span class="keyword">function</span>(<span class="params">options,param</span>) </span>&#123;</div><div class="line">   </div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> options == <span class="string">'string'</span>)&#123;</div><div class="line">		    <span class="keyword">var</span> method = $.fn.toolTip.methods[options];</div><div class="line">			<span class="keyword">if</span>(method)</div><div class="line">				<span class="keyword">return</span> method(<span class="keyword">this</span>,param);</div><div class="line">		&#125;<span class="keyword">else</span> </div><div class="line">			init(<span class="keyword">this</span>,options);</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">//插件默认参数</span></div><div class="line">    $.fn.toolTip.defaults = &#123;</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">        <span class="attr">fontSize</span>: <span class="string">'8px'</span>,</div><div class="line">		<span class="attr">show</span>: <span class="literal">true</span>,</div><div class="line">		<span class="attr">text</span>:<span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">	</div><div class="line">	<span class="comment">//插件方法集合</span></div><div class="line">	</div><div class="line">	$.fn.toolTip.methods = &#123;</div><div class="line">	    </div><div class="line">		<span class="attr">init</span>:<span class="function"><span class="keyword">function</span>(<span class="params">jq,options</span>)</span>&#123;</div><div class="line">		    <span class="keyword">return</span> jq.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			   init(<span class="keyword">this</span>,options);</div><div class="line">			&#125;);</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">show</span>:<span class="function"><span class="keyword">function</span>(<span class="params">jq,isShow</span>)</span>&#123;</div><div class="line">		    <span class="keyword">return</span> jq.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				show(<span class="keyword">this</span>,isShow);</div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line">	 </div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;)(jQuery);</div><div class="line"><span class="comment">//页面进行调用</span></div><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(&#123;</div><div class="line">    <span class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">    <span class="attr">fontSize</span>: <span class="string">'6px'</span>,</div><div class="line">	<span class="attr">text</span>:<span class="string">'我是提示消息'</span></div><div class="line">&#125;);</div><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(<span class="string">'show'</span>,<span class="literal">false</span>)</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;实际情况是:提示信息不在显示了,ok!到此为止就可以给自己的插件添加各种有意思的方法了,插件也是越来越强大了呢!</p>
+<p>##B、插件事件<br>&nbsp;&nbsp;&nbsp;&nbsp;这里所说的事件和传统的事件略有区别。考虑这样一种需求:当一个插件完成某种操作之后,需要一些自定义的功能。把这一过程叫做事件,这里和浏览器的诸如onclick事件是有很大差异的,更多的是插件业务逻辑上的延伸,本质上是插件完成某件操作事件)之后的回调操作,只是这个操作是用户自己实现。核心实现在于call方法的运用。<br>&nbsp;&nbsp;&nbsp;&nbsp;还是以上面的插件为例子,我们给插件定义一个AfterInit事件,当插件初始化完成之后,用户可以自定义一些操作。这只是操作逻辑上看起来像一个事件,其实本质上是一个空方法(再插件内部调用),代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插件方法集合</span></div><div class="line">	</div><div class="line">	$.fn.toolTip.methods = &#123;</div><div class="line">	    </div><div class="line">		<span class="attr">init</span>:<span class="function"><span class="keyword">function</span>(<span class="params">jq,options</span>)</span>&#123;</div><div class="line">		    <span class="keyword">return</span> jq.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			   init(<span class="keyword">this</span>,options);</div><div class="line">			&#125;);</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">show</span>:<span class="function"><span class="keyword">function</span>(<span class="params">jq,isShow</span>)</span>&#123;</div><div class="line">		    <span class="keyword">return</span> jq.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				show(<span class="keyword">this</span>,isShow);</div><div class="line">			&#125;);</div><div class="line">		&#125;,</div><div class="line">		<span class="comment">//定义一个事件(方法),实现为空</span></div><div class="line">		AfterInit:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//</span></div><div class="line">	<span class="comment">//插件初始化</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">target,options</span>)</span>&#123;</div><div class="line">	    <span class="keyword">var</span> settings = $.extend(&#123;&#125;, $.fn.toolTip.defaults, options);</div><div class="line">        <span class="keyword">var</span> $tip = $(<span class="string">'&lt;span&gt;'</span> + settings.text+ <span class="string">'&lt;/span&gt;'</span>);</div><div class="line">		<span class="keyword">var</span> hidden = <span class="string">''</span>;</div><div class="line">		<span class="keyword">if</span>(settings.show==<span class="literal">true</span>)&#123;</div><div class="line">		    hidden=<span class="string">'inline-block'</span>;</div><div class="line">		&#125;<span class="keyword">else</span></div><div class="line">			hidden=<span class="string">'none'</span>;</div><div class="line">		$tip.css(&#123;</div><div class="line">            <span class="attr">color</span>: settings.color,</div><div class="line">            <span class="attr">fontSize</span>: settings.fontSize,</div><div class="line">			<span class="attr">display</span>:hidden</div><div class="line">        &#125;);</div><div class="line">        $(target).append($tip);</div><div class="line">		options.AfterInit.call(target);   <span class="comment">//初始化完成之后,触发事件(本质上就是个方法)</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>本质上就是个方法，只是用起来像一个事件了,接下来,我们在使用中自己实现回调事件的操作:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(&#123;</div><div class="line">      <span class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">      <span class="attr">fontSize</span>: <span class="string">'6px'</span>,</div><div class="line">   <span class="attr">text</span>:<span class="string">'我是提示消息'</span>,</div><div class="line"><span class="attr">AfterInit</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   alert(<span class="string">"插件已经初始化完成!"</span>)</div><div class="line">   &#125;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure></p>
+<p>这样在插件初始化完成之后,就会触发AfterInit事件(方法),完成用户自定义的操作。这样以来,插件的功能更加强大了呢。</p>
+<p>##B、插件数据<br>&nbsp;&nbsp;&nbsp;&nbsp;在插件开发的时候我们需要在插件中保存设置和信息,这是jquery的data方法就非常有用了,他会获取元素的相关数据,如果数据不存在,创建相应的数据添加到元素上。下面看看如何使用吧:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插件初始化</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">target,options</span>)</span>&#123;</div><div class="line">	    <span class="keyword">var</span> settings = $.extend(&#123;&#125;, $.fn.toolTip.defaults, options);</div><div class="line">		$<span class="keyword">this</span> = $(target);</div><div class="line">		<span class="comment">//保存设置</span></div><div class="line">		$<span class="keyword">this</span>.data(<span class="string">'toolTip'</span>);</div><div class="line">        <span class="keyword">var</span> $tip = $(<span class="string">'&lt;span&gt;'</span> + settings.text+ <span class="string">'&lt;/span&gt;'</span>);</div><div class="line">		<span class="keyword">var</span> hidden = <span class="string">''</span>;</div><div class="line">		<span class="keyword">if</span>(settings.show==<span class="literal">true</span>)&#123;</div><div class="line">		    hidden=<span class="string">'inline-block'</span>;</div><div class="line">		&#125;<span class="keyword">else</span></div><div class="line">			hidden=<span class="string">'none'</span>;</div><div class="line">		$tip.css(&#123;</div><div class="line">            <span class="attr">color</span>: settings.color,</div><div class="line">            <span class="attr">fontSize</span>: settings.fontSize,</div><div class="line">			<span class="attr">display</span>:hidden</div><div class="line">        &#125;);</div><div class="line">        $<span class="keyword">this</span>.append($tip);</div><div class="line">		options.AfterInit.call(target);   <span class="comment">//初始化完成之后,触发事件(本质上就是个方法)</span></div><div class="line">	&#125;</div><div class="line">	<span class="comment">//插件销毁</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">destory</span>(<span class="params">target</span>)</span>&#123;</div><div class="line">	    $(target).removeData(<span class="string">'toolTip'</span>);  <span class="comment">//删除数据</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>使用data方法可以帮助你在插件的各个方法间保持状态和变量,将之放在一个对象中,便于访问,也便于删除。</p>
+<p>##插件支持链式调用<br>&nbsp;&nbsp;&nbsp;&nbsp;我们知道jquery的一个优雅的设计是支持链式操作的,即使你不准备为你的插件提供链式支持,但是为这准备也是一个很好的实践,上面的插件其实已经实现了,关键在于每次都要return插件本身(this)。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">show:<span class="function"><span class="keyword">function</span>(<span class="params">jq,isShow</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> jq.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		show(<span class="keyword">this</span>,isShow);</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line"><span class="comment">//链式调用</span></div><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(&#123;</div><div class="line">    <span class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">    <span class="attr">fontSize</span>: <span class="string">'6px'</span>,</div><div class="line">    <span class="attr">text</span>:<span class="string">'我是提示消息'</span>,</div><div class="line">	<span class="attr">AfterInit</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	    alert(<span class="string">"插件已经初始化完成!"</span>)</div><div class="line">	   &#125;</div><div class="line">    &#125;);</div><div class="line">$(<span class="string">'#toolTip'</span>).toolTip(<span class="string">'show'</span>,<span class="literal">true</span>).css(<span class="string">'color'</span>,<span class="string">'red'</span>);</div></pre></td></tr></table></figure></p>
+<p>##最佳实践<br>&nbsp;&nbsp;&nbsp;&nbsp;下面是编写jquery插件的一些总结与最佳实践。<br>－ 使用(function($){//plugin})(jQuery);来包装你的插件<br>－ 返回this指针保证插件可链式操作<br>－ 使用对象来设置差价的参数和默认值<br>－ 为你的函数、事件、数据附着到某个命名空间</p>
+<p>##代码压缩<br>&nbsp;&nbsp;&nbsp;&nbsp;代码混淆与压缩不仅能一定程度上保护代码,更是使得插件的体积减小,变得轻量级,加快了下载速度。</p>
+<p>##分享<br>&nbsp;&nbsp;&nbsp;&nbsp;最后,好的插件要分享出来哦,那样插件才具有生命力,才能不断的优化改进!</p>
+<p>##相关参考<br><a href="http://www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html" target="_blank" rel="external">插件开发精品教程</a><br><a href="http://www.bkjia.com/jQuery/963539.html" target="_blank" rel="external">jquery插件开发</a></p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2015/05/30/仙女山游记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/22/Bootstrap-案例集锦/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Bootstrap-案例集锦</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-jQueryPlugindevGuide" data-title="自己动手开发jQuery插件" data-url="http://http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Shiro-Authorization(授权) | Tao.liang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Authorization授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:主体(Subject)、资源(Resources)、权限(Permission)、角色(Role).主体:即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.资源:在应用中用户可以访问、操作的任何东西都可以称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shiro-Authorization(授权)">
+<meta property="og:url" content="http://http://kiritor.github.io/2016/03/10/shiro-Authorization/index.html">
+<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:description" content="Authorization授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:主体(Subject)、资源(Resources)、权限(Permission)、角色(Role).主体:即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.资源:在应用中用户可以访问、操作的任何东西都可以称">
+<meta property="og:image" content="http://http://kiritor.github.io/img/role_resources.png">
+<meta property="og:image" content="http://http://kiritor.github.io/img/shiro_authorization.png">
+<meta property="og:updated_time" content="2016-03-25T01:06:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shiro-Authorization(授权)">
+<meta name="twitter:description" content="Authorization授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:主体(Subject)、资源(Resources)、权限(Permission)、角色(Role).主体:即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.资源:在应用中用户可以访问、操作的任何东西都可以称">
+<meta name="twitter:image" content="http://http://kiritor.github.io/img/role_resources.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
+  <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/ug-theme-default.js"></script>
+  <script src="/js/unitegallery.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">Liang Tao</a></h1>
+		</hgroup>
+        <!--
+		
+		<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/front">前端开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EasyUI/" style="font-size: 10px;">EasyUI</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Parser/" style="font-size: 10px;">Parser</a> <a href="/tags/append/" style="font-size: 10px;">append</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/dblink/" style="font-size: 10px;">dblink</a> <a href="/tags/draggable/" style="font-size: 10px;">draggable</a> <a href="/tags/easyui/" style="font-size: 16.67px;">easyui</a> <a href="/tags/exp/" style="font-size: 10px;">exp</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-get/" style="font-size: 10px;">go get</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hadoop/" style="font-size: 13.33px;">hadoop</a> <a href="/tags/header/" style="font-size: 10px;">header</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/imp/" style="font-size: 10px;">imp</a> <a href="/tags/import/" style="font-size: 10px;">import</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mac/" style="font-size: 13.33px;">mac</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mymysql/" style="font-size: 10px;">mymysql</a> <a href="/tags/noConfilic/" style="font-size: 10px;">noConfilic</a> <a href="/tags/oracle/" style="font-size: 16.67px;">oracle</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/shiro/" style="font-size: 20px;">shiro</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/备份/" style="font-size: 10px;">备份</a> <a href="/tags/工程管理/" style="font-size: 10px;">工程管理</a> <a href="/tags/数据库实例/" style="font-size: 10px;">数据库实例</a> <a href="/tags/毕业/" style="font-size: 10px;">毕业</a> <a href="/tags/物化视图/" style="font-size: 10px;">物化视图</a> <a href="/tags/用户/" style="font-size: 10px;">用户</a> <a href="/tags/表空间/" style="font-size: 10px;">表空间</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">乐于分享,喜欢环境音乐,爱看动漫,偶尔写写技术博客的小程一枚...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Liang Tao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://kiritor.github.io/img/lcore.jpg" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">Liang Tao</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">乐于分享,喜欢环境音乐的小程一枚</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/front">前端开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Kiritor" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3206206100/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/kiritor" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    最近研究shiro中......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-shiro-Authorization" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2016/03/10/shiro-Authorization/" class="article-date">
+  	<time datetime="2016-03-10T07:30:00.000Z" itemprop="datePublished">Mar 10 2016</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Shiro-Authorization(授权)
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorization"><span class="toc-number">1.</span> <span class="toc-text">Authorization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权方式"><span class="toc-number">2.</span> <span class="toc-text">授权方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程式"><span class="toc-number">2.1.</span> <span class="toc-text">编程式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解式"><span class="toc-number">2.2.</span> <span class="toc-text">注解式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签式"><span class="toc-number">2.3.</span> <span class="toc-text">标签式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权"><span class="toc-number">3.</span> <span class="toc-text">授权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于角色的访问控制-隐式角色"><span class="toc-number">3.1.</span> <span class="toc-text">基于角色的访问控制(隐式角色)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于资源的访问控制-显示角色"><span class="toc-number">3.2.</span> <span class="toc-text">基于资源的访问控制(显示角色)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权流程"><span class="toc-number">4.</span> <span class="toc-text">授权流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Authorizer"><span class="toc-number">4.1.</span> <span class="toc-text">Authorizer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PermissionResolver"><span class="toc-number">4.2.</span> <span class="toc-text">PermissionResolver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RolePermissionResolver"><span class="toc-number">4.3.</span> <span class="toc-text">RolePermissionResolver</span></a></li></ol></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:<strong>主体(Subject)</strong>、<strong>资源(Resources)</strong>、<strong>权限(Permission)</strong>、<strong>角色(Role)</strong>.<br><strong>主体:</strong>即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.<br><strong>资源:</strong>在应用中用户可以访问、操作的任何东西都可以称作为资源(某个页面,按钮等),用户只有授权之后才能访问.<br><strong>权限:</strong>安全策略中的原子授权单位,通过权限可以表示用户在应用中有没有操作某个资源的权利.Tips：权限仅仅反映了用户在某个资源上的操作允不允许,不反应谁去执行此操作,权限赋予给用户这个操作Shiro并不关心,而是需要应用系统自己去实现。Shiro支持<strong>粗粒度权限</strong>和<strong>细粒度权限</strong>,后续在深入.<br><a id="more"></a><strong>角色:</strong>角色代表了操作集合,也就是权限的集合,大部分情况下我们会赋予用户角色而不是权限,这样用户可以拥有某个角色的一组权限,管理方便。不同的角色拥有一组不同的权限。<br><strong>隐式角色:</strong>角色作为一个隐式的构造,你的应用程序仅仅基于一个角色就蕴含了一组行为(即权限),在软件级别上没有”角色A允许执行操作A,B,C”.直接通过角色来验证用户有没有操作权限,粒度是以角色为单位进行访问控制(<strong>RBAC :Role Based Acess Control,基于角色的访问控制</strong>),粒度较粗,如果权限规则调整则可能造成多处代码修改。<br><strong>DEMO：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//项目经理操作</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//权限调整,设计经理也可以操作,则必须修改此处,或者更多出的代码</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>)||user.hasRole(<span class="string">"设计经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>显然这种方式做权限控制是不合理的,因为角色拥有的权限根据企业的需要可能动态的进行调整,此处以角色为单位控制权限的访问(硬编码)完全无法适应。一个解决方法就是:<br><strong>判断某角色是否具有某种权限不能写死在代码中,应该是根据数据库读取来完成,角色聚合一组权限集合</strong>,以资源为单位。这就是RBAC新解(<strong>Resources Based Acess Control:基于资源的访问控制</strong>)<br><strong>显示角色:</strong>程序中通过权限控制谁能访问某个资源,角色聚合一组权限集合(对应资源),应用可以很明确的知道该角色有哪些权限,这样假设某个角色不能访问某个资源时,只需要从权限集合中移除即可,无需修改任何代码,粒度是以资源为单位的,粒度较细,推荐方式。如下图;</p>
+<p><center><img src="/img/role_resources.png" alt="shiro_high"></center><br>对应我们在编写权限代码的时候例子如下:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#if(shiro.hasPermission("user:create"))</div><div class="line">&lt;a id="create"&gt;新建&lt;/a&gt;</div><div class="line">#end</div></pre></td></tr></table></figure></p>
+<p>上面代码是velocity中对于shiro的应用,意思是用户是否拥有创建用户的权利,有则显示创建按钮,反之则不显示.以user: create资源为单位控制访问,将应用系统资源、角色以及角色和资源的关系(权限规则)剥离出来,粒度细,而且通过改变用户和角色的关系,角色的权限集合实现动态灵活的授权.<br>Shiro既支持隐式方式粗粒度的授权,也支持显示方式细粒度的授权.不过更提倡的是显示角色即基于资源的访问控制.</p>
+<h2 id="授权方式"><a href="#授权方式" class="headerlink" title="授权方式"></a>授权方式</h2><p>Shiro支持三种方式的授权:</p>
+<h3 id="编程式"><a href="#编程式" class="headerlink" title="编程式"></a>编程式</h3><p>通过代码可以实现授权<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Subject sub  = SecurityUtils.getSubject();</div><div class="line"><span class="keyword">if</span>(sub.hasRole(<span class="string">"admin"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">sub.isPermitted(<span class="string">"user:create"</span>)  <span class="comment">//是否具有创建用户的权利</span></div></pre></td></tr></table></figure></p>
+<h3 id="注解式"><a href="#注解式" class="headerlink" title="注解式"></a>注解式</h3><p>Shiro可以通过注解完成授权,没有权限将抛出相应的异常,不过需要在你的应用程序中启用AOP支持<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresRoles</span>(<span class="string">"admin"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createUser</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="meta">@RequiresPermissions</span>(<span class="string">"user:create"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createUser</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="标签式"><a href="#标签式" class="headerlink" title="标签式"></a>标签式</h3><p>shiro也提供页面标签简化前端的代码.以jsp为例子:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;shiro:hasRole name="admin"&gt;</div><div class="line">&lt;a&gt;创建&lt;/a&gt;</div><div class="line">&lt;/shiro:hasRole&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>下面根据上面的两种权限控制方式，来看看shiro到底是如何进行授权的.</p>
+<h3 id="基于角色的访问控制-隐式角色"><a href="#基于角色的访问控制-隐式角色" class="headerlink" title="基于角色的访问控制(隐式角色)"></a>基于角色的访问控制(隐式角色)</h3><p>ini配置文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[users]</div><div class="line">#用户名及其对应的密码和角色</div><div class="line">L.Tao=LCore,role1,role2</div><div class="line">Kiritor=LCore,role1</div></pre></td></tr></table></figure></p>
+<p>Tips: shiro不负责维护用户-角色信息,需要应用提供,shiro只是提供相应的接口方便验证,这里我们先写死,后续会介绍如何动态获取用户角色(数据库)<br>测试用例<br>先做一个初始化shiro的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Before</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 1、通过ini文件获取securityManager工厂</span></div><div class="line">    Factory&lt;SecurityManager&gt; factory = <span class="keyword">new</span> IniSecurityManagerFactory(<span class="string">"classpath:shiro.ini"</span>);</div><div class="line">    <span class="comment">// 2、得到securityManager实例,绑定SecurityUtils</span></div><div class="line">    SecurityManager manager = factory.getInstance();</div><div class="line">    SecurityUtils.setSecurityManager(manager);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以L.Tao/LCore 用户做测试,测试代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">   <span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">// 1、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）</span></div><div class="line">	Subject subject = SecurityUtils.getSubject();</div><div class="line">	UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(<span class="string">"L.Tao"</span>, <span class="string">"LCore"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">// 2、登录，即身份验证,委托给securityManager</span></div><div class="line">		subject.login(token);</div><div class="line">	&#125; <span class="keyword">catch</span> (AuthenticationException e) &#123;</div><div class="line">		<span class="comment">// 3、身份验证失败</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	Assert.assertEquals(<span class="keyword">true</span>, subject.isAuthenticated()); <span class="comment">// 断言用户已经登录</span></div><div class="line">	System.out.println(subject.hasRole(<span class="string">"role1"</span>));</div><div class="line">	System.out.println(subject.hasRole(<span class="string">"role2"</span>));</div><div class="line">	List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">	list.add(<span class="string">"role1"</span>);</div><div class="line">	list.add(<span class="string">"role2"</span>);</div><div class="line">	<span class="keyword">for</span>(Boolean temp:subject.hasRoles(list))&#123;</div><div class="line">	   System.out.println(temp);	</div><div class="line">	&#125;</div><div class="line">       System.out.println(subject.hasAllRoles(list));</div><div class="line">	<span class="comment">// 4、退出:任何现有的session会清空</span></div><div class="line">	subject.logout();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>修改上述的用户信息,以Kiritor/LCore测试,输出结果为;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>Shiro提供了hasRole/hasRoles/hasAllRoles用于判断用户是否拥有某个(些)角色;shiro还提供checkRole/checkRoles方法,不同的是当判断为假的时候,会抛出UnauthorizedException异常.</p>
+<h3 id="基于资源的访问控制-显示角色"><a href="#基于资源的访问控制-显示角色" class="headerlink" title="基于资源的访问控制(显示角色)"></a>基于资源的访问控制(显示角色)</h3><p>ini配置文件如下:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[users]</div><div class="line">#用户名及其对应的密码和角色</div><div class="line">L.Tao=LCore,role1,role2</div><div class="line">Kiritor=LCore,role1</div><div class="line">[roles]</div><div class="line">role1=user:create,user:update</div><div class="line">role2=user:create,user:delete</div></pre></td></tr></table></figure></p>
+<p>同样的Shiro也不维护权限信息,shiro只是提供相应的接口方便验证<br>测试代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">   <span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">// 1、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）</span></div><div class="line">	Subject subject = SecurityUtils.getSubject();</div><div class="line">	UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(<span class="string">"L.Tao"</span>, <span class="string">"LCore"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">// 2、登录，即身份验证,委托给securityManager</span></div><div class="line">		subject.login(token);</div><div class="line">	&#125; <span class="keyword">catch</span> (AuthenticationException e) &#123;</div><div class="line">		<span class="comment">// 3、身份验证失败</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	Assert.assertEquals(<span class="keyword">true</span>, subject.isAuthenticated()); <span class="comment">// 断言用户已经登录</span></div><div class="line">	System.out.println(subject.isPermitted(<span class="string">"user:create"</span>));</div><div class="line">	System.out.println(subject.isPermitted(<span class="string">"user:update"</span>));</div><div class="line">	System.out.println(subject.isPermitted(<span class="string">"user:delete"</span>));</div><div class="line">	<span class="comment">// 4、退出:任何现有的session会清空</span></div><div class="line">	subject.logout();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>修改上述用户,以Kiritor/LCore测试,输出为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>同样shiro提供checkPermission/checkPermissions的方式,不同的是当判断为假的时候,会抛出会抛出UnauthorizedException异常.<br>到此为止基于资源的访问控制就完成了,这种方式的一般规则是”资源标识符:操作”,以资源为单位,一个很大的好处是当权限规则发生变化的时候,基本都是资源级别的修改,不会对其他代码产生影响,粒度较小.需要维护”用户-角色,角色-权限(资源:操作)”之间的关系.就实际情况来说应用系统提供额外模块维护这一关系是非常必要的,可以灵活的定义权限规则.</p>
+<h2 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h2><p>shiro内部的授权流程是如何的呢?如下图:</p>
+<p><center><img src="/img/shiro_authorization.png" alt="shiro_high"></center><br><strong>流程如下:</strong></p>
+<blockquote>
+<ol>
+<li>首先调用Subject.isPermitted<em>/hasRole</em>接口,委托给SecurityManager,接着SecuityManager委托给Authorizer;</li>
+<li>Authorizer是真正的授权者,如果调用isPermitted(),会通过PermissionResolver把字符串转换为相应的Permission实例;</li>
+<li>进行授权之前,shiro会调用相应的Realm获取Subject相应的角色/权限用于匹配传入的角色/权限;</li>
+<li>Authorizer会判断Realm的角色/权限是否和传入的匹配,多个Realm则会委托给ModularRealmAuthorizer进行循环判断,匹配返回true,否则返回false(或者抛出异常)表示授权失败.</li>
+</ol>
+</blockquote>
+<p>ModularRealmAuthorizer进行多Realm匹配流程:</p>
+<blockquote>
+<ol>
+<li>检查Realm是否实现了Authorizer;</li>
+<li>如果实现了Authorizer,那么则调用isPermitted<em>/HasRole</em>接口进行匹配;</li>
+<li>如果有一个Realm匹配那么将返回true,否则返回false.</li>
+</ol>
+</blockquote>
+<p>Realm进行授权,应该集成AuthorizingRealm,其流程是:</p>
+<blockquote>
+<ol>
+<li>如果调用hasRole*,则直接获取AuthorizationInfo.getRoles()与传入的角色比较即可;<br>如果调用isPermitted,需要先通过PermissionResolver将权限字符串转换成相应的Permisson实例,默认使用WildcardPermissionResolver,即转换为通配符的WildcardPermission;</li>
+<li>通过AuthorizationInfo.getObjectPermissions()得到Permission实例集合;通过AuthorizationInfo.getStringPermissions()得到字符串集合并通过PermissionResolver解析为<br>Permission实例;然后获取用户的角色,并通过RolePermissionResolver解析角色对应的权限集合</li>
+<li>接着调用Permission.implies()逐个与传入的权限比较,有匹配则返回true,反之返回false.</li>
+</ol>
+</blockquote>
+<p>下面看看授权过程中涉及到的一些接口</p>
+<h3 id="Authorizer"><a href="#Authorizer" class="headerlink" title="Authorizer"></a>Authorizer</h3><p>Authorizer主要是进行授权,作为shiro API中授权核心的入口点,提供了相应的角色/权限判断接口。SecurityManager继承了Authorizer,且提供了ModularRealmAuthorizer用于多Realm时的权限匹配</p>
+<h3 id="PermissionResolver"><a href="#PermissionResolver" class="headerlink" title="PermissionResolver"></a>PermissionResolver</h3><p>PermimssionResolver用于解析权限字符串到Permission实例</p>
+<h3 id="RolePermissionResolver"><a href="#RolePermissionResolver" class="headerlink" title="RolePermissionResolver"></a>RolePermissionResolver</h3><p>RolePermissionResolver用于根据角色解析相应的权限集合.</p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2016/04/04/ini配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Shiro-ini配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle-数据库实例、表空间、用户、表之间的关系(转)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-shiro-Authorization" data-title="Shiro-Authorization(授权)" data-url="http://http://kiritor.github.io/2016/03/10/shiro-Authorization/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Liang Tao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+  </div>
+</body>
+</html>
