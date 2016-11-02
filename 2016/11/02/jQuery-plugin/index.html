@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Archives: 2015/9 | Tao.liang&#39;s Blog</title>
+  <title>jQuery插件练习 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="乐于分享,喜欢环境音乐的小程一枚">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tao.liang's Blog">
-<meta property="og:url" content="http://http://kiritor.github.io/archives/2015/09/index.html">
+  <meta name="description" content="半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.
+SocialShare(社会化分享插件)简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.不过这种方式也有一些弊端:性能问题和自定义不方便,界面,交互的体验不是非常好,笔者在自己的个人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery插件练习">
+<meta property="og:url" content="http://http://kiritor.github.io/2016/11/02/jQuery-plugin/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="乐于分享,喜欢环境音乐的小程一枚">
+<meta property="og:description" content="半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.
+SocialShare(社会化分享插件)简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.不过这种方式也有一些弊端:性能问题和自定义不方便,界面,交互的体验不是非常好,笔者在自己的个人">
+<meta property="og:image" content="http://o7q5y55yj.bkt.clouddn.com/snapshot.gif">
+<meta property="og:image" content="http://o7q5y55yj.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160826161915.png">
+<meta property="og:updated_time" content="2016-11-02T01:43:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tao.liang's Blog">
-<meta name="twitter:description" content="乐于分享,喜欢环境音乐的小程一枚">
+<meta name="twitter:title" content="jQuery插件练习">
+<meta name="twitter:description" content="半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.
+SocialShare(社会化分享插件)简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.不过这种方式也有一些弊端:性能问题和自定义不方便,界面,交互的体验不是非常好,笔者在自己的个人">
+<meta name="twitter:image" content="http://o7q5y55yj.bkt.clouddn.com/snapshot.gif">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -192,9 +199,7 @@
 </div>
 
 	  
-      <div class="body-wrap">
-  
-    <article id="post-shiro-Authentication" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jQuery-plugin" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -208,8 +213,8 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2015/09/28/shiro-Authentication/" class="article-date">
-  	<time datetime="2015-09-28T07:35:01.000Z" itemprop="datePublished">Sep 28 2015</time>
+            <a href="/2016/11/02/jQuery-plugin/" class="article-date">
+  	<time datetime="2016-11-02T01:43:04.000Z" itemprop="datePublished">Nov 2 2016</time>
 </a>
 
         </div>
@@ -222,241 +227,143 @@
                             <header class="article-header">
                                 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/28/shiro-Authentication/">Shiro-Authentication(身份验证)</a>
+    <h1 class="article-title" itemprop="name">
+      jQuery插件练习
     </h1>
   
 
 
                             </header>
                             
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
                                            <!--
                                             
 
-                                            
-                                            -->
-                                            
-                                                     <p>##Authentication<br>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br>
-                                            
-                                        </div>
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SocialShare-社会化分享插件"><span class="toc-number">1.</span> <span class="toc-text">SocialShare(社会化分享插件)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#combobox-下拉框插件"><span class="toc-number">2.</span> <span class="toc-text">combobox(下拉框插件)</span></a></li></ol>
+</div>
+<script>
+    $(function(){
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
-	</div>
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
 
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/09/28/shiro-Authentication/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-shiro" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
         });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2015/09/18/shiro/" class="article-date">
-  	<time datetime="2015-09-18T07:35:01.000Z" itemprop="datePublished">Sep 18 2015</time>
-</a>
+        $(".toc-article").hover(function(){
 
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/18/shiro/">Shiro简介</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p>##简介<br>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
-<p>Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.</p>
-<p>##Shiro Features<br>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/09/18/shiro/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-SpringMVC-i18n" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
+        },function(){
+            $("#toc").hide(1000,function(){});
         });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2015/09/11/SpringMVC-i18n/" class="article-date">
-  	<time datetime="2015-09-11T10:35:01.000Z" itemprop="datePublished">Sep 11 2015</time>
-</a>
+    })
+</script>
 
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/11/SpringMVC-i18n/">Spring MVC + Velocity实现国际化配置</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
+                                                  
                                             
                                             -->
                                             
-                                                     <p>web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:<a href="https://github.com/kiritor/hr">https://github.com/kiritor/hr</a><br>需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.</p>
-<p>##Spring国际化<br><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
+                                                     <p>半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.</p>
+<h2 id="SocialShare-社会化分享插件"><a href="#SocialShare-社会化分享插件" class="headerlink" title="SocialShare(社会化分享插件)"></a>SocialShare(社会化分享插件)</h2><p>简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.<br>不过这种方式也有一些弊端:<strong>性能问题</strong>和<strong>自定义不方便</strong>,界面,交互的体验不是非常好,笔者在自己的个人站点里面也想实现社会化 分享功能,而且喜欢简洁,因此就有了这款社会化分享插件.如图所示:<br><img src="http://o7q5y55yj.bkt.clouddn.com/snapshot.gif" alt="分享"><br>插件地址:<a href="https://github.com/Kiritor/socialShare" target="_blank" rel="external">https://github.com/Kiritor/socialShare</a><br><a id="more"></a></p>
+<h2 id="combobox-下拉框插件"><a href="#combobox-下拉框插件" class="headerlink" title="combobox(下拉框插件)"></a>combobox(下拉框插件)</h2><p>没事练习的下拉框插件,支持参数定义,动态绑定数据,以及一些方便的方法,支持事件自定义实现.如下图所示:</p>
+<p><center><img src="http://o7q5y55yj.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160826161915.png" alt="combobox"></center><br>插件地址:<a href="https://github.com/Kiritor/combobox" target="_blank" rel="external">https://github.com/Kiritor/combobox</a></p>
+
                                             
                                         </div>
 
                                         
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/">i18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/velocity/">velocity</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/09/11/SpringMVC-i18n/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
             </div>
             
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
                     
+                        
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/22/fish/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
                                 <!-- 多说评论框 start -->
                                 
+                                    <div class="ds-thread" data-thread-key="post-jQuery-plugin" data-title="jQuery插件练习" data-url="http://http://kiritor.github.io/2016/11/02/jQuery-plugin/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
 </article>
 
 <!--
 
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
 -->
 <!--
 
 -->
-
-  
-  
-
 
 </div>
       <!--
