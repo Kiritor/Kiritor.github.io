@@ -6,22 +6,22 @@
   
   <title>Shiro简介 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
-Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+  <meta name="description" content="简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shiro简介">
 <meta property="og:url" content="http://http://kiritor.github.io/2015/09/18/shiro/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
-Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+<meta property="og:description" content="简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用">
 <meta property="og:image" content="http://kiritor.github.io/img/shiro_features.png">
 <meta property="og:image" content="http://kiritor.github.io/img/shiro_high.png">
 <meta property="og:image" content="http://kiritor.github.io/img/shiro_detail.png">
-<meta property="og:updated_time" content="2015-09-18T07:21:41.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:28:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shiro简介">
-<meta name="twitter:description" content="##简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
-Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以">
+<meta name="twitter:description" content="简介Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
+Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用">
 <meta name="twitter:image" content="http://kiritor.github.io/img/shiro_features.png">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
@@ -260,7 +260,7 @@ Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不�
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shiro-Features"><span class="toc-number">2.</span> <span class="toc-text">Shiro Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shiro-Architecture"><span class="toc-number">3.</span> <span class="toc-text">Shiro Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#High-Level-Overview"><span class="toc-number">3.1.</span> <span class="toc-text">High-Level Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shiro-Architecture-1"><span class="toc-number">3.2.</span> <span class="toc-text">Shiro Architecture</span></a></li></ol></li></ol>
 </div>
 <script>
     $(function(){
@@ -291,9 +291,9 @@ Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不�
                                             
                                             -->
                                             
-                                                     <p>##简介<br>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
+                                                     <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
 <p>Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.</p>
-<p>##Shiro Features<br>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br><a id="more"></a></p>
+<h2 id="Shiro-Features"><a href="#Shiro-Features" class="headerlink" title="Shiro Features"></a>Shiro Features</h2><p>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br><a id="more"></a></p>
 <p><center><img src="http://kiritor.github.io/img/shiro_features.png" alt="Shiro Features"></center><br>Shiro开发团队把身份验证、授权、会话管理、加密作为核心关注点–应用程序四大基石.</p>
 <ul>
 <li><strong>Authentication:</strong> 身份认证/登录,验证用户是不是具有相应的身份;</li>
@@ -305,13 +305,13 @@ Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不�
 <li><strong>Concurrency:</strong>  并发特性,支持多线程应用;</li>
 <li><strong>Testing:</strong>  提供测试支持;</li>
 <li><strong>Run As:</strong>  允许一个用户假设为另一个用户的功能;</li>
-<li><strong>Remember me:</strong>  记住我,十分常用的功能,登录之后,下次就不用登录了;<br><strong>Shiro提供了这么多的可插拔化的功能,使用时可以根据需要来选择,但是,Shiro不会去维护系统用户,更不会去维护系统的权限规则.针对不同系统,结合自身业务权限设计模型千差万别,Shiro不可能统一维护,也不会提供一套方案.因此对于权限仍然需要我们自行设计/提供,然后通过相应的接口注入给Shiro.</strong><br>##Shiro Architecture<br>Shiro的架构主要有3个主要的概念:Subject，SecurityManager,Realms.<br>###High-Level Overview<br>下面的关系图是关于上面上个组件是如何交互的高级概述:<br><center><img src="http://kiritor.github.io/img/shiro_high.png" alt="shiro_high"></center><br>可以看到,直接交互对象是Subject,其每个对象的含义:<br><strong>Subject:</strong> 主体,代表了当前”用户”,这是一个抽象概念,代表了和应用交互的任何东西,所有的Subject都绑定到SecurityManager,与Subject的交互都委托给SecurityManager,SecurityManager是实际的执行者.<br><strong>SecurityManager:</strong> 安全管理器:即所有的与安全有关的操作都会与SecurityManager交互,他是Shiro架构的心脏,控制着所有的Subject协调内部的安全组件之间的交互.<br><strong>Realm:</strong> 域,shiro通过Realm获取安全数据(用户、角色、权限规则等),例如SecurityMananger要验证身份,需要从Realm得到用户的相应信息来确定用户信息是否合法.可以把Realm看做是安全数据源DataSource.从这个意义上来说,Realm本质上是一个特定安全的Dao,它封装了数据源的连接详细信息.shiro提供了立即可用的Realms来连接一些安全数据源(LDAP,数据库,文本配置源ini)<br>对于我们来说,一个Shiro应用:<blockquote>
+<li><strong>Remember me:</strong>  记住我,十分常用的功能,登录之后,下次就不用登录了;<br><strong>Shiro提供了这么多的可插拔化的功能,使用时可以根据需要来选择,但是,Shiro不会去维护系统用户,更不会去维护系统的权限规则.针对不同系统,结合自身业务权限设计模型千差万别,Shiro不可能统一维护,也不会提供一套方案.因此对于权限仍然需要我们自行设计/提供,然后通过相应的接口注入给Shiro.</strong><h2 id="Shiro-Architecture"><a href="#Shiro-Architecture" class="headerlink" title="Shiro Architecture"></a>Shiro Architecture</h2>Shiro的架构主要有3个主要的概念:Subject，SecurityManager,Realms.<h3 id="High-Level-Overview"><a href="#High-Level-Overview" class="headerlink" title="High-Level Overview"></a>High-Level Overview</h3>下面的关系图是关于上面上个组件是如何交互的高级概述:<br><center><img src="http://kiritor.github.io/img/shiro_high.png" alt="shiro_high"></center><br>可以看到,直接交互对象是Subject,其每个对象的含义:<br><strong>Subject:</strong> 主体,代表了当前”用户”,这是一个抽象概念,代表了和应用交互的任何东西,所有的Subject都绑定到SecurityManager,与Subject的交互都委托给SecurityManager,SecurityManager是实际的执行者.<br><strong>SecurityManager:</strong> 安全管理器:即所有的与安全有关的操作都会与SecurityManager交互,他是Shiro架构的心脏,控制着所有的Subject协调内部的安全组件之间的交互.<br><strong>Realm:</strong> 域,shiro通过Realm获取安全数据(用户、角色、权限规则等),例如SecurityMananger要验证身份,需要从Realm得到用户的相应信息来确定用户信息是否合法.可以把Realm看做是安全数据源DataSource.从这个意义上来说,Realm本质上是一个特定安全的Dao,它封装了数据源的连接详细信息.shiro提供了立即可用的Realms来连接一些安全数据源(LDAP,数据库,文本配置源ini)<br>对于我们来说,一个Shiro应用:<blockquote>
 <p>  1、应用代码通过Subject来进行认证和授权,Subject委托给SecurityManager;<br>  2、SecurityMananger通过Realm得到合法的用户及权限;</p>
 </blockquote>
 </li>
 </ul>
 <p>上面说到了Shiro不维护用户/权限,而是通过Realm让开发人员自己注入.</p>
-<p>###Shiro Architecture<br>下图展示的是Shiro内部详细的架构图:</p>
+<h3 id="Shiro-Architecture-1"><a href="#Shiro-Architecture-1" class="headerlink" title="Shiro Architecture"></a>Shiro Architecture</h3><p>下图展示的是Shiro内部详细的架构图:</p>
 <p><center><img src="http://kiritor.github.io/img/shiro_detail.png" alt="shiro_detail"></center></p>
 <ul>
 <li><strong>Subject:*</strong> 主体,当前与软件进行交互的实体(用户,第三方服务)等.</li>
@@ -439,29 +439,6 @@ Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不�
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

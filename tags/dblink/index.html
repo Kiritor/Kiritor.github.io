@@ -239,7 +239,7 @@
                                             
                                             -->
                                             
-                                                     <p>##前言<br>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+                                                     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br>
                                             
@@ -320,29 +320,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

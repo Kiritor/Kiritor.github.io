@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;原文地址如下:http://www.leanote.com/blog/">
-<meta property="og:updated_time" content="2015-07-13T14:53:39.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:17:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang:go get现实显示进度(转)">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.
@@ -256,7 +256,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-修改git-clone命令"><span class="toc-number">1.</span> <span class="toc-text">1. 修改git clone命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-重定向输出流"><span class="toc-number">2.</span> <span class="toc-text">2. 重定向输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -292,14 +292,14 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;看了下golang的源码 src/cmd/go 下是go命令的源码, 其中, get.go是go get命令的代码, build.go 是go build的代码.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;刚开始走了点弯路, 想着改变get.go来显示进度, 无果之后想了下, go get 其实就是调用git , hg, svn的命令从仓库中下载的, 由此思路找到vcs.go(vcs全称为version control system), 果然这里面包含了调用git, hg, svn的命令. 问题迎刃而解:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">修改git <span class="built_in">clone</span>命令, 添加 --progress选项, 使其输出进度</div><div class="line">修改cmd.Run()执行的地方, 使其将输出定位到标准输出流上</div></pre></td></tr></table></figure>
-<p>##1. 修改git clone命令<br>&nbsp;&nbsp;&nbsp;&nbsp;找到如下代码, 在createdCmd修改为 clone –progress {repo} {dir}.其它命令hg, svn…添加进度方法类似.<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="comment">// vcsGit describes how to use Git.</span></div><div class="line">	<span class="keyword">var</span> vcsGit = &amp;vcsCmd&#123;</div><div class="line">	name: <span class="string">"Git"</span>,</div><div class="line">	cmd:  <span class="string">"git"</span>,</div><div class="line"></div><div class="line">	createCmd:   <span class="string">"clone &#123;repo&#125; &#123;dir&#125;"</span>, <span class="comment">// 此处修改为 clone --progress &#123;repo&#125; &#123;dir&#125;</span></div><div class="line">	downloadCmd: <span class="string">"pull --ff-only"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>##2. 重定向输出流<br>&nbsp;&nbsp;&nbsp;&nbsp;找到run1()方法, 在 cmd.Stderr = &amp;buf 下添加两行, 如:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buf bytes.Buffer</div><div class="line">cmd.Stdout = &amp;buf</div><div class="line">cmd.Stderr = &amp;buf</div><div class="line">cmd.Stdout = os.Stdout <span class="comment">// 重定向标准输出</span></div><div class="line">cmd.Stderr = os.Stderr <span class="comment">// 重定向标准输出</span></div><div class="line">err = cmd.Run()</div></pre></td></tr></table></figure></p>
+<h2 id="1-修改git-clone命令"><a href="#1-修改git-clone命令" class="headerlink" title="1. 修改git clone命令"></a>1. 修改git clone命令</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;找到如下代码, 在createdCmd修改为 clone –progress {repo} {dir}.其它命令hg, svn…添加进度方法类似.<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="comment">// vcsGit describes how to use Git.</span></div><div class="line">	<span class="keyword">var</span> vcsGit = &amp;vcsCmd&#123;</div><div class="line">	name: <span class="string">"Git"</span>,</div><div class="line">	cmd:  <span class="string">"git"</span>,</div><div class="line"></div><div class="line">	createCmd:   <span class="string">"clone &#123;repo&#125; &#123;dir&#125;"</span>, <span class="comment">// 此处修改为 clone --progress &#123;repo&#125; &#123;dir&#125;</span></div><div class="line">	downloadCmd: <span class="string">"pull --ff-only"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-重定向输出流"><a href="#2-重定向输出流" class="headerlink" title="2. 重定向输出流"></a>2. 重定向输出流</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;找到run1()方法, 在 cmd.Stderr = &amp;buf 下添加两行, 如:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buf bytes.Buffer</div><div class="line">cmd.Stdout = &amp;buf</div><div class="line">cmd.Stderr = &amp;buf</div><div class="line">cmd.Stdout = os.Stdout <span class="comment">// 重定向标准输出</span></div><div class="line">cmd.Stderr = os.Stderr <span class="comment">// 重定向标准输出</span></div><div class="line">err = cmd.Run()</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Ok, 搞定, 接下来执行golang源码 src下的 all.bash 重新编译golang, 编译要些时间, 编译完后使用go get 试试:</p>
 <p><a href="http://leanote.com/file/outputImage?fileId=544caf469bf7f1285400005a" target="_blank" rel="external">http://leanote.com/file/outputImage?fileId=544caf469bf7f1285400005a</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;看到进度条就不用担心了吧.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;之前修改golang源码使其关闭变量未使用, 包未使用的错误 : </p>
 <p><a href="http://leanote.com/blog/view/53118d331a9108428c000001" target="_blank" rel="external">关闭golang的 variable declared but not used 和 package imported but not used</a></p>
-<p>##Tips<br>&nbsp;&nbsp;&nbsp;&nbsp;linxu、mac下执行all.bash重新编译golang,windows下执行all.bat貌似有问题,可以执行run.bat即可.下面是我使用go get的情况:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Cloning into <span class="string">'/Users/lcore/dev/code/go/src/github.com/kiritor/ini'</span>...</div><div class="line">remote: Counting objects: 36, done.</div><div class="line">remote: Total 36 (delta 0), reused 0 (delta 0), pack-reused 35</div><div class="line">Unpacking objects: 100% (36/36), done.</div><div class="line">Checking connectivity... <span class="keyword">done</span></div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/heads/master</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/HEAD</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/master</div><div class="line">Already on <span class="string">'master'</span></div></pre></td></tr></table></figure></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;linxu、mac下执行all.bash重新编译golang,windows下执行all.bat貌似有问题,可以执行run.bat即可.下面是我使用go get的情况:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Cloning into <span class="string">'/Users/lcore/dev/code/go/src/github.com/kiritor/ini'</span>...</div><div class="line">remote: Counting objects: 36, done.</div><div class="line">remote: Total 36 (delta 0), reused 0 (delta 0), pack-reused 35</div><div class="line">Unpacking objects: 100% (36/36), done.</div><div class="line">Checking connectivity... <span class="keyword">done</span></div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/heads/master</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/HEAD</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/master</div><div class="line">Already on <span class="string">'master'</span></div></pre></td></tr></table></figure></p>
 
                                             
                                         </div>
@@ -415,29 +415,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

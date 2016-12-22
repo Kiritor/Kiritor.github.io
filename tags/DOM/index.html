@@ -241,7 +241,7 @@
                                             
                                                      <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
 <p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
-<p>#DOM、DOM对象<br>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br>
+<h1 id="DOM、DOM对象"><a href="#DOM、DOM对象" class="headerlink" title="DOM、DOM对象"></a>DOM、DOM对象</h1><p>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br>
                                             
                                         </div>
 
@@ -320,29 +320,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

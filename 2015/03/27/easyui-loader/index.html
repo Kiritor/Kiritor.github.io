@@ -7,18 +7,18 @@
   <title>EasyUI基础入门之easyloader(加载器) | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。
-#什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些">
+什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EasyUI基础入门之easyloader(加载器)">
 <meta property="og:url" content="http://http://kiritor.github.io/2015/03/27/easyui-loader/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。
-#什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些">
-<meta property="og:updated_time" content="2015-03-31T03:17:06.000Z">
+什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢">
+<meta property="og:updated_time" content="2016-12-22T01:16:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EasyUI基础入门之easyloader(加载器)">
 <meta name="twitter:description" content="在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。
-#什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些">
+什么是EasyLoader正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -256,7 +256,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是EasyLoader"><span class="toc-number">1.</span> <span class="toc-text">什么是EasyLoader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader的使用场景"><span class="toc-number">2.</span> <span class="toc-text">EasyLoader的使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader加载器"><span class="toc-number">3.</span> <span class="toc-text">EasyLoader加载器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#properties"><span class="toc-number">4.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event"><span class="toc-number">5.</span> <span class="toc-text">Event</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method"><span class="toc-number">6.</span> <span class="toc-text">Method</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader使用"><span class="toc-number">7.</span> <span class="toc-text">EasyLoader使用</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -288,13 +288,16 @@
                                             -->
                                             
                                                      <p>在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。</p>
-<p>#什么是EasyLoader<br>正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？<br><a id="more"></a></p>
-<p>#EasyLoader的使用场景<br>    ● 出于性能的考虑,不一次性的加载easyui核心js、css文件,而是先展示基础文档结构。<br>    ● 项目只是简单的用到easyui的几个组件,此时可以按需加载该组件的js和css文件。<br>    ● 你需要使用某个组件,但是不知道该组件是否依赖于其他组件(简单的js引用无法达到),使用easyloader可以自动加载依赖组件。<br>    ● 你需要把JQuery基础库和自己实现的js结合起来，以达到更好的展示性能。 </p>
-<p>#EasyLoader加载器<br>简单的了解了什么是easyloader以及其大概的使用场景,接下来看看easyloader的属性、事件和方法。</p>
-<p>#properties<br>easyloader有7个属性，具体可以参加官网</p>
-<p>#Event<br>加载器包含两个事件,具体参见官网</p>
-<p>#Method<br>加载器只有一个方法:load,其参数为module,callback(回调函数)，载入特定的模块，当载入的成功的时候调用该回调函数有效的模块参数可以使一个单一的模块名称、存储模块名称的数组、css样式文件、js脚本文件。</p>
-<p>#EasyLoader使用<br>接下来我们着眼于easyloader如何使用，通过上面属性表中的modules，不难猜到这个属性就是easyui定义模块用的。modules本质上来说是一个json格式对象。其形式如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  modules = &#123;</div><div class="line">  draggable:&#123;</div><div class="line">     js : <span class="string">"jquery.draggable.js"</span>,</div><div class="line">     css : <span class="string">"pagination.css"</span>,</div><div class="line">     dependencies : [<span class="string">"linkbutton"</span>]</div><div class="line">   &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h1 id="什么是EasyLoader"><a href="#什么是EasyLoader" class="headerlink" title="什么是EasyLoader"></a>什么是EasyLoader</h1><p>正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？<br><a id="more"></a></p>
+<h1 id="EasyLoader的使用场景"><a href="#EasyLoader的使用场景" class="headerlink" title="EasyLoader的使用场景"></a>EasyLoader的使用场景</h1><pre><code>● 出于性能的考虑,不一次性的加载easyui核心js、css文件,而是先展示基础文档结构。
+● 项目只是简单的用到easyui的几个组件,此时可以按需加载该组件的js和css文件。
+● 你需要使用某个组件,但是不知道该组件是否依赖于其他组件(简单的js引用无法达到),使用easyloader可以自动加载依赖组件。
+● 你需要把JQuery基础库和自己实现的js结合起来，以达到更好的展示性能。 
+</code></pre><h1 id="EasyLoader加载器"><a href="#EasyLoader加载器" class="headerlink" title="EasyLoader加载器"></a>EasyLoader加载器</h1><p>简单的了解了什么是easyloader以及其大概的使用场景,接下来看看easyloader的属性、事件和方法。</p>
+<h1 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h1><p>easyloader有7个属性，具体可以参加官网</p>
+<h1 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h1><p>加载器包含两个事件,具体参见官网</p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>加载器只有一个方法:load,其参数为module,callback(回调函数)，载入特定的模块，当载入的成功的时候调用该回调函数有效的模块参数可以使一个单一的模块名称、存储模块名称的数组、css样式文件、js脚本文件。</p>
+<h1 id="EasyLoader使用"><a href="#EasyLoader使用" class="headerlink" title="EasyLoader使用"></a>EasyLoader使用</h1><p>接下来我们着眼于easyloader如何使用，通过上面属性表中的modules，不难猜到这个属性就是easyui定义模块用的。modules本质上来说是一个json格式对象。其形式如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  modules = &#123;</div><div class="line">  draggable:&#123;</div><div class="line">     js : <span class="string">"jquery.draggable.js"</span>,</div><div class="line">     css : <span class="string">"pagination.css"</span>,</div><div class="line">     dependencies : [<span class="string">"linkbutton"</span>]</div><div class="line">   &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>key值即是定义的模块名称,值又是一个json对象,包含三个属性js、css、dependencies。js就是模块需要导入的js名称,css是该模块的样式,dependencies定义该模块的依赖模块。<br>上面定义了一个模块,接下来谈谈该如何添加我们自定义的模块,并且通过easyloader进行加载。</p>
 <p>第一步:我们先要打开easyloader.js文件,阅读代码(压缩过)我们可以简单的看出来easyui加载的时候到底加载了哪些模块,“_1”是easyui已经定义好的模块.以及各个模块之间的依赖关系。这样,我们通过修改easyloader.js的代码就可以有选择性的加载所需的模块,提高easyui的性能(一般情况下不建议)。那么我们如何简单的定义下自己的模块呢? 我们需要改造一下easyload.js，我们将easyloader.js代码中的所有_1变量替换为easyloader.modules，不过最后一个”modules:_1”的引用不要修改。</p>
 <p>第二步,在easyui原有的模块基础上,我们扩展它,加入自己的模块。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">easyloader.modules = $.extend(&#123;&#125;,&#123;</div><div class="line">	<span class="string">"test"</span>:&#123;</div><div class="line">		js:<span class="string">'test.js'</span>		css:<span class="string">'test.css'</span>	&#125;</div><div class="line">&#125;,easyloader.modules);</div></pre></td></tr></table></figure></p>
@@ -415,29 +418,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

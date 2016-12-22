@@ -239,7 +239,7 @@
                                             
                                             -->
                                             
-                                                     <p>##Oracle数据库导入、导出imp/exp<br>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
+                                                     <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
                                             
                                         </div>
 
@@ -325,8 +325,8 @@
                                             
                                             -->
                                             
-                                                     <p>#Go工程管理<br>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
-<p>#相关概念<br>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br>
+                                                     <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br>
                                             
                                         </div>
 
@@ -412,7 +412,7 @@
                                             
                                             -->
                                             
-                                                     <p>#介绍<br>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
+                                                     <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
 <p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
 <p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br>
                                             
@@ -493,29 +493,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

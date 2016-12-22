@@ -412,7 +412,7 @@
                                             
                                             -->
                                             
-                                                     <p>##Authentication<br>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br>
+                                                     <h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br>
                                             
                                         </div>
 
@@ -498,9 +498,9 @@
                                             
                                             -->
                                             
-                                                     <p>##简介<br>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
+                                                     <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
 <p>Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.</p>
-<p>##Shiro Features<br>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br>
+<h2 id="Shiro-Features"><a href="#Shiro-Features" class="headerlink" title="Shiro Features"></a>Shiro Features</h2><p>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br>
                                             
                                         </div>
 
@@ -579,29 +579,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

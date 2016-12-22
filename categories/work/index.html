@@ -683,7 +683,7 @@
                                             -->
                                             
                                                      <p>web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:<a href="https://github.com/kiritor/hr">https://github.com/kiritor/hr</a><br>需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.</p>
-<p>##Spring国际化<br><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
+<h2 id="Spring国际化"><a href="#Spring国际化" class="headerlink" title="Spring国际化"></a>Spring国际化</h2><p><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
                                             
                                         </div>
 
@@ -769,7 +769,7 @@
                                             
                                             -->
                                             
-                                                     <p>##Oracle数据库导入、导出imp/exp<br>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
+                                                     <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
                                             
                                         </div>
 
@@ -855,7 +855,7 @@
                                             
                                             -->
                                             
-                                                     <p>##前言<br>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+                                                     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br>
                                             
@@ -943,8 +943,8 @@
                                             
                                             -->
                                             
-                                                     <p>##问题描述<br>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
-<p>##物化视图概述<br>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
+                                                     <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
+<h2 id="物化视图概述"><a href="#物化视图概述" class="headerlink" title="物化视图概述"></a>物化视图概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
                                             
                                         </div>
 
@@ -1023,29 +1023,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

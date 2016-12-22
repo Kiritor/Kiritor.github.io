@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:123import (	&quot;fmt&quot;)">
 <meta property="og:image" content="http://kiritor.github.io/img/go_import.png">
-<meta property="og:updated_time" content="2015-04-03T07:36:47.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:17:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang Import的理解">
 <meta name="twitter:description" content="初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:123import (	&quot;fmt&quot;)">
@@ -255,7 +255,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#点操作"><span class="toc-number">1.</span> <span class="toc-text">点操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#别名操作"><span class="toc-number">2.</span> <span class="toc-text">别名操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#“-”操作"><span class="toc-number">3.</span> <span class="toc-text">“_”操作</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -291,10 +291,10 @@
 <p>之后通过如下的方式调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fmt.Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
 <p>我们知道fmt是Go语言的标准库,他其实是去goroot下加载该模块。而且Go语言提供两种加载模块的方式:<strong>相对路径</strong>、绝对路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import <span class="string">"./model"</span>    --相对路径,不推荐</div><div class="line">import <span class="string">"XXX/model"</span>  --个gopath/src/XXX下的model模块,最常见</div></pre></td></tr></table></figure></p>
 <p>不过,在阅读某些开源项目时,会看到一些令人费解的import方式,下面来一一探寻下:</p>
-<p>#点操作<br>我们有时候可以看到如下的导入方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (. <span class="string">"fmt"</span>)</div><div class="line">......</div><div class="line">Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="点操作"><a href="#点操作" class="headerlink" title="点操作"></a>点操作</h1><p>我们有时候可以看到如下的导入方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (. <span class="string">"fmt"</span>)</div><div class="line">......</div><div class="line">Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
 <p>这个点操作的含义就是这个包导入之后,使用该包函数的使用可以省略前缀</p>
-<p>#别名操作<br>别名操作可以把包名换成一个容易记忆的名字(对于那些包名过长的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (f <span class="string">"fmt"</span>)</div><div class="line">...</div><div class="line">f.Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
-<p>#”_”操作<br>这个操作比较令人费解,beego里面就有使用到(bee new xx生成的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">	_ <span class="string">"beego_cms/routers"</span></div><div class="line">	<span class="string">"github.com/astaxie/beego"</span></div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	beego.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="别名操作"><a href="#别名操作" class="headerlink" title="别名操作"></a>别名操作</h1><p>别名操作可以把包名换成一个容易记忆的名字(对于那些包名过长的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (f <span class="string">"fmt"</span>)</div><div class="line">...</div><div class="line">f.Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="“-”操作"><a href="#“-”操作" class="headerlink" title="“_”操作"></a>“_”操作</h1><p>这个操作比较令人费解,beego里面就有使用到(bee new xx生成的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">	_ <span class="string">"beego_cms/routers"</span></div><div class="line">	<span class="string">"github.com/astaxie/beego"</span></div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	beego.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>“_”操作其实是引入该包,但是并不直接使用包里面的函数,而是调用该包里面的init函数,如何理解这个问题?通过如下的图,来理解一下go包的加载机制:</p>
 <p><center><img src="http://kiritor.github.io/img/go_import.png" alt="go_import"></center><br>程序的初始化和执行都起始于main包。如果main包还导入了其他包,那么就会在编译时将他们一次导入。同一个包只会被导入一次。当一个包被导入时,如果还包含了其他包,那么会先将其他包导入进来,然后在对这些包中的包及常量和变量进行初始化,接着执行init函数(如果有的话),依次类推。等所有的包都导入完了,就开始对main包中的包级常量和变量进行初始化,然后执行main包里面的init函数(若果有),最后执行main函数。</p>
 <p>_操作只是将该包引入了,只初始化里面的init函数和一些变量,但是往往这些init函数里面是注册自己包里面的引擎,让外部可以方便的使用。和很多实现database/sql的一样,在init函数里面都是调用了sql.Register(name string,driver driver.Driver)注册自己,然后外部可以使用了。</p>
@@ -414,29 +414,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

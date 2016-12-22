@@ -240,7 +240,7 @@
                                             -->
                                             
                                                      <p>web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:<a href="https://github.com/kiritor/hr">https://github.com/kiritor/hr</a><br>需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.</p>
-<p>##Spring国际化<br><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
+<h2 id="Spring国际化"><a href="#Spring国际化" class="headerlink" title="Spring国际化"></a>Spring国际化</h2><p><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
                                             
                                         </div>
 
@@ -319,29 +319,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

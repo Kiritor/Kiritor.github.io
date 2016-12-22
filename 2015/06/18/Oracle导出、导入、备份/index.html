@@ -6,18 +6,18 @@
   
   <title>Oracle导出、导入、备份 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(">
+  <meta name="description" content="Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle导出、导入、备份">
 <meta property="og:url" content="http://http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="##Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(">
+<meta property="og:description" content="Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑">
 <meta property="og:image" content="http://kiritor.github.io/img/exp.png">
 <meta property="og:image" content="http://kiritor.github.io/img/imp.png">
-<meta property="og:updated_time" content="2015-06-18T11:27:53.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:26:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle导出、导入、备份">
-<meta name="twitter:description" content="##Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(">
+<meta name="twitter:description" content="Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑">
 <meta name="twitter:image" content="http://kiritor.github.io/img/exp.png">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
@@ -256,7 +256,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle数据库导入、导出imp-exp"><span class="toc-number">1.</span> <span class="toc-text">Oracle数据库导入、导出imp/exp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行环境"><span class="toc-number">2.</span> <span class="toc-text">执行环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp导出命令"><span class="toc-number">3.</span> <span class="toc-text">exp导出命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FULL-完全模式"><span class="toc-number">3.1.</span> <span class="toc-text">FULL:完全模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OWNER-用户模式"><span class="toc-number">3.2.</span> <span class="toc-text">OWNER:用户模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLES-表模式"><span class="toc-number">3.3.</span> <span class="toc-text">TABLES:表模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩"><span class="toc-number">3.4.</span> <span class="toc-text">压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#imp导入命令"><span class="toc-number">4.</span> <span class="toc-text">imp导入命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FULL-完全模式-1"><span class="toc-number">4.1.</span> <span class="toc-text">FULL:完全模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OWNER-用户模式-1"><span class="toc-number">4.2.</span> <span class="toc-text">OWNER:用户模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLES-表模式-1"><span class="toc-number">4.3.</span> <span class="toc-text">TABLES:表模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略错误"><span class="toc-number">4.4.</span> <span class="toc-text">忽略错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志"><span class="toc-number">4.5.</span> <span class="toc-text">日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谈谈备份"><span class="toc-number">5.</span> <span class="toc-text">谈谈备份</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -287,24 +287,24 @@
                                             
                                             -->
                                             
-                                                     <p>##Oracle数据库导入、导出imp/exp<br>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br><a id="more"></a></p>
-<p>##执行环境<br>&#160; &#160; &#160;可以在SQLPLUS或者直接在CMD命令行中执行.<br>&#160; &#160; &#160;Tips:在sqlplus环境下执行时需要在前面加’!’号:SQL&gt;!exp …SQL&gt;!imp</p>
-<p>#exp导出命令<br>&#160; &#160; &#160;exp命令有三种模式(FULL:完全、OWNER:用户、TABLES:表)</p>
-<p>##FULL:完全模式<br>&#160; &#160; &#160;完全模式表示导出整个数据库,必须具备特殊的权限.一个实际的例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出整个数据库</div><div class="line">exp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
+                                                     <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br><a id="more"></a></p>
+<h2 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h2><p>&#160; &#160; &#160;可以在SQLPLUS或者直接在CMD命令行中执行.<br>&#160; &#160; &#160;Tips:在sqlplus环境下执行时需要在前面加’!’号:SQL&gt;!exp …SQL&gt;!imp</p>
+<h2 id="exp导出命令"><a href="#exp导出命令" class="headerlink" title="exp导出命令"></a>exp导出命令</h2><p>&#160; &#160; &#160;exp命令有三种模式(FULL:完全、OWNER:用户、TABLES:表)</p>
+<h3 id="FULL-完全模式"><a href="#FULL-完全模式" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式表示导出整个数据库,必须具备特殊的权限.一个实际的例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出整个数据库</div><div class="line">exp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
 <p><center><img src="http://kiritor.github.io/img/exp.png" alt="exp"></center></p>
-<p>##OWNER:用户模式<br>&#160; &#160; &#160;用户模式表示导出某个用户下的所有对象及数据(基表、视图、存储过程等).一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出ecisdemo用户下的所有对象</div><div class="line">exp demo/demo@demo owner=user1 file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="OWNER-用户模式"><a href="#OWNER-用户模式" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;用户模式表示导出某个用户下的所有对象及数据(基表、视图、存储过程等).一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出ecisdemo用户下的所有对象</div><div class="line">exp demo/demo@demo owner=user1 file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
 <p>&#160; &#160; &#160;当然,也可以同时导出多个用户的数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//导出user1、user2用户下的对象</div><div class="line">exp demo/demo@demo file=F:\user.dmp owner(user1,user2)</div></pre></td></tr></table></figure></p>
-<p>##TABLES:表模式<br>&#160; &#160; &#160;表模式处于用户模式级别下的,用法也比较的灵活,一些例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//导出某个用户下的表table1、table2</div><div class="line">exp demo/demo@demo owner=user1 tables(table1,table2) file=F:\user1.dmp </div><div class="line">//数据过滤</div><div class="line">//导出数据库中标table1中的字段name已"LCore"开头的数据导出</div><div class="line">exp demo/demo@demo owner=user1 tables(table1) query=\"where name like'LCore%'\" file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
-<p>##压缩<br>&#160; &#160; &#160;也可以对导出的数据进行压缩,在上面的命令加上compress=y即可</p>
-<p>##imp导入命令<br>&#160; &#160; &#160;与exp命令相对的,imp也有三种模式:</p>
-<p>##FULL:完全模式<br>&#160; &#160; &#160;完全模式下的命令也比较简单,例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
-<p>##OWNER:用户模式<br>&#160; &#160; &#160;imp的用户模式导入必须指定FROMUSER:源用户,TOUSER:目标用户这样才能导入数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将用户fuser的对象导入到用户tuser</div><div class="line">imp demo/demo@demo fromuser=fuser touser=tuser file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="TABLES-表模式"><a href="#TABLES-表模式" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式处于用户模式级别下的,用法也比较的灵活,一些例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//导出某个用户下的表table1、table2</div><div class="line">exp demo/demo@demo owner=user1 tables(table1,table2) file=F:\user1.dmp </div><div class="line">//数据过滤</div><div class="line">//导出数据库中标table1中的字段name已"LCore"开头的数据导出</div><div class="line">exp demo/demo@demo owner=user1 tables(table1) query=\"where name like'LCore%'\" file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>&#160; &#160; &#160;也可以对导出的数据进行压缩,在上面的命令加上compress=y即可</p>
+<h2 id="imp导入命令"><a href="#imp导入命令" class="headerlink" title="imp导入命令"></a>imp导入命令</h2><p>&#160; &#160; &#160;与exp命令相对的,imp也有三种模式:</p>
+<h3 id="FULL-完全模式-1"><a href="#FULL-完全模式-1" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式下的命令也比较简单,例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
+<h3 id="OWNER-用户模式-1"><a href="#OWNER-用户模式-1" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;imp的用户模式导入必须指定FROMUSER:源用户,TOUSER:目标用户这样才能导入数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将用户fuser的对象导入到用户tuser</div><div class="line">imp demo/demo@demo fromuser=fuser touser=tuser file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
 <p>&#160; &#160; &#160;Tips:需要注意的是如果是相同用户的话,就没有必要指定FROMUSER和TOUSER参数了.</p>
-<p>##TABLES:表模式<br>&#160; &#160; &#160;表模式的导入也比较简单,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//表table1导入</div><div class="line">imp demo/demo@demo tables=(table1) file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="TABLES-表模式-1"><a href="#TABLES-表模式-1" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式的导入也比较简单,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//表table1导入</div><div class="line">imp demo/demo@demo tables=(table1) file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
 <p><center><img src="http://kiritor.github.io/img/imp.png" alt="imp"></center><br>&#160; &#160; &#160;通过上面的例子及命令,实际导入、导出已经够了.</p>
-<p>##忽略错误<br>&#160; &#160; &#160;在导入的过程中可能存在一些错误,例如已经存在该表了,可以使用ignore=y来忽略创建错误.</p>
-<p>##日志<br>&#160; &#160; &#160;有时候,需要对导入、导出操作做日志,也很简单,可以使用log=fileName即可.</p>
-<p>##谈谈备份<br>&#160; &#160; &#160;Oracle数据库有两种备份方式:物理备份、逻辑备份.<br>&#160; &#160; &#160;<b>物理备份</b>:实现数据库的完整恢复,但是数据库必须运行在归档模式下(业务数据库在非归档模式下运行),且需要极大的外部存储设备.<br>&#160; &#160; &#160;<b>逻辑备份</b>:不需要数据库运行在归档模式下,不但备份简单,而且可以不需要外部存储设备.一般使用此种备份方式.<br>&#160; &#160; &#160;imp、exp命令即是实现逻辑备份的命令,根据imp、exp命令的不同模式,逻辑备份相应的分为完全备份、用户备份、表备份.</p>
+<h3 id="忽略错误"><a href="#忽略错误" class="headerlink" title="忽略错误"></a>忽略错误</h3><p>&#160; &#160; &#160;在导入的过程中可能存在一些错误,例如已经存在该表了,可以使用ignore=y来忽略创建错误.</p>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>&#160; &#160; &#160;有时候,需要对导入、导出操作做日志,也很简单,可以使用log=fileName即可.</p>
+<h2 id="谈谈备份"><a href="#谈谈备份" class="headerlink" title="谈谈备份"></a>谈谈备份</h2><p>&#160; &#160; &#160;Oracle数据库有两种备份方式:物理备份、逻辑备份.<br>&#160; &#160; &#160;<b>物理备份</b>:实现数据库的完整恢复,但是数据库必须运行在归档模式下(业务数据库在非归档模式下运行),且需要极大的外部存储设备.<br>&#160; &#160; &#160;<b>逻辑备份</b>:不需要数据库运行在归档模式下,不但备份简单,而且可以不需要外部存储设备.一般使用此种备份方式.<br>&#160; &#160; &#160;imp、exp命令即是实现逻辑备份的命令,根据imp、exp命令的不同模式,逻辑备份相应的分为完全备份、用户备份、表备份.</p>
 
                                             
                                         </div>
@@ -420,29 +420,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

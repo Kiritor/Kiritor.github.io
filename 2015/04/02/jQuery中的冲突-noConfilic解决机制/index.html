@@ -16,7 +16,7 @@
    jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
 <meta property="og:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134225.png">
 <meta property="og:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/QQ截图20140618134652.png">
-<meta property="og:updated_time" content="2015-04-02T06:49:25.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:22:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery中的冲突-noConfilic解决机制">
 <meta name="twitter:description" content="许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。
@@ -259,7 +259,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解决冲突方式"><span class="toc-number">1.</span> <span class="toc-text">解决冲突方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">2.</span> <span class="toc-text">最后</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -313,13 +313,12 @@
 <p>   基于这种方式,所有的jQuery代码都通过j进行调用,避免了冲突的可能。</p>
 <p>   4、完全将jQuery移到一个新的命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
 <p>   结果:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
-<p>#解决冲突方式</p>
-<p> 冲突的方式无非3中情况：<br> 1、其他库先于jQuery引用(被占用).<br>  最简单的我们可以在任何地方调用jQuery.noConflict函数,之后使用jQuery()座位jQuery对象的制造工厂。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       //将变量$的控制权移交给先导入的库</div><div class="line"> jQuery(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	 jQuery(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //使用jQuery变量 </div><div class="line">		 </div><div class="line">	 &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
+<h1 id="解决冲突方式"><a href="#解决冲突方式" class="headerlink" title="解决冲突方式"></a>解决冲突方式</h1><p> 冲突的方式无非3中情况：<br> 1、其他库先于jQuery引用(被占用).<br>  最简单的我们可以在任何地方调用jQuery.noConflict函数,之后使用jQuery()座位jQuery对象的制造工厂。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       //将变量$的控制权移交给先导入的库</div><div class="line"> jQuery(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	 jQuery(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //使用jQuery变量 </div><div class="line">		 </div><div class="line">	 &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
 <p> 此外,如果你想确保jQuery不会与其他库冲突,但又想使用一个类似”$”的快捷方式,可以使用如下代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$mj</span>=jQuery.noConflict();       //自定义快捷变量</div><div class="line"> <span class="variable">$mj</span>(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	 <span class="variable">$mj</span>(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //使用jQuery变量 </div><div class="line">		 </div><div class="line">	 &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
 <p>如果你不想给jQuery自定义名称,却想使用$，有不与其他库冲突.可以有两种解决方式:<br> 其一:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       </div><div class="line">jQuery(<span class="keyword">function</span>($)&#123;</div><div class="line">  $(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;   //在函数内部继续使用</div><div class="line">		 </div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line">$(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
 <p>其二:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict();       //将变量$控制权让渡</div><div class="line">(<span class="keyword">function</span>($)&#123;               //定义匿名函数形参为$</div><div class="line">	$(<span class="function"><span class="title">function</span></span>()&#123;      //匿名函数内部均为jQuery的$</div><div class="line">           $(<span class="string">"p"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">           </div><div class="line">           &#125;);</div><div class="line">        &#125;);</div><div class="line">&#125;)(jQuery);                //执行匿名函数且传递实参jQuery</div><div class="line"> $(<span class="string">"pp"</span>).style.display=<span class="string">'none'</span>;   //其他库的调用</div></pre></td></tr></table></figure></p>
 <p> 这是较为理想的方式,因为可以改变最少的代码来实现全面的兼容性<br> 2、其他库后于jQuery被引用<br>你可以参考上述做一些冲突解决的方法,其实其根本就不冲突,你可以使用jQuery变量做一些jQuery的处理工作。同时可以使用()方法作为其他库的快捷方式。<br> 3、不同版本jQuery、且有其他库<br>可以参考上述示例,将jQuery完全移到另一个命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
-<p> #最后<br>   jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>   jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。</p>
 
                                             
                                         </div>
@@ -435,29 +434,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

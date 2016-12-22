@@ -238,8 +238,8 @@
                                             
                                             -->
                                             
-                                                     <p>##前言<br>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
-<p>##顶部菜单<br>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
+                                                     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
+<h2 id="顶部菜单"><a href="#顶部菜单" class="headerlink" title="顶部菜单"></a>顶部菜单</h2><p>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
 <center><img src="http://kiritor.github.io/img/bootstrap_top.png" alt="顶部"></center>
                                             
                                         </div>
@@ -409,7 +409,7 @@
                                             
                                             -->
                                             
-                                                     <p>##前言<br>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+                                                     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br>
                                             
@@ -497,8 +497,8 @@
                                             
                                             -->
                                             
-                                                     <p>##问题描述<br>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
-<p>##物化视图概述<br>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
+                                                     <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
+<h2 id="物化视图概述"><a href="#物化视图概述" class="headerlink" title="物化视图概述"></a>物化视图概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
                                             
                                         </div>
 
@@ -784,7 +784,7 @@
                                             -->
                                             
                                                      <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
-<p>##MyMySQL驱动<br>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br>
+<h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br>
                                             
                                         </div>
 
@@ -1045,7 +1045,7 @@
                                             
                                                      <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
 <p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
-<p>#DOM、DOM对象<br>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br>
+<h1 id="DOM、DOM对象"><a href="#DOM、DOM对象" class="headerlink" title="DOM、DOM对象"></a>DOM、DOM对象</h1><p>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br>
                                             
                                         </div>
 
@@ -1219,8 +1219,7 @@
                                             
                                             -->
                                             
-                                                     <p>#酷站集</p>
-<p>他山之石,可以攻玉,从别人的设计里面吸取灵感。</p>
+                                                     <h1 id="酷站集"><a href="#酷站集" class="headerlink" title="酷站集"></a>酷站集</h1><p>他山之石,可以攻玉,从别人的设计里面吸取灵感。</p>
 <p>1.<a href="http://www.awwwards.com/">Awwwards</a>–The awards for design, creativity and innovation on the internet</p>
 <p>2.<a href="http://www.csswinner.com/">CSS</a> Winner–CSS Award Gallery for Web Design Inspiration</p>
 <p>3.<a href="http://www.bestcss.in/">Best CSS</a>–Best CSS, Website Gallery, CSS Galleries, Best CSS Design Gallery</p>
@@ -1302,29 +1301,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">

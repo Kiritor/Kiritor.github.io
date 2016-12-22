@@ -8,21 +8,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。
    先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。
-#DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML">
+DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery对象、DOM对象?傻傻分不清楚">
 <meta property="og:url" content="http://http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。
    先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。
-#DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML">
+DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和">
 <meta property="og:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/ct_htmltree.gif">
-<meta property="og:updated_time" content="2015-04-02T06:11:53.000Z">
+<meta property="og:updated_time" content="2016-12-22T01:22:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery对象、DOM对象?傻傻分不清楚">
 <meta name="twitter:description" content="初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。
    先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。
-#DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML">
+DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和">
 <meta name="twitter:image" content="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/ct_htmltree.gif">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
@@ -261,7 +261,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM、DOM对象"><span class="toc-number">1.</span> <span class="toc-text">DOM、DOM对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-DOM节点树"><span class="toc-number">2.</span> <span class="toc-text">HTML DOM节点树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM对象"><span class="toc-number">3.</span> <span class="toc-text">DOM对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery对象"><span class="toc-number">4.</span> <span class="toc-text">jQuery对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相互转换"><span class="toc-number">5.</span> <span class="toc-text">相互转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery对象-gt-DOM对象"><span class="toc-number">5.1.</span> <span class="toc-text">jQuery对象->DOM对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM对象-gt-jQuery对象"><span class="toc-number">5.2.</span> <span class="toc-text">DOM对象->jQuery对象</span></a></li></ol></li></ol>
 </div>
 <script>
     $(function(){
@@ -294,30 +294,27 @@
                                             
                                                      <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
 <p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
-<p>#DOM、DOM对象<br>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br><a id="more"></a><br>   W3C DOM标准分为3部分:</p>
+<h1 id="DOM、DOM对象"><a href="#DOM、DOM对象" class="headerlink" title="DOM、DOM对象"></a>DOM、DOM对象</h1><p>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br><a id="more"></a><br>   W3C DOM标准分为3部分:</p>
 <ol>
 <li>核心DOM-针对任何结构化文档的标准模型。</li>
 <li>XML DOM-针对XML文档的标准模型。</li>
-<li><p>HTML DOM-针对HTML文档的标准模型。<br>这里我们关注的是HTML DOM以及其是如何获取、修改、添加或删除html元素(DOM对象)的。<br>DOM节点<br>根据W3C的HTML DOM标准,HTML文档中的所有内容都是节点:<br>1、整个文档是一个文档节点<br>2、每个HTML元素是一个元素节点<br>3、每个HTML属性是一个属性节点<br>4、注释是注释节点<br>#HTML DOM节点树<br>HTML DOM将HTML文档视作树结构。这种结构成为节点树:<br>一个实例：<br><center><img src="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/ct_htmltree.gif" alt="Dom树"></center><br>关于DOM的介绍就这么多了,详细了解的话可查阅W3CSCHOOL手册。<br>#DOM对象</p>
-<p>简单的来说通过JavaScript中的getElementsByTagName或者getElementById来获取元素节点,得到的DOM元素就是DOM对象。DOM对象可以使用JavaScript中的方法,简单实例:</p>
+<li><p>HTML DOM-针对HTML文档的标准模型。<br>这里我们关注的是HTML DOM以及其是如何获取、修改、添加或删除html元素(DOM对象)的。<br>DOM节点<br>根据W3C的HTML DOM标准,HTML文档中的所有内容都是节点:<br>1、整个文档是一个文档节点<br>2、每个HTML元素是一个元素节点<br>3、每个HTML属性是一个属性节点<br>4、注释是注释节点</p>
+<h1 id="HTML-DOM节点树"><a href="#HTML-DOM节点树" class="headerlink" title="HTML DOM节点树"></a>HTML DOM节点树</h1><p>HTML DOM将HTML文档视作树结构。这种结构成为节点树:<br>一个实例：<br><center><img src="http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/ct_htmltree.gif" alt="Dom树"></center><br>关于DOM的介绍就这么多了,详细了解的话可查阅W3CSCHOOL手册。</p>
+<h1 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h1><p>简单的来说通过JavaScript中的getElementsByTagName或者getElementById来获取元素节点,得到的DOM元素就是DOM对象。DOM对象可以使用JavaScript中的方法,简单实例:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = document.getElementById(<span class="string">"id"</span>);//获取DOM对象</div><div class="line">var ObjHTML = obj.innerHTML;                //使用js方法</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>#jQuery对象</p>
-<p>   jQuery对象就是通过jQuery包装DOM对象所产生的对象。</p>
+<h1 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h1><p>   jQuery对象就是通过jQuery包装DOM对象所产生的对象。</p>
 <p>   需注意的是jQuery对象是jQuery独有的。如果一个对象是jQuery对象,那么就可以使用jQuery里的方法。</p>
 <p>   一个简单的例子:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#foo"</span>).html();   //获取id为foo的元素内的html代码.html()为jQuery里的方法</div></pre></td></tr></table></figure></p>
 <p>   该代码等价于:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.getElementById(<span class="string">"id"</span>).innerHTML</div></pre></td></tr></table></figure></p>
-<p>#相互转换</p>
-<p>   核心提示:jQuery选择器得到的jquery对象和标准的DOM对象是两种不同的对象,jquery对象不能使用DOM对象的属性方法。同样的DOM对象也不能使用jquery对象的方法、属性。</p>
+<h1 id="相互转换"><a href="#相互转换" class="headerlink" title="相互转换"></a>相互转换</h1><p>   核心提示:jQuery选择器得到的jquery对象和标准的DOM对象是两种不同的对象,jquery对象不能使用DOM对象的属性方法。同样的DOM对象也不能使用jquery对象的方法、属性。</p>
 <p>   不过前面了解到,jquery对象本来就是DOM对象包装而来的,那么两者肯定是能够进行转换的。</p>
 <p>   在讨论jQuery对象和DOM对象的相互转换之前,先约定好定义变量的风格。jquery对象在前面加上$，例如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$test</span> = jQuery 对象;        //jquery变量</div><div class="line">var <span class="built_in">test</span> = DOM 对象;           //dom变量</div></pre></td></tr></table></figure></p>
-<p>##jQuery对象-&gt;DOM对象</p>
-<p>   jQuery对象是不能使用DOM中的方法的,但是如果对jQuery对象的方法不熟悉,或者jQuery对象没有封装想要的方法,不得不使用DOM对象的时候,可以通过以下两种方式将jQuery对象转换为DOM对象。</p>
+<h2 id="jQuery对象-gt-DOM对象"><a href="#jQuery对象-gt-DOM对象" class="headerlink" title="jQuery对象-&gt;DOM对象"></a>jQuery对象-&gt;DOM对象</h2><p>   jQuery对象是不能使用DOM中的方法的,但是如果对jQuery对象的方法不熟悉,或者jQuery对象没有封装想要的方法,不得不使用DOM对象的时候,可以通过以下两种方式将jQuery对象转换为DOM对象。</p>
 <p>   (1) jQuery对象是一个数组对象,可以通过[index]得到相应的DOM对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$vars</span> = $(<span class="string">"#vars"</span>);           //jQuery对象</div><div class="line">var <span class="built_in">test</span> = <span class="variable">$vars</span>[0];               //DOM对象</div><div class="line">console.info(test.checked);    //检查该对象是否选中</div></pre></td></tr></table></figure></p>
 <p>   (2) 通过jQuery本身提供的get(index)方法返回DOM对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$vars</span> = $(<span class="string">"#vars"</span>);           //jQuery对象</div><div class="line">var <span class="built_in">test</span> = <span class="variable">$vars</span>.get(0);             //DOM对象</div><div class="line">console.info(test.checked);    //检查该对象是否选中</div></pre></td></tr></table></figure></p>
-<p>##DOM对象-&gt;jQuery对象</p>
-<p>   对于一个DOM对象,只需要用$()将DOM对象包装起来就可以转换为jQuery对象了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cr = document.getElementById(<span class="string">"id"</span>);     //DOM对象</div><div class="line">var <span class="variable">$cr</span> = $(cr);                            //jQuery对象</div></pre></td></tr></table></figure></p>
+<h2 id="DOM对象-gt-jQuery对象"><a href="#DOM对象-gt-jQuery对象" class="headerlink" title="DOM对象-&gt;jQuery对象"></a>DOM对象-&gt;jQuery对象</h2><p>   对于一个DOM对象,只需要用$()将DOM对象包装起来就可以转换为jQuery对象了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cr = document.getElementById(<span class="string">"id"</span>);     //DOM对象</div><div class="line">var <span class="variable">$cr</span> = $(cr);                            //jQuery对象</div></pre></td></tr></table></figure></p>
 <p>   转换后,可以任意使用jQuery中的方法。</p>
 <p>   通过以上方法可以实现DOM对象和jQuery对象的相互转换,但是一般情况下jQuery对象提供了一套更加完善的工具用于操作DOM,因此优选使用jQuery对象操作DOM是一个不错的选择。<br>示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;jQuery对象和DOM对象&lt;/title&gt;</div><div class="line">    &lt;script src=<span class="string">"js/jquery-1.9.1.js"</span>&gt;&lt;/script&gt;</div><div class="line">    &lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">        body &#123;</div><div class="line">            text-align: center;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">		/*使用原生js代码判断复选框是否被选中*/</div><div class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			var <span class="variable">$cr</span>=$(<span class="string">"#cr"</span>);</div><div class="line">			var cr = <span class="variable">$cr</span>.get(0);</div><div class="line">			<span class="variable">$cr</span>.on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">				<span class="keyword">if</span>(cr.checked)&#123;</div><div class="line">					console.info(<span class="string">"感谢您的支持,你可以继续操作!"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">		/*使用jQuery的方式判断复选框是否被选中*/</div><div class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		   var <span class="variable">$cr</span> = $(<span class="string">"#cr"</span>);</div><div class="line">			<span class="variable">$cr</span>.on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">				<span class="keyword">if</span>(<span class="variable">$cr</span>.is(<span class="string">":checked"</span>))&#123;</div><div class="line">					alert(<span class="string">"通过jQuery方式选中"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> id=<span class="string">"cr"</span>/&gt;</div><div class="line">    &lt;label <span class="keyword">for</span>=<span class="string">"cr"</span>&gt;我同意该服务条款&lt;/label&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>   控制台输出js选中,并弹出jquery选中的信息。</p>
@@ -436,29 +433,6 @@
 
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
