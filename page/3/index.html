@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Archives: 2015 | Tao.liang&#39;s Blog</title>
+  <title>Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="乐于分享,喜欢环境音乐的小程一枚">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tao.liang's Blog">
-<meta property="og:url" content="http://http://kiritor.github.io/archives/2015/index.html">
+<meta property="og:url" content="http://http://kiritor.github.io/page/3/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="乐于分享,喜欢环境音乐的小程一枚">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,150 @@
 </div>
 
 	  
-      <div class="body-wrap">
+      <div class="body-wrap"><!-- 是否开启微简历 -->
+
+      <div class="resume" id="resume">
+    <ul id="centerwell">
+        <li id="aboutMe">
+            <h3></h3>
+            <div>
+                <h2 style="margin-top:10px;">About Me</h2>
+                <label>姓名:L.Tao</label>
+                <label>出生日期:1991/02/27</label>
+                <label style="margin-right:20px">电话:188832519XX</label>
+                </br>
+                <label style="margin-right:20px">学校:西南大学 计算机科学与技术</label>
+                <label>邮件:1406754158@qq.com</label>
+                <label>Website:<a href="http://kiritor.github.io">kiritor.github.io</a>
+                </label>
+            </div>
+
+        </li>
+        <li id="work">
+            <h3></h3>
+            <div>
+                <h2 style="margin-top:10px;">兴趣爱好</h2>
+                <label>程序员一枚,爱好开源,喜欢瞎折腾.</label>
+                </br>
+                <label>成长中的全栈开发者,什么都会,什么也不会.</label>
+                </br>
+                <label>宅,业余生活逃不开写代码,听音乐,看动漫,打Dota.</label>
+            </div>
+
+        </li>
+        <li id="close" style="float:right;width:40px;">
+            <a class="ck-prev" href="javascript:;">上一张</a>
+        </li>
+    </ul>
+    <script>
+        $(document).ready(function() {
+            var $centerwell_first = $('#centerwell li:first');
+            /* $centerwell_first.animate({
+            width: '400px'
+        }, 300);
+        $centerwell_first.find('h3').animate({}, 300);
+       */
+            /*'#centerwell li').click(function() {
+            window.open($(this).find('a').attr('href'));
+        });
+        */
+            $('#centerwell li').mouseenter(function() {
+                if (!$(this).is(':animated') && $(this).attr("id") != "close") {
+                    $(this).animate({
+                        width: '600'
+                    }, 300).siblings().not("#close").animate({
+                        width: '140px'
+                    }, 300);
+
+                    $(this).find('h3').animate({
+                        backgroundPosition: '-140px'
+                    }, 300).parent().siblings().find('h3').animate({
+                        backgroundPosition: '0px'
+                    }, 300);
+                }
+
+            });
+            $("#close").mouseenter(function() {
+                $('#centerwell li:not(#close)').animate({
+                    width: '140px'
+                }, 300);
+                $('#centerwell li:not(#close)').find("h3").animate({
+                    backgroundPosition: '0px'
+                }, 300);
+            });
+        });
+    </script>
+</div>
+
+
+
+     <div id="recentComments">
+        <style>
+    #ds-recent-comments {
+        background: rgba(0,0,0,0.1);
+        border: 0px solid #ddd;
+        border-radius: 0px;
+        box-shadow: 0 1px 3px #b8b9b9;
+		color:#FFFFFF;
+    }
+    #ds-recent-comments:hover {
+       /*background-color: #f7f7f7;*/
+    }
+    #ds-recent-comments li.ds-comment {
+        font-size: 13px;
+        list-style-type: none;
+        margin: 0 !important;
+        padding: 6px 0 !important;
+        position: relative !important;
+        word-wrap: break-word;
+        border-top: 0 none;
+        border-radius: 2px;
+    }
+    #ds-recent-comments li.ds-comment .ds-avatar {
+        left: 0 !important;
+        position: absolute !important;
+        top: 6px !important;
+        border: 0 none;
+        border-radius: 50%;
+        margin-left: 8px;
+    }
+    #ds-recent-comments li.ds-comment .ds-avatar img {
+        border-radius: 50%;
+    }
+    #ds-recent-comments li.ds-comment .ds-meta {
+        margin-top: 2px;
+    }
+    #ds-recent-comments li.ds-comment .ds-excerpt {
+        vertical-align: middle;
+        font-size:10px;
+    }
+    #ds-recent-comments li.ds-comment.ds-show-avatars {
+        padding-left: 48px !important;
+    }
+</style>
+<ul class="ds-recent-comments" id="ds-recent-comments" data-num-items="1" data-show-avatars="1" data-show-time="0" data-show-admin="1" data-excerpt-length="70" style="height:auto;width:240px;position:fixed;top:80px;right:140px;z-index:9999;"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "kiritor"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })(
+        console.info($("#ds-recent-comments a"))
+    );
+	$("#ds-recent-comments").fadeIn(2500);
+</script>
+
+     </div>
+
+
+
   
     <article id="post-Oracle-instance-tablespase-user-table" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -634,11 +777,22 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2015/page/2/">2</a><a class="page-number" href="/archives/2015/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2015/page/6/">6</a><a class="extend next" rel="next" href="/archives/2015/page/2/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
 
+
+<script>
+
+    $(function(){
+	    var width = document.body.scrollWidth;
+		if(width<=550){
+		    $("#recentComments").css("display","none");
+		}
+	})
+
+</script>
 </div>
       <!--
 <footer id="footer">
