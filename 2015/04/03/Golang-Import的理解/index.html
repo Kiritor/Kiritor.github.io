@@ -9,7 +9,7 @@
   <meta name="description" content="初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:123import (	&quot;fmt&quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang Import的理解">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/03/Golang-Import的理解/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/03/Golang-Import的理解/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:123import (	&quot;fmt&quot;)">
 <meta property="og:image" content="http://kiritor.github.io/img/go_import.png">
@@ -250,7 +250,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -286,7 +286,7 @@
                                             
                                             -->
                                             
-                                                     <p>初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。<br>初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+                                                        <p>初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。<br>初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>之后通过如下的方式调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fmt.Println(<span class="string">"go"</span>)</div></pre></td></tr></table></figure></p>
 <p>我们知道fmt是Go语言的标准库,他其实是去goroot下加载该模块。而且Go语言提供两种加载模块的方式:<strong>相对路径</strong>、绝对路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import <span class="string">"./model"</span>    --相对路径,不推荐</div><div class="line">import <span class="string">"XXX/model"</span>  --个gopath/src/XXX下的model模块,最常见</div></pre></td></tr></table></figure></p>
@@ -300,7 +300,20 @@
 <p>_操作只是将该包引入了,只初始化里面的init函数和一些变量,但是往往这些init函数里面是注册自己包里面的引擎,让外部可以方便的使用。和很多实现database/sql的一样,在init函数里面都是调用了sql.Register(name string,driver driver.Driver)注册自己,然后外部可以使用了。</p>
 <p>原文地址:<a href="http://blog.beego.me/blog/2013/07/27/golang-import-shi-yong-ru-men/" target="_blank" rel="external">http://blog.beego.me/blog/2013/07/27/golang-import-shi-yong-ru-men/</a></p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/Golang-Import的理解.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/Golang-Import的理解.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -347,8 +360,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-Golang-Import的理解" data-title="Golang Import的理解" data-url="http://http://kiritor.github.io/2015/04/03/Golang-Import的理解/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-Golang-Import的理解" data-title="Golang Import的理解" data-url="http://kiritor.github.io/2015/04/03/Golang-Import的理解/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

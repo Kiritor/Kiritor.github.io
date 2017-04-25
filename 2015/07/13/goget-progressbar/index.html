@@ -10,7 +10,7 @@
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;原文地址如下:http://www.leanote.com/blog/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang:go get现实显示进度(转)">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/07/13/goget-progressbar/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/07/13/goget-progressbar/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;原文地址如下:http://www.leanote.com/blog/">
@@ -251,7 +251,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -287,7 +287,7 @@
                                             
                                             -->
                                             
-                                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;原文地址如下:<a href="http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000" target="_blank" rel="external">http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000</a><br><a id="more"></a><br>&nbsp;&nbsp;&nbsp;&nbsp;因为leanote在github.com上的包有点大, 所以 go get github.com/leanote/leanote/app 会很慢, 这个会执行几分钟或更长, 不知道的朋友还以为卡死了. 找了下 go get 没有一个选项可以输出进度的, 于是决定修改golang源码(别以为很有技术含量, 还不是go代码?).</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;看了下golang的源码 src/cmd/go 下是go命令的源码, 其中, get.go是go get命令的代码, build.go 是go build的代码.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;刚开始走了点弯路, 想着改变get.go来显示进度, 无果之后想了下, go get 其实就是调用git , hg, svn的命令从仓库中下载的, 由此思路找到vcs.go(vcs全称为version control system), 果然这里面包含了调用git, hg, svn的命令. 问题迎刃而解:</p>
@@ -301,7 +301,20 @@
 <p><a href="http://leanote.com/blog/view/53118d331a9108428c000001" target="_blank" rel="external">关闭golang的 variable declared but not used 和 package imported but not used</a></p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;linxu、mac下执行all.bash重新编译golang,windows下执行all.bat貌似有问题,可以执行run.bat即可.下面是我使用go get的情况:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Cloning into <span class="string">'/Users/lcore/dev/code/go/src/github.com/kiritor/ini'</span>...</div><div class="line">remote: Counting objects: 36, done.</div><div class="line">remote: Total 36 (delta 0), reused 0 (delta 0), pack-reused 35</div><div class="line">Unpacking objects: 100% (36/36), done.</div><div class="line">Checking connectivity... <span class="keyword">done</span></div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/heads/master</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/HEAD</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/master</div><div class="line">Already on <span class="string">'master'</span></div></pre></td></tr></table></figure></p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/goget-progressbar.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/goget-progressbar.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -348,8 +361,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-goget-progressbar" data-title="Golang:go get现实显示进度(转)" data-url="http://http://kiritor.github.io/2015/07/13/goget-progressbar/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-goget-progressbar" data-title="Golang:go get现实显示进度(转)" data-url="http://kiritor.github.io/2015/07/13/goget-progressbar/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

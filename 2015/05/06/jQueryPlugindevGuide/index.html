@@ -9,7 +9,7 @@
   <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自己动手开发jQuery插件">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作">
 <meta property="og:updated_time" content="2016-12-22T01:23:57.000Z">
@@ -248,7 +248,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -284,8 +284,8 @@
                                             
                                             -->
                                             
-                                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br><a id="more"></a></p>
-<h2 id="插件基础"><a href="#插件基础" class="headerlink" title="插件基础"></a>插件基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在最基础的水平上,创建jQuery插件是非常简单的,但是需要明白的是:简单并不意味正确,遵循一些最佳实践能够改善性能,减少错误,提升交互性,参考jQuery编码规范:<a href="http://kiritor.github.io/2015/04/02/%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84jQuery%E7%9A%84%E5%BB%BA%E8%AE%AE-%E8%BD%AC/" target="_blank" rel="external">编写更好的jQuery的建议</a></p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br><a id="more"></a></p>
+<h2 id="插件基础"><a href="#插件基础" class="headerlink" title="插件基础"></a>插件基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在最基础的水平上,创建jQuery插件是非常简单的,但是需要明白的是:简单并不意味正确,遵循一些最佳实践能够改善性能,减少错误,提升交互性,参考jQuery编码规范:<a href="http://kiritor.github.io/2015/04/02/%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84jQuery%E7%9A%84%E5%BB%BA%E8%AE%AE-%E8%BD%AC/">编写更好的jQuery的建议</a></p>
 <h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;一般情况下,插件(开发环境)的命名形式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jquery.pluginName.js</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;生产环境下(压缩之后的),插件的命名形式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jquery.pluginName.min.js</div></pre></td></tr></table></figure></p>
 <h2 id="jQuery插件开发模式"><a href="#jQuery插件开发模式" class="headerlink" title="jQuery插件开发模式"></a>jQuery插件开发模式</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery高级编程中提到了3中插件开发模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;1. 通过jQuery.fn向jQuery添加新方法.<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 通过jQuery.extend()扩展jQuery.<br>&nbsp;&nbsp;&nbsp;&nbsp;3. 通过jQuery.widget()应用jQueryUI的部件工厂方法创建.<br>&nbsp;&nbsp;&nbsp;&nbsp;先从简单的第二种方法开始,这种插件开发的方式仅仅是在jQuery命名空间(jQuery)上添加了一个静态方法,可以直接通过美元符号(jquery编码的符号,页面解析不出来,用”美元符号代替”)调用,一个简单的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.extend(&#123;</div><div class="line">   <span class="attr">log</span>:<span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"日志:"</span>+text)</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//直接通过$符号进行调用</span></div><div class="line">$.log(<span class="string">"简单的日志插件"</span>)</div></pre></td></tr></table></figure></p>
@@ -312,7 +312,20 @@
 <h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;最后,好的插件要分享出来哦,那样插件才具有生命力,才能不断的优化改进!</p>
 <h2 id="相关参考"><a href="#相关参考" class="headerlink" title="相关参考"></a>相关参考</h2><p><a href="http://www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html" target="_blank" rel="external">插件开发精品教程</a><br><a href="http://www.bkjia.com/jQuery/963539.html" target="_blank" rel="external">jquery插件开发</a></p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/jQueryPlugindevGuide.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/jQueryPlugindevGuide.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -359,8 +372,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-jQueryPlugindevGuide" data-title="自己动手开发jQuery插件" data-url="http://http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-jQueryPlugindevGuide" data-title="自己动手开发jQuery插件" data-url="http://kiritor.github.io/2015/05/06/jQueryPlugindevGuide/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

@@ -10,7 +10,7 @@
 根对象SecrityManager回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shiro-ini配置">
-<meta property="og:url" content="http://http://kiritor.github.io/2016/04/04/ini配置/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2016/04/04/ini配置/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.
 根对象SecrityManager回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.">
@@ -251,7 +251,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -287,7 +287,7 @@
                                             
                                             -->
                                             
-                                                     <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
+                                                        <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
 <h2 id="根对象SecrityManager"><a href="#根对象SecrityManager" class="headerlink" title="根对象SecrityManager"></a>根对象SecrityManager</h2><p>回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.<br><a id="more"></a><br>Shiro的类都是POJO的,因此都很容易的放到任何的Ioc容器管理,但是和一般的IoC容器(类似Spring)的区别点在于,shiro是从根对象securityMnanager开始导航;其支持的依赖注入:public孔灿构造器对象的创建、setter依赖注入.</p>
 <h2 id="ini配置"><a href="#ini配置" class="headerlink" title="ini配置"></a>ini配置</h2><p>int配置文件类似于Java中的properties(key/vale),不过体哦那个了讲key/value分区selection的特性,key是每个分区不重复即可,而不是整个配置文件,比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[main]</div><div class="line"><span class="comment">#提供了对根对象securityManager及其依赖的配置</span></div><div class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager</div><div class="line">securityManager.realms=<span class="variable">$jdbcRealm</span></div><div class="line">[users]</div><div class="line"><span class="comment">#提供了对用户/密码及其角色的配置,用户名=密码,角色1,角色2</span></div><div class="line">username=password,role1,role2</div><div class="line">[roles]</div><div class="line"><span class="comment">#提供了角色及权限之间的关系的配置,角色=权限1,权限2</span></div><div class="line">role1=permission1,permission2</div><div class="line">[urls]</div><div class="line"><span class="comment">#用于web,提供了对web url拦截相关的配置,url=拦截器[参数],拦截器</span></div><div class="line">/index.html = anon</div><div class="line">/admin/** = authc,roles[admin],perms[<span class="string">"permission1"</span>]</div></pre></td></tr></table></figure></p>
 <p><strong>[main]部分</strong><br>提供了对根对象securityManager及其依赖对象的配置.<br><strong>创建对象</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager</div></pre></td></tr></table></figure></p>
@@ -303,7 +303,20 @@
 <p><strong>[urls]部分</strong><br>配置url及相应的拦截器之间的关系,格式: “url=拦截器[参数],拦截器[参数]”,如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[urls]</div><div class="line">/admin/** = authc, roles[admin], perms[<span class="string">"permission1"</span>]</div></pre></td></tr></table></figure></p>
 <p>在之后的shiro集成到web的例子中在深入了解.</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/ini配置.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/ini配置.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -350,8 +363,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-ini配置" data-title="Shiro-ini配置" data-url="http://http://kiritor.github.io/2016/04/04/ini配置/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-ini配置" data-title="Shiro-ini配置" data-url="http://kiritor.github.io/2016/04/04/ini配置/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

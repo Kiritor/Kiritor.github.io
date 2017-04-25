@@ -10,7 +10,7 @@
    jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery中的冲突-noConfilic解决机制">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。
    jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是w">
@@ -254,7 +254,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -290,7 +290,7 @@
                                             
                                             -->
                                             
-                                                     <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
+                                                        <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
 <p>   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是window.jQuery对象的一个引用,因此即使被删除,jQuery依然能保证整个类库的完整性。<br><a id="more"></a></p>
 <p>   jQuery的设计充分考虑了多框架之间的引用冲突。我们可以使用jQuery.noConflict方法来轻松实现控制权的转交。</p>
 <p>   在论述如何解决jQuery冲突之前,我们有必要先对noConflict函数做一个了解,解决冲突的方法就藏在里面。<br>jQuery.noConflict</p>
@@ -320,7 +320,20 @@
 <p> 这是较为理想的方式,因为可以改变最少的代码来实现全面的兼容性<br> 2、其他库后于jQuery被引用<br>你可以参考上述做一些冲突解决的方法,其实其根本就不冲突,你可以使用jQuery变量做一些jQuery的处理工作。同时可以使用()方法作为其他库的快捷方式。<br> 3、不同版本jQuery、且有其他库<br>可以参考上述示例,将jQuery完全移到另一个命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>   jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/jQuery中的冲突-noConfilic解决机制.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/jQuery中的冲突-noConfilic解决机制.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -367,8 +380,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-jQuery中的冲突-noConfilic解决机制" data-title="jQuery中的冲突-noConfilic解决机制" data-url="http://http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-jQuery中的冲突-noConfilic解决机制" data-title="jQuery中的冲突-noConfilic解决机制" data-url="http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

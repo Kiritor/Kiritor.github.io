@@ -10,7 +10,7 @@
 讨论jQuery和javascript性能的文章并不罕见。然而,本文我计划总结一些速度方面的技巧和我本人的一些建议,来提升你的jQu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编写更好的jQuery的建议-转">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/02/编写更好的jQuery的建议-转/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/02/编写更好的jQuery的建议-转/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="最近学习JQuery,在伯乐在线里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。   文章出处:http://blog.jobbole.com/52770/   译文地址:原文   以下为翻译正文:
 讨论jQuery和javascript性能的文章并不罕见。然而,本文我计划总结一些速度方面的技巧和我本人的一些建议,来提升你的jQu">
@@ -251,7 +251,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -287,7 +287,7 @@
                                             
                                             -->
                                             
-                                                     <p>   最近学习JQuery,在<a href="http://blog.jobbole.com/" target="_blank" rel="external">伯乐在线</a>里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。<br>   文章出处:<a href="http://blog.jobbole.com/52770/" target="_blank" rel="external">http://blog.jobbole.com/52770/</a><br>   译文地址:<a href="http://flippinawesome.org/2013/11/25/writing-better-jquery-code/" target="_blank" rel="external">原文</a><br>   以下为翻译正文:</p>
+                                                        <p>   最近学习JQuery,在<a href="http://blog.jobbole.com/" target="_blank" rel="external">伯乐在线</a>里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。<br>   文章出处:<a href="http://blog.jobbole.com/52770/" target="_blank" rel="external">http://blog.jobbole.com/52770/</a><br>   译文地址:<a href="http://flippinawesome.org/2013/11/25/writing-better-jquery-code/" target="_blank" rel="external">原文</a><br>   以下为翻译正文:</p>
 <p>讨论jQuery和javascript性能的文章并不罕见。然而,本文我计划总结一些速度方面的技巧和我本人的一些建议,来提升你的jQuery和javascript代码。好的代码会带来速度的提升。快速渲染和响应意味着更好的用户体验。</p>
 <p>   首先,在脑子里牢牢记住jQuery就是javascript。这意味着我们应该采用相同的编码惯例,风格指南和最佳实践。<br>   如果你是一个javascript新手,我建议您阅读《JavaScript初学者的最佳实践》,这是一篇高质量的javascript教程,接触jQuery之前最后先阅读。<br>   当你准备使用jQuery,我强烈建议你遵循下面这些指南:<br><a id="more"></a></p>
 <h1 id="缓存变量"><a href="#缓存变量" class="headerlink" title="缓存变量"></a>缓存变量</h1><p>   要知道DOM的遍历是昂贵的,所以尽量将会重用的元素缓存到一个变量中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕</div><div class="line">h = $(<span class="string">'#element'</span>).height();</div><div class="line">$(<span class="string">'#element'</span>).css(<span class="string">'height'</span>,h-20);</div><div class="line">// 建议</div><div class="line"><span class="variable">$element</span> = $(<span class="string">'#element'</span>);</div><div class="line">h = <span class="variable">$element</span>.height();</div><div class="line"><span class="variable">$element</span>.css(<span class="string">'height'</span>,h-20);</div></pre></td></tr></table></figure></p>
@@ -314,7 +314,20 @@
 <p>   鉴于vanilla和jQuery之间的性能差异,我强烈建议吸收两人的精华,使用(可能的话)和JQuery等价的原生代码。<br>最后忠告</p>
 <p>   最后,我记录这篇文章的目的是提高jQuery性能和其他一些好的建议。如果你想深入研究对这个话题你会发现很多乐趣。记住,jQuery并非不可或缺,仅仅是一种选择。思考为什么使用它。DOM操作?ajax?模板?css动画?还是选择符引擎?或许javascript微型框架或jQuery的定制版是更好的选择,又或许大道至简,最终选择原生js也说不准呢。</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/编写更好的jQuery的建议-转.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/编写更好的jQuery的建议-转.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -361,8 +374,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-编写更好的jQuery的建议-转" data-title="编写更好的jQuery的建议-转" data-url="http://http://kiritor.github.io/2015/04/02/编写更好的jQuery的建议-转/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-编写更好的jQuery的建议-转" data-title="编写更好的jQuery的建议-转" data-url="http://kiritor.github.io/2015/04/02/编写更好的jQuery的建议-转/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

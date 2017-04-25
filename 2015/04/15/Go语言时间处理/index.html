@@ -10,7 +10,7 @@
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言时间处理">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/15/Go语言时间处理/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/15/Go语言时间处理/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小">
@@ -253,7 +253,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -289,7 +289,7 @@
                                             
                                             -->
                                             
-                                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。</p>
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小可以表示到nanosecond(微毫秒,十亿分之1秒)。<br><a id="more"></a></p>
 <p><center><img src="http://kiritor.github.io/img/go_time.png" alt="go_time"></center><br>&nbsp;&nbsp;&nbsp;&nbsp;接下来介绍一些比较常用的方法和使用</p>
 <h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;获取当前的时间戳:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   t := time.Now().Unix()</div><div class="line">   fmt.Println(t)</div><div class="line"><span class="comment">//1429081897(单位秒)</span></div></pre></td></tr></table></figure></p>
@@ -301,7 +301,20 @@
 <h2 id="输出星期信息"><a href="#输出星期信息" class="headerlink" title="输出星期信息"></a>输出星期信息</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;输出星期信息也比较简单,方法如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fmt.Println(time.Now().Weekday())</div><div class="line"><span class="comment">//Wednesday</span></div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;当然Time包下还有许多其他有用的类型例如(Ticker、Timer等),不过这里就不在介绍了,OK,GO时间处理就先到这个地方了!</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/Go语言时间处理.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/Go语言时间处理.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -348,8 +361,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-Go语言时间处理" data-title="Go语言时间处理" data-url="http://http://kiritor.github.io/2015/04/15/Go语言时间处理/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-Go语言时间处理" data-title="Go语言时间处理" data-url="http://kiritor.github.io/2015/04/15/Go语言时间处理/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

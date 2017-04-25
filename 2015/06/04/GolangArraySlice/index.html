@@ -10,7 +10,7 @@
 &amp;#160; &amp;#160; &amp;#160; &amp;#160; 固定大小或可变大小?&amp;#160; &amp;#160; &amp;#1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言数组&数组切片整理">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/06/04/GolangArraySlice/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/06/04/GolangArraySlice/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;数组是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::
 &amp;#160; &amp;#160; &amp;#160; &amp;#160; 固定大小或可变大小?&amp;#160; &amp;#160; &amp;#1">
@@ -253,7 +253,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -289,7 +289,7 @@
                                             
                                             -->
                                             
-                                                     <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
+                                                        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
 <p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
 <p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br><a id="more"></a></p>
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>&#160; &#160; &#160; &#160;数组是Go语言非常重要的数据结构(<strong><span class="color">slice</span></strong>、<strong><span class="color">map</span></strong>的底层结构都是基于数组的),长度固定且是值类型:赋值或函数参数调用都将产生一次复制.</p>
@@ -323,7 +323,20 @@
 <p>&#160; &#160; &#160; &#160;SO,通过第三个索引参数限定,我们可以设置其实际容量和长度相等,这样在append的时候就不会污染底层数组了.内建函数append是变参函数,可以一次添加多个元素.同数组一样另外两个内建函数len、cap返回长度和容量.</p>
 <p>##函数间传递slice<br>&#160; &#160; &#160; &#160;前面就已经知道了,在函数间传递数组是非常昂贵的,使用指针又会出现其他问题,解决的方案就是使用slice.函数间传递slice是非廉价,因为slice相对于是指向底层数组的指针,不过需要注意的是,这里还是会存在污染底层数组的问题(可以规避).</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/GolangArraySlice.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/GolangArraySlice.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -370,8 +383,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-GolangArraySlice" data-title="Go语言数组&amp;数组切片整理" data-url="http://http://kiritor.github.io/2015/06/04/GolangArraySlice/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-GolangArraySlice" data-title="Go语言数组&amp;数组切片整理" data-url="http://kiritor.github.io/2015/06/04/GolangArraySlice/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

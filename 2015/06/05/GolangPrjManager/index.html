@@ -9,7 +9,7 @@
   <meta name="description" content="Go工程管理&amp;#160; &amp;#160; &amp;#160; &amp;#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.&amp;#160; &amp;#160; &amp;#160; &amp;#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang工程管理">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/06/05/GolangPrjManager/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/06/05/GolangPrjManager/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="Go工程管理&amp;#160; &amp;#160; &amp;#160; &amp;#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.&amp;#160; &amp;#160; &amp;#160; &amp;#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名">
 <meta property="og:updated_time" content="2016-12-22T01:19:20.000Z">
@@ -248,7 +248,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -284,7 +284,7 @@
                                             
                                             -->
                                             
-                                                     <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
+                                                        <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
 <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br><a id="more"></a><br>&#160; &#160; &#160; &#160;Go中只有两个路径:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   GOROOT:<span class="keyword">go</span>安装路径,官方包路径根据这个设置自动匹配</div><div class="line">GOPATH:工作路径</div></pre></td></tr></table></figure></p>
 <p>&#160; &#160; &#160; &#160;<span class="color">Tips:</span>Go中是没有项目路径这个概念的,只有包.可执行包只是特殊的一种,即是我们常说的项目,GOPATH可以设置多个(不建议).不管是可执行包还是非可执行包,都应该置于$GOPATH/src下.<br>&#160; &#160; &#160; &#160;对于$GOBIN,在之后实践的时候再细说.</p>
 <h1 id="Go项目目录"><a href="#Go项目目录" class="headerlink" title="Go项目目录"></a>Go项目目录</h1><p>&#160; &#160; &#160; &#160;Go官网中有过介绍,Go项目的目录结构一般包含以下几个:</p>
@@ -329,7 +329,20 @@
 <h2 id="一个项目不能包含多个main-函数"><a href="#一个项目不能包含多个main-函数" class="headerlink" title="一个项目不能包含多个main()函数"></a>一个项目不能包含多个main()函数</h2><p>&#160; &#160; &#160; &#160;实际上编译是没有问题的,但是这并不是一种正确的做法,一个项目只能有一个入口函数.</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>&#160; &#160; &#160; &#160;<a href="http://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go" target="_blank" rel="external">how-to-write-benchmarks-in-go</a><br>&#160; &#160; &#160; &#160;<a href="https://groups.google.com/forum/?fromgroups=#!searchin/golang-nuts/why$20use$20go$20install/golang-nuts/qysy2bM_o1I/khIRe3AJ_wEJ" target="_blank" rel="external">Running multi-file main package</a></p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/GolangPrjManager.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/GolangPrjManager.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -376,8 +389,8 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-GolangPrjManager" data-title="Golang工程管理" data-url="http://http://kiritor.github.io/2015/06/05/GolangPrjManager/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-GolangPrjManager" data-title="Golang工程管理" data-url="http://kiritor.github.io/2015/06/05/GolangPrjManager/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

@@ -10,7 +10,7 @@
 MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang操作MySQL数据库,使用mymysql驱动">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql
 MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更">
@@ -251,7 +251,7 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -287,7 +287,7 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
                                             
                                             -->
                                             
-                                                     <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+                                                        <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
 <h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql" target="_blank" rel="external">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装mymysql包必须要先安装如下包:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql/thrsafe</div><div class="line">go get github.com/ziutek/mymysql/autorc</div><div class="line">go get github.com/ziutek/mymysql/godrv</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql</div></pre></td></tr></table></figure>
@@ -309,7 +309,20 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 <p>MySQL服务器映射/转换特定MySQL存储类型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">         string  --&gt;  MYSQL_TYPE_STRING</div><div class="line">         []byte  --&gt;  MYSQL_TYPE_VAR_STRING</div><div class="line">    int8, uint8  --&gt;  MYSQL_TYPE_TINY</div><div class="line">  int16, uint16  --&gt;  MYSQL_TYPE_SHORT</div><div class="line">  int32, uint32  --&gt;  MYSQL_TYPE_LONG</div><div class="line">  int64, uint64  --&gt;  MYSQL_TYPE_LONGLONG</div><div class="line">      int, uint  --&gt;  protocol <span class="built_in">integer</span> <span class="built_in">type</span> <span class="built_in">which</span> match size of int</div><div class="line">           bool  --&gt;  MYSQL_TYPE_TINY</div><div class="line">        <span class="built_in">float</span>32  --&gt;  MYSQL_TYPE_FLOAT</div><div class="line">        <span class="built_in">float</span>64  --&gt;  MYSQL_TYPE_DOUBLE</div><div class="line">      time.Time  --&gt;  MYSQL_TYPE_DATETIME</div><div class="line">mysql.Timestamp  --&gt;  MYSQL_TYPE_TIMESTAMP</div><div class="line">     mysql.Date  --&gt;  MYSQL_TYPE_DATE</div><div class="line">  time.Duration  --&gt;  MYSQL_TYPE_TIME</div><div class="line">     mysql.Blob  --&gt;  MYSQL_TYPE_BLOB</div><div class="line">            nil  --&gt;  MYSQL_TYPE_NULL</div></pre></td></tr></table></figure></p>
 <p>收到结果MySQL存储类型被映射到/ mymysql类型如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">                             TINYINT  --&gt;  int8</div><div class="line">                    UNSIGNED TINYINT  --&gt;  uint8</div><div class="line">                            SMALLINT  --&gt;  int16</div><div class="line">                   UNSIGNED SMALLINT  --&gt;  uint16</div><div class="line">                      MEDIUMINT, INT  --&gt;  int32</div><div class="line">    UNSIGNED MEDIUMINT, UNSIGNED INT  --&gt;  uint32</div><div class="line">                              BIGINT  --&gt;  int64</div><div class="line">                     UNSIGNED BIGINT  --&gt;  uint64</div><div class="line">                               FLOAT  --&gt;  <span class="built_in">float</span>32</div><div class="line">                              DOUBLE  --&gt;  <span class="built_in">float</span>64</div><div class="line">                             DECIMAL  --&gt;  <span class="built_in">float</span>64</div><div class="line">                 TIMESTAMP, DATETIME  --&gt;  time.Time</div><div class="line">                                DATE  --&gt;  mysql.Date</div><div class="line">                                TIME  --&gt;  time.Duration</div><div class="line">                                YEAR  --&gt;  int16</div><div class="line">    CHAR, VARCHAR, BINARY, VARBINARY  --&gt;  []byte</div><div class="line"> TEXT, TINYTEXT, MEDIUMTEXT, LONGTEX  --&gt;  []byte</div><div class="line">BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB  --&gt;  []byte</div><div class="line">                                 BIT  --&gt;  []byte</div><div class="line">                           SET, ENUM  --&gt;  []byte</div><div class="line">                                NULL  --&gt;  nil</div></pre></td></tr></table></figure></p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/Golang操作MySQL数据库-使用mymysql驱动.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/Golang操作MySQL数据库-使用mymysql驱动.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -356,8 +369,8 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-Golang操作MySQL数据库-使用mymysql驱动" data-title="Golang操作MySQL数据库,使用mymysql驱动" data-url="http://http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-Golang操作MySQL数据库-使用mymysql驱动" data-title="Golang操作MySQL数据库,使用mymysql驱动" data-url="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {

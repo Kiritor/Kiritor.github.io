@@ -11,7 +11,7 @@
 DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery对象、DOM对象?傻傻分不清楚">
-<meta property="og:url" content="http://http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/index.html">
+<meta property="og:url" content="http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。
    先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。
@@ -256,7 +256,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                           <!--
+                                            <!--
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -292,7 +292,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                                             
                                             -->
                                             
-                                                     <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
+                                                        <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
 <p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
 <h1 id="DOM、DOM对象"><a href="#DOM、DOM对象" class="headerlink" title="DOM、DOM对象"></a>DOM、DOM对象</h1><p>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br><a id="more"></a><br>   W3C DOM标准分为3部分:</p>
 <ol>
@@ -319,7 +319,20 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
 <p>   通过以上方法可以实现DOM对象和jQuery对象的相互转换,但是一般情况下jQuery对象提供了一套更加完善的工具用于操作DOM,因此优选使用jQuery对象操作DOM是一个不错的选择。<br>示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;jQuery对象和DOM对象&lt;/title&gt;</div><div class="line">    &lt;script src=<span class="string">"js/jquery-1.9.1.js"</span>&gt;&lt;/script&gt;</div><div class="line">    &lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">        body &#123;</div><div class="line">            text-align: center;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">		/*使用原生js代码判断复选框是否被选中*/</div><div class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			var <span class="variable">$cr</span>=$(<span class="string">"#cr"</span>);</div><div class="line">			var cr = <span class="variable">$cr</span>.get(0);</div><div class="line">			<span class="variable">$cr</span>.on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">				<span class="keyword">if</span>(cr.checked)&#123;</div><div class="line">					console.info(<span class="string">"感谢您的支持,你可以继续操作!"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">		/*使用jQuery的方式判断复选框是否被选中*/</div><div class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		   var <span class="variable">$cr</span> = $(<span class="string">"#cr"</span>);</div><div class="line">			<span class="variable">$cr</span>.on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">				<span class="keyword">if</span>(<span class="variable">$cr</span>.is(<span class="string">":checked"</span>))&#123;</div><div class="line">					alert(<span class="string">"通过jQuery方式选中"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> id=<span class="string">"cr"</span>/&gt;</div><div class="line">    &lt;label <span class="keyword">for</span>=<span class="string">"cr"</span>&gt;我同意该服务条款&lt;/label&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>   控制台输出js选中,并弹出jquery选中的信息。</p>
 
-                                            
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/jQuery对象、DOM对象-傻傻分不清楚.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/jQuery对象、DOM对象-傻傻分不清楚.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                                                <p>作者
+                                                                    <code class="notebook">Kiritor</code> 转载请注明出处.
+                                                                <p>署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
@@ -366,8 +379,8 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                             
                                 <!-- 多说评论框 start -->
                                 
-	                                <!--
-                                    <div class="ds-thread" data-thread-key="post-jQuery对象、DOM对象-傻傻分不清楚" data-title="jQuery对象、DOM对象?傻傻分不清楚" data-url="http://http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/"></div>
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-jQuery对象、DOM对象-傻傻分不清楚" data-title="jQuery对象、DOM对象?傻傻分不清楚" data-url="http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/"></div>
                                     
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
