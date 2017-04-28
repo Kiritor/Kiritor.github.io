@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Archives | Tao.liang&#39;s Blog</title>
+  <title>碎片代码 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="乐于分享,喜欢环境音乐的小程一枚">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tao.liang's Blog">
-<meta property="og:url" content="http://kiritor.github.io/archives/page/8/index.html">
+  <meta name="description" content="前言记录一些开发中有用的代码片段(配置、技巧都可以)
+SpringMVC日期处理配置文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="碎片代码">
+<meta property="og:url" content="http://kiritor.github.io/2017/04/28/Code-Piece/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="乐于分享,喜欢环境音乐的小程一枚">
+<meta property="og:description" content="前言记录一些开发中有用的代码片段(配置、技巧都可以)
+SpringMVC日期处理配置文件">
+<meta property="og:updated_time" content="2017-04-28T03:55:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tao.liang's Blog">
-<meta name="twitter:description" content="乐于分享,喜欢环境音乐的小程一枚">
+<meta name="twitter:title" content="碎片代码">
+<meta name="twitter:description" content="前言记录一些开发中有用的代码片段(配置、技巧都可以)
+SpringMVC日期处理配置文件">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -192,9 +196,7 @@
 </div>
 
 	  
-      <div class="body-wrap">
-  
-    <article id="post-easyui-parser" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Code-Piece" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -208,8 +210,8 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2015/03/26/easyui-parser/" class="article-date">
-  	<time datetime="2015-03-26T15:58:08.000Z" itemprop="datePublished">Mar 26 2015</time>
+            <a href="/2017/04/28/Code-Piece/" class="article-date">
+  	<time datetime="2017-04-28T03:50:50.000Z" itemprop="datePublished">Apr 28 2017</time>
 </a>
 
         </div>
@@ -222,243 +224,147 @@
                             <header class="article-header">
                                 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/easyui-parser/">EasyUI基础入门之Parser(解析器)</a>
+    <h1 class="article-title" itemprop="name">
+      碎片代码
     </h1>
   
 
 
                             </header>
                             
+                                <div class="article-info article-info-post">
+                                    
+
+                                        
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
                                             <!--
                                             
 
-                                            
-                                            -->
-                                            
-                                                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)<br>
-                                                    
-                                        </div>
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC日期处理"><span class="toc-number">2.</span> <span class="toc-text">SpringMVC日期处理</span></a></li></ol>
+</div>
+<script>
+    $(function(){
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Parser/">Parser</a></li></ul>
-	</div>
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
 
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/front/">front</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/03/26/easyui-parser/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="photo-colleage-life" class="article article-type-photo" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
         });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2015/03/26/colleage-life/" class="article-date">
-  	<time datetime="2015-03-26T15:30:52.000Z" itemprop="datePublished">Mar 26 2015</time>
-</a>
+        $(".toc-article").hover(function(){
 
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/colleage-life/">毕业随照</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                            <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                <p>似乎真的到了该说再见的时候了。<br>向这段充满欢笑，充满浪漫，充满豪情壮志，<br>也充满酸涩与淡淡忧郁的学生时代。<br>
-                                                    
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/毕业/">毕业</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/life/">life</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/03/26/colleage-life/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-jquery-easyui" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
+        },function(){
+            $("#toc").hide(1000,function(){});
         });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2015/03/26/jquery-easyui/" class="article-date">
-  	<time datetime="2015-03-26T14:45:08.000Z" itemprop="datePublished">Mar 26 2015</time>
-</a>
+    })
+</script>
 
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/jquery-easyui/">JQuery EasyUi框架学习</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                            <!--
-                                            
-
+                                                  
                                             
                                             -->
                                             
-                                                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。</p>
-<h1 id="关于EasyUI"><a href="#关于EasyUI" class="headerlink" title="关于EasyUI"></a>关于EasyUI</h1><p>EasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。现阶段来说,在开发web项目时,前端的开发我们更喜欢使用jQuery代替原生的javascript,原因大概如下方面:<br>
-                                                    
+                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录一些开发中有用的代码片段(配置、技巧都可以)</p>
+<h2 id="SpringMVC日期处理"><a href="#SpringMVC日期处理" class="headerlink" title="SpringMVC日期处理"></a>SpringMVC日期处理</h2><p>配置文件<br><a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 处理responseBody 里面日期类型 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">mvc:message-converters</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">bean</span></span></div><div class="line">			<span class="attr">class</span>=<span class="string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</div><div class="line">			<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.fasterxml.jackson.databind.ObjectMapper"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dateFormat"</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"java.text.SimpleDateFormat"</span>&gt;</span></div><div class="line">							<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">type</span>=<span class="string">"java.lang.String"</span> <span class="attr">value</span>=<span class="string">"yyyy-MM-dd"</span> /&gt;</span></div><div class="line">						<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>还需要在entity时间字段中添加注解:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@DateTimeFormat</span>(pattern=<span class="string">"yyyy-MM-dd"</span>)</div><div class="line"><span class="keyword">private</span> Date startTime;</div></pre></td></tr></table></figure></p>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="/Users/lcore/dev/blog/source/_posts/Code-Piece.md">
+                                                                    /Users/lcore/dev/blog/source/_posts/Code-Piece.md
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+                                            
+                                                                <p>转载请注明出处  署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
                                         </div>
 
                                         
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/front/">front</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/03/26/jquery-easyui/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
             </div>
             
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
                     
+                        
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/01/Interview-thought/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一次面试官经历</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
                                 <!-- 多说评论框 start -->
                                 
+                                    <!--
+                                    <div class="ds-thread" data-thread-key="post-Code-Piece" data-title="碎片代码" data-url="http://kiritor.github.io/2017/04/28/Code-Piece/"></div>
+                                    
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "kiritor"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    -->
+                                    <!-- 多说公共JS代码 end -->
+                                    
 </article>
 
 <!--
 
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
 -->
 <!--
 
 -->
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/7/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span>
-    </nav>
-  
-
 
 </div>
       <!--
