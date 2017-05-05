@@ -33,7 +33,6 @@
   <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
   <script src="/js/ug-theme-default.js"></script>
   <script src="/js/unitegallery.js"></script>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
 </head>
 
 <body>
@@ -328,8 +327,8 @@
                                                             <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
                                                             <div class="post-info">
-                                            
-                                                                <p>转载请注明出处  署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
                                                             </div>
                                                             
                                         </div>
@@ -354,7 +353,41 @@
                 </script>
                 
                     
+                        <div class="donateContainer">
+                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+                            <span id="donate" class="donate" onclick="donate()">打赏</span>
+                            <div id="QR" style="display: none;">
+                                <div id="wechat" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.jpg" alt="AlexZ33 WeChat Pay">
+                                    </a>
+                                    <p>微信打赏</p>
+                                </div>
+
+
+                                <div id="alipay" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.jpg" alt="AlexZ33 Alipay">
+                                    </a>
+                                    <p>支付宝打赏</p>
+                                </div>
+
+                            </div>
+                            <script>
+                                function donate() {
+                                    var qr = document.getElementById('QR');
+                                    if (qr.style.display === 'none') {
+                                        qr.style.display = 'block';
+                                    } else {
+                                        qr.style.display = 'none'
+                                    }
+
+                                };
+                            </script>
+                        </div>
                         
+                            
+                                
 <nav id="article-nav">
   
     <a href="/2015/04/02/前端素材集锦-转/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -375,15 +408,10 @@
 </nav>
 
 
-                            
-                                <!-- 多说评论框 start -->
-                                
-
- <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-
-<!-- UY END -->
-                                    <!--
+                                    
+                                        <!-- 多说评论框 start -->
+                                        
+                                            <!--
                                     <div class="ds-thread" data-thread-key="post-golang-install" data-title="Windows下搭建go语言开发环境" data-url="http://kiritor.github.io/2015/03/27/golang-install/"></div>
                                     
                                     <script type="text/javascript">
@@ -400,8 +428,8 @@
                                         })();
                                     </script>
                                     -->
-                                    <!-- 多说公共JS代码 end -->
-                                    
+                                            <!-- 多说公共JS代码 end -->
+                                            
 </article>
 
 <!--
