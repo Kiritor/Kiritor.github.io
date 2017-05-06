@@ -338,23 +338,23 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
                             <div>如果文章对您有用请随意打赏，谢谢支持！</div>
                             <span id="donate" class="donate" onclick="donate()">打赏</span>
                             <div id="QR" style="display: none;">
-								
-								 <div id="alipay" style="display: inline-block">
+
+                                <div id="alipay" style="display: inline-block">
                                     <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
                                         <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
                                     </a>
-                                   
+
                                 </div>
-								
+
                                 <div id="wechat" style="display: inline-block">
                                     <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
                                         <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
                                     </a>
-                                    
+
                                 </div>
 
 
-                               
+
 
                             </div>
                             <script>
@@ -395,20 +395,21 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
                                     
                                         <!-- 多说评论框 start -->
                                         
-
-<div id="github-comment"></div>
-<script>
-var gitment = new Gitment({
-  id: location.href, // 可选。默认为 location.href
-  owner: 'Kiritor',
-  repo: 'comment',
-  oauth: {
-    client_id: 'c245701828e9d9a33ae1',
-    client_secret: '8b81ccff087981c193f23867f1ab1964800704ea',
-  },
-})
-gitment.render('github-comment')
-</script>
+                                            <div style="padding:auto 30px auto 30px;">
+                                                <div id="github-comment"></div>
+                                                <script>
+                                                    var gitment = new Gitment({
+                                                        id: location.href, // 可选。默认为 location.href
+                                                        owner: 'Kiritor',
+                                                        repo: 'comment',
+                                                        oauth: {
+                                                            client_id: 'c245701828e9d9a33ae1',
+                                                            client_secret: '8b81ccff087981c193f23867f1ab1964800704ea',
+                                                        },
+                                                    })
+                                                     gitment.render('github-comment')
+                                                </script>
+                                            </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-easyui-draggable" data-title="EasyUI基础入门之Draggable(拖拽)" data-url="http://kiritor.github.io/2015/03/27/easyui-draggable/"></div>
                                     
