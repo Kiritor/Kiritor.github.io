@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   
   <title>Shiro-Authentication(身份验证) | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,6 +34,7 @@
   <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
   <script src="/js/ug-theme-default.js"></script>
   <script src="/js/unitegallery.js"></script>
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 </head>
 
 <body>
@@ -431,6 +433,20 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
+
+<div id="github-comment"></div>
+<script>
+var gitment = new Gitment({
+  id: location.href, // 可选。默认为 location.href
+  owner: '3806970',
+  repo: 'https://github.com/Kiritor/comment',
+  oauth: {
+    client_id: 'c245701828e9d9a33ae1',
+    client_secret: '8b81ccff087981c193f23867f1ab1964800704ea',
+  },
+})
+gitment.render('github-comment')
+</script>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-shiro-Authentication" data-title="Shiro-Authentication(身份验证)" data-url="http://kiritor.github.io/2015/09/28/shiro-Authentication/"></div>
                                     
