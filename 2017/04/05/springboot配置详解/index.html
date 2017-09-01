@@ -19,7 +19,7 @@
 在实际的项目中,配置是十分复杂的,存在多个配置环境,例如:
 
 开发环境">
-<meta property="og:updated_time" content="2017-09-01T08:26:58.000Z">
+<meta property="og:updated_time" content="2017-09-01T08:33:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot(三):配置详解">
 <meta name="twitter:description" content="写在之前在前面Spring Boot的入门篇中,可以很直观的感受到使用Spring Boot没有了原来整合Spring应用时繁琐的XML配置内容,替代它的是在pom.xml中引入模块化的Starter POMs,各个模块具有自己的默认配置.在application.properties文件中,只需要设置少量的应用即可开启应用.
@@ -269,7 +269,7 @@
 <blockquote>
 <p>开发环境 -&gt; 测试环境 -&gt; 演示环境 -&gt;生产环境</p>
 </blockquote>
-<p>每个环境的配置项总是不同的,而且就算是在开发环境中,不同的开发人员也会有区别,配置文件的读取总是比较伤脑筋.Spring Boot提供了一种优先级配置读取机制很好的解决此问题.<br>在入门篇中,了解到Spring Boot的配置会从application.properties中读取,实际上这只是Spring Boot配置链中的一环而已.</p>
+<p>每个环境的配置项总是不同的,而且就算是在开发环境中,不同的开发人员也会有区别,配置文件的读取总是比较伤脑筋.Spring Boot提供了一种优先级配置读取机制很好的解决此问题.<br>在入门篇中,了解到Spring Boot的配置会从application.properties中读取,实际上这只是Spring Boot配置链中的一环而已.<br><a id="more"></a></p>
 <h2 id="配置优先级"><a href="#配置优先级" class="headerlink" title="配置优先级"></a>配置优先级</h2><p>通常应用部署会包括开发、测试和生产等若干个环境,不同环境之间的配置存在覆盖关系.暴力的做法是只有一个配置文件,发版部署的时候在手动去确定某些配置项,容易出错且浪费时间.Spring本身通过引入Environment和概要信息(Profile)API,可以更加灵活的处理不同环境和配置文件的方式.<br>Spring Boot提供了统一的方式来管理应用的配置,允许开发人员使用属性文件、YAML文件、环境变量和命令行参数来定义优先级不同的配置值.<br>Spring Boot配置按照优先级从高到低的顺序如下:</p>
 <blockquote>
 <ol>
