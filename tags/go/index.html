@@ -5,12 +5,12 @@
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   
-  <title>Tag: go | Tao.liang&#39;s Blog</title>
+  <title>Tag: Go | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="乐于分享,喜欢环境音乐的小程一枚">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tao.liang's Blog">
-<meta property="og:url" content="http://kiritor.github.io/tags/go/index.html">
+<meta property="og:url" content="http://kiritor.github.io/tags/Go/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="乐于分享,喜欢环境音乐的小程一枚">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
 	  
       <div class="body-wrap">
   
-    <article id="post-golang-install" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-GolangPrjManager" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -210,8 +210,8 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2015/03/27/golang-install/" class="article-date">
-  	<time datetime="2015-03-27T07:52:33.000Z" itemprop="datePublished">Mar 27 2015</time>
+            <a href="/2015/06/05/GolangPrjManager/" class="article-date">
+  	<time datetime="2015-06-05T01:34:07.000Z" itemprop="datePublished">Jun 5 2015</time>
 </a>
 
         </div>
@@ -225,7 +225,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/27/golang-install/">Windows下搭建go语言开发环境</a>
+      <a class="article-title" href="/2015/06/05/GolangPrjManager/">Golang工程管理</a>
     </h1>
   
 
@@ -241,7 +241,8 @@
                                             
                                             -->
                                             
-                                                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博客打算从SAE转移到github上,须花些时间。这段时间一直在学习go语言,还在入门阶段,不过也算了解了一些语法。由于最近博客搬家,也没啥可写的,就写一下自己开发go语言的配置吧。<br><strong>Bracket + Git</strong><br>由于初学并没有采用集成开发环境(liteIDE,eclipse等),因为我想熟悉下go的相关命令,以及go工程项目的管理。<br>
+                                                <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br>
                                                     
                                         </div>
 
@@ -249,7 +250,7 @@
                                             <div class="article-info article-info-index">
                                                 
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程管理/">工程管理</a></li></ul>
 	</div>
 
 
@@ -261,7 +262,7 @@
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2015/03/27/golang-install/#more">More >></a>
+                                                                <a  href="/2015/06/05/GolangPrjManager/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -305,37 +306,6 @@
   })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
-</script>
-  </div>
-</footer>
--->
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/mobile.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/prefixfree.js"></script>
-
-
-
-
-
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
-    <a title="返回顶部" style="opacity: 100%;">
-        <img src="/img/scrollup.png" />
-    </a>
-</div>
-
-<script src="/js/totop.js"></script>
-<script src="/js/share.js"></script>
-
-  </div>
-</body>
-</html>
-ll','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
   </div>
 </footer>

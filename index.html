@@ -316,40 +316,10 @@
                                             <!--
                                             
 
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#过度设计"><span class="toc-number">1.</span> <span class="toc-text">过度设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计不足"><span class="toc-number">2.</span> <span class="toc-text">设计不足</span></a></li></ol>
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                  
                                             
                                             -->
                                             
-                                                        <p>翻博客的时候,偶然间发现一个词<span class="color">过度设计</span>,与之想对应的则为<span class="color">设计不足</span>,发散下思维,看看些文章做一些自己的总结。</p>
+                                                <p>翻博客的时候,偶然间发现一个词<span class="color">过度设计</span>,与之想对应的则为<span class="color">设计不足</span>,发散下思维,看看些文章做一些自己的总结。</p>
 <h3 id="过度设计"><a href="#过度设计" class="headerlink" title="过度设计"></a>过度设计</h3><p>过度设计指的是:设计实现出来的系统臃肿庞大,功能俱全确不好用,特别是那种巨型的ERP系统。分为需求层面上的过度设计和软件实现层面上的过度设计。</p>
 <blockquote>
 <p> 需求层面上的的过度设计: 需求上的过度设计即过度解读用户需求, 形成了太多的衍生需求,这些需求是否能够真正帮助用户还是两说. 这些衍生需求是                         否需要设计还是丢弃需要权衡。<br> 软件设计层面上的过度设计: 过度的封装、一堆接口和无用的方法、超复杂的xml配置文件,不恰当的框架选型等。造成代码臃肿,难以维护.</p>
@@ -357,22 +327,8 @@
 <h3 id="设计不足"><a href="#设计不足" class="headerlink" title="设计不足"></a>设计不足</h3><blockquote>
 <p> 设计不足: 指的是设计出来的系统复用性差，扩展性不足，不能灵活的应对变化，甚至达不到用户需求.</p>
 </blockquote>
-<p>总而言之,设计不足和过度设计都是设计不当，实际情况下不论是以需求为导向还是前瞻性的需求为导向到应该寻取两者的平衡点,尽量做到设计简洁、实用.<br>&lt;–more–&gt;</p>
-<p>参考资料:<br><a href="https://www.douban.com/note/497860457/" target="_blank" rel="external">https://www.douban.com/note/497860457/</a><br><a href="http://blog.kazaff.me/2017/09/15/%E5%85%B3%E4%BA%8E%E8%BF%87%E5%BA%A6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" target="_blank" rel="external">http://blog.kazaff.me/2017/09/15/%E5%85%B3%E4%BA%8E%E8%BF%87%E5%BA%A6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/</a></p>
-
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2017/12/15/关于过度设计、设计不足的思考/">
-                                                                    http://kiritor.github.io/2017/12/15/关于过度设计、设计不足的思考/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
-
-                                                            <div class="post-info">
-
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
+<p>总而言之,设计不足和过度设计都是设计不当，实际情况下不论是以需求为导向还是前瞻性的需求为导向到应该寻取两者的平衡点,尽量做到设计简洁、实用.<br>
+                                                    
                                         </div>
 
                                         
@@ -390,6 +346,10 @@
 
 
                                                         
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/12/15/关于过度设计、设计不足的思考/#more">More >></a>
+                                                            </p>
+                                                            
                                                                 <div class="clearfix"></div>
                                             </div>
                                             
