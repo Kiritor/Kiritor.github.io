@@ -30,10 +30,10 @@ var searchFunc = function (path, search_id, content_id) {
         return {
           title: $("title", this).text(),
           content: $("content", this).text(),
-          url: $("url", this).text()
+          url: $("link", this).attr("href")
         };
       }).get();
-
+      
       var $input = document.getElementById(search_id);
       var $resultContent = document.getElementById(content_id);
 
@@ -44,6 +44,7 @@ var searchFunc = function (path, search_id, content_id) {
         if (this.value.trim().length <= 0) {
           return;
         }
+		  
         // perform local searching
         datas.forEach(function (data) {
           var isMatch = true;
@@ -114,7 +115,7 @@ var searchFunc = function (path, search_id, content_id) {
         });
         str += "</ul>";
         if (str.indexOf('<li>') === -1) {
-          return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>没有找到内容，更换下搜索词试试吧~<span></ul>";
+          return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>没有找到内容，更换下关键字试试吧~<span></ul>";
         }
         $resultContent.innerHTML = BTN + str;
       });
@@ -123,5 +124,13 @@ var searchFunc = function (path, search_id, content_id) {
   $(document).on('click', '#local-search-close', function() {
     $('#local-search-input').val('');
     $('#local-search-result').html('');
+  });
+	
+  $(document).on('click', function(event) {
+       var _con = $('#local-search-close');   // 设置目标区域
+	   if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
+			$('#local-search-input').val('');
+    		$('#local-search-result').html('');
+	   }
   });
 }

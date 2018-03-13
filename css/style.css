@@ -3656,8 +3656,7 @@ img.ug-sepia-effect {
   border-radius: 0;
   border: 0;
   border-bottom: 2px solid #5ad1ed;
-  color: #666;
-  font-size: 14px;
+  font-size: 12px;
 }
 #local-search-close {
   content: 'x';
@@ -3770,6 +3769,6 @@ img.ug-sepia-effect {
 .local-search-plugin .icon {
   position: relative;
   left: -30px;
-  color: #999;
+  background-image: url("../img/search.png");
   cursor: pointer;
 }
