@@ -30,13 +30,13 @@
   <script src="http://kiritor.github.io/js/jquery1.8.2.min.js"></script>
   <script src="http://kiritor.github.io/js/jquery.nicescroll.js"></script>
   <script src="http://kiritor.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="/js/search.js"></script>
   <script src="/js/ug-theme-default.js"></script>
   <script src="/js/unitegallery.js"></script>
   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 </head>
 
 <body>
-
   <div id="container">
     <div class="left-col">
     <div class="overlay"></div>
@@ -191,13 +191,46 @@
 	</div>
 </nav>
 
-	  <!--是否开启最近通知-->
-	  
-	  <div class="recent">
-    开启评论...
+	  <div class="page-header">
+	<span class="local-search local-search-google local-search-plugin" style="float:right;">
+  <input type="search" placeholder="搜索" id="local-search-input" class="local-search-input-cls" style="">
+  <div id="local-search-result" class="local-search-result-cls"></div>
+</span>
+
+<script>
+    var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+    if ($('.local-search').size() && !isMobile.any()) {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+    }
+</script>
+	<!--是否开启最近通知-->
+	
+	开启评论...
+
+
+	
 </div>
 
-	  
       <div class="body-wrap"><article id="post-goget-progressbar" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
