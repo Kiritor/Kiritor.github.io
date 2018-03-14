@@ -3774,3 +3774,7 @@ img.ug-sepia-effect {
   height: 20px;
   cursor: pointer;
 }
+@charset "utf-8";
+.gitment-editor-avatar-img {
+  border-radius: 50%;
+}
