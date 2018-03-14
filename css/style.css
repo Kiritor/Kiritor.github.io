@@ -3719,7 +3719,7 @@ img.ug-sepia-effect {
   min-height: 0;
   height: auto;
   overflow-y: auto;
-  border: 1px solid #000;
+  border: 1px solid #eee;
   padding: 10px 20px;
   background: #fff;
   -webkit-box-shadow: 1px 2px 4px #ccc;
