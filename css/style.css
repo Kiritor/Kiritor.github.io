@@ -3668,7 +3668,7 @@ img.ug-sepia-effect {
   border-radius: 100%;
   line-height: 20px;
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   font-family: consolas;
   border: 1px solid #ccc;
   display: block;
@@ -3701,25 +3701,25 @@ img.ug-sepia-effect {
 .local-search-result-cls {
   position: absolute;
   z-index: 99;
-  width: 400px;
-  top: 50px;
+  width: 620px;
+  top: 34px;
   right: 0;
 }
 .local-search-result-cls .local-search-empty {
-  color: #888;
+  color: #555;
   line-height: 44px;
   text-align: center;
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
 }
 .local-search-result-cls ul {
-  width: 360px;
-  max-height: 450px;
+  width: 580px;
+  max-height: 460px;
   min-height: 0;
   height: auto;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   padding: 10px 20px;
   background: #fff;
   -webkit-box-shadow: 1px 2px 4px #ccc;
@@ -3739,11 +3739,11 @@ img.ug-sepia-effect {
 }
 .local-search-result-cls ul li a {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .local-search-result-cls ul li p {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 0;
+  font-size: 12px;
   max-height: 124px;
   overflow: hidden;
 }
@@ -3768,7 +3768,9 @@ img.ug-sepia-effect {
 }
 .local-search-plugin .icon {
   position: relative;
+  background: url("../img/search.png");
   left: -30px;
-  background-image: url("../img/search.png");
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
