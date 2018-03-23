@@ -228,6 +228,10 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
+	if(isMobile.any()){
+	    //手机端取消搜索功能
+		$('.local-search').css("display","none");
+	}
 
     if ($('.local-search').size() && !isMobile.any()) {
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');

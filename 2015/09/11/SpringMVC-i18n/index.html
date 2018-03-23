@@ -233,6 +233,10 @@ Spring国际化I18N:作为”国际化”的简称,其来源是英文">
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
+	if(isMobile.any()){
+	    //手机端取消搜索功能
+		$('.local-search').css("display","none");
+	}
 
     if ($('.local-search').size() && !isMobile.any()) {
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');

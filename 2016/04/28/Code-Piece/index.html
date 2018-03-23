@@ -223,6 +223,10 @@ SpringMVC日期处理配置文件">
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
+	if(isMobile.any()){
+	    //手机端取消搜索功能
+		$('.local-search').css("display","none");
+	}
 
     if ($('.local-search').size() && !isMobile.any()) {
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
