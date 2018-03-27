@@ -199,10 +199,10 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -232,6 +232,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -295,7 +296,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -329,7 +330,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p>
 <h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br><a id="more"></a></p>
@@ -414,18 +415,18 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
                                 
 <nav id="article-nav">
   
-    <a href="/2016/04/24/Hadoop-install/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/18/Mac-Skills/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Mac下Hadoop2.7.x配置伪分布环境(wordcount运行)
+          Mac实用小技巧
         
       </div>
     </a>
   
   
-    <a href="/2016/04/18/Mac-Skills/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mac实用小技巧</div>
+    <a href="/2016/04/04/ini配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Shiro-ini配置</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -435,7 +436,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -453,7 +454,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-Mac-Env" data-title="Mac设置环境变量" data-url="http://kiritor.github.io/2016/04/18/Mac-Env/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -484,6 +485,34 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

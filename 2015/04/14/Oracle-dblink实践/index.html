@@ -199,10 +199,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -232,6 +232,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -295,7 +296,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -329,7 +330,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
@@ -453,7 +454,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -471,7 +472,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-Oracle-dblink实践" data-title="Oracle dblink实践" data-url="http://kiritor.github.io/2015/04/14/Oracle-dblink实践/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -502,6 +503,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

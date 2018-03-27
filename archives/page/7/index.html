@@ -195,10 +195,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -228,6 +228,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -277,11 +278,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br>
                                                     
@@ -324,6 +325,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-Go语言日志处理" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -364,7 +393,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -398,7 +427,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>Go语言有一个标准的库(log),提供了最基本的日志记录功能。</p>
 
@@ -450,6 +479,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-Golang操作MySQL数据库-使用mymysql驱动" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -490,11 +547,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
 <h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br>
@@ -538,6 +595,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-Golang-Import的理解" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -578,11 +663,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。<br>初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
                                                     
@@ -625,6 +710,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-jQuery中的冲突-noConfilic解决机制" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -665,11 +778,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
 <p>   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是window.jQuery对象的一个引用,因此即使被删除,jQuery依然能保证整个类库的完整性。<br>
@@ -713,6 +826,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
   
     <nav id="page-nav">

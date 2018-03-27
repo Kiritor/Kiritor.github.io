@@ -204,10 +204,10 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -237,6 +237,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -300,7 +301,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -334,7 +335,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
 <p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
@@ -459,7 +460,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -477,7 +478,7 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-jQuery对象、DOM对象-傻傻分不清楚" data-title="jQuery对象、DOM对象?傻傻分不清楚" data-url="http://kiritor.github.io/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -508,6 +509,34 @@ DOM、DOM对象   DOM(Document Object Model,文档对象模型),DOM是W3C的标�
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

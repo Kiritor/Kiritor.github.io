@@ -226,10 +226,10 @@ Email: kiritor@hotmail.com
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -259,6 +259,7 @@ Email: kiritor@hotmail.com
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -314,7 +315,7 @@ Email: kiritor@hotmail.com
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -348,7 +349,7 @@ Email: kiritor@hotmail.com
 
                                                   
                                             
-                                           
+
                                             
                                                         <h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
 <li>手机: 188832519XX</li>
@@ -448,7 +449,7 @@ Email: kiritor@hotmail.com
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -466,7 +467,7 @@ Email: kiritor@hotmail.com
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="page-undefined" data-title="关于我" data-url="http://kiritor.github.io/resume/index.html"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -497,6 +498,34 @@ Email: kiritor@hotmail.com
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

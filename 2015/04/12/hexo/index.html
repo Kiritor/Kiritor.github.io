@@ -200,10 +200,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -233,6 +233,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -296,7 +297,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -330,7 +331,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br><a id="more"></a><br><img src="http://kiritor.github.io/img/CSDN.png" alt="CSDN"><br>之后觉得CSDN越来越趋向商业化,就滋生了创建自己的独立博客的想法,期间也去开源中国,博客园尝试过,都不大理想,加之自己也开始做前端这块的工作(苦逼),觉得更有必要搭建自己的独立博客了,接下来就是在SAE有了自己的独立博客(仿简书网,花了自己很大的心血的):<br><img src="http://kiritor.github.io/img/SAE.png" alt="SAE"><br><img src="http://kiritor.github.io/img/SAE2.png" alt="SAE"><br>自己在SAE上花了很多功夫美化了很多的东西,但是时代在变迁,wordpress搭建的博客慢慢已经跟不上潮流了.现阶段流行的是静态博客(Node.js、go语言搭建)。简单来说静态博客有如下的好处:</p>
 <p>####1、高效的性能.</p>
@@ -434,7 +435,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -452,7 +453,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-hexo" data-title="像极客一样去写作~" data-url="http://kiritor.github.io/2015/04/12/hexo/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -483,6 +484,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

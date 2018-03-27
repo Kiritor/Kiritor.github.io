@@ -199,10 +199,10 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -232,6 +232,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -295,7 +296,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -329,7 +330,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
 <h1 id="Draggable是什么"><a href="#Draggable是什么" class="headerlink" title="Draggable是什么"></a>Draggable是什么</h1><p>Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。<br>Draggble覆盖默认值$.fn.draggable.defaults。<br><a id="more"></a></p>
@@ -437,7 +438,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -455,7 +456,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-easyui-draggable" data-title="EasyUI基础入门之Draggable(拖拽)" data-url="http://kiritor.github.io/2015/03/27/easyui-draggable/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -486,6 +487,34 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

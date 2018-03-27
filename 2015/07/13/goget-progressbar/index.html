@@ -199,10 +199,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -232,6 +232,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -295,7 +296,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -329,7 +330,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <p>&nbsp;&nbsp;&nbsp;&nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;原文地址如下:<a href="http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000" target="_blank" rel="external">http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000</a><br><a id="more"></a><br>&nbsp;&nbsp;&nbsp;&nbsp;因为leanote在github.com上的包有点大, 所以 go get github.com/leanote/leanote/app 会很慢, 这个会执行几分钟或更长, 不知道的朋友还以为卡死了. 找了下 go get 没有一个选项可以输出进度的, 于是决定修改golang源码(别以为很有技术含量, 还不是go代码?).</p>
@@ -441,7 +442,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -459,7 +460,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-goget-progressbar" data-title="Golang:go get现实显示进度(转)" data-url="http://kiritor.github.io/2015/07/13/goget-progressbar/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -490,6 +491,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

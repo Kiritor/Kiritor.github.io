@@ -1,22 +1,22 @@
 // A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
-// Copyright (C) 2015 
+// Copyright (C) 2015
 // Joseph Pan <http://github.com/wzpan>
 // Shuhao Mao <http://github.com/maoshuhao>
 // This library is free software; you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as
 // published by the Free Software Foundation; either version 2.1 of the
 // License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful, but
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301 USA
-// 
+//
 
 var searchFunc = function (path, search_id, content_id) {
   'use strict';
@@ -33,7 +33,7 @@ var searchFunc = function (path, search_id, content_id) {
           url: $("link", this).attr("href")
         };
       }).get();
-      
+
       var $input = document.getElementById(search_id);
       var $resultContent = document.getElementById(content_id);
 
@@ -44,7 +44,7 @@ var searchFunc = function (path, search_id, content_id) {
         if (this.value.trim().length <= 0) {
           return;
         }
-		  
+
         // perform local searching
         datas.forEach(function (data) {
           var isMatch = true;
@@ -125,7 +125,7 @@ var searchFunc = function (path, search_id, content_id) {
     $('#local-search-input').val('');
     $('#local-search-result').html('');
   });
-	
+
   $(document).on('click', function(event) {
        var _con = $('#local-search-close');   // 设置目标区域
 	   if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1

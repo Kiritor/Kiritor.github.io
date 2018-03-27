@@ -201,10 +201,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -234,6 +234,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -297,7 +298,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -331,7 +332,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博客打算从SAE转移到github上,须花些时间。这段时间一直在学习go语言,还在入门阶段,不过也算了解了一些语法。由于最近博客搬家,也没啥可写的,就写一下自己开发go语言的配置吧。<br><strong>Bracket + Git</strong><br>由于初学并没有采用集成开发环境(liteIDE,eclipse等),因为我想熟悉下go的相关命令,以及go工程项目的管理。<br><a id="more"></a></p>
 <h1 id="GO语言"><a href="#GO语言" class="headerlink" title="GO语言"></a>GO语言</h1><p>Go语言是Google内部主推的语言,它作为一门全新的静态类型开发语言,与当前的开发语言相比具有许多令人兴奋不已的新特性。专门针对多处理器系统的应用编程进行了优化,使用go语言完全可以媲美c、c++的速度,而且更加安全、简洁,支持并行进程。<br>以下是go语言的主要特征:</p>
@@ -458,7 +459,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -476,7 +477,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-golang-install" data-title="Windows下搭建go语言开发环境" data-url="http://kiritor.github.io/2015/03/27/golang-install/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -507,6 +508,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

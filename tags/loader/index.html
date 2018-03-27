@@ -195,10 +195,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -228,6 +228,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -277,11 +278,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。</p>
 <h1 id="什么是EasyLoader"><a href="#什么是EasyLoader" class="headerlink" title="什么是EasyLoader"></a>什么是EasyLoader</h1><p>正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？<br>
@@ -325,6 +326,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
   
 

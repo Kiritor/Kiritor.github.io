@@ -195,10 +195,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -228,6 +228,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -277,11 +278,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <h2 id="写在之前"><a href="#写在之前" class="headerlink" title="写在之前"></a>写在之前</h2><p>在前面Spring Boot的入门篇中,可以很直观的感受到使用Spring Boot没有了原来整合Spring应用时繁琐的XML配置内容,替代它的是在pom.xml中引入模块化的Starter POMs,各个模块具有自己的默认配置.在application.properties文件中,只需要设置少量的应用即可开启应用.</p>
 <p>在实际的项目中,配置是十分复杂的,存在多个配置环境,例如:</p>
@@ -329,6 +330,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-noTOC-springboot-war" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
     <script>
@@ -369,11 +398,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <p>在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.</p>
 <ol>
@@ -423,6 +452,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
     <article id="post-noTOC-springboot入门" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
     <script>
@@ -463,11 +520,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Spring Boot是由Pivotal团队提供的全新框架,其设计目的是用来简化新Spring应用的初始搭建及开发过程。JavaEE开发的小伙伴肯定听说过”约定优于配置”、”契约式编程”,就是说系统、类库、框架应该假定合理的默认配置，而非要求提供不必要的配置,简化配置项减少跨平台部署容易出现的问题。基于这些问题Spring Boot应运而生，更简单快捷的构建Spring应用。</p>
 <h2 id="Spring-Boot优点"><a href="#Spring-Boot优点" class="headerlink" title="Spring Boot优点"></a>Spring Boot优点</h2><p>Spring Boot让Spring应用简单、快速、轻量化!传统的Spring应用搭建一个基础的spring web项目需要做些什么呢?</p>
@@ -515,6 +572,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
   
 

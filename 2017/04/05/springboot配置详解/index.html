@@ -205,10 +205,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -238,6 +238,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -301,10 +302,10 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
+
                                             
                                             
-                                            
-                                           
+
                                             
                                                         <h2 id="写在之前"><a href="#写在之前" class="headerlink" title="写在之前"></a>写在之前</h2><p>在前面Spring Boot的入门篇中,可以很直观的感受到使用Spring Boot没有了原来整合Spring应用时繁琐的XML配置内容,替代它的是在pom.xml中引入模块化的Starter POMs,各个模块具有自己的默认配置.在application.properties文件中,只需要设置少量的应用即可开启应用.</p>
 <p>在实际的项目中,配置是十分复杂的,存在多个配置环境,例如:</p>
@@ -457,7 +458,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -475,7 +476,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-noTOC-springboot配置详解" data-title="Spring Boot(三):配置详解" data-url="http://kiritor.github.io/2017/04/05/springboot配置详解/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -506,6 +507,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

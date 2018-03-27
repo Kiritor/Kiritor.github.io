@@ -195,10 +195,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -228,6 +228,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -277,11 +278,11 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                             
-                                           
+
                                             
                                                 <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
 <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br>
@@ -325,6 +326,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
   
   
 

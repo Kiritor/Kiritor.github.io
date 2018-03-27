@@ -196,10 +196,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -229,6 +229,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -292,7 +293,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -326,7 +327,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)<br><a id="more"></a></p>
 <h1 id="EasyUI体系结构"><a href="#EasyUI体系结构" class="headerlink" title="EasyUI体系结构"></a>EasyUI体系结构</h1><p>EasyUI所有的插件主要分为六大部分。Base基础、Layout布局、Menu&amp;Button、Form表单、Window窗口等。从最基础的开始先掌握EasyUI基础部分。Base部分包含了八个基础插件分别为:</p>
@@ -449,7 +450,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -467,7 +468,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-easyui-parser" data-title="EasyUI基础入门之Parser(解析器)" data-url="http://kiritor.github.io/2015/03/26/easyui-parser/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -498,6 +499,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">

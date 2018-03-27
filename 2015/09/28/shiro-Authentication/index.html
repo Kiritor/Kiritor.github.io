@@ -201,10 +201,10 @@
 </span>
 
 <script>
-	
-	
-        
-    
+
+
+
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -234,6 +234,7 @@
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
 </script>
+
 	<!--是否开启最近通知-->
 	
 	开启评论...
@@ -297,7 +298,7 @@
                                     
 
                                         <div class="article-entry" itemprop="articleBody">
-                                            
+
                                             
 
                                                     <p class="toc-button">目录</p>
@@ -331,7 +332,7 @@
 
                                                   
                                             
-                                           
+
                                             
                                                         <h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br><a id="more"></a></p>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>在实际研究Shiro身份认证流程之前,先搭建一个架子,进行简单的验证.</p>
@@ -475,7 +476,7 @@
                                     
                                         <!-- 多说评论框 start -->
                                         
-                                            <div style="padding-left:30px;padding-right:30px;">
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
                                                 <div id="github-comment"></div>
                                                 <script>
                                                     var gitment = new Gitment({
@@ -493,7 +494,7 @@
                                             </div>
                                             <!--
                                     <div class="ds-thread" data-thread-key="post-shiro-Authentication" data-title="Shiro-Authentication(身份验证)" data-url="http://kiritor.github.io/2015/09/28/shiro-Authentication/"></div>
-                                    
+
                                     <script type="text/javascript">
                                         var duoshuoQuery = {
                                             short_name: "kiritor"
@@ -524,6 +525,34 @@
 
 -->
 
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
 </div>
       <!--
 <footer id="footer">
