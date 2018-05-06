@@ -208,7 +208,7 @@
 	</div>
 </nav>
 
-	  <div class="page-header" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+	  <div class="page-header" style="white-space:nowrap;text-overflow:ellipsis;">
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -216,10 +216,6 @@
 </span>
 
 <script>
-
-
-
-
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -240,14 +236,23 @@
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
+	
+	
 	if(isMobile.any()){
 	    //手机端取消搜索功能
-		$('.local-search').css("display","none");
+		//$('.local-search').css("display","none");
 	}
-
+	
+	$(".local-search").on('input porpertychange',function(){
+		
+		//searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+		
+	});
+    
     if ($('.local-search').size() && !isMobile.any()) {
         searchFunc("/search.xml", 'local-search-input', 'local-search-result');
     }
+	
 </script>
 
 	<!--是否开启最近通知-->
@@ -474,8 +479,8 @@
     </a>
   
   
-    <a href="/2016/04/18/Mac-Env/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mac设置环境变量</div>
+    <a href="/2016/04/18/Mac-Skills/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac实用小技巧</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
