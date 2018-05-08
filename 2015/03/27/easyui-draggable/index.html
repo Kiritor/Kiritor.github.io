@@ -191,7 +191,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 	</div>
 </nav>
 
-	  <div class="page-header" style="white-space:nowrap;text-overflow:ellipsis;">
+	  <div class="page-header" style="">
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -223,7 +223,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 	
 	if(isMobile.any()){
 	    //手机端取消搜索功能
-		//$('.local-search').css("display","none");
+		$('.local-search').css("display","none");
 	}
 	
 	$(".local-search").on('input porpertychange',function(){

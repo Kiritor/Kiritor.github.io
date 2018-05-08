@@ -194,7 +194,7 @@ Spring B">
 	</div>
 </nav>
 
-	  <div class="page-header" style="white-space:nowrap;text-overflow:ellipsis;">
+	  <div class="page-header" style="">
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -226,7 +226,7 @@ Spring B">
 	
 	if(isMobile.any()){
 	    //手机端取消搜索功能
-		//$('.local-search').css("display","none");
+		$('.local-search').css("display","none");
 	}
 	
 	$(".local-search").on('input porpertychange',function(){
