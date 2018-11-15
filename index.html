@@ -348,6 +348,139 @@
 
 
   
+    <article id="post-noTOC-dev-faq" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2018/11/15/dev-faq/" class="article-date">
+  	<time datetime="2018-11-15T02:13:17.000Z" itemprop="datePublished">Nov 15 2018</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/15/dev-faq/">Dev-faq</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+                                            
+
+                                            
+                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。</p>
+<h2 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="Autowired注解"></a>Autowired注解</h2><p>与 <strong>@Resource</strong> 做个简单对比:</p>
+<ul>
+<li>@Resource属于JAVAEE,@Autowired属于Spring</li>
+<li>@Autowired按类型装配,可配合@Qualifier按名称装配(目前Spring4泛型注入使用该注解,泛型注入还能根据泛型选择)</li>
+<li>@Resource默认按名称进行装配，在按类型装配，如果指定了name属性则只按名称装配</li>
+</ul>
+<p>由于 <strong>@Resource</strong>属于JAVAEE,耦合度较低，一般情况下推荐使用</p>
+<p>构建springboot+mybatis通用maper、通用service时，使用 <strong>@Resource</strong> 注解报错如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">No qualifying bean of type <span class="string">'tk.mybatis.mapper.common.Mapper&lt;?&gt;'</span> available: expected single matching bean but found <span class="number">2</span>: roleMapper,userMapper</div></pre></td></tr></table></figure></p>
+<p>原因在于多个mapper继承了通用mapper, 又使用了泛型，<strong>@Resource</strong>注解无法装配,采用 <strong>@Autowired</strong>解决。</p>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2018/11/15/dev-faq/">
+                                                                    http://kiritor.github.io/2018/11/15/dev-faq/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                                        
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!-- 多说评论框 start -->
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
     <article id="post-noTOC-Interview-thought" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
@@ -420,139 +553,6 @@
                                                                 <a  href="/2017/03/01/Interview-thought/#more">More >></a>
                                                             </p>
                                                             
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                            
-                                        <!-- 多说评论框 start -->
-                                        
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-<script>
-	var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
-</script>
-
-  
-    <article id="post-noTOC-dev-faq" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2018/11/15/dev-faq/" class="article-date">
-  	<time datetime="2018-11-15T02:13:17.000Z" itemprop="datePublished">Nov 15 2018</time>
-</a>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/15/dev-faq/">dev-faq</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-
-                                            
-                                            
-
-                                            
-                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。</p>
-<h2 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="Autowired注解"></a>Autowired注解</h2><p>与 <strong>@Resource</strong> 做个简单对比:</p>
-<ul>
-<li>@Resource属于JAVAEE,@Autowired属于Spring</li>
-<li>@Autowired按类型装配,可配合@Qualifier按名称装配(目前Spring4泛型注入使用该注解,泛型注入还能根据泛型选择)</li>
-<li>@Resource默认按名称进行装配，在按类型装配，如果指定了name属性则只按名称装配</li>
-</ul>
-<p>由于 <strong>@Resource</strong>属于JAVAEE,耦合度较低，一般情况下推荐使用</p>
-<p>构建springboot+mybatis通用maper、通用service时，使用 <strong>@Resource</strong> 注解报错如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">No qualifying bean of type <span class="string">'tk.mybatis.mapper.common.Mapper&lt;?&gt;'</span> available: expected single matching bean but found <span class="number">2</span>: roleMapper,userMapper</div></pre></td></tr></table></figure></p>
-<p>原因在于多个mapper继承了通用mapper, 又使用了泛型，<strong>@Resource</strong>注解无法装配,采用 <strong>@Autowired</strong>解决。</p>
-
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2018/11/15/dev-faq/">
-                                                                    http://kiritor.github.io/2018/11/15/dev-faq/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
-
-                                                            <div class="post-info">
-
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-                                                        
                                                                 <div class="clearfix"></div>
                                             </div>
                                             
