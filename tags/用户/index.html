@@ -29,7 +29,8 @@
   <script src="/js/search.js"></script>
   <script src="/js/ug-theme-default.js"></script>
   <script src="/js/unitegallery.js"></script>
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script src="/js/av.min.js"></script>
+  <script src="/js/valine.min.js"></script>
 </head>
 
 <body>
@@ -244,127 +245,7 @@
 
       <div class="body-wrap">
   
-    <article id="post-Oracle-instance-tablespase-user-table" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
     
-        <div class="article-meta">
-            <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" class="article-date">
-  	<time datetime="2015-12-23T08:28:19.000Z" itemprop="datePublished">Dec 23 2015</time>
-</a>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/Oracle-instance-tablespase-user-table/">Oracle-数据库实例、表空间、用户、表之间的关系(转)</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-
-                                            
-
-                                            
-
-                                            
-                                                <p>完整的Oracle数据库通常由两部分组成:<strong>Oracle数据库</strong>和<strong>数据库实例</strong>。</p>
-<blockquote>
-<p>   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);<br>   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;</p>
-</blockquote>
-<p>在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库实例来访问和控制磁盘中的数据文件。Oracle有一个很大的内存块,称为全局区(SGA)<br>
-                                                    
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库实例/">数据库实例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用户/">用户</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表空间/">表空间</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/12/23/Oracle-instance-tablespase-user-table/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                            
-                                      
-                                        <!-- 多说评论框 start -->
-                                        <!--
-                                        
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-<script>
-	var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
-</script>
-
   
   
 

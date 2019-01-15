@@ -29,7 +29,8 @@
   <script src="/js/search.js"></script>
   <script src="/js/ug-theme-default.js"></script>
   <script src="/js/unitegallery.js"></script>
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script src="/js/av.min.js"></script>
+  <script src="/js/valine.min.js"></script>
 </head>
 
 <body>
@@ -244,124 +245,7 @@
 
       <div class="body-wrap">
   
-    <article id="post-SpringMVC-i18n" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
     
-        <div class="article-meta">
-            <a href="/2015/09/11/SpringMVC-i18n/" class="article-date">
-  	<time datetime="2015-09-11T10:35:01.000Z" itemprop="datePublished">Sep 11 2015</time>
-</a>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/11/SpringMVC-i18n/">Spring MVC + Velocity实现国际化配置</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-
-                                            
-
-                                            
-
-                                            
-                                                <p>web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:<a href="https://github.com/kiritor/hr">https://github.com/kiritor/hr</a><br>需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.</p>
-<h2 id="Spring国际化"><a href="#Spring国际化" class="headerlink" title="Spring国际化"></a>Spring国际化</h2><p><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
-                                                    
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/">i18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/velocity/">velocity</a></li></ul>
-	</div>
-
-
-                                                    
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/09/11/SpringMVC-i18n/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                            
-                                      
-                                        <!-- 多说评论框 start -->
-                                        <!--
-                                        
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-<script>
-	var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
-</script>
-
   
   
 
