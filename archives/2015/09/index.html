@@ -245,11 +245,389 @@
 
       <div class="body-wrap">
   
+    <article id="post-shiro-Authentication" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/09/28/shiro-Authentication/" class="article-date">
+  	<time datetime="2015-09-28T07:35:01.000Z" itemprop="datePublished">Sep 28 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
-    
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/28/shiro-Authentication/">Shiro-Authentication(身份验证)</a>
+    </h1>
   
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/09/28/shiro-Authentication/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-shiro" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/09/18/shiro/" class="article-date">
+  	<time datetime="2015-09-18T07:35:01.000Z" itemprop="datePublished">Sep 18 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/18/shiro/">Shiro简介</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.</p>
+<p>Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.</p>
+<h2 id="Shiro-Features"><a href="#Shiro-Features" class="headerlink" title="Shiro Features"></a>Shiro Features</h2><p>Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/09/18/shiro/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-SpringMVC-i18n" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/09/11/SpringMVC-i18n/" class="article-date">
+  	<time datetime="2015-09-11T10:35:01.000Z" itemprop="datePublished">Sep 11 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/11/SpringMVC-i18n/">Spring MVC + Velocity实现国际化配置</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:<a href="https://github.com/kiritor/hr">https://github.com/kiritor/hr</a><br>需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.</p>
+<h2 id="Spring国际化"><a href="#Spring国际化" class="headerlink" title="Spring国际化"></a>Spring国际化</h2><p><b>I18N</b>:作为”国际化”的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/">i18n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/velocity/">velocity</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/09/11/SpringMVC-i18n/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
   
 

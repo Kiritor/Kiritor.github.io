@@ -247,7 +247,305 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 	
 </div>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Golang操作MySQL数据库-使用mymysql驱动" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
+  	<time datetime="2015-04-09T01:34:07.000Z" itemprop="datePublished">Apr 9 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Golang操作MySQL数据库,使用mymysql驱动
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mymysql/">mymysql</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                                    <p class="toc-button" id="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MyMySQL驱动"><span class="toc-number">1.</span> <span class="toc-text">MyMySQL驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例"><span class="toc-number">3.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-thrsafe-native"><span class="toc-number">4.</span> <span class="toc-text">mysql+thrsafe/native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#database-sql-godrv"><span class="toc-number">5.</span> <span class="toc-text">database/sql+godrv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务处理"><span class="toc-number">6.</span> <span class="toc-text">事务处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Mapping"><span class="toc-number">7.</span> <span class="toc-text">Type Mapping</span></a></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+
+                                            
+                                                        <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+<h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql" target="_blank" rel="external">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br><a id="more"></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装mymysql包必须要先安装如下包:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql/thrsafe</div><div class="line">go get github.com/ziutek/mymysql/autorc</div><div class="line">go get github.com/ziutek/mymysql/godrv</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql</div></pre></td></tr></table></figure>
+<p>打开gopath目录下的mymysql包可以看见如下的几部分:</p>
+<p>####1、mysql:go实现的mysql客户端(没有额外的依赖模块)</p>
+<p>####2、native:线程不安全的引擎</p>
+<p>####3、thrsafe:线程安全的引擎</p>
+<p>####4、autorc：自动重新连接接口</p>
+<p>####5、godrv:go提供的database/sql的实现<br>OK,也就是说,使用mymysql驱动,我们可以灵活多样的操作mysql数据库了,下面看一些实际的例子。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>上面已经说了,mymysql提供了5个子包,我们可以选择灵活的搭配来操作数据库,例如线程安全与非线程安全(到底如何选择这点是基于业务是否要求多线程,线程安全必然更加耗费性能)。</p>
+<h2 id="mysql-thrsafe-native"><a href="#mysql-thrsafe-native" class="headerlink" title="mysql+thrsafe/native"></a>mysql+thrsafe/native</h2><p>首先尝试一下mysql子包的用法,通过查阅文档,编写的代码如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">	//<span class="string">"github.com/ziutek/mymysql/autorc"</span>  //自动连接</div><div class="line">    <span class="string">"github.com/ziutek/mymysql/mysql"</span></div><div class="line">    _ <span class="string">"github.com/ziutek/mymysql/native"</span> // 线程不安全</div><div class="line">    // _ <span class="string">"github.com/ziutek/mymysql/thrsafe"</span> // 线程安全</div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    //得到一个连接</div><div class="line">    db := mysql.New(<span class="string">"tcp"</span>, <span class="string">""</span>, <span class="string">"127.0.0.1:3306"</span>, <span class="string">"root"</span>, <span class="string">"root"</span>, <span class="string">"webdemo"</span>)</div><div class="line">    //建立连接</div><div class="line">    err := db.Connect()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    //查询</div><div class="line">    rows, result, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, row := range rows &#123;</div><div class="line">        fmt.Println(row.Str(0)+<span class="string">":"</span>+row.Str(1)+<span class="string">":"</span>+row.Str(2))  //打印</div><div class="line">    &#125;</div><div class="line">	fmt.Println(result.AffectedRows())  //影响行数</div><div class="line">	fmt.Println(result.Message())</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码只是一个非常简单的操作,详细的细节处理(预处理,元数据),可以查阅文档。</p>
+<h2 id="database-sql-godrv"><a href="#database-sql-godrv" class="headerlink" title="database/sql+godrv"></a>database/sql+godrv</h2><p>mymysql也提供了golang原生的操作mysql的实现,使用这种方式的兼容性更加可靠,也是推荐的做法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"database/sql"</span></div><div class="line">    <span class="string">"github.com/ziutek/mymysql/godrv"</span></div><div class="line">)</div><div class="line">// 用户结构</div><div class="line"><span class="built_in">type</span> User struct &#123;</div><div class="line">    uid int</div><div class="line">    username string</div><div class="line">    password string</div><div class="line">&#125;</div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    // 设置连接编码</div><div class="line">    godrv.Register(<span class="string">"SET NAMES utf8"</span>)</div><div class="line">    // 连接数据库</div><div class="line">    db, err := sql.Open(<span class="string">"mymysql"</span>, <span class="string">"tcp:127.0.0.1:3306*webdemo/root/root"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer db.Close()</div><div class="line">    // 插入数据</div><div class="line">    stmt, err := db.Prepare(<span class="string">"insert into user values(null, ?, ?)"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer stmt.Close()</div><div class="line">    // sql参数</div><div class="line">    result, err := stmt.Exec(<span class="string">"LCore"</span>, <span class="string">"LCore"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    // 获取影响的行数</div><div class="line">    affect, err := result.RowsAffected()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    fmt.Printf(<span class="string">"%d\n"</span>, affect)</div><div class="line">    // 获取自增id</div><div class="line">    id, err := result.LastInsertId()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    fmt.Printf(<span class="string">"%d\n"</span>, id)</div><div class="line">    // 查询数据</div><div class="line">    rows, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line">    defer rows.Close()</div><div class="line">    // 获取的用户</div><div class="line">    users := []User&#123;&#125;</div><div class="line">    // 读取数据</div><div class="line">    <span class="keyword">for</span> rows.<span class="function"><span class="title">Next</span></span>() &#123;</div><div class="line">        user := User&#123;&#125;</div><div class="line">        err := rows.Scan(&amp;user.uid, &amp;user.username, &amp;user.password)</div><div class="line">        <span class="keyword">if</span> nil != err &#123;</div><div class="line">            panic(err)</div><div class="line">        &#125;</div><div class="line">        users = append(users, user)</div><div class="line">    &#125;</div><div class="line">    // 显示用户信息</div><div class="line">    <span class="keyword">for</span> _, user := range users &#123;</div><div class="line">        fmt.Printf(<span class="string">"%d, %s, %s\n"</span>, user.uid, user.username, user.password)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h2><p>mymysql驱动同样支持事务处理,一个简单的例子(基于mysql子包):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"github.com/ziutek/mymysql/mysql"</span></div><div class="line">    //_ <span class="string">"github.com/ziutek/mymysql/native"</span> // 线程不安全</div><div class="line">     _ <span class="string">"github.com/ziutek/mymysql/thrsafe"</span> // 线程安全</div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    db := mysql.New(<span class="string">"tcp"</span>, <span class="string">""</span>, <span class="string">"127.0.0.1:3306"</span>, <span class="string">"root"</span>, <span class="string">"root"</span>, <span class="string">"webdemo"</span>)</div><div class="line"></div><div class="line">    err := db.Connect()</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    rows, result, err := db.Query(<span class="string">"select * from user"</span>)</div><div class="line">    <span class="keyword">if</span> err != nil &#123;</div><div class="line">        panic(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, row := range rows &#123;</div><div class="line">        fmt.Println(row.Str(0)+<span class="string">":"</span>+row.Str(1)+<span class="string">":"</span>+row.Str(2))</div><div class="line">    &#125;</div><div class="line">	fmt.Println(result.AffectedRows())</div><div class="line">	fmt.Println(result.Message())</div><div class="line">	ins,err:=db.Prepare(<span class="string">"insert into user values(?,?,?)"</span>)</div><div class="line">	<span class="keyword">if</span> err!=nil &#123;</div><div class="line">		fmt.Println(err)</div><div class="line">	&#125;</div><div class="line">	//开启事务,db处于lock状态,只有当事务提交或者回滚之后才会解锁</div><div class="line">	tr,_:=db.Begin()</div><div class="line">	//处于事务且线程安全</div><div class="line">	/**</div><div class="line">      start方法属于db,因此下面两条插入语句都不会执行</div><div class="line">    */</div><div class="line">	go <span class="function"><span class="title">func</span></span>()&#123;</div><div class="line">		tr.Start(<span class="string">"insert user valies(50,'LCore','LCore')"</span>)</div><div class="line">	&#125;()</div><div class="line">	tr.Start(<span class="string">"insert user valies(70,'LCore','LCore')"</span>)</div><div class="line">	tr.Do(ins).Run(60,<span class="string">"LCore"</span>,<span class="string">"LCore"</span>)</div><div class="line">	tr.Commit()   //事务提交</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Type-Mapping"><a href="#Type-Mapping" class="headerlink" title="Type Mapping"></a>Type Mapping</h2><p>我们可以使用格式化的方式嵌入到查询sql中去,例如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rows, res, err := db.Query(<span class="string">"select * from X where id &gt; %d"</span>, id)</div></pre></td></tr></table></figure></p>
+<p>mymysql的查询结果对应在[]byte类型中,因此需要自己转换为对应的类型<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fmt.Println(string(rows[0][1].([]byte)))</div></pre></td></tr></table></figure></p>
+<p>或者使用Str函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fmt.Println(rows[0].Str(1))</div><div class="line">fmt.Pritnln(rows[0].int(1))</div></pre></td></tr></table></figure></p>
+<p>以上的例子都是返回结果矩阵中的第0行,第一列(下标0开始),但是一般情况下,我们习惯于通过列名进行访问.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name := res.Map(<span class="string">"name"</span>)</div><div class="line">fmt.Print(rows[0].Str(name))</div></pre></td></tr></table></figure></p>
+<p>MySQL服务器映射/转换特定MySQL存储类型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">         string  --&gt;  MYSQL_TYPE_STRING</div><div class="line">         []byte  --&gt;  MYSQL_TYPE_VAR_STRING</div><div class="line">    int8, uint8  --&gt;  MYSQL_TYPE_TINY</div><div class="line">  int16, uint16  --&gt;  MYSQL_TYPE_SHORT</div><div class="line">  int32, uint32  --&gt;  MYSQL_TYPE_LONG</div><div class="line">  int64, uint64  --&gt;  MYSQL_TYPE_LONGLONG</div><div class="line">      int, uint  --&gt;  protocol <span class="built_in">integer</span> <span class="built_in">type</span> <span class="built_in">which</span> match size of int</div><div class="line">           bool  --&gt;  MYSQL_TYPE_TINY</div><div class="line">        <span class="built_in">float</span>32  --&gt;  MYSQL_TYPE_FLOAT</div><div class="line">        <span class="built_in">float</span>64  --&gt;  MYSQL_TYPE_DOUBLE</div><div class="line">      time.Time  --&gt;  MYSQL_TYPE_DATETIME</div><div class="line">mysql.Timestamp  --&gt;  MYSQL_TYPE_TIMESTAMP</div><div class="line">     mysql.Date  --&gt;  MYSQL_TYPE_DATE</div><div class="line">  time.Duration  --&gt;  MYSQL_TYPE_TIME</div><div class="line">     mysql.Blob  --&gt;  MYSQL_TYPE_BLOB</div><div class="line">            nil  --&gt;  MYSQL_TYPE_NULL</div></pre></td></tr></table></figure></p>
+<p>收到结果MySQL存储类型被映射到/ mymysql类型如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">                             TINYINT  --&gt;  int8</div><div class="line">                    UNSIGNED TINYINT  --&gt;  uint8</div><div class="line">                            SMALLINT  --&gt;  int16</div><div class="line">                   UNSIGNED SMALLINT  --&gt;  uint16</div><div class="line">                      MEDIUMINT, INT  --&gt;  int32</div><div class="line">    UNSIGNED MEDIUMINT, UNSIGNED INT  --&gt;  uint32</div><div class="line">                              BIGINT  --&gt;  int64</div><div class="line">                     UNSIGNED BIGINT  --&gt;  uint64</div><div class="line">                               FLOAT  --&gt;  <span class="built_in">float</span>32</div><div class="line">                              DOUBLE  --&gt;  <span class="built_in">float</span>64</div><div class="line">                             DECIMAL  --&gt;  <span class="built_in">float</span>64</div><div class="line">                 TIMESTAMP, DATETIME  --&gt;  time.Time</div><div class="line">                                DATE  --&gt;  mysql.Date</div><div class="line">                                TIME  --&gt;  time.Duration</div><div class="line">                                YEAR  --&gt;  int16</div><div class="line">    CHAR, VARCHAR, BINARY, VARBINARY  --&gt;  []byte</div><div class="line"> TEXT, TINYTEXT, MEDIUMTEXT, LONGTEX  --&gt;  []byte</div><div class="line">BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB  --&gt;  []byte</div><div class="line">                                 BIT  --&gt;  []byte</div><div class="line">                           SET, ENUM  --&gt;  []byte</div><div class="line">                                NULL  --&gt;  nil</div></pre></td></tr></table></figure></p>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/">
+                                                                    http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        <div class="donateContainer">
+                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+                            <span id="donate" class="donate" onclick="donate()">打赏</span>
+                            <div id="QR" style="display: none;">
+
+                                <div id="alipay" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+                                    </a>
+
+                                </div>
+
+                                <div id="wechat" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+                                    </a>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <script>
+                                function donate() {
+                                    var qr = document.getElementById('QR');
+                                    if (qr.style.display === 'none') {
+                                        qr.style.display = 'block';
+                                    } else {
+                                        qr.style.display = 'none'
+                                    }
+
+                                };
+                            </script>
+                        </div>
+                        
+                            
+                                
+<nav id="article-nav">
+  
+    <a href="/2015/04/10/Go语言日志处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Go语言日志处理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/03/Golang-Import的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Golang Import的理解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                                    
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
+                                                <div id="github-comment"></div>
+                                                <script>
+                                                    var gitment = new Gitment({
+                                                        id: location.href, // 可选。默认为 location.href
+                                                        owner: 'Kiritor',
+                                                        repo: 'comment',
+                                                        oauth: {
+                                                            client_id: '864b75cecfdc135710ea',
+                                                            client_secret: '1b6e9eee3e07dd9aefce3d155b8ddaa1cdb03e77',
+                                                        },
+                                                    })
+                                                     gitment.render('github-comment')
+													 $(".gitment-editor-footer-tip").css("display","none");
+                                                </script>
+                                            </div>
+                                        -->
+                                            <!--
+                                    <div class="ds-thread" data-thread-key="post-Golang操作MySQL数据库-使用mymysql驱动" data-title="Golang操作MySQL数据库,使用mymysql驱动" data-url="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/"></div>
+
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "undefined"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    -->
+                                            <!-- 多说公共JS代码 end -->
+                                            
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
 </div>
       <!--
 <footer id="footer">

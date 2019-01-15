@@ -245,15 +245,654 @@
 
       <div class="body-wrap">
   
+    <article id="post-GolangArraySlice" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/06/04/GolangArraySlice/" class="article-date">
+  	<time datetime="2015-06-04T11:41:31.000Z" itemprop="datePublished">Jun 4 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
-    
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/04/GolangArraySlice/">Go语言数组&amp;数组切片整理</a>
+    </h1>
   
-    
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
+<p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
+<p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/append/">append</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slice/">slice</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/06/04/GolangArraySlice/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
+    <article id="post-jQueryPlugindevGuide" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/05/06/jQueryPlugindevGuide/" class="article-date">
+  	<time datetime="2015-05-06T13:14:05.000Z" itemprop="datePublished">May 6 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/06/jQueryPlugindevGuide/">自己动手开发jQuery插件</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plugin/">plugin</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/05/06/jQueryPlugindevGuide/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-noTOC-Bootstrap-案例集锦" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/04/22/Bootstrap-案例集锦/" class="article-date">
+  	<time datetime="2015-04-22T02:13:17.000Z" itemprop="datePublished">Apr 22 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/22/Bootstrap-案例集锦/">Bootstrap-案例集锦</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+                                            
+
+                                            
+                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
+<h2 id="顶部菜单"><a href="#顶部菜单" class="headerlink" title="顶部菜单"></a>顶部菜单</h2><p>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
+<center><img src="http://kiritor.github.io/img/bootstrap_top.png" alt="顶部"></center>
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/">
+                                                                    http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/header/">header</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-Go语言时间处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/15/Go语言时间处理/" class="article-date">
+  	<time datetime="2015-04-15T06:55:24.000Z" itemprop="datePublished">Apr 15 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/15/Go语言时间处理/">Go语言时间处理</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小可以表示到nanosecond(微毫秒,十亿分之1秒)。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/15/Go语言时间处理/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-Oracle-dblink实践" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/14/Oracle-dblink实践/" class="article-date">
+  	<time datetime="2015-04-14T09:22:49.000Z" itemprop="datePublished">Apr 14 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/14/Oracle-dblink实践/">Oracle dblink实践</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dblink/">dblink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/14/Oracle-dblink实践/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
   
     <nav id="page-nav">

@@ -245,15 +245,696 @@
 
       <div class="body-wrap">
   
+    <article id="post-noTOC-springboot-war" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2017/04/05/springboot-war/" class="article-date">
+  	<time datetime="2017-04-05T02:35:38.000Z" itemprop="datePublished">Apr 5 2017</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
-    
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/springboot-war/">Spring Boot(二):war包形式发布</a>
+    </h1>
   
-    
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.</p>
+<ol>
+<li>在POM.XML文件中将<packaging>jar</packaging>改为<packaging>war</packaging></li>
+</ol>
+<ol>
+<li>添加依赖.<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/springboot/">springboot</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/04/05/springboot-war/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
+    <article id="post-noTOC-springboot入门" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2017/04/02/springboot入门/" class="article-date">
+  	<time datetime="2017-04-02T03:35:38.000Z" itemprop="datePublished">Apr 2 2017</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/02/springboot入门/">Spring Boot(一):快速入门</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Spring Boot是由Pivotal团队提供的全新框架,其设计目的是用来简化新Spring应用的初始搭建及开发过程。JavaEE开发的小伙伴肯定听说过”约定优于配置”、”契约式编程”,就是说系统、类库、框架应该假定合理的默认配置，而非要求提供不必要的配置,简化配置项减少跨平台部署容易出现的问题。基于这些问题Spring Boot应运而生，更简单快捷的构建Spring应用。</p>
+<h2 id="Spring-Boot优点"><a href="#Spring-Boot优点" class="headerlink" title="Spring Boot优点"></a>Spring Boot优点</h2><p>Spring Boot让Spring应用简单、快速、轻量化!传统的Spring应用搭建一个基础的spring web项目需要做些什么呢?</p>
+<blockquote>
+<p> 1) 配置web.xml,加载spring和spring mvc.<br> 2) 配置数据库连接、配置spring事务等.<br> 3) 配置文件的加载、读取.<br> 4) ……</p>
+</blockquote>
+<p>之后的部署,打包十分繁琐.虽然基于”约定优于配置”Spring能够减少了很多的配置项,但是仍然比较臃肿,每个项目都需要这么折腾一遍!但是如果使用微服务Spring Boot框架,只需少量配置即可.<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/springboot/">springboot</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/04/02/springboot入门/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-noTOC-Interview-thought" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2017/03/01/Interview-thought/" class="article-date">
+  	<time datetime="2017-03-01T14:07:40.000Z" itemprop="datePublished">Mar 1 2017</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/Interview-thought/">第一次面试官经历</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>领导出差,临时接到通知让我当面试官。才接到这个通知，内心是比较高兴和担忧的，高兴的是领导对自己技术能力的肯定,担心的点在于面试的是社招,怕自己的技术能力尚不能胜任(后面证明自己想多了)。</p>
+<p>和人资那边协作,拿到面试人员的简历,大致的了解下,就开始面试了。自己作为面试官事先的工作和面试过程都还不错,进行的比较顺利。</p>
+<p>有一些体会:</p>
+<p><strong>面试者:</strong></p>
+<p> • 很多简历存在极大的水分与不实情况,需要面试官甄选(面试官是不容忍的).<br> • 面试者对面试的职位要有认知,技术能力能否达到应聘职位很重要,如果相差甚远反效果(自我认知不够,自欺欺人).<br> • 避免技术罗列,以实际项目用到的技术为准,适当发散.</p>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/03/01/Interview-thought/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-jQuery-plugin" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2016/11/02/jQuery-plugin/" class="article-date">
+  	<time datetime="2016-11-02T01:43:04.000Z" itemprop="datePublished">Nov 2 2016</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/jQuery-plugin/">jQuery插件练习集</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.</p>
+<h2 id="SocialShare-社会化分享插件"><a href="#SocialShare-社会化分享插件" class="headerlink" title="SocialShare(社会化分享插件)"></a>SocialShare(社会化分享插件)</h2><p>简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.<br>不过这种方式也有一些弊端:<strong>性能问题</strong>和<strong>自定义不方便</strong>,界面,交互的体验不是非常好,笔者在自己的个人站点里面也想实现社会化 分享功能,而且喜欢简洁,因此就有了这款社会化分享插件.如图所示:<br><img src="http://o7q5y55yj.bkt.clouddn.com/snapshot.gif" alt="分享"><br>插件地址:<a href="https://github.com/Kiritor/socialShare">https://github.com/Kiritor/socialShare</a><br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2016/11/02/jQuery-plugin/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="false-fish" class="article article-type-false" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2016/05/22/fish/" class="article-date">
+  	<time datetime="2016-05-22T12:03:48.000Z" itemprop="datePublished">May 22 2016</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+                                            
+
+                                            
+                                                        <html>
+<head>
+<meta charset="UTF-8">
+<style>
+    .gallery {
+        box-shadow:inset 0 0 2px 2px #ccc;
+    }
+	.title {
+	    font-size: 1.5em;
+	}
+</style>
+</head>
+<body>
+
+    <p class="title">准备开始养鱼了~</p>
+	<p>比较宅,平时周末下班也比较闲,想着养点什么东西打发时间.由于住公司,不可能养比较大的宠物,就选择养鱼了(一直觉得养鱼很难,要有耐心,小鱼又很娇贵,不过还是觉得尝试一下!)</p>
+
+    <div id="fish" class="gallery" style="display: none;box-shadow:inset 0 0 2px 2px #ccc;">
+
+        <img alt="鱼缸:选择了一个选型较大的鱼缸,配合卖家附送的贝壳,水草,搭配还是挺漂亮的~" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0116.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0116.JPG" data-description="鱼缸:选择了一个选型较大的鱼缸,配合卖家附送的贝壳,水草,搭配还是挺漂亮的~">
+
+        <img alt="作为新手,没有选择生态鱼缸(带过滤系统),也没配置过滤装置,只有勤换水了...." src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0117.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0117.JPG" data-description="作为新手,没有选择生态鱼缸(带过滤系统),也没配置过滤装置,只有勤换水了....">
+		
+		 <img alt="买鱼的过程也挺曲折的,总共跑了3次～晕" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0116.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0116.JPG" data-description="买鱼的过程也挺曲折的,总共跑了3次～晕">
+        
+		<img alt="草金:本来打算养小金鱼的,奈何没货了,只能先养着草金了(一个说法:养鱼要养单数)" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0122.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0122.JPG" data-description="草金:本来打算养小金鱼的,奈何没货了,只能先养着草金了(一个说法:养鱼要养单数)">
+		
+		<img alt="比较担心第一个夜晚,果然有一只死了,观察发现是病鱼,好在另外两只状态很好~" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0181.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0181.JPG" data-description="比较担心第一个夜晚,果然有一只死了,观察发现是病鱼,好在另外两只状态很好~">
+		
+		<img alt="看水质,闻气味,3天左右必须换水,水要提前嗮好,且保持水温一致,过程中别伤到鱼~~" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0123.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0123.JPG" data-description="看水质,闻气味,3天左右必须换水,水要提前嗮好,且保持水温一致,过程中别伤到鱼~~">
+
+		<img alt="之前几天一直很怕生,喂食的时候都躲着吃,熟悉环境之后,就很亲人了,主动靠过来要吃的,嘿嘿~" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0181.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0181.JPG" data-description="之前几天一直很怕生,喂食的时候都躲着吃,熟悉环境之后,就很亲人了,主动靠过来要吃的,嘿嘿~">
+		
+        <img alt="2周多些了,虽然期间出过一点状况,不过鱼儿们现在状态都比较良好!!(不躲着我了)" src="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0124.JPG" data-image="http://o7q5y55yj.bkt.clouddn.com/fishIMG_0124.JPG" data-description="2周多些了,虽然期间出过一点状况,不过鱼儿们现在状态都比较良好!!(不躲着我了)">
+
+
+    </div>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            jQuery("#fish").unitegallery();
+
+        });
+    </script>
+</body>
+
+</html>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2016/05/22/fish/">
+                                                                    http://kiritor.github.io/2016/05/22/fish/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/life/">life</a>
+	</div>
+
+
+                                                        
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
   
     <nav id="page-nav">

@@ -245,15 +245,649 @@
 
       <div class="body-wrap">
   
+    <article id="post-jQuery中的冲突-noConfilic解决机制" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/" class="article-date">
+  	<time datetime="2015-04-02T06:24:04.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
-    
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/">jQuery中的冲突-noConfilic解决机制</a>
+    </h1>
   
-    
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
+<p>   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是window.jQuery对象的一个引用,因此即使被删除,jQuery依然能保证整个类库的完整性。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noConfilic/">noConfilic</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
+    <article id="post-jQuery对象、DOM对象-傻傻分不清楚" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/" class="article-date">
+  	<time datetime="2015-04-02T05:40:07.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/">jQuery对象、DOM对象?傻傻分不清楚</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>   初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。</p>
+<p>   先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。</p>
+<h1 id="DOM、DOM对象"><a href="#DOM、DOM对象" class="headerlink" title="DOM、DOM对象"></a>DOM、DOM对象</h1><p>   DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。<br>文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/02/jQuery对象、DOM对象-傻傻分不清楚/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-编写更好的jQuery的建议-转" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
     
+        <div class="article-meta">
+            <a href="/2015/04/02/编写更好的jQuery的建议-转/" class="article-date">
+  	<time datetime="2015-04-02T03:35:38.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/02/编写更好的jQuery的建议-转/">编写更好的jQuery的建议-转</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>   最近学习JQuery,在<a href="http://blog.jobbole.com/">伯乐在线</a>里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。<br>   文章出处:<a href="http://blog.jobbole.com/52770/">http://blog.jobbole.com/52770/</a><br>   译文地址:<a href="http://flippinawesome.org/2013/11/25/writing-better-jquery-code/">原文</a><br>   以下为翻译正文:</p>
+<p>讨论jQuery和javascript性能的文章并不罕见。然而,本文我计划总结一些速度方面的技巧和我本人的一些建议,来提升你的jQuery和javascript代码。好的代码会带来速度的提升。快速渲染和响应意味着更好的用户体验。</p>
+<p>   首先,在脑子里牢牢记住jQuery就是javascript。这意味着我们应该采用相同的编码惯例,风格指南和最佳实践。<br>   如果你是一个javascript新手,我建议您阅读《JavaScript初学者的最佳实践》,这是一篇高质量的javascript教程,接触jQuery之前最后先阅读。<br>   当你准备使用jQuery,我强烈建议你遵循下面这些指南:<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/02/编写更好的jQuery的建议-转/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-前端素材集锦-转" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/04/02/前端素材集锦-转/" class="article-date">
+  	<time datetime="2015-04-02T03:06:55.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/02/前端素材集锦-转/">前端素材集锦-转</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <h1 id="酷站集"><a href="#酷站集" class="headerlink" title="酷站集"></a>酷站集</h1><p>他山之石,可以攻玉,从别人的设计里面吸取灵感。</p>
+<p>1.<a href="http://www.awwwards.com/">Awwwards</a>–The awards for design, creativity and innovation on the internet</p>
+<p>2.<a href="http://www.csswinner.com/">CSS</a> Winner–CSS Award Gallery for Web Design Inspiration</p>
+<p>3.<a href="http://www.bestcss.in/">Best CSS</a>–Best CSS, Website Gallery, CSS Galleries, Best CSS Design Gallery</p>
+<p>4.<a href="http://www.cssdesignawards.com/">CSS Design Awards</a>–CSSDA ~ Web Awards ~ Reviews ~ Web Design Inspiration</p>
+<p>5.<a href="http://www.sj63.com/">设计路上</a>–::设计路上::酷站收藏大全,酷站欣赏,韩国网站欣赏,欧美网站,国内网站欣赏,设计欣赏，网页设计,网站建设<br>6.<a href="http://www.8bears.com/">八只熊酷站</a>–八只熊酷站<em>酷站欣赏</em>优秀设计师访谈<em>设计配色教程</em>网页素材下载<em>作品欣赏</em>八只熊酷站</p>
+<p>7.<a href="http://web.2008php.com/">欧莱凯</a>–欧莱凯酷站欣赏_分享优秀网站网页设计作品</p>
+<p>8.待续……<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/04/02/前端素材集锦-转/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
+  
+    <article id="post-easyui-draggable" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/03/27/easyui-draggable/" class="article-date">
+  	<time datetime="2015-03-27T03:35:01.000Z" itemprop="datePublished">Mar 27 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/easyui-draggable/">EasyUI基础入门之Draggable(拖拽)</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                            
+
+                                            
+                                                <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
+<h1 id="Draggable是什么"><a href="#Draggable是什么" class="headerlink" title="Draggable是什么"></a>Draggable是什么</h1><p>Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。<br>Draggble覆盖默认值$.fn.draggable.defaults。<br>
+                                                    
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/draggable/">draggable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li></ul>
+	</div>
+
+
+                                                    
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2015/03/27/easyui-draggable/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                            
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
   
   
     <nav id="page-nav">

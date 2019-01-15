@@ -256,7 +256,301 @@
 	
 </div>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Oracle-instance-tablespase-user-table" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" class="article-date">
+  	<time datetime="2015-12-23T08:28:19.000Z" itemprop="datePublished">Dec 23 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle-数据库实例、表空间、用户、表之间的关系(转)
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库实例/">数据库实例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用户/">用户</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表空间/">表空间</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                                    <p class="toc-button" id="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、数据库、表空间、数据文件"><span class="toc-number">1.</span> <span class="toc-text">一、数据库、表空间、数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、数据库"><span class="toc-number">1.1.</span> <span class="toc-text">1、数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、数据库实例"><span class="toc-number">1.2.</span> <span class="toc-text">2、数据库实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、表空间"><span class="toc-number">1.3.</span> <span class="toc-text">3、表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、用户"><span class="toc-number">1.4.</span> <span class="toc-text">4、用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、表"><span class="toc-number">1.5.</span> <span class="toc-text">5、表</span></a></li></ol></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+
+                                            
+                                                        <p>完整的Oracle数据库通常由两部分组成:<strong>Oracle数据库</strong>和<strong>数据库实例</strong>。</p>
+<blockquote>
+<p>   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);<br>   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;</p>
+</blockquote>
+<p>在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库实例来访问和控制磁盘中的数据文件。Oracle有一个很大的内存块,称为全局区(SGA)<br><a id="more"></a></p>
+<h2 id="一、数据库、表空间、数据文件"><a href="#一、数据库、表空间、数据文件" class="headerlink" title="一、数据库、表空间、数据文件"></a>一、数据库、表空间、数据文件</h2><h3 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h3><p>数据库是数据集合,oracle是一种关系型的数据库管理系统。<br>通常情况下我们称的数据库,并不仅仅指的是物理的数据集合,他包含物理数据、数据管理系统。也即物理数据、内存、操作系统进程的组合体。<br>安装过oracle数据库就知道,我们在安装数据库时会让我们选择启动数据库(即默认的全局数据库):<br>全局数据库:就是一个数据库的标识,在安装时指定,以后一般不会修改.一旦安装,数据库名就写进了控制文件,数据库表,很多地方都会用到这个数据库名。<br>启动数据库:也叫全局数据库,是数据库系统的入口,它会内置一些高级权限的用户如SYS,SYSTEM等。我们用这些搞基权限账号登陆就可以在数据库实例中创建表空间，用户，表。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--查询当前数据库名</span></div><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> v$<span class="keyword">database</span></div></pre></td></tr></table></figure></p>
+<h3 id="2、数据库实例"><a href="#2、数据库实例" class="headerlink" title="2、数据库实例"></a>2、数据库实例</h3><p>oracle官方描述:实例是访问Oracle数据库所需的一部分计算机内存和辅助处理后台进程,是由进程和这些进程所使用的内存(SGA)所构成的一个集合。<br>其实就是用来访问和使用数据库的一块进程,只存在于内存中。<br>我们访问oracle都是通过实例来访问到的,如果这个实例关联了数据库文件是可以访问的，否则就会得到实例名不可用的错误。<br>实例名指的是用于响应某个数据库操作的数据库管理系统的名称。同时也叫SID.实例名由参数instance_name决定的。<br>查询当前数据库实例名:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--查询数据库实例名</span></div><div class="line"><span class="keyword">select</span> instance_name <span class="keyword">from</span> v$<span class="keyword">instance</span>;</div></pre></td></tr></table></figure></p>
+<p>数据库实例名(instance_name)用于对外部连接。在操作系统中要取得与数据库的联系,必须使用数据库实例名。比如我们做开发,要连接数据库,就得连接数据库实例名:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jdbc:oracle:thin:@localhost:1521:orcl（orcl就为数据库实例名）</div></pre></td></tr></table></figure></p>
+<p>一个数据库可以有多个实例,在做数据库服务集群的时候可以用到。</p>
+<h3 id="3、表空间"><a href="#3、表空间" class="headerlink" title="3、表空间"></a>3、表空间</h3><p>Oracle数据库是通过表空间来存储物理表的,一个数据库实例可以有多个表空间,表空间下可以有多个表。<br>表空间是数据库的逻辑划分,每个数据库至少有一个表空间(SYSTEM表空间)。为了便于管理和提供运行效率,可以使用一些附加表空间来划分用户和应用程序。例如:USER表空间提供一般用户使用，RBS表空间供回滚段使用。一个表空间只能是属于一个数据库。<br>创建表空间语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Create</span> <span class="keyword">TableSpace</span> 表空间名称  </div><div class="line"><span class="keyword">DataFile</span>          表空间数据文件路径  </div><div class="line"><span class="keyword">Size</span>              表空间初始大小  </div><div class="line"><span class="keyword">Autoextend</span> <span class="keyword">on</span></div></pre></td></tr></table></figure></p>
+<p>如:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">tablespace</span> db_test  </div><div class="line"><span class="keyword">datafile</span> <span class="string">'D:\oracle\product\10.2.0\userdata\db_test.dbf'</span>  </div><div class="line"><span class="keyword">size</span> <span class="number">50</span>m  </div><div class="line"><span class="keyword">autoextend</span> <span class="keyword">on</span>;</div></pre></td></tr></table></figure></p>
+<p>查看已经创建好的表空间:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> default_tablespace, temporary_tablespace, d.username  </div><div class="line"><span class="keyword">from</span> dba_users d</div></pre></td></tr></table></figure></p>
+<h3 id="4、用户"><a href="#4、用户" class="headerlink" title="4、用户"></a>4、用户</h3><p>Oracle数据库建好之后，要想在数据库里建表,必须先为数据库建立用户,并未用户指定表空间(一般指定和表空间一样的名字)<br>创建新用户:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>          用户名  </div><div class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span>        密码  </div><div class="line"><span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span>   表空间(默认<span class="keyword">USERS</span>)  </div><div class="line"><span class="keyword">TEMPORARY</span> <span class="keyword">TABLESPACE</span> 临时表空间(默认TEMP)</div></pre></td></tr></table></figure></p>
+<p>如:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> utest  </div><div class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> utestpwd  </div><div class="line"><span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span> db_test  </div><div class="line"><span class="keyword">TEMPORARY</span> <span class="keyword">TABLESPACE</span> temp;</div></pre></td></tr></table></figure></p>
+<p>有了用户,要想使用用户账号管理自己的表空间,还的授权:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> <span class="keyword">CONNECT</span> <span class="keyword">TO</span> utest;</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">RESOURCE</span> <span class="keyword">TO</span> utest;</div><div class="line"><span class="keyword">GRANT</span> dba <span class="keyword">TO</span> utest;<span class="comment">--dba为最高权限，可以创建数据库，表等。</span></div></pre></td></tr></table></figure></p>
+<p>查看数据库用户:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dba_users;</div></pre></td></tr></table></figure></p>
+<h3 id="5、表"><a href="#5、表" class="headerlink" title="5、表"></a>5、表</h3><p>有了数据库，表空间和用户，就可以用自定义的用户在自己的表空间创建表了。</p>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2015/12/23/Oracle-instance-tablespase-user-table/">
+                                                                    http://kiritor.github.io/2015/12/23/Oracle-instance-tablespase-user-table/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        <div class="donateContainer">
+                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+                            <span id="donate" class="donate" onclick="donate()">打赏</span>
+                            <div id="QR" style="display: none;">
+
+                                <div id="alipay" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+                                    </a>
+
+                                </div>
+
+                                <div id="wechat" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+                                    </a>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <script>
+                                function donate() {
+                                    var qr = document.getElementById('QR');
+                                    if (qr.style.display === 'none') {
+                                        qr.style.display = 'block';
+                                    } else {
+                                        qr.style.display = 'none'
+                                    }
+
+                                };
+                            </script>
+                        </div>
+                        
+                            
+                                
+<nav id="article-nav">
+  
+    <a href="/2016/03/10/shiro-Authorization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Shiro-Authorization(授权)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/28/shiro-Authentication/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Shiro-Authentication(身份验证)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                                    
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
+                                                <div id="github-comment"></div>
+                                                <script>
+                                                    var gitment = new Gitment({
+                                                        id: location.href, // 可选。默认为 location.href
+                                                        owner: 'Kiritor',
+                                                        repo: 'comment',
+                                                        oauth: {
+                                                            client_id: '864b75cecfdc135710ea',
+                                                            client_secret: '1b6e9eee3e07dd9aefce3d155b8ddaa1cdb03e77',
+                                                        },
+                                                    })
+                                                     gitment.render('github-comment')
+													 $(".gitment-editor-footer-tip").css("display","none");
+                                                </script>
+                                            </div>
+                                        -->
+                                            <!--
+                                    <div class="ds-thread" data-thread-key="post-Oracle-instance-tablespase-user-table" data-title="Oracle-数据库实例、表空间、用户、表之间的关系(转)" data-url="http://kiritor.github.io/2015/12/23/Oracle-instance-tablespase-user-table/"></div>
+
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "undefined"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    -->
+                                            <!-- 多说公共JS代码 end -->
+                                            
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
 </div>
       <!--
 <footer id="footer">

@@ -249,7 +249,312 @@
 	
 </div>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-golang-install" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2015/03/27/golang-install/" class="article-date">
+  	<time datetime="2015-03-27T07:52:33.000Z" itemprop="datePublished">Mar 27 2015</time>
+</a>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Windows下搭建go语言开发环境
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li></ul>
+	</div>
+
+
+                                        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+
+                                            
+
+                                                    <p class="toc-button" id="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GO语言"><span class="toc-number">2.</span> <span class="toc-text">GO语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Window开发环境搭建"><span class="toc-number">3.</span> <span class="toc-text">Window开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、安装Golang的SDK"><span class="toc-number">3.1.</span> <span class="toc-text">1、安装Golang的SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、配置环境变量"><span class="toc-number">3.2.</span> <span class="toc-text">2、配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发工具配置-Brackets"><span class="toc-number">3.3.</span> <span class="toc-text">开发工具配置(Brackets)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GO小试"><span class="toc-number">4.</span> <span class="toc-text">GO小试</span></a></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+
+                                            
+                                                        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博客打算从SAE转移到github上,须花些时间。这段时间一直在学习go语言,还在入门阶段,不过也算了解了一些语法。由于最近博客搬家,也没啥可写的,就写一下自己开发go语言的配置吧。<br><strong>Bracket + Git</strong><br>由于初学并没有采用集成开发环境(liteIDE,eclipse等),因为我想熟悉下go的相关命令,以及go工程项目的管理。<br><a id="more"></a></p>
+<h1 id="GO语言"><a href="#GO语言" class="headerlink" title="GO语言"></a>GO语言</h1><p>Go语言是Google内部主推的语言,它作为一门全新的静态类型开发语言,与当前的开发语言相比具有许多令人兴奋不已的新特性。专门针对多处理器系统的应用编程进行了优化,使用go语言完全可以媲美c、c++的速度,而且更加安全、简洁,支持并行进程。<br>以下是go语言的主要特征:</p>
+<pre><code>1. 自动垃圾回收
+2. 更丰富的内置类型
+3. 函数多返回值
+4. 错误处理
+5. 匿名函数和闭包
+6. 类型和接口
+7. 并发编程
+8. 反射
+9. 语言交互性
+</code></pre><h1 id="Window开发环境搭建"><a href="#Window开发环境搭建" class="headerlink" title="Window开发环境搭建"></a>Window开发环境搭建</h1><p>以上基本都属于废话,搭建开发环境尽快开启编程之旅才是王道,笔者采用Brackets + Git的方式进行学习。使用Brackets主要在于自己一直用的是Brackets,且初学建议先别用IDE,不过sublimeText也是一个非常好的选择。</p>
+<h2 id="1、安装Golang的SDK"><a href="#1、安装Golang的SDK" class="headerlink" title="1、安装Golang的SDK"></a>1、安装Golang的SDK</h2><p>Google的官网被墙,下载地址如下:<a href="http://www.golangtc.com/download" target="_blank" rel="external">http://www.golangtc.com/download</a>,请下载对应系统的版本,之后傻瓜式的下一步安装即可。<br>安装完成之后,打开终端,输入go、或者go version出现如下信息即表示安装成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go version go1.4.1 windows/amd64</div></pre></td></tr></table></figure></p>
+<h2 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h2><p>安装完SDK之后接下来便是配置环境变量了,windows下配置信息如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GOROOT=D:\go\     --go根目录</div><div class="line">GOPATH=E:XXXXX    --日常开发的根目录,可以配置多个<span class="string">";"</span>分隔</div></pre></td></tr></table></figure></p>
+<p>重新打开cmd,输入go env可以查看配置后的效果:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> GOARCH=amd64</div><div class="line"><span class="built_in">set</span> GOBIN=</div><div class="line"><span class="built_in">set</span> GOCHAR=6</div><div class="line"><span class="built_in">set</span> GOEXE=.exe</div><div class="line"><span class="built_in">set</span> GOHOSTARCH=amd64</div><div class="line"><span class="built_in">set</span> GOHOSTOS=windows</div><div class="line"><span class="built_in">set</span> GOOS=windows</div><div class="line"><span class="built_in">set</span> GOPATH=E:\code\GoStudy\music;E:\code\GoStudy\calcproj;</div><div class="line"><span class="built_in">set</span> GORACE=</div><div class="line"><span class="built_in">set</span> GOROOT=D:\Go</div><div class="line"><span class="built_in">set</span> GOTOOLDIR=D:\Go\pkg\tool\windows_amd64</div><div class="line"><span class="built_in">set</span> CC=gcc</div><div class="line"><span class="built_in">set</span> GOGCCFLAGS=-m64 -mthreads -fmessage-length=0</div><div class="line"><span class="built_in">set</span> CXX=g++</div><div class="line"><span class="built_in">set</span> CGO_ENABLED=1</div></pre></td></tr></table></figure></p>
+<h2 id="开发工具配置-Brackets"><a href="#开发工具配置-Brackets" class="headerlink" title="开发工具配置(Brackets)"></a>开发工具配置(Brackets)</h2><p>Brackets是Adobe公司的一款前端开发工具,和sublime非常相似(但是就功能上来说弱于sublime),不过笔者更喜欢Brackets的风格,也玩了很长一段时间,因此就决定是它了。<br>官网下载地址:<a href="https://github.com/adobe/brackets/releases" target="_blank" rel="external">Brackets.io</a>,选择合适的版本下载安装即可。<br>Brackets本质上是一个文本编辑器,但是可以通过配置插件的方式打造成一个媲美IDE的工具,下面是我使用到的一些插件,安装插件的方式也很简答,右侧有一个插件管理器,打开即可进行安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1. brackets-code-folding            代码折叠插件</div><div class="line">2. brackets-css-shapes-editor       css插件</div><div class="line">3. brackets-jsbeautifier            代码美化插件</div><div class="line">4. drewkoch.icons                   文件类型图标插件</div><div class="line">5. go-ide                           golang插件(关键字高亮)</div><div class="line">6. gruehle.brackets-autoprefixer    自动补全插件(golang不行)</div><div class="line">7. themesforbrackets                主题插件</div><div class="line">8. websiteduck-wdminmap             右侧minmap插件(类似sublime)</div><div class="line">9. zaggino.brackets-git             git插件</div></pre></td></tr></table></figure></p>
+<p>其他插件的配置都不复杂这里就不一一介绍了,重点介绍一下git插件的配置。当安装好git插件之后,右侧会出现如下图标(为了便于排版,我将图片旋转):</p>
+<center><img src="http://kiritor.github.io/img/git.png" alt="git"></center>
+
+<p>红线标出的第一个就是git插件了(可以调出git界面),第二个是打开控制台的快捷按钮,等会介绍如何配置git插件使其显示出来。我们点击git图标即可在界面下方唤出git界面如下:</p>
+<center><img src="http://kiritor.github.io/img/git_mark.png" alt="git"></center>
+
+<p>之后点击设置图标,进行相关设置:</p>
+<center><img src="http://kiritor.github.io/img/git1.png" alt="git"></center><br>对于插件的使用我也就不多提了,非常简单,熟悉下即可上手了<br><br>## 附图<br>最后秀一下最后的效果:<br><center><img src="http://kiritor.github.io/img/brackets.png" alt="git"></center>
+
+<h1 id="GO小试"><a href="#GO小试" class="headerlink" title="GO小试"></a>GO小试</h1><p>配置好开发环境之后,简单的进行一下go语言的开发。新建一个文件夹,并用brackets打开,新建main.go文件即可进行编辑了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	fmt.Println(<span class="string">"hello go"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码编写完后,打开控制台,定位到当前目录下,输入go build main.go即可完成编译,之后直接main(window下即可查看运行结果),也可以直接运行go run main.go直接运行(不产生exe文件)</p>
+<p>到目前为止已经安装好了开发golang的程序的基本环境,可以开心的享受golang的奇妙之处了!</p>
+
+                                                            </br>
+                                                            <p>本文链接：
+                                                                <a href="http://kiritor.github.io/2015/03/27/golang-install/">
+                                                                    http://kiritor.github.io/2015/03/27/golang-install/
+                                                                </a>
+                                                            </p>
+                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+                                                            <div class="post-info">
+
+                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+                                                            </div>
+                                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        <div class="donateContainer">
+                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+                            <span id="donate" class="donate" onclick="donate()">打赏</span>
+                            <div id="QR" style="display: none;">
+
+                                <div id="alipay" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+                                    </a>
+
+                                </div>
+
+                                <div id="wechat" style="display: inline-block">
+                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+                                    </a>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <script>
+                                function donate() {
+                                    var qr = document.getElementById('QR');
+                                    if (qr.style.display === 'none') {
+                                        qr.style.display = 'block';
+                                    } else {
+                                        qr.style.display = 'none'
+                                    }
+
+                                };
+                            </script>
+                        </div>
+                        
+                            
+                                
+<nav id="article-nav">
+  
+    <a href="/2015/04/02/前端素材集锦-转/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          前端素材集锦-转
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/27/easyui-draggable/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">EasyUI基础入门之Draggable(拖拽)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                                    
+                                        <!--评论-->
+                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
+        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
+        placeholder: '快来说点什么吧!'
+    })
+</script>
+                                        <!-- 多说评论框 start -->
+                                        <!--
+                                        
+                                            <div id="commentDiv" style="padding-left:30px;padding-right:30px;">
+                                                <div id="github-comment"></div>
+                                                <script>
+                                                    var gitment = new Gitment({
+                                                        id: location.href, // 可选。默认为 location.href
+                                                        owner: 'Kiritor',
+                                                        repo: 'comment',
+                                                        oauth: {
+                                                            client_id: '864b75cecfdc135710ea',
+                                                            client_secret: '1b6e9eee3e07dd9aefce3d155b8ddaa1cdb03e77',
+                                                        },
+                                                    })
+                                                     gitment.render('github-comment')
+													 $(".gitment-editor-footer-tip").css("display","none");
+                                                </script>
+                                            </div>
+                                        -->
+                                            <!--
+                                    <div class="ds-thread" data-thread-key="post-golang-install" data-title="Windows下搭建go语言开发环境" data-url="http://kiritor.github.io/2015/03/27/golang-install/"></div>
+
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "undefined"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    -->
+                                            <!-- 多说公共JS代码 end -->
+                                            
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+<script>
+	var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+	if(isMobile.any()){
+	    //移动端不显示目录和评论
+		$("#toc-button").css("display","none");
+		$("#commentDiv").css("display","none");
+	}
+
+</script>
+
 </div>
       <!--
 <footer id="footer">
