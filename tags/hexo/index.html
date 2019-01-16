@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/04/28/yilia-l/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/04/28/yilia-l/" class="article-date">
   	<time datetime="2016-04-28T06:55:42.000Z" itemprop="datePublished">Apr 28 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2016/04/28/yilia-l/">hexo-theme-yilia-l</a>
@@ -279,84 +282,85 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>github上通过hexo搭建了个人博客,闲时写写文章. 没事改改博客的样式,修改自<a href="https://github.com/litten/hexo-theme-yilia">yilia</a>主题.个人十分喜欢yilia主题的简洁、优雅的两栏风格，极致的性能体验. 不过其界面的排版不是非常满意,因此就自己改装了下,调整了相关样式,新增了一些新的功能.</p>
+            
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>github上通过hexo搭建了个人博客,闲时写写文章. 没事改改博客的样式,修改自<a href="https://github.com/litten/hexo-theme-yilia">yilia</a>主题.个人十分喜欢yilia主题的简洁、优雅的两栏风格，极致的性能体验. 不过其界面的排版不是非常满意,因此就自己改装了下,调整了相关样式,新增了一些新的功能.</p>
 <blockquote>
 <p>   1.状态栏(最近的一些状态)<br>   2.微简历(简单的介绍信息,只在首页显示,可通过配置文件关闭)<br>   3.文章目录(目录通过按钮动态显示,且可以通过指定layout类型为post-noTOC不显示目录)<br>   4.多说最新评论(首页悬浮显示,可通过配置文件关闭)</p>
 </blockquote>
 <p>Github地址:<a href="https://github.com/Kiritor/hexo-theme-yilia-l">https://github.com/Kiritor/hexo-theme-yilia-l</a><br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2016/04/28/yilia-l/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2016/04/28/yilia-l/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
     <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -371,20 +375,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/12/hexo/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/12/hexo/" class="article-date">
   	<time datetime="2015-04-12T15:16:53.000Z" itemprop="datePublished">Apr 12 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/04/12/hexo/">像极客一样去写作~</a>
@@ -392,80 +396,81 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br>
-                                                    
-                                        </div>
+            
+            <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/04/12/hexo/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/12/hexo/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

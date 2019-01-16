@@ -193,6 +193,8 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/03/27/easyui-draggable/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/03/27/easyui-draggable/" class="article-date">
   	<time datetime="2015-03-27T03:35:01.000Z" itemprop="datePublished">Mar 27 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       EasyUI基础入门之Draggable(拖拽)
@@ -281,31 +284,31 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/draggable/">draggable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Draggable是什么"><span class="toc-number">1.</span> <span class="toc-text">Draggable是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Draggable"><span class="toc-number">2.</span> <span class="toc-text">Draggable</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">2.2.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法"><span class="toc-number">2.3.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方式"><span class="toc-number">2.4.</span> <span class="toc-text">使用方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-number">3.</span> <span class="toc-text">Demo</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
+            
+            <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
 <h1 id="Draggable是什么"><a href="#Draggable是什么" class="headerlink" title="Draggable是什么"></a>Draggable是什么</h1><p>Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。<br>Draggble覆盖默认值$.fn.draggable.defaults。<br><a id="more"></a></p>
 <h1 id="Draggable"><a href="#Draggable" class="headerlink" title="Draggable"></a>Draggable</h1><p>下面看看官网对于Draggable的描述吧。 </p>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>其属性请参阅官网<br>一个简单的例子,代码如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">   &lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Basic Draggable - jQuery EasyUI Demo&lt;/title&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"jquery-easyui-1.3.6/themes/metro/easyui.css"</span>&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"jquery-easyui-1.3.6/themes/icon.css"</span>&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"jquery-easyui-1.3.6/demo/demo.css"</span>&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.easyui.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;Basic Draggable&lt;/h2&gt;</div><div class="line">	&lt;p&gt;Move the boxes below by clicking on it with mouse.&lt;/p&gt;</div><div class="line">	&lt;div id=<span class="string">"dd"</span> class=<span class="string">"easyui-draggable"</span> data-options=<span class="string">"handle:'#title'"</span> style=<span class="string">"width:100px;height:100px;"</span>&gt;</div><div class="line">		&lt;div id=<span class="string">"title"</span> style=<span class="string">"background:#ccc;width:100px;height:100px;"</span>&gt;容器里面的内容&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		$(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line"></div><div class="line">			$(<span class="string">"#title"</span>).draggable(&#123;</div><div class="line">				proxy: <span class="keyword">function</span> (a) &#123;</div><div class="line">					var a = $(<span class="string">'&lt;div class="proxy_div"&gt;你拖我干啥&lt;/div&gt;'</span>);</div><div class="line">					a.appendTo(<span class="string">'body'</span>);</div><div class="line">					<span class="built_in">return</span> a;</div><div class="line">				&#125;,</div><div class="line">				cursor: <span class="string">'pointer'</span>,</div><div class="line">				edge: <span class="string">'6'</span></div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
@@ -348,79 +351,76 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 <p> 2、通过js脚本创建:<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   &lt;div id=<span class="string">"dd"</span> style=<span class="string">"width:100px;height:100px;"</span>&gt;</div><div class="line">   &lt;div id=<span class="string">"title"</span> style=<span class="string">"background:#ccc;"</span>&gt;title&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	$(<span class="string">'#dd'</span>).draggable(&#123;</div><div class="line">		handle: <span class="string">'#title'</span></div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>对于Draggable，官网提供了一些个例子地址如下:<a href="http://www.jeasyui.com/demo/main/index.phpplugin=Draggable&amp;theme=default&amp;dir=ltr&amp;pitem=" target="_blank" rel="external">http://www.jeasyui.com/demo/main/index.phpplugin=Draggable&amp;theme=default&amp;dir=ltr&amp;pitem=</a><br>初学来说的话,上述的demo例子就够了。over!</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/03/27/easyui-draggable/">
-                                                                    http://kiritor.github.io/2015/03/27/easyui-draggable/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/03/27/easyui-draggable/">
+                    http://kiritor.github.io/2015/03/27/easyui-draggable/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/03/27/golang-install/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -441,9 +441,9 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -453,42 +453,41 @@ Draggable是什么Draggable是easyui中用于实现拖拽功能的一个插件�
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

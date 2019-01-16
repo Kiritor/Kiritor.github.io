@@ -194,6 +194,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -240,6 +242,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -261,20 +264,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/12/hexo/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/12/hexo/" class="article-date">
   	<time datetime="2015-04-12T15:16:53.000Z" itemprop="datePublished">Apr 12 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       像极客一样去写作~
@@ -282,31 +285,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     
 </div>
@@ -335,89 +338,86 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br><a id="more"></a><br><img src="http://kiritor.github.io/img/CSDN.png" alt="CSDN"><br>之后觉得CSDN越来越趋向商业化,就滋生了创建自己的独立博客的想法,期间也去开源中国,博客园尝试过,都不大理想,加之自己也开始做前端这块的工作(苦逼),觉得更有必要搭建自己的独立博客了,接下来就是在SAE有了自己的独立博客(仿简书网,花了自己很大的心血的):<br><img src="http://kiritor.github.io/img/SAE.png" alt="SAE"><br><img src="http://kiritor.github.io/img/SAE2.png" alt="SAE"><br>自己在SAE上花了很多功夫美化了很多的东西,但是时代在变迁,wordpress搭建的博客慢慢已经跟不上潮流了.现阶段流行的是静态博客(Node.js、go语言搭建)。简单来说静态博客有如下的好处:</p>
+            
+            <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br><a id="more"></a><br><img src="http://kiritor.github.io/img/CSDN.png" alt="CSDN"><br>之后觉得CSDN越来越趋向商业化,就滋生了创建自己的独立博客的想法,期间也去开源中国,博客园尝试过,都不大理想,加之自己也开始做前端这块的工作(苦逼),觉得更有必要搭建自己的独立博客了,接下来就是在SAE有了自己的独立博客(仿简书网,花了自己很大的心血的):<br><img src="http://kiritor.github.io/img/SAE.png" alt="SAE"><br><img src="http://kiritor.github.io/img/SAE2.png" alt="SAE"><br>自己在SAE上花了很多功夫美化了很多的东西,但是时代在变迁,wordpress搭建的博客慢慢已经跟不上潮流了.现阶段流行的是静态博客(Node.js、go语言搭建)。简单来说静态博客有如下的好处:</p>
 <p>####1、高效的性能.</p>
 <p>####2、无需数据库支持.</p>
 <p>####3、markdown语法,极客方式的写作.</p>
 <p>####4、备份,迁移更加简单.<br>因此笔者纠结了很久,觉得转向这一阵营(比较适合个人使用),这也是本站点的由来,有时间的话笔者会把本站点的搭建做一个教程。</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/04/12/hexo/">
-                                                                    http://kiritor.github.io/2015/04/12/hexo/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/12/hexo/">
+                    http://kiritor.github.io/2015/04/12/hexo/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/04/14/Oracle之物化视图/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -438,9 +438,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -450,42 +450,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/02/编写更好的jQuery的建议-转/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/02/编写更好的jQuery的建议-转/" class="article-date">
   	<time datetime="2015-04-02T03:35:38.000Z" itemprop="datePublished">Apr 2 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/04/02/编写更好的jQuery的建议-转/">编写更好的jQuery的建议-转</a>
@@ -279,82 +282,83 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <p>   最近学习JQuery,在<a href="http://blog.jobbole.com/">伯乐在线</a>里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。<br>   文章出处:<a href="http://blog.jobbole.com/52770/">http://blog.jobbole.com/52770/</a><br>   译文地址:<a href="http://flippinawesome.org/2013/11/25/writing-better-jquery-code/">原文</a><br>   以下为翻译正文:</p>
+            
+            <p>   最近学习JQuery,在<a href="http://blog.jobbole.com/">伯乐在线</a>里面看到了一片非常不错的翻译文章,觉得对于新手来说非常实用,打算转载过来,自己也略作了一些修改,例如链式操作。<br>   文章出处:<a href="http://blog.jobbole.com/52770/">http://blog.jobbole.com/52770/</a><br>   译文地址:<a href="http://flippinawesome.org/2013/11/25/writing-better-jquery-code/">原文</a><br>   以下为翻译正文:</p>
 <p>讨论jQuery和javascript性能的文章并不罕见。然而,本文我计划总结一些速度方面的技巧和我本人的一些建议,来提升你的jQuery和javascript代码。好的代码会带来速度的提升。快速渲染和响应意味着更好的用户体验。</p>
 <p>   首先,在脑子里牢牢记住jQuery就是javascript。这意味着我们应该采用相同的编码惯例,风格指南和最佳实践。<br>   如果你是一个javascript新手,我建议您阅读《JavaScript初学者的最佳实践》,这是一篇高质量的javascript教程,接触jQuery之前最后先阅读。<br>   当你准备使用jQuery,我强烈建议你遵循下面这些指南:<br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/04/02/编写更好的jQuery的建议-转/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/02/编写更好的jQuery的建议-转/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
     <article id="post-前端素材集锦-转" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -369,20 +373,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/02/前端素材集锦-转/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/02/前端素材集锦-转/" class="article-date">
   	<time datetime="2015-04-02T03:06:55.000Z" itemprop="datePublished">Apr 2 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/04/02/前端素材集锦-转/">前端素材集锦-转</a>
@@ -390,18 +394,18 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <h1 id="酷站集"><a href="#酷站集" class="headerlink" title="酷站集"></a>酷站集</h1><p>他山之石,可以攻玉,从别人的设计里面吸取灵感。</p>
+            
+            <h1 id="酷站集"><a href="#酷站集" class="headerlink" title="酷站集"></a>酷站集</h1><p>他山之石,可以攻玉,从别人的设计里面吸取灵感。</p>
 <p>1.<a href="http://www.awwwards.com/">Awwwards</a>–The awards for design, creativity and innovation on the internet</p>
 <p>2.<a href="http://www.csswinner.com/">CSS</a> Winner–CSS Award Gallery for Web Design Inspiration</p>
 <p>3.<a href="http://www.bestcss.in/">Best CSS</a>–Best CSS, Website Gallery, CSS Galleries, Best CSS Design Gallery</p>
@@ -409,64 +413,65 @@
 <p>5.<a href="http://www.sj63.com/">设计路上</a>–::设计路上::酷站收藏大全,酷站欣赏,韩国网站欣赏,欧美网站,国内网站欣赏,设计欣赏，网页设计,网站建设<br>6.<a href="http://www.8bears.com/">八只熊酷站</a>–八只熊酷站<em>酷站欣赏</em>优秀设计师访谈<em>设计配色教程</em>网页素材下载<em>作品欣赏</em>八只熊酷站</p>
 <p>7.<a href="http://web.2008php.com/">欧莱凯</a>–欧莱凯酷站欣赏_分享优秀网站网页设计作品</p>
 <p>8.待续……<br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/04/02/前端素材集锦-转/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/02/前端素材集锦-转/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
     <nav id="page-nav">

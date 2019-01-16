@@ -210,6 +210,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -256,6 +258,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -277,20 +280,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/04/24/Hadoop-install/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/04/24/Hadoop-install/" class="article-date">
   	<time datetime="2016-04-24T15:34:07.000Z" itemprop="datePublished">Apr 24 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Mac下Hadoop2.7.x配置伪分布环境(wordcount运行)
@@ -298,31 +301,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置Mac-OS自身ssh环境"><span class="toc-number">2.</span> <span class="toc-text">配置Mac OS自身ssh环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载Hadoop"><span class="toc-number">3.</span> <span class="toc-text">下载Hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置环境变量"><span class="toc-number">4.</span> <span class="toc-text">设置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop配置"><span class="toc-number">5.</span> <span class="toc-text">Hadoop配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置hadoop-env-sh"><span class="toc-number">5.1.</span> <span class="toc-text">配置hadoop-env.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置core-site-xml"><span class="toc-number">5.2.</span> <span class="toc-text">配置core-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置hdfs-site-xml"><span class="toc-number">5.3.</span> <span class="toc-text">配置hdfs-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置mapred-site-xml-template"><span class="toc-number">5.4.</span> <span class="toc-text">配置mapred-site.xml.template</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行hadoop"><span class="toc-number">6.</span> <span class="toc-text">运行hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化HDFS"><span class="toc-number">6.1.</span> <span class="toc-text">初始化HDFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启NameNode和DataNode守护进程"><span class="toc-number">6.2.</span> <span class="toc-text">开启NameNode和DataNode守护进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看进程信息"><span class="toc-number">6.3.</span> <span class="toc-text">查看进程信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看Web-UI"><span class="toc-number">6.4.</span> <span class="toc-text">查看Web UI</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行WordCount"><span class="toc-number">7.</span> <span class="toc-text">运行WordCount</span></a></li></ol>
 </div>
@@ -351,11 +354,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>关于Hadoop的安装与配置其实挺多了,不过大多是1.x.x系列的.将自己的安装配置做个笔记记录.</p>
+            
+            <p>关于Hadoop的安装与配置其实挺多了,不过大多是1.x.x系列的.将自己的安装配置做个笔记记录.</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>   操作系统:Mac OS X 10.10<br>   Hadoop版本: 2.7.2</p>
 </blockquote>
@@ -395,79 +398,76 @@
 <p>表示已经运行成功,结果存放在part-r-00000文件中<br>5.使用命令:bin/hadoop fs -cat /test/out/part-r-00000 查看结果为如下图所示:</p>
 <p><center><img src="/img/hadoop-wordcount.png" alt="wordcount"></center><br>到此,hadoop-2.7.2伪分布式配置到此结束了!</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2016/04/24/Hadoop-install/">
-                                                                    http://kiritor.github.io/2016/04/24/Hadoop-install/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2016/04/24/Hadoop-install/">
+                    http://kiritor.github.io/2016/04/24/Hadoop-install/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2016/04/26/Hadoop-dev-install/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -488,9 +488,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -500,42 +500,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

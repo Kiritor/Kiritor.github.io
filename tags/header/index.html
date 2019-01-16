@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/22/Bootstrap-案例集锦/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/22/Bootstrap-案例集锦/" class="article-date">
   	<time datetime="2015-04-22T02:13:17.000Z" itemprop="datePublished">Apr 22 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/04/22/Bootstrap-案例集锦/">Bootstrap-案例集锦</a>
@@ -279,89 +282,88 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
 <h2 id="顶部菜单"><a href="#顶部菜单" class="headerlink" title="顶部菜单"></a>顶部菜单</h2><p>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
 <center><img src="http://kiritor.github.io/img/bootstrap_top.png" alt="顶部"></center>
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/">
-                                                                    http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/">
+                    http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+            </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/header/">header</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

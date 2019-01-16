@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/03/27/easyui-loader/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/03/27/easyui-loader/" class="article-date">
   	<time datetime="2015-03-27T02:39:13.000Z" itemprop="datePublished">Mar 27 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       EasyUI基础入门之easyloader(加载器)
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loader/">loader</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是EasyLoader"><span class="toc-number">1.</span> <span class="toc-text">什么是EasyLoader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader的使用场景"><span class="toc-number">2.</span> <span class="toc-text">EasyLoader的使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader加载器"><span class="toc-number">3.</span> <span class="toc-text">EasyLoader加载器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#properties"><span class="toc-number">4.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event"><span class="toc-number">5.</span> <span class="toc-text">Event</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method"><span class="toc-number">6.</span> <span class="toc-text">Method</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EasyLoader使用"><span class="toc-number">7.</span> <span class="toc-text">EasyLoader使用</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。</p>
+            
+            <p>在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。</p>
 <h1 id="什么是EasyLoader"><a href="#什么是EasyLoader" class="headerlink" title="什么是EasyLoader"></a>什么是EasyLoader</h1><p>正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？<br><a id="more"></a></p>
 <h1 id="EasyLoader的使用场景"><a href="#EasyLoader的使用场景" class="headerlink" title="EasyLoader的使用场景"></a>EasyLoader的使用场景</h1><pre><code>● 出于性能的考虑,不一次性的加载easyui核心js、css文件,而是先展示基础文档结构。
 ● 项目只是简单的用到easyui的几个组件,此时可以按需加载该组件的js和css文件。
@@ -355,79 +358,76 @@
 <p>上面的代码在原有easyloader.modules的基础上在增加了一个test模块并且定义了模块的js和css。这样我们增加的第一个自定义模块就添加完成了。使用的方式和easyloader加载其他模块一样。</p>
 <p>Tips:我们自己定义的js和css文件必须是绝对路径。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">easyloader.load(<span class="string">'mymodule'</span>, <span class="function"><span class="title">function</span></span>()&#123;      </div><div class="line"> //<span class="keyword">do</span> something</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/03/27/easyui-loader/">
-                                                                    http://kiritor.github.io/2015/03/27/easyui-loader/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/03/27/easyui-loader/">
+                    http://kiritor.github.io/2015/03/27/easyui-loader/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/03/27/easyui-draggable/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -448,9 +448,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -460,42 +460,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

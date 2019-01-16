@@ -193,6 +193,8 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
   	<time datetime="2015-04-09T01:34:07.000Z" itemprop="datePublished">Apr 9 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Golang操作MySQL数据库,使用mymysql驱动
@@ -281,31 +284,31 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mymysql/">mymysql</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/golang/">golang</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MyMySQL驱动"><span class="toc-number">1.</span> <span class="toc-text">MyMySQL驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例"><span class="toc-number">3.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-thrsafe-native"><span class="toc-number">4.</span> <span class="toc-text">mysql+thrsafe/native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#database-sql-godrv"><span class="toc-number">5.</span> <span class="toc-text">database/sql+godrv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务处理"><span class="toc-number">6.</span> <span class="toc-text">事务处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Mapping"><span class="toc-number">7.</span> <span class="toc-text">Type Mapping</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+            
+            <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
 <h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql" target="_blank" rel="external">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装mymysql包必须要先安装如下包:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql/thrsafe</div><div class="line">go get github.com/ziutek/mymysql/autorc</div><div class="line">go get github.com/ziutek/mymysql/godrv</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get github.com/ziutek/mymysql</div></pre></td></tr></table></figure>
@@ -360,79 +363,76 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 <p>MySQL服务器映射/转换特定MySQL存储类型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">         string  --&gt;  MYSQL_TYPE_STRING</div><div class="line">         []byte  --&gt;  MYSQL_TYPE_VAR_STRING</div><div class="line">    int8, uint8  --&gt;  MYSQL_TYPE_TINY</div><div class="line">  int16, uint16  --&gt;  MYSQL_TYPE_SHORT</div><div class="line">  int32, uint32  --&gt;  MYSQL_TYPE_LONG</div><div class="line">  int64, uint64  --&gt;  MYSQL_TYPE_LONGLONG</div><div class="line">      int, uint  --&gt;  protocol <span class="built_in">integer</span> <span class="built_in">type</span> <span class="built_in">which</span> match size of int</div><div class="line">           bool  --&gt;  MYSQL_TYPE_TINY</div><div class="line">        <span class="built_in">float</span>32  --&gt;  MYSQL_TYPE_FLOAT</div><div class="line">        <span class="built_in">float</span>64  --&gt;  MYSQL_TYPE_DOUBLE</div><div class="line">      time.Time  --&gt;  MYSQL_TYPE_DATETIME</div><div class="line">mysql.Timestamp  --&gt;  MYSQL_TYPE_TIMESTAMP</div><div class="line">     mysql.Date  --&gt;  MYSQL_TYPE_DATE</div><div class="line">  time.Duration  --&gt;  MYSQL_TYPE_TIME</div><div class="line">     mysql.Blob  --&gt;  MYSQL_TYPE_BLOB</div><div class="line">            nil  --&gt;  MYSQL_TYPE_NULL</div></pre></td></tr></table></figure></p>
 <p>收到结果MySQL存储类型被映射到/ mymysql类型如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">                             TINYINT  --&gt;  int8</div><div class="line">                    UNSIGNED TINYINT  --&gt;  uint8</div><div class="line">                            SMALLINT  --&gt;  int16</div><div class="line">                   UNSIGNED SMALLINT  --&gt;  uint16</div><div class="line">                      MEDIUMINT, INT  --&gt;  int32</div><div class="line">    UNSIGNED MEDIUMINT, UNSIGNED INT  --&gt;  uint32</div><div class="line">                              BIGINT  --&gt;  int64</div><div class="line">                     UNSIGNED BIGINT  --&gt;  uint64</div><div class="line">                               FLOAT  --&gt;  <span class="built_in">float</span>32</div><div class="line">                              DOUBLE  --&gt;  <span class="built_in">float</span>64</div><div class="line">                             DECIMAL  --&gt;  <span class="built_in">float</span>64</div><div class="line">                 TIMESTAMP, DATETIME  --&gt;  time.Time</div><div class="line">                                DATE  --&gt;  mysql.Date</div><div class="line">                                TIME  --&gt;  time.Duration</div><div class="line">                                YEAR  --&gt;  int16</div><div class="line">    CHAR, VARCHAR, BINARY, VARBINARY  --&gt;  []byte</div><div class="line"> TEXT, TINYTEXT, MEDIUMTEXT, LONGTEX  --&gt;  []byte</div><div class="line">BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB  --&gt;  []byte</div><div class="line">                                 BIT  --&gt;  []byte</div><div class="line">                           SET, ENUM  --&gt;  []byte</div><div class="line">                                NULL  --&gt;  nil</div></pre></td></tr></table></figure></p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/">
-                                                                    http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/">
+                    http://kiritor.github.io/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/04/10/Go语言日志处理/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -453,9 +453,9 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -465,42 +465,41 @@ MyMySQL驱动MyMySQL的原作者是波兰的ziutek,他根据mysql的协议标准
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

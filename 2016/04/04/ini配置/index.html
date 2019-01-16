@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/04/04/ini配置/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/04/04/ini配置/" class="article-date">
   	<time datetime="2016-04-04T07:30:00.000Z" itemprop="datePublished">Apr 4 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Shiro-ini配置
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/java/">java</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#根对象SecrityManager"><span class="toc-number">1.</span> <span class="toc-text">根对象SecrityManager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ini配置"><span class="toc-number">2.</span> <span class="toc-text">ini配置</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
+            
+            <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
 <h2 id="根对象SecrityManager"><a href="#根对象SecrityManager" class="headerlink" title="根对象SecrityManager"></a>根对象SecrityManager</h2><p>回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.<br><a id="more"></a><br>Shiro的类都是POJO的,因此都很容易的放到任何的Ioc容器管理,但是和一般的IoC容器(类似Spring)的区别点在于,shiro是从根对象securityMnanager开始导航;其支持的依赖注入:public孔灿构造器对象的创建、setter依赖注入.</p>
 <h2 id="ini配置"><a href="#ini配置" class="headerlink" title="ini配置"></a>ini配置</h2><p>int配置文件类似于Java中的properties(key/vale),不过体哦那个了讲key/value分区selection的特性,key是每个分区不重复即可,而不是整个配置文件,比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[main]</div><div class="line"><span class="comment">#提供了对根对象securityManager及其依赖的配置</span></div><div class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager</div><div class="line">securityManager.realms=<span class="variable">$jdbcRealm</span></div><div class="line">[users]</div><div class="line"><span class="comment">#提供了对用户/密码及其角色的配置,用户名=密码,角色1,角色2</span></div><div class="line">username=password,role1,role2</div><div class="line">[roles]</div><div class="line"><span class="comment">#提供了角色及权限之间的关系的配置,角色=权限1,权限2</span></div><div class="line">role1=permission1,permission2</div><div class="line">[urls]</div><div class="line"><span class="comment">#用于web,提供了对web url拦截相关的配置,url=拦截器[参数],拦截器</span></div><div class="line">/index.html = anon</div><div class="line">/admin/** = authc,roles[admin],perms[<span class="string">"permission1"</span>]</div></pre></td></tr></table></figure></p>
 <p><strong>[main]部分</strong><br>提供了对根对象securityManager及其依赖对象的配置.<br><strong>创建对象</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager</div></pre></td></tr></table></figure></p>
@@ -354,79 +357,76 @@
 <p><strong>[urls]部分</strong><br>配置url及相应的拦截器之间的关系,格式: “url=拦截器[参数],拦截器[参数]”,如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[urls]</div><div class="line">/admin/** = authc, roles[admin], perms[<span class="string">"permission1"</span>]</div></pre></td></tr></table></figure></p>
 <p>在之后的shiro集成到web的例子中在深入了解.</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2016/04/04/ini配置/">
-                                                                    http://kiritor.github.io/2016/04/04/ini配置/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2016/04/04/ini配置/">
+                    http://kiritor.github.io/2016/04/04/ini配置/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2016/04/18/Mac-Env/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -447,9 +447,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -459,42 +459,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

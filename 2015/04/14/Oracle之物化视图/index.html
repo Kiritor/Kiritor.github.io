@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/14/Oracle之物化视图/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/14/Oracle之物化视图/" class="article-date">
   	<time datetime="2015-04-14T07:27:41.000Z" itemprop="datePublished">Apr 14 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Oracle之物化视图
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物化视图/">物化视图</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物化视图概述"><span class="toc-number">2.</span> <span class="toc-text">物化视图概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物化视图分类"><span class="toc-number">3.</span> <span class="toc-text">物化视图分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建方式"><span class="toc-number">4.</span> <span class="toc-text">创建方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷新模式"><span class="toc-number">5.</span> <span class="toc-text">刷新模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询重写"><span class="toc-number">6.</span> <span class="toc-text">查询重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建物化视图"><span class="toc-number">7.</span> <span class="toc-text">创建物化视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除物化视图"><span class="toc-number">8.</span> <span class="toc-text">删除物化视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程刷新"><span class="toc-number">9.</span> <span class="toc-text">存储过程刷新</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
+            
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
 <h2 id="物化视图概述"><a href="#物化视图概述" class="headerlink" title="物化视图概述"></a>物化视图概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br><a id="more"></a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图可以查询表,视图和其他物化视图.</p>
 <h2 id="物化视图分类"><a href="#物化视图分类" class="headerlink" title="物化视图分类"></a>物化视图分类</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图一般情况下有三种:包含聚集的物化视图、只包含连接的物化视图、嵌套的物化视图。不过这种分类的方式并不是从其特点上来进行分类的,不利于理解。下面看另几种分类方式:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1、刷新方式:  FAST/COMPLETE/FORCE</div><div class="line"></div><div class="line">2、刷新时间:  ON DEMAND/ON COMMIT</div><div class="line"></div><div class="line">3、是否可更新: UPDATABLE/READ ONLY</div><div class="line"></div><div class="line">4、是否支持查询重写: ENABLE QUERY REWRITE/DISABLEQUERY REWRITE</div></pre></td></tr></table></figure></p>
@@ -369,79 +372,76 @@
 <p>第一个参数为物化视图名称,多个以”,”分隔,第二个参数为每个视图对应的刷新方式(f:增量刷新,c:完全刷新,?:强制刷新)</p>
 <p>之后即可在命令窗口中通过 exec P_MVIEW_REFRESH即可执行该存储过程。 </p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/04/14/Oracle之物化视图/">
-                                                                    http://kiritor.github.io/2015/04/14/Oracle之物化视图/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/14/Oracle之物化视图/">
+                    http://kiritor.github.io/2015/04/14/Oracle之物化视图/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/04/14/Oracle-dblink实践/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -462,9 +462,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -474,42 +474,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

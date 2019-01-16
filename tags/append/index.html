@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/06/04/GolangArraySlice/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/06/04/GolangArraySlice/" class="article-date">
   	<time datetime="2015-06-04T11:41:31.000Z" itemprop="datePublished">Jun 4 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/06/04/GolangArraySlice/">Go语言数组&amp;数组切片整理</a>
@@ -279,82 +282,83 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
+            
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
 <p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
 <p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/append/">append</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slice/">slice</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/golang/">golang</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/06/04/GolangArraySlice/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2015/06/04/GolangArraySlice/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

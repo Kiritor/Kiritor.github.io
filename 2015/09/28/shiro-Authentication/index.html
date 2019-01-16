@@ -195,6 +195,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -241,6 +243,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -262,20 +265,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/09/28/shiro-Authentication/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/09/28/shiro-Authentication/" class="article-date">
   	<time datetime="2015-09-28T07:35:01.000Z" itemprop="datePublished">Sep 28 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Shiro-Authentication(身份验证)
@@ -283,31 +286,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/java/">java</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Authentication"><span class="toc-number">1.</span> <span class="toc-text">Authentication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-number">2.</span> <span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven构建"><span class="toc-number">2.1.</span> <span class="toc-text">Maven构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shiro配置文件ini方式-shiro-ini"><span class="toc-number">2.2.</span> <span class="toc-text">shiro配置文件ini方式(shiro.ini)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#身份认证流程"><span class="toc-number">3.</span> <span class="toc-text">身份认证流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Realm"><span class="toc-number">4.</span> <span class="toc-text">Realm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单Realm配置"><span class="toc-number">4.1.</span> <span class="toc-text">单Realm配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDBC-Realm"><span class="toc-number">4.2.</span> <span class="toc-text">JDBC Realm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多Realm配置"><span class="toc-number">4.3.</span> <span class="toc-text">多Realm配置</span></a></li></ol></li></ol>
 </div>
@@ -336,11 +339,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br><a id="more"></a></p>
+            
+            <h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p>Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.<br>在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.<br><strong>Principals:</strong> 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.<br><strong>Credentials:</strong> 证明/凭据,只有主体才知道的安全值,如密码/数字证书.<br>principal/credential配对最常见的就是用户名/密码.<br><a id="more"></a></p>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>在实际研究Shiro身份认证流程之前,先搭建一个架子,进行简单的验证.</p>
 <h3 id="Maven构建"><a href="#Maven构建" class="headerlink" title="Maven构建"></a>Maven构建</h3><p>添加junit、common-logging以及shiro-core等依赖.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></div><div class="line">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.lcore.shiro_01<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro_01<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>4.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-nop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>0.2.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="shiro配置文件ini方式-shiro-ini"><a href="#shiro配置文件ini方式-shiro-ini" class="headerlink" title="shiro配置文件ini方式(shiro.ini)"></a>shiro配置文件ini方式(shiro.ini)</h3><p>简洁起见,这里仅仅配置一个用户名/密码(principal/credential),其他使用shiro默认配置.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[users]</div><div class="line">#用户名及其对应的密码</div><div class="line">L.Tao=LCore</div></pre></td></tr></table></figure></p>
@@ -386,79 +389,76 @@
 <p>Shiro同样可以实现自定义的验证策略,比如我们实现一个OnlyOneAuthenticatorStrategy(只有一个验证通过才验证通过)<br>1、 实现OnlyOneAuthenticatorStrategy:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.shiro_01.strategy;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationException;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationInfo;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationToken;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.authc.SimpleAuthenticationInfo;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.authc.pam.AbstractAuthenticationStrategy;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.realm.Realm;</div><div class="line"><span class="keyword">import</span> org.apache.shiro.util.CollectionUtils;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Collection;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OnlyOneAuthenticatorStrategy</span> <span class="keyword">extends</span> <span class="title">AbstractAuthenticationStrategy</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//所有Realm验证之前</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> AuthenticationInfo <span class="title">beforeAllAttempts</span><span class="params">(Collection&lt;? extends Realm&gt; realms, AuthenticationToken token)</span></span></div><div class="line">	<span class="keyword">throws</span> AuthenticationException &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SimpleAuthenticationInfo();<span class="comment">//返回一个权限的认证信息</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//每个Realm验证之前</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> AuthenticationInfo <span class="title">beforeAttempt</span><span class="params">(Realm realm, AuthenticationToken token, AuthenticationInfo aggregate)</span></span></div><div class="line">	<span class="keyword">throws</span> AuthenticationException &#123;</div><div class="line">        <span class="keyword">return</span> aggregate;<span class="comment">//返回之前合并的</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//每个Realm验证之后</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> AuthenticationInfo <span class="title">afterAttempt</span><span class="params">(Realm realm, AuthenticationToken token, </span></span></div><div class="line">	AuthenticationInfo singleRealmInfo, AuthenticationInfo aggregateInfo, Throwable t) </div><div class="line">	<span class="keyword">throws</span> AuthenticationException &#123;</div><div class="line">        AuthenticationInfo info;</div><div class="line">        <span class="keyword">if</span> (singleRealmInfo == <span class="keyword">null</span>) &#123;</div><div class="line">            info = aggregateInfo;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (aggregateInfo == <span class="keyword">null</span>) &#123;</div><div class="line">                info = singleRealmInfo;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                info = merge(singleRealmInfo, aggregateInfo);</div><div class="line">                <span class="keyword">if</span>(info.getPrincipals().getRealmNames().size() != <span class="number">1</span>) &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> AuthenticationException(<span class="string">"只能有一个验证通过"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> info;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//所有realm验证之后</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> AuthenticationInfo <span class="title">afterAllAttempts</span><span class="params">(AuthenticationToken token, AuthenticationInfo aggregate)</span></span></div><div class="line">	<span class="keyword">throws</span> AuthenticationException &#123;</div><div class="line">        <span class="keyword">return</span> aggregate;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>根据策略,我们需要在每次验证之后,合并验证信息,只要验证信息不等于1(都没有通过/通过多于1次)即是验证失败.之后在ini配置文件中,手动指定验证策略即可<br>具体就不在测试了,到此,Shiro身份验证OVER了!</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/09/28/shiro-Authentication/">
-                                                                    http://kiritor.github.io/2015/09/28/shiro-Authentication/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/09/28/shiro-Authentication/">
+                    http://kiritor.github.io/2015/09/28/shiro-Authentication/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -479,9 +479,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -491,42 +491,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

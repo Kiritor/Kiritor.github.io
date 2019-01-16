@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/06/18/Oracle导出、导入、备份/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/06/18/Oracle导出、导入、备份/" class="article-date">
   	<time datetime="2015-06-18T11:20:35.000Z" itemprop="datePublished">Jun 18 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2015/06/18/Oracle导出、导入、备份/">Oracle导出、导入、备份</a>
@@ -279,80 +282,81 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
-                                                    
-                                        </div>
+            
+            <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exp/">exp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/imp/">imp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备份/">备份</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2015/06/18/Oracle导出、导入、备份/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2015/06/18/Oracle导出、导入、备份/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

@@ -193,6 +193,8 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/04/18/Mac-Env/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/04/18/Mac-Env/" class="article-date">
   	<time datetime="2016-04-18T15:34:07.000Z" itemprop="datePublished">Apr 18 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Mac设置环境变量
@@ -281,31 +284,31 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell类型"><span class="toc-number">1.</span> <span class="toc-text">Shell类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac环境变量配置"><span class="toc-number">2.</span> <span class="toc-text">Mac环境变量配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#etc-profile"><span class="toc-number">2.1.</span> <span class="toc-text">./etc/profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc-bashrc"><span class="toc-number">2.2.</span> <span class="toc-text">./etc/bashrc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bash-profile"><span class="toc-number">2.3.</span> <span class="toc-text">~/.bash_profile</span></a></li></ol></li></ol>
 </div>
@@ -334,11 +337,11 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p>
+            
+            <p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p>
 <h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br><a id="more"></a></p>
 <h2 id="Mac环境变量配置"><a href="#Mac环境变量配置" class="headerlink" title="Mac环境变量配置"></a>Mac环境变量配置</h2><p>如果是Bourne Shell设置环境变量的地方如下</p>
 <h3 id="etc-profile"><a href="#etc-profile" class="headerlink" title="./etc/profile"></a>./etc/profile</h3><p>全局(共有配置),不管是哪个用户,登陆时都会读取该文件。不建议修改此文件.</p>
@@ -346,79 +349,76 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 <h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</div><div class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> MAVEN_HOME</div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</div><div class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></div></pre></td></tr></table></figure></p>
 <p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2016/04/18/Mac-Env/">
-                                                                    http://kiritor.github.io/2016/04/18/Mac-Env/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2016/04/18/Mac-Env/">
+                    http://kiritor.github.io/2016/04/18/Mac-Env/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2016/04/18/Mac-Skills/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -439,9 +439,9 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -451,42 +451,41 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

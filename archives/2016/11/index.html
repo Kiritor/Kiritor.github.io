@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/11/02/jQuery-plugin/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/11/02/jQuery-plugin/" class="article-date">
   	<time datetime="2016-11-02T01:43:04.000Z" itemprop="datePublished">Nov 2 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2016/11/02/jQuery-plugin/">jQuery插件练习集</a>
@@ -279,81 +282,82 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <p>半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.</p>
+            
+            <p>半吊子前端,整理一些自己没事练习的jQuery插件,权当做个记录.</p>
 <h2 id="SocialShare-社会化分享插件"><a href="#SocialShare-社会化分享插件" class="headerlink" title="SocialShare(社会化分享插件)"></a>SocialShare(社会化分享插件)</h2><p>简单高效的社会化分享插件(sns-share),当站点需要添加社会化分享功能的时候,一般会想到baiduShare,或者JiaThis这类的第三方分享聚合工具,通过灵活的配置很快的就能实现分享功能.<br>不过这种方式也有一些弊端:<strong>性能问题</strong>和<strong>自定义不方便</strong>,界面,交互的体验不是非常好,笔者在自己的个人站点里面也想实现社会化 分享功能,而且喜欢简洁,因此就有了这款社会化分享插件.如图所示:<br><img src="http://o7q5y55yj.bkt.clouddn.com/snapshot.gif" alt="分享"><br>插件地址:<a href="https://github.com/Kiritor/socialShare">https://github.com/Kiritor/socialShare</a><br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2016/11/02/jQuery-plugin/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2016/11/02/jQuery-plugin/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

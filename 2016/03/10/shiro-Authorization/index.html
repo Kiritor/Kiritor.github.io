@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2016/03/10/shiro-Authorization/" class="article-date">
+    <div class="article-meta">
+        <a href="/2016/03/10/shiro-Authorization/" class="article-date">
   	<time datetime="2016-03-10T07:30:00.000Z" itemprop="datePublished">Mar 10 2016</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Shiro-Authorization(授权)
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/java/">java</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorization"><span class="toc-number">1.</span> <span class="toc-text">Authorization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权方式"><span class="toc-number">2.</span> <span class="toc-text">授权方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程式"><span class="toc-number">2.1.</span> <span class="toc-text">编程式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解式"><span class="toc-number">2.2.</span> <span class="toc-text">注解式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签式"><span class="toc-number">2.3.</span> <span class="toc-text">标签式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权"><span class="toc-number">3.</span> <span class="toc-text">授权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于角色的访问控制-隐式角色"><span class="toc-number">3.1.</span> <span class="toc-text">基于角色的访问控制(隐式角色)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于资源的访问控制-显示角色"><span class="toc-number">3.2.</span> <span class="toc-text">基于资源的访问控制(显示角色)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权流程"><span class="toc-number">4.</span> <span class="toc-text">授权流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Authorizer"><span class="toc-number">4.1.</span> <span class="toc-text">Authorizer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PermissionResolver"><span class="toc-number">4.2.</span> <span class="toc-text">PermissionResolver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RolePermissionResolver"><span class="toc-number">4.3.</span> <span class="toc-text">RolePermissionResolver</span></a></li></ol></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:<strong>主体(Subject)</strong>、<strong>资源(Resources)</strong>、<strong>权限(Permission)</strong>、<strong>角色(Role)</strong>.<br><strong>主体:</strong>即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.<br><strong>资源:</strong>在应用中用户可以访问、操作的任何东西都可以称作为资源(某个页面,按钮等),用户只有授权之后才能访问.<br><strong>权限:</strong>安全策略中的原子授权单位,通过权限可以表示用户在应用中有没有操作某个资源的权利.Tips：权限仅仅反映了用户在某个资源上的操作允不允许,不反应谁去执行此操作,权限赋予给用户这个操作Shiro并不关心,而是需要应用系统自己去实现。Shiro支持<strong>粗粒度权限</strong>和<strong>细粒度权限</strong>,后续在深入.<br><a id="more"></a><strong>角色:</strong>角色代表了操作集合,也就是权限的集合,大部分情况下我们会赋予用户角色而不是权限,这样用户可以拥有某个角色的一组权限,管理方便。不同的角色拥有一组不同的权限。<br><strong>隐式角色:</strong>角色作为一个隐式的构造,你的应用程序仅仅基于一个角色就蕴含了一组行为(即权限),在软件级别上没有”角色A允许执行操作A,B,C”.直接通过角色来验证用户有没有操作权限,粒度是以角色为单位进行访问控制(<strong>RBAC :Role Based Acess Control,基于角色的访问控制</strong>),粒度较粗,如果权限规则调整则可能造成多处代码修改。<br><strong>DEMO：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//项目经理操作</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//权限调整,设计经理也可以操作,则必须修改此处,或者更多出的代码</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>)||user.hasRole(<span class="string">"设计经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            
+            <h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:<strong>主体(Subject)</strong>、<strong>资源(Resources)</strong>、<strong>权限(Permission)</strong>、<strong>角色(Role)</strong>.<br><strong>主体:</strong>即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.<br><strong>资源:</strong>在应用中用户可以访问、操作的任何东西都可以称作为资源(某个页面,按钮等),用户只有授权之后才能访问.<br><strong>权限:</strong>安全策略中的原子授权单位,通过权限可以表示用户在应用中有没有操作某个资源的权利.Tips：权限仅仅反映了用户在某个资源上的操作允不允许,不反应谁去执行此操作,权限赋予给用户这个操作Shiro并不关心,而是需要应用系统自己去实现。Shiro支持<strong>粗粒度权限</strong>和<strong>细粒度权限</strong>,后续在深入.<br><a id="more"></a><strong>角色:</strong>角色代表了操作集合,也就是权限的集合,大部分情况下我们会赋予用户角色而不是权限,这样用户可以拥有某个角色的一组权限,管理方便。不同的角色拥有一组不同的权限。<br><strong>隐式角色:</strong>角色作为一个隐式的构造,你的应用程序仅仅基于一个角色就蕴含了一组行为(即权限),在软件级别上没有”角色A允许执行操作A,B,C”.直接通过角色来验证用户有没有操作权限,粒度是以角色为单位进行访问控制(<strong>RBAC :Role Based Acess Control,基于角色的访问控制</strong>),粒度较粗,如果权限规则调整则可能造成多处代码修改。<br><strong>DEMO：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//项目经理操作</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//权限调整,设计经理也可以操作,则必须修改此处,或者更多出的代码</span></div><div class="line"><span class="keyword">if</span>(user.hasRole(<span class="string">"项目经理"</span>)||user.hasRole(<span class="string">"设计经理"</span>))&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>显然这种方式做权限控制是不合理的,因为角色拥有的权限根据企业的需要可能动态的进行调整,此处以角色为单位控制权限的访问(硬编码)完全无法适应。一个解决方法就是:<br><strong>判断某角色是否具有某种权限不能写死在代码中,应该是根据数据库读取来完成,角色聚合一组权限集合</strong>,以资源为单位。这就是RBAC新解(<strong>Resources Based Acess Control:基于资源的访问控制</strong>)<br><strong>显示角色:</strong>程序中通过权限控制谁能访问某个资源,角色聚合一组权限集合(对应资源),应用可以很明确的知道该角色有哪些权限,这样假设某个角色不能访问某个资源时,只需要从权限集合中移除即可,无需修改任何代码,粒度是以资源为单位的,粒度较细,推荐方式。如下图;</p>
 <p><center><img src="/img/role_resources.png" alt="shiro_high"></center><br>对应我们在编写权限代码的时候例子如下:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#if(shiro.hasPermission("user:create"))</div><div class="line">&lt;a id="create"&gt;新建&lt;/a&gt;</div><div class="line">#end</div></pre></td></tr></table></figure></p>
 <p>上面代码是velocity中对于shiro的应用,意思是用户是否拥有创建用户的权利,有则显示创建按钮,反之则不显示.以user: create资源为单位控制访问,将应用系统资源、角色以及角色和资源的关系(权限规则)剥离出来,粒度细,而且通过改变用户和角色的关系,角色的权限集合实现动态灵活的授权.<br>Shiro既支持隐式方式粗粒度的授权,也支持显示方式细粒度的授权.不过更提倡的是显示角色即基于资源的访问控制.</p>
@@ -390,79 +393,76 @@
 <h3 id="PermissionResolver"><a href="#PermissionResolver" class="headerlink" title="PermissionResolver"></a>PermissionResolver</h3><p>PermimssionResolver用于解析权限字符串到Permission实例</p>
 <h3 id="RolePermissionResolver"><a href="#RolePermissionResolver" class="headerlink" title="RolePermissionResolver"></a>RolePermissionResolver</h3><p>RolePermissionResolver用于根据角色解析相应的权限集合.</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2016/03/10/shiro-Authorization/">
-                                                                    http://kiritor.github.io/2016/03/10/shiro-Authorization/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2016/03/10/shiro-Authorization/">
+                    http://kiritor.github.io/2016/03/10/shiro-Authorization/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2016/04/04/ini配置/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -483,9 +483,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -495,42 +495,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

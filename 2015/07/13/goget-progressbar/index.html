@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/07/13/goget-progressbar/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/07/13/goget-progressbar/" class="article-date">
   	<time datetime="2015-07-13T14:24:10.000Z" itemprop="datePublished">Jul 13 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Golang:go get现实显示进度(转)
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go-get/">go get</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/golang/">golang</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-修改git-clone命令"><span class="toc-number">1.</span> <span class="toc-text">1. 修改git clone命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-重定向输出流"><span class="toc-number">2.</span> <span class="toc-text">2. 重定向输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.</p>
+            
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;golang在使用go get下载package时,有些package如果比较大的话,下载时间比较的久(会给我们造成卡死的情况),希望可以有一个下载进度。google一下,已经有人解决了,自己也尝试了下,发现没问题,果断转载过来了.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;原文地址如下:<a href="http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000" target="_blank" rel="external">http://www.leanote.com/blog/view/544ca9a824ab0a1dbd000000</a><br><a id="more"></a><br>&nbsp;&nbsp;&nbsp;&nbsp;因为leanote在github.com上的包有点大, 所以 go get github.com/leanote/leanote/app 会很慢, 这个会执行几分钟或更长, 不知道的朋友还以为卡死了. 找了下 go get 没有一个选项可以输出进度的, 于是决定修改golang源码(别以为很有技术含量, 还不是go代码?).</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;看了下golang的源码 src/cmd/go 下是go命令的源码, 其中, get.go是go get命令的代码, build.go 是go build的代码.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;刚开始走了点弯路, 想着改变get.go来显示进度, 无果之后想了下, go get 其实就是调用git , hg, svn的命令从仓库中下载的, 由此思路找到vcs.go(vcs全称为version control system), 果然这里面包含了调用git, hg, svn的命令. 问题迎刃而解:</p>
@@ -352,79 +355,76 @@
 <p><a href="http://leanote.com/blog/view/53118d331a9108428c000001" target="_blank" rel="external">关闭golang的 variable declared but not used 和 package imported but not used</a></p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;linxu、mac下执行all.bash重新编译golang,windows下执行all.bat貌似有问题,可以执行run.bat即可.下面是我使用go get的情况:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Cloning into <span class="string">'/Users/lcore/dev/code/go/src/github.com/kiritor/ini'</span>...</div><div class="line">remote: Counting objects: 36, done.</div><div class="line">remote: Total 36 (delta 0), reused 0 (delta 0), pack-reused 35</div><div class="line">Unpacking objects: 100% (36/36), done.</div><div class="line">Checking connectivity... <span class="keyword">done</span></div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/heads/master</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/HEAD</div><div class="line">b577c9a266676ad31bd94824e2b1a80052f4f33a refs/remotes/origin/master</div><div class="line">Already on <span class="string">'master'</span></div></pre></td></tr></table></figure></p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/07/13/goget-progressbar/">
-                                                                    http://kiritor.github.io/2015/07/13/goget-progressbar/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/07/13/goget-progressbar/">
+                    http://kiritor.github.io/2015/07/13/goget-progressbar/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/09/11/SpringMVC-i18n/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -445,9 +445,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -457,42 +457,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

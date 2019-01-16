@@ -189,6 +189,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -235,6 +237,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -258,20 +261,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2017/12/15/关于过度设计、设计不足的思考/" class="article-date">
+    <div class="article-meta">
+        <a href="/2017/12/15/关于过度设计、设计不足的思考/" class="article-date">
   	<time datetime="2017-12-15T03:35:38.000Z" itemprop="datePublished">Dec 15 2017</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/15/关于过度设计、设计不足的思考/">关于过度设计、设计不足的思考</a>
@@ -279,18 +282,18 @@
   
 
 
-                            </header>
-                            
-                                    
+        </header>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                            
+            
 
-                                            
-                                                <p>翻博客的时候,偶然间发现一个词<span class="color">过度设计</span>,与之想对应的则为<span class="color">设计不足</span>,发散下思维,看看些文章做一些自己的总结。</p>
+            
+            <p>翻博客的时候,偶然间发现一个词<span class="color">过度设计</span>,与之想对应的则为<span class="color">设计不足</span>,发散下思维,看看些文章做一些自己的总结。</p>
 <h3 id="过度设计"><a href="#过度设计" class="headerlink" title="过度设计"></a>过度设计</h3><p>过度设计指的是:设计实现出来的系统臃肿庞大,功能俱全确不好用,特别是那种巨型的ERP系统。分为需求层面上的过度设计和软件实现层面上的过度设计。</p>
 <blockquote>
 <p> 需求层面上的的过度设计: 需求上的过度设计即过度解读用户需求, 形成了太多的衍生需求,这些需求是否能够真正帮助用户还是两说. 这些衍生需求是                         否需要设计还是丢弃需要权衡。<br> 软件设计层面上的过度设计: 过度的封装、一堆接口和无用的方法、超复杂的xml配置文件,不恰当的框架选型等。造成代码臃肿,难以维护.</p>
@@ -299,68 +302,69 @@
 <p> 设计不足: 指的是设计出来的系统复用性差，扩展性不足，不能灵活的应对变化，甚至达不到用户需求.</p>
 </blockquote>
 <p>总而言之,设计不足和过度设计都是设计不当，实际情况下不论是以需求为导向还是前瞻性的需求为导向到应该寻取两者的平衡点,尽量做到设计简洁、实用.<br>
-                                                    
-                                        </div>
+            
+        </div>
 
-                                        
-                                            <div class="article-info article-info-index">
-                                                
+        
+        <div class="article-info article-info-index">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思维/">思维</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计/">设计</a></li></ul>
 	</div>
 
 
-                                                    
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/12/15/关于过度设计、设计不足的思考/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
             
-                    
-                            
-                                                   
+            <p class="article-more-link">
+                <a  href="
+                    /2017/12/15/关于过度设计、设计不足的思考/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
   
   
 

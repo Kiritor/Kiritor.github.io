@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/06/18/Oracle导出、导入、备份/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/06/18/Oracle导出、导入、备份/" class="article-date">
   	<time datetime="2015-06-18T11:20:35.000Z" itemprop="datePublished">Jun 18 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Oracle导出、导入、备份
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exp/">exp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/imp/">imp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备份/">备份</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle数据库导入、导出imp-exp"><span class="toc-number">1.</span> <span class="toc-text">Oracle数据库导入、导出imp/exp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行环境"><span class="toc-number">2.</span> <span class="toc-text">执行环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp导出命令"><span class="toc-number">3.</span> <span class="toc-text">exp导出命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FULL-完全模式"><span class="toc-number">3.1.</span> <span class="toc-text">FULL:完全模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OWNER-用户模式"><span class="toc-number">3.2.</span> <span class="toc-text">OWNER:用户模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLES-表模式"><span class="toc-number">3.3.</span> <span class="toc-text">TABLES:表模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩"><span class="toc-number">3.4.</span> <span class="toc-text">压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#imp导入命令"><span class="toc-number">4.</span> <span class="toc-text">imp导入命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FULL-完全模式-1"><span class="toc-number">4.1.</span> <span class="toc-text">FULL:完全模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OWNER-用户模式-1"><span class="toc-number">4.2.</span> <span class="toc-text">OWNER:用户模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLES-表模式-1"><span class="toc-number">4.3.</span> <span class="toc-text">TABLES:表模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略错误"><span class="toc-number">4.4.</span> <span class="toc-text">忽略错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志"><span class="toc-number">4.5.</span> <span class="toc-text">日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谈谈备份"><span class="toc-number">5.</span> <span class="toc-text">谈谈备份</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br><a id="more"></a></p>
+            
+            <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br><a id="more"></a></p>
 <h2 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h2><p>&#160; &#160; &#160;可以在SQLPLUS或者直接在CMD命令行中执行.<br>&#160; &#160; &#160;Tips:在sqlplus环境下执行时需要在前面加’!’号:SQL&gt;!exp …SQL&gt;!imp</p>
 <h2 id="exp导出命令"><a href="#exp导出命令" class="headerlink" title="exp导出命令"></a>exp导出命令</h2><p>&#160; &#160; &#160;exp命令有三种模式(FULL:完全、OWNER:用户、TABLES:表)</p>
 <h3 id="FULL-完全模式"><a href="#FULL-完全模式" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式表示导出整个数据库,必须具备特殊的权限.一个实际的例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出整个数据库</div><div class="line">exp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
@@ -357,79 +360,76 @@
 <h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>&#160; &#160; &#160;有时候,需要对导入、导出操作做日志,也很简单,可以使用log=fileName即可.</p>
 <h2 id="谈谈备份"><a href="#谈谈备份" class="headerlink" title="谈谈备份"></a>谈谈备份</h2><p>&#160; &#160; &#160;Oracle数据库有两种备份方式:物理备份、逻辑备份.<br>&#160; &#160; &#160;<b>物理备份</b>:实现数据库的完整恢复,但是数据库必须运行在归档模式下(业务数据库在非归档模式下运行),且需要极大的外部存储设备.<br>&#160; &#160; &#160;<b>逻辑备份</b>:不需要数据库运行在归档模式下,不但备份简单,而且可以不需要外部存储设备.一般使用此种备份方式.<br>&#160; &#160; &#160;imp、exp命令即是实现逻辑备份的命令,根据imp、exp命令的不同模式,逻辑备份相应的分为完全备份、用户备份、表备份.</p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/">
-                                                                    http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/">
+                    http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/07/13/goget-progressbar/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -450,9 +450,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -462,42 +462,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">

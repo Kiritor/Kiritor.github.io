@@ -193,6 +193,8 @@
 </nav>
 
 	  <div class="page-header" style="">
+	<!--是否开启站内搜索-->
+	
 	<span class="local-search local-search-google local-search-plugin" style="float:right;">
   <input type="search" placeholder="Search..." id="local-search-input" class="local-search-input-cls" style="">
   <!--<i class="icon" aria-hidden="true" title="Search"></i>-->
@@ -239,6 +241,7 @@
 	
 </script>
 
+	
 	<!--是否开启最近通知-->
 	
 	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
@@ -260,20 +263,20 @@
         });
     </script>
     
-        <div class="article-meta">
-            <a href="/2015/04/14/Oracle-dblink实践/" class="article-date">
+    <div class="article-meta">
+        <a href="/2015/04/14/Oracle-dblink实践/" class="article-date">
   	<time datetime="2015-04-14T09:22:49.000Z" itemprop="datePublished">Apr 14 2015</time>
 </a>
 
-        </div>
+    </div>
+    
+    <div class="article-inner">
         
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
     <h1 class="article-title" itemprop="name">
       Oracle dblink实践
@@ -281,31 +284,31 @@
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
+        </header>
+        
+        <div class="article-info article-info-post">
+            
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dblink/">dblink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
 	</div>
 
 
-                                        
+            
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/work/">work</a>
 	</div>
 
 
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
+            <div class="clearfix"></div>
+        </div>
+        
+        
 
-                                        <div class="article-entry" itemprop="articleBody">
+        <div class="article-entry" itemprop="articleBody">
 
-                                            
+            
 
-                                                    <p class="toc-button" id="toc-button">目录</p>
+            <p class="toc-button" id="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dblink概述"><span class="toc-number">2.</span> <span class="toc-text">dblink概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dblink的创建"><span class="toc-number">3.</span> <span class="toc-text">dblink的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dblink的使用"><span class="toc-number">4.</span> <span class="toc-text">dblink的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hibernate使用dblink"><span class="toc-number">5.</span> <span class="toc-text">Hibernate使用dblink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题补充1"><span class="toc-number">6.</span> <span class="toc-text">问题补充1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题补充2"><span class="toc-number">7.</span> <span class="toc-text">问题补充2</span></a></li></ol>
 </div>
@@ -334,11 +337,11 @@
     })
 </script>
 
-                                                  
-                                            
+            
+            
 
-                                            
-                                                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br><a id="more"></a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;经过一些权衡,以及实际项目开发的情况,选择了以dblink的方式来解决各模块之间数据流转的问题</p>
@@ -364,79 +367,76 @@
 <p>出现这个问题是因为跨库连接查询的数据表存在CLOB、或则BLOB类型的字段。需要注意:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1、不能使用select * from x</div><div class="line">2、不能将blob、clob类型的字段出现在脚本中。</div></pre></td></tr></table></figure></p>
 <p>解决方案有两种,第一种:select X.name的形式,去掉blob类型的字段,这种方法不是非常恰当(除非不需要blob类型的字段)<br>第二种方案:使用零时表,之后把远程的含BLOB字段的表导入到零时表中,再导入到表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">global</span> <span class="keyword">temporary</span> <span class="keyword">table</span> demo_temp <span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> demo;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> demo_temp <span class="keyword">select</span> * <span class="keyword">from</span> demo@D_LINK;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> demo <span class="keyword">select</span> * <span class="keyword">from</span> demo_temp;</div><div class="line"><span class="keyword">commit</span>;</div></pre></td></tr></table></figure></p>
 
-                                                            </br>
-                                                            <p>本文链接：
-                                                                <a href="http://kiritor.github.io/2015/04/14/Oracle-dblink实践/">
-                                                                    http://kiritor.github.io/2015/04/14/Oracle-dblink实践/
-                                                                </a>
-                                                            </p>
-                                                            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/14/Oracle-dblink实践/">
+                    http://kiritor.github.io/2015/04/14/Oracle-dblink实践/
+                </a>
+            </p>
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
-                                                            <div class="post-info">
+            <div class="post-info">
 
-                                                                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-                                                            </div>
-                                                            
-                                        </div>
-
-                                        
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
             
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        <div class="donateContainer">
-                            <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-                            <span id="donate" class="donate" onclick="donate()">打赏</span>
-                            <div id="QR" style="display: none;">
+        </div>
 
-                                <div id="alipay" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-                                    </a>
+        
+    </div>
+    
+        <div id="socialShare" style="margin-left:40px;display:none;">
+</div>
+<script>
+    $(function () {
+        var width = document.body.scrollWidth;
+        if (width > 550) {
+            $("#socialShare").css("display", "block");
+            $("#socialShare").socialShare({
+                content: 'Nice!不错的资源...',
+                url: window.location.href,
+                titile: ''
+            });
+        }
+    });
+</script>
+    
+    
+        
+            <div class="donateContainer">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <span id="donate" class="donate" onclick="donate()">打赏</span>
+    <div id="QR" style="display: none;">
 
-                                </div>
+        <div id="alipay" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
+            </a>
 
-                                <div id="wechat" style="display: inline-block">
-                                    <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                                        <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-                                    </a>
+        </div>
+        <div id="wechat" style="display: inline-block">
+            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
+                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
+            </a>
 
-                                </div>
+        </div>
+    </div>
+    <script>
+        function donate() {
+            var qr = document.getElementById('QR');
+            if (qr.style.display === 'none') {
+                qr.style.display = 'block';
+            } else {
+                qr.style.display = 'none'
+            }
 
-
-
-
-                            </div>
-                            <script>
-                                function donate() {
-                                    var qr = document.getElementById('QR');
-                                    if (qr.style.display === 'none') {
-                                        qr.style.display = 'block';
-                                    } else {
-                                        qr.style.display = 'none'
-                                    }
-
-                                };
-                            </script>
-                        </div>
-                        
-                            
-                                
+        };
+    </script>
+</div>
+        
+    
+    
+        
 <nav id="article-nav">
   
     <a href="/2015/04/15/Go语言时间处理/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -457,9 +457,9 @@
 </nav>
 
 
-                                
-                                    
-                                        <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
+        
+            
+                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -469,42 +469,41 @@
         notify: true
     })
 </script>
-                                    
-                                
-                            
-                                                   
+            
+        
+    
+
 </article>
 
 
 <script>
-	var isMobile = {
-        Android: function() {
+    var isMobile = {
+        Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
-        BlackBerry: function() {
+        BlackBerry: function () {
             return navigator.userAgent.match(/BlackBerry/i);
         },
-        iOS: function() {
+        iOS: function () {
             return navigator.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        Opera: function() {
+        Opera: function () {
             return navigator.userAgent.match(/Opera Mini/i);
         },
-        Windows: function() {
+        Windows: function () {
             return navigator.userAgent.match(/IEMobile/i);
         },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
         }
     };
-	if(isMobile.any()){
-	    //移动端不显示目录和评论
-		$("#toc-button").css("display","none");
-		$("#commentDiv").css("display","none");
-	}
-
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
 </script>
-
 </div>
       <!--
 <footer id="footer">
