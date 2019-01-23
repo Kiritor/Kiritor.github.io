@@ -8,27 +8,21 @@
   <title>Dev-faq | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。
-SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
-Autowired注解与 @Resource 做个简单对比:
-
-@Resource属于JAVAEE">
+工具集SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
+Dash开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dev-faq">
 <meta property="og:url" content="http://kiritor.github.io/2018/11/15/dev-faq/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="前言突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。
-SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
-Autowired注解与 @Resource 做个简单对比:
-
-@Resource属于JAVAEE">
-<meta property="og:updated_time" content="2019-01-15T07:09:42.000Z">
+工具集SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
+Dash开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/b">
+<meta property="og:updated_time" content="2019-01-23T05:40:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dev-faq">
 <meta name="twitter:description" content="前言突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。
-SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
-Autowired注解与 @Resource 做个简单对比:
-
-@Resource属于JAVAEE">
+工具集SSH工具虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具Termius
+Dash开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/b">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -259,7 +253,7 @@ Autowired注解与 @Resource 做个简单对比:
 	
 </div>
 
-      <div class="body-wrap"><article id="post-noTOC-dev-faq" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-dev-faq" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -316,22 +310,53 @@ Autowired注解与 @Resource 做个简单对比:
         <div class="article-entry" itemprop="articleBody">
 
             
+
+            <p class="toc-button" id="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工具集"><span class="toc-number">2.</span> <span class="toc-text">工具集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH工具"><span class="toc-number">2.1.</span> <span class="toc-text">SSH工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dash"><span class="toc-number">2.2.</span> <span class="toc-text">Dash</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技巧"><span class="toc-number">3.</span> <span class="toc-text">技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Autowired注解"><span class="toc-number">3.1.</span> <span class="toc-text">Autowired注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看GitLab版本号"><span class="toc-number">3.2.</span> <span class="toc-text">查看GitLab版本号</span></a></li></ol></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+            
             
 
             
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。</p>
-<h2 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a>SSH工具</h2><p>虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具<strong>Termius</strong></p>
-<h2 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="Autowired注解"></a>Autowired注解</h2><p>与 <strong>@Resource</strong> 做个简单对比:</p>
+<h2 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h2><h3 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a>SSH工具</h3><p>虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具<strong>Termius</strong></p>
+<h3 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h3><p>开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/baidu<br><a id="more"></a></p>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="Autowired注解"></a>Autowired注解</h3><p>与 <strong>@Resource</strong> 做个简单对比:</p>
 <ul>
 <li>@Resource属于JAVAEE,@Autowired属于Spring</li>
 <li>@Autowired按类型装配,可配合@Qualifier按名称装配(目前Spring4泛型注入使用该注解,泛型注入还能根据泛型选择)</li>
 <li>@Resource默认按名称进行装配，在按类型装配，如果指定了name属性则只按名称装配</li>
 </ul>
-<p>由于 <strong>@Resource</strong>属于JAVAEE,耦合度较低，一般情况下推荐使用<br><a id="more"></a></p>
+<p>由于 <strong>@Resource</strong>属于JAVAEE,耦合度较低，一般情况下推荐使用</p>
 <p>构建springboot+mybatis通用maper、通用service时，使用 <strong>@Resource</strong> 注解报错如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">No qualifying bean of type <span class="string">'tk.mybatis.mapper.common.Mapper&lt;?&gt;'</span> available: expected single matching bean but found <span class="number">2</span>: roleMapper,userMapper</div></pre></td></tr></table></figure></p>
 <p>原因在于多个mapper继承了通用mapper, 又使用了泛型，<strong>@Resource</strong>注解无法装配,采用 <strong>@Autowired</strong>解决。</p>
-<h2 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h2><p>开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/baidu </p>
-
+<h3 id="查看GitLab版本号"><a href="#查看GitLab版本号" class="headerlink" title="查看GitLab版本号"></a>查看GitLab版本号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /opt/gitlab/embedded/service/gitlab-rails/VERSION</div></pre></td></tr></table></figure>
             </br>
             <p>本文链接：
                 <a href="http://kiritor.github.io/2018/11/15/dev-faq/">
