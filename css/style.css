@@ -1542,7 +1542,7 @@ a {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #2d2d2d;
+  background: #ddd;
   margin: 0 0;
   padding: 15px 20px;
   overflow: auto;
@@ -1612,7 +1612,7 @@ a {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #2d2d2d;
+  background: #ddd;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -1638,7 +1638,7 @@ a {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #2d2d2d;
+  background: #ddd;
   color: #a6e22e;
   font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
