@@ -1542,7 +1542,7 @@ a {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #ddd;
+  background: #2d2d2d;
   margin: 0 0;
   padding: 15px 20px;
   overflow: auto;
@@ -1612,7 +1612,7 @@ a {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #ddd;
+  background: #2d2d2d;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -1638,7 +1638,7 @@ a {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #ddd;
+  background: #2d2d2d;
   color: #a6e22e;
   font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
@@ -2425,13 +2425,13 @@ pre .javascript .function {
   position: fixed;
   top: 40%;
   right: 10px;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
   height: 26px;
-  background-color: #2ec7e3;
+  background-color: #555;
   width: 26px;
   text-align: right;
-  padding-right: 4px;
+  padding-right: 2px;
   line-height: 26px;
   color: #fff;
   font-size: 10px;
@@ -2448,7 +2448,7 @@ pre .javascript .function {
   right: 60px;
   width: 100px;
   font-size: 14px;
-  color: #000;
+  color: #eee;
 }
 .toc-article .toc-title {
   padding-bottom: 0.4em;
