@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title>GitLab使用自定义签名开启HTTPS</title>
+      <link href="/2019/01/23/gitlab-install/"/>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下:</p><h2 id="生成CA私钥ca-key"><a href="#生成CA私钥ca-key" class="headerlink" title="生成CA私钥ca.key"></a>生成CA私钥ca.key</h2><p>在gitlab目录下新建ssl目录，生成私钥ca.key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir ssl</div><div class="line">$ <span class="built_in">cd</span> ssl</div><div class="line">$ openssl genrsa -out ca.key 2048</div></pre></td></tr></table></figure></p><h2 id="生成根证书"><a href="#生成根证书" class="headerlink" title="生成根证书"></a>生成根证书</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>新建一个配置文件<strong>openssl.ca.conf</strong>,内容如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">RANDFILE               = <span class="variable">$ENV</span>::HOME/.rnd</div><div class="line"></div><div class="line"> [ req ]</div><div class="line"> string_mask = utf8only</div><div class="line"> utf8        = yes</div><div class="line"> default_bits           = 2048</div><div class="line"> default_keyfile        = ca.key</div><div class="line"> distinguished_name     = req_distinguished_name</div><div class="line"> prompt                 = no</div><div class="line"></div><div class="line"> [ req_distinguished_name ]</div><div class="line"> C                      = CN</div><div class="line"> ST                     = ChongQing</div><div class="line"> L                      = ChongQing</div><div class="line"> O                      = XXX Inc.</div><div class="line"> OU                     = IT XXX.</div><div class="line"> CN                     = Custom CA</div></pre></td></tr></table></figure></p><p><strong>Tips:</strong>通过配置文件req_distinguished_name指定组织信息</p><h3 id="生成CA根证书ca-crt"><a href="#生成CA根证书ca-crt" class="headerlink" title="生成CA根证书ca.crt"></a>生成CA根证书ca.crt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req -config openssl_ca.conf -new -x509 -days 7305 -key ca.key -out ca.crt</div></pre></td></tr></table></figure><p><strong>Tips:</strong>这里也可以不指定-config openssl_ca.conf直接输入组织信息,不从配置文件指定</p><h2 id="生成server私钥"><a href="#生成server私钥" class="headerlink" title="生成server私钥"></a>生成server私钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl genrsa -out server.key 2048</div></pre></td></tr></table></figure><h2 id="生成签名请求CSR文件"><a href="#生成签名请求CSR文件" class="headerlink" title="生成签名请求CSR文件"></a>生成签名请求CSR文件</h2><p>通过服务器私钥生成签名请求CSR文件server.csr</p><h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><p>准备一个配置文件<strong>openssl_server.conf</strong></p>]]></content>
+      
+      <categories>
+          
+          <category> work </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gitlab </tag>
+            
+            <tag> https </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Dev-faq</title>
       <link href="/2018/11/15/dev-faq/"/>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>突然想把工作中和学习中遇到的开发上的疑难问题记录一下。不仅仅限于代码层面，可以是一些开发技巧，新的思维、研发工具，甚至是一些TODO。</p><h2 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h2><h3 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a>SSH工具</h3><p>虽然Mac的终端可以使用SSH命令远程登录服务器，可是每次都需要输入命令挺麻烦的，而且服务器也多不便于管理。推荐一款跨平台的SSH工具<strong>Termius</strong></p><h3 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h3><p>开发者必备的API文档聚合工具,随查随用,简单快捷，学会先查API,再Google/baidu<br><a id="more"></a></p><h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="Autowired注解"></a>Autowired注解</h3><p>与 <strong>@Resource</strong> 做个简单对比:</p><ul><li>@Resource属于JAVAEE,@Autowired属于Spring</li><li>@Autowired按类型装配,可配合@Qualifier按名称装配(目前Spring4泛型注入使用该注解,泛型注入还能根据泛型选择)</li><li>@Resource默认按名称进行装配，在按类型装配，如果指定了name属性则只按名称装配</li></ul><p>由于 <strong>@Resource</strong>属于JAVAEE,耦合度较低，一般情况下推荐使用</p><p>构建springboot+mybatis通用maper、通用service时，使用 <strong>@Resource</strong> 注解报错如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">No qualifying bean of type <span class="string">'tk.mybatis.mapper.common.Mapper&lt;?&gt;'</span> available: expected single matching bean but found <span class="number">2</span>: roleMapper,userMapper</div></pre></td></tr></table></figure></p><p>原因在于多个mapper继承了通用mapper, 又使用了泛型，<strong>@Resource</strong>注解无法装配,采用 <strong>@Autowired</strong>解决。</p><h3 id="查看GitLab版本号"><a href="#查看GitLab版本号" class="headerlink" title="查看GitLab版本号"></a>查看GitLab版本号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /opt/gitlab/embedded/service/gitlab-rails/VERSION</div></pre></td></tr></table></figure>]]></content>
@@ -19,6 +41,30 @@
             <tag> spring </tag>
             
             <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Docker实践</title>
+      <link href="/2018/02/02/Docker/"/>
+      <content type="html"><![CDATA[<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><p>Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。<br>概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：</p><ul><li>容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。</li><li>容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。</li><li>容器富裕了软件独立性，免受外在环境诧异的影响(比如开发环境、测试环境、生产环境)，减少团队间在相同基础设施上运行不同软件时的冲突。<center><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t1vp3uyzj30fw0d0jrt.jpg" alt="容器FAQ"></center></li></ul><h2 id="Docker是什么"><a href="#Docker是什么" class="headerlink" title="Docker是什么"></a>Docker是什么</h2><p>Docker提供了一种打包、输送、运行任意应用的容器将解决方案。Docker是世界领先的软件容器平台。<br>Docker能够自动执行重复性任务，例如搭建和配置开发环境，从而解放了开发人员以便他们专注在真正重要的事情上：构建杰出的软件。<br>用户可以方便地创建和使用容器，把自己的应用放入容器。容器还可以进行版本管理、复制、分享、修改，就像管理普通的代码一样。</p><center><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t3ciz1w8j30xe0mganw.jpg" alt="docker"></center><p>Docker的思想: <strong>集装化</strong>、<strong>标准化:①运输方式、②存储方式、 ③API接口</strong>、<strong>隔离</strong></p><h3 id="容器-VS-虚拟机"><a href="#容器-VS-虚拟机" class="headerlink" title="容器 VS 虚拟机"></a>容器 VS 虚拟机</h3><p>容器虚拟化的是操作系统而不是硬件，容器之间是共享一套操作系统资源，应用进程直接运行宿主的内核;虚拟机技术是虚拟出一套硬件之后，在其上运行一个完整的操作系统，在系统上运行所需应用进程。相较来说容器的隔离级别低一些，但是容器更容易移植，效率也更高、更轻量。</p><p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t31wz377j30j8079jsa.jpg" alt="VM"></p><p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0t32mstejj30j505f3zf.jpg" alt="Docker"></p><p><strong>容器与VM对比</strong></p><table><thead><tr><th>特性</th><th>容器</th><th>虚拟机</th></tr></thead><tbody><tr><td>启动</td><td>秒级</td><td>分钟级</td></tr><tr><td>硬盘使用</td><td>MB</td><td>GB</td></tr><tr><td>性能</td><td>接近原生</td><td>弱于</td></tr><tr><td>系统支持量</td><td>单机千级</td><td>几十</td></tr></tbody></table><ul><li>容器是一个应用层抽象，用于将代码和依赖资源打包在一起。 多个容器可以在同一台机器上运行，共享操作系统内核，但各自作为独立的进程在用户空间中运行 。与虚拟机相比， 容器占用的空间较少（容器镜像大小通常只有几十兆），瞬间就能完成启动 。</li><li>虚拟机（VM）是一个物理硬件层抽象，用于将一台服务器变成多台服务器。 管理程序允许多个VM在一台机器上运行。每个VM都包含一整套操作系统、一个或多个应用、必要的二进制文件和库资源，因此占用大量空间。而且VM启动也十分缓慢。</li></ul><p>Docker和VM两者有着不同的使用场景，虚拟机更擅长彻底隔离整个运行环境，例如云服务提供商通畅采用虚拟技术隔离不同的用户。Docker通常用于隔离不同的应用，例如前端、后端以及数据库。<strong>容器与虚拟机两者是可以共存的</strong></p><h3 id="Docker容器特点"><a href="#Docker容器特点" class="headerlink" title="Docker容器特点"></a>Docker容器特点</h3><ul><li>轻量，在一台机器上运行的多个Docker容器可以共享这台机器的操作系统内核；它们能够迅速启动，只需占用很少的计算和内存资源。镜像是通过文件系统层进行构造的，并共享一些公共文件。这样就能尽量降低磁盘用量，并能更快地下载镜像。</li><li>标准，Docker容器基于开放式标准，能够在所有主流Linux版本、Microsoft Windows以及包括VM、裸机服务器和云在内的任何基础设施上运行。</li><li>安全，Docker赋予应用的隔离性不仅限于彼此隔离，还独立于底层的基础设施。Docker默认提供最强的隔离，因此应用出现问题，也只是单个容器的问题，而不会波及到整台机器。</li></ul><h3 id="Docker优势"><a href="#Docker优势" class="headerlink" title="Docker优势"></a>Docker优势</h3><ul><li><strong>一致的运行环境:</strong> docker镜像提供了除内核外完整的运行时环境，可以确保开发环境、测试环境的一致性，可移植性。</li><li><strong>更快的启动时间:</strong> 可以做到秒级启动时间，节约了开发、测试、部署时间。</li><li><strong>隔离性:</strong> 避免公用的服务器，资源会容易受到其他用户影响。</li><li><strong>弹性伸缩、快速扩展:</strong> 善于处理集中爆发的服务器使用压力。</li><li><strong>迁移方便:</strong> 可以快速将一个平台上运行的应用迁移到另一个平台，不用担心运行环境变化导致应用无法正常运行。</li><li><strong>CI/CD:</strong> 通过Docker定制应用镜像实现持续集成、持续交付、部署。</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> work </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> k8s </tag>
+            
+            <tag> 容器 </tag>
             
         </tags>
       
