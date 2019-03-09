@@ -557,36 +557,6 @@
 
             
 
-            <p class="toc-button" id="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">1.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker是什么"><span class="toc-number">2.</span> <span class="toc-text">Docker是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器-VS-虚拟机"><span class="toc-number">2.1.</span> <span class="toc-text">容器 VS 虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker容器特点"><span class="toc-number">2.2.</span> <span class="toc-text">Docker容器特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker优势"><span class="toc-number">2.3.</span> <span class="toc-text">Docker优势</span></a></li></ol></li></ol>
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-            
             
 
             
@@ -594,80 +564,7 @@
 <ul>
 <li>容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。</li>
 <li>容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。</li>
-<li>容器富裕了软件独立性，免受外在环境诧异的影响(比如开发环境、测试环境、生产环境)，减少团队间在相同基础设施上运行不同软件时的冲突。<center><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t1vp3uyzj30fw0d0jrt.jpg" alt="容器FAQ"></center>
-
-</li>
-</ul>
-<h2 id="Docker是什么"><a href="#Docker是什么" class="headerlink" title="Docker是什么"></a>Docker是什么</h2><p>Docker提供了一种打包、输送、运行任意应用的容器将解决方案。Docker是世界领先的软件容器平台。<br>Docker能够自动执行重复性任务，例如搭建和配置开发环境，从而解放了开发人员以便他们专注在真正重要的事情上：构建杰出的软件。<br>用户可以方便地创建和使用容器，把自己的应用放入容器。容器还可以进行版本管理、复制、分享、修改，就像管理普通的代码一样。</p>
-<center><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t3ciz1w8j30xe0mganw.jpg" alt="docker"></center>
-
-<p>Docker的思想: <strong>集装化</strong>、<strong>标准化:①运输方式、②存储方式、 ③API接口</strong>、<strong>隔离</strong></p>
-<h3 id="容器-VS-虚拟机"><a href="#容器-VS-虚拟机" class="headerlink" title="容器 VS 虚拟机"></a>容器 VS 虚拟机</h3><p>容器虚拟化的是操作系统而不是硬件，容器之间是共享一套操作系统资源，应用进程直接运行宿主的内核;虚拟机技术是虚拟出一套硬件之后，在其上运行一个完整的操作系统，在系统上运行所需应用进程。相较来说容器的隔离级别低一些，但是容器更容易移植，效率也更高、更轻量。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t31wz377j30j8079jsa.jpg" alt="VM"></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0t32mstejj30j505f3zf.jpg" alt="Docker"></p>
-<p><strong>容器与VM对比</strong></p>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>容器</th>
-<th>虚拟机</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>启动</td>
-<td>秒级</td>
-<td>分钟级</td>
-</tr>
-<tr>
-<td>硬盘使用</td>
-<td>MB</td>
-<td>GB</td>
-</tr>
-<tr>
-<td>性能</td>
-<td>接近原生</td>
-<td>弱于</td>
-</tr>
-<tr>
-<td>系统支持量</td>
-<td>单机千级</td>
-<td>几十</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>容器是一个应用层抽象，用于将代码和依赖资源打包在一起。 多个容器可以在同一台机器上运行，共享操作系统内核，但各自作为独立的进程在用户空间中运行 。与虚拟机相比， 容器占用的空间较少（容器镜像大小通常只有几十兆），瞬间就能完成启动 。</li>
-<li>虚拟机（VM）是一个物理硬件层抽象，用于将一台服务器变成多台服务器。 管理程序允许多个VM在一台机器上运行。每个VM都包含一整套操作系统、一个或多个应用、必要的二进制文件和库资源，因此占用大量空间。而且VM启动也十分缓慢。</li>
-</ul>
-<p>Docker和VM两者有着不同的使用场景，虚拟机更擅长彻底隔离整个运行环境，例如云服务提供商通畅采用虚拟技术隔离不同的用户。Docker通常用于隔离不同的应用，例如前端、后端以及数据库。<strong>容器与虚拟机两者是可以共存的</strong></p>
-<h3 id="Docker容器特点"><a href="#Docker容器特点" class="headerlink" title="Docker容器特点"></a>Docker容器特点</h3><ul>
-<li>轻量，在一台机器上运行的多个Docker容器可以共享这台机器的操作系统内核；它们能够迅速启动，只需占用很少的计算和内存资源。镜像是通过文件系统层进行构造的，并共享一些公共文件。这样就能尽量降低磁盘用量，并能更快地下载镜像。</li>
-<li>标准，Docker容器基于开放式标准，能够在所有主流Linux版本、Microsoft Windows以及包括VM、裸机服务器和云在内的任何基础设施上运行。</li>
-<li>安全，Docker赋予应用的隔离性不仅限于彼此隔离，还独立于底层的基础设施。Docker默认提供最强的隔离，因此应用出现问题，也只是单个容器的问题，而不会波及到整台机器。</li>
-</ul>
-<h3 id="Docker优势"><a href="#Docker优势" class="headerlink" title="Docker优势"></a>Docker优势</h3><ul>
-<li><strong>一致的运行环境:</strong> docker镜像提供了除内核外完整的运行时环境，可以确保开发环境、测试环境的一致性，可移植性。</li>
-<li><strong>更快的启动时间:</strong> 可以做到秒级启动时间，节约了开发、测试、部署时间。</li>
-<li><strong>隔离性:</strong> 避免公用的服务器，资源会容易受到其他用户影响。</li>
-<li><strong>弹性伸缩、快速扩展:</strong> 善于处理集中爆发的服务器使用压力。</li>
-<li><strong>迁移方便:</strong> 可以快速将一个平台上运行的应用迁移到另一个平台，不用担心运行环境变化导致应用无法正常运行。</li>
-<li><strong>CI/CD:</strong> 通过Docker定制应用镜像实现持续集成、持续交付、部署。</li>
-</ul>
-
-            </br>
-            <p>本文链接：
-                <a href="http://kiritor.github.io/2018/02/02/Docker/">
-                    http://kiritor.github.io/2018/02/02/Docker/
-                </a>
-            </p>
-            <p>-- <acronym title="End of File">EOF</acronym> --</p>
-
-            <div class="post-info">
-
-                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-            </div>
+<li>容器富裕了软件独立性，免受外在环境诧异的影响(比如开发环境、测试环境、生产环境)，减少团队间在相同基础设施上运行不同软件时的冲突。<br><center><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0t1vp3uyzj30fw0d0jrt.jpg" alt="容器FAQ"></center>
             
         </div>
 
@@ -685,6 +582,12 @@
 	</div>
 
 
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2018/02/02/Docker/#more">
+                    More >></a>
+            </p>
             
             <div class="clearfix"></div>
         </div>
