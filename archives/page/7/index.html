@@ -248,6 +248,118 @@
 
       <div class="body-wrap">
   
+    <article id="post-GolangArraySlice" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/06/04/GolangArraySlice/" class="article-date">
+  	<time datetime="2015-06-04T11:41:31.000Z" itemprop="datePublished">Jun 4 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/04/GolangArraySlice/">Go语言数组&amp;数组切片整理</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
+<p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
+<p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/append/">append</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slice/">slice</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/06/04/GolangArraySlice/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
     <article id="post-jQueryPlugindevGuide" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
@@ -655,117 +767,6 @@
             <p class="article-more-link">
                 <a  href="
                     /2015/04/14/Oracle-dblink实践/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
-    <article id="post-Oracle之物化视图" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2015/04/14/Oracle之物化视图/" class="article-date">
-  	<time datetime="2015-04-14T07:27:41.000Z" itemprop="datePublished">Apr 14 2015</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/14/Oracle之物化视图/">Oracle之物化视图</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
-<h2 id="物化视图概述"><a href="#物化视图概述" class="headerlink" title="物化视图概述"></a>物化视图概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物化视图/">物化视图</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2015/04/14/Oracle之物化视图/#more">
                     More >></a>
             </p>
             

@@ -248,110 +248,121 @@
 
       <div class="body-wrap"><!-- 是否开启微简历 -->
 
-      <div class="resume" id="resume">
-    <ul id="centerwell">
-        <li id="aboutMe">
-            <h3></h3>
-            <div>
-                <h2 style="margin-top:10px;">About Me</h2>
-                <label>姓名:梁涛</label>
-                <label>出生日期:1991/02/27</label>
-                <label style="margin-right:20px">电话:188832519XX</label>
-                </br>
-                <label style="margin-right:20px">学校:西南大学 计算机科学与技术</label>
-                <label>邮件:1406754158@qq.com</label>
-                <label>Website:<a href="http://kiritor.github.io">kiritor.github.io</a>
-                </label>
-            </div>
-
-        </li>
-        <li id="work">
-            <h3></h3>
-            <div>
-                <h2 style="margin-top:10px;">兴趣爱好</h2>
-                <label>程序员一枚,爱好开源,喜欢瞎折腾.</label>
-                </br>
-                <label>成长中的全栈开发者,什么都会,什么也不会.</label>
-                </br>
-                <label>目前作为技术经理,日常打打杂....</label>
-            </div>
-
-        </li>
-        <li id="close" style="float:right;width:40px;">
-            <a class="ck-prev" href="javascript:;">上一张</a>
-        </li>
-    </ul>
-    <script>
-        $(document).ready(function() {
-            var $centerwell_first = $('#centerwell li:first');
-            /* $centerwell_first.animate({
-            width: '400px'
-        }, 300);
-        $centerwell_first.find('h3').animate({}, 300);
-       */
-            /*'#centerwell li').click(function() {
-            window.open($(this).find('a').attr('href'));
-        });
-        */
-            $('#centerwell li').mouseenter(function() {
-                if (!$(this).is(':animated') && $(this).attr("id") != "close") {
-                    $(this).animate({
-                        width: '600'
-                    }, 300).siblings().not("#close").animate({
-                        width: '140px'
-                    }, 300);
-
-                    $(this).find('h3').animate({
-                        backgroundPosition: '-140px'
-                    }, 300).parent().siblings().find('h3').animate({
-                        backgroundPosition: '0px'
-                    }, 300);
-                }
-
-            });
-            $("#close").mouseenter(function() {
-                $('#centerwell li:not(#close)').animate({
-                    width: '140px'
-                }, 300);
-                $('#centerwell li:not(#close)').find("h3").animate({
-                    backgroundPosition: '0px'
-                }, 300);
-            });
-        });
-
-        var isMobile = {
-            Android: function() {
-                return navigator.userAgent.match(/Android/i);
-            },
-            BlackBerry: function() {
-                return navigator.userAgent.match(/BlackBerry/i);
-            },
-            iOS: function() {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-            },
-            Opera: function() {
-                return navigator.userAgent.match(/Opera Mini/i);
-            },
-            Windows: function() {
-                return navigator.userAgent.match(/IEMobile/i);
-            },
-            any: function() {
-                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-            }
-        };
-        if (isMobile.any()) {
-            //手机端
-            $("#resume").css("display", "none");
-        }
-    </script>
-
-</div>
-
-
 <!--
 
 -->
 
+  
+    <article id="post-jQuery中的冲突-noConfilic解决机制" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/" class="article-date">
+  	<time datetime="2015-04-02T06:24:04.000Z" itemprop="datePublished">Apr 2 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/02/jQuery中的冲突-noConfilic解决机制/">jQuery中的冲突-noConfilic解决机制</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>许多的JS框架类库都选择使用符号作为函数或变量名,而且在实际的项目开发中,使用模板语言的话有可能符号即为该模板语言的关键字。例如Veclocity模板语言,是关键字.与jQuery一起使用可能会存在冲突(页面中直接写jq代码,引入的js文件不存在该问题)。吐槽下为啥这么多js库喜欢用( is money?)。</p>
+<p>   jQuery是使用符号作为函数或变量名最为典型的一个。在jQuery中,符号只是window.jQuery对象的一个引用,因此即使被删除,jQuery依然能保证整个类库的完整性。<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noConfilic/">noConfilic</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/02/jQuery中的冲突-noConfilic解决机制/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
   
     <article id="post-jQuery对象、DOM对象-傻傻分不清楚" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
@@ -757,117 +768,6 @@
             <p class="article-more-link">
                 <a  href="
                     /2015/03/27/golang-install/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
-    <article id="post-easyui-draggable" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2015/03/27/easyui-draggable/" class="article-date">
-  	<time datetime="2015-03-27T03:35:01.000Z" itemprop="datePublished">Mar 27 2015</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/27/easyui-draggable/">EasyUI基础入门之Draggable(拖拽)</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
-<h1 id="Draggable是什么"><a href="#Draggable是什么" class="headerlink" title="Draggable是什么"></a>Draggable是什么</h1><p>Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。<br>Draggble覆盖默认值$.fn.draggable.defaults。<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/draggable/">draggable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/front/">front</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2015/03/27/easyui-draggable/#more">
                     More >></a>
             </p>
             
