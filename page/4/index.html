@@ -353,6 +353,109 @@
 -->
 
   
+    <article id="post-Code-Piece" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2016/04/28/Code-Piece/" class="article-date">
+  	<time datetime="2016-04-28T03:50:50.000Z" itemprop="datePublished">Apr 28 2016</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/28/Code-Piece/">碎片代码</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录一些开发中有用的代码片段(配置、技巧都可以)</p>
+<h2 id="SpringMVC日期处理"><a href="#SpringMVC日期处理" class="headerlink" title="SpringMVC日期处理"></a>SpringMVC日期处理</h2><p>配置文件<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+
+            
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2016/04/28/Code-Piece/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
     <article id="post-Hadoop-dev-install" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
@@ -759,117 +862,6 @@
             <p class="article-more-link">
                 <a  href="
                     /2016/04/18/Mac-Env/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
-    <article id="post-ini配置" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2016/04/04/ini配置/" class="article-date">
-  	<time datetime="2016-04-04T07:30:00.000Z" itemprop="datePublished">Apr 4 2016</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/04/ini配置/">Shiro-ini配置</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
-<h2 id="根对象SecrityManager"><a href="#根对象SecrityManager" class="headerlink" title="根对象SecrityManager"></a>根对象SecrityManager</h2><p>回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2016/04/04/ini配置/#more">
                     More >></a>
             </p>
             
