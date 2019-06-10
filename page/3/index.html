@@ -253,121 +253,6 @@
 -->
 
   
-    <article id="post-noTOC-springboot配置详解" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2017/04/05/springboot配置详解/" class="article-date">
-  	<time datetime="2017-04-05T03:35:38.000Z" itemprop="datePublished">Apr 5 2017</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/springboot配置详解/">Spring Boot(三):配置详解</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <h2 id="写在之前"><a href="#写在之前" class="headerlink" title="写在之前"></a>写在之前</h2><p>在前面Spring Boot的入门篇中,可以很直观的感受到使用Spring Boot没有了原来整合Spring应用时繁琐的XML配置内容,替代它的是在pom.xml中引入模块化的Starter POMs,各个模块具有自己的默认配置.在application.properties文件中,只需要设置少量的应用即可开启应用.</p>
-<p>在实际的项目中,配置是十分复杂的,存在多个配置环境,例如:</p>
-<blockquote>
-<p>开发环境 -&gt; 测试环境 -&gt; 演示环境 -&gt;生产环境</p>
-</blockquote>
-<p>每个环境的配置项总是不同的,而且就算是在开发环境中,不同的开发人员也会有区别,配置文件的读取总是比较伤脑筋.Spring Boot提供了一种优先级配置读取机制很好的解决此问题.<br>在入门篇中,了解到Spring Boot的配置会从application.properties中读取,实际上这只是Spring Boot配置链中的一环而已.<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/springboot/">springboot</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2017/04/05/springboot配置详解/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
     <article id="post-noTOC-springboot-war" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
@@ -557,6 +442,120 @@
             <p class="article-more-link">
                 <a  href="
                     /2017/04/02/springboot入门/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-noTOC-Interview-thought" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2017/03/01/Interview-thought/" class="article-date">
+  	<time datetime="2017-03-01T14:07:40.000Z" itemprop="datePublished">Mar 1 2017</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/Interview-thought/">第一次面试官经历</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>领导出差,临时接到通知让我当面试官。才接到这个通知，内心是比较高兴和担忧的，高兴的是领导对自己技术能力的肯定,担心的点在于面试的是社招,怕自己的技术能力尚不能胜任(后面证明自己想多了)。</p>
+<p>和人资那边协作,拿到面试人员的简历,大致的了解下,就开始面试了。自己作为面试官事先的工作和面试过程都还不错,进行的比较顺利。</p>
+<p>有一些体会:</p>
+<p><strong>面试者:</strong></p>
+<p> • 很多简历存在极大的水分与不实情况,需要面试官甄选(面试官是不容忍的).<br> • 面试者对面试的职位要有认知,技术能力能否达到应聘职位很重要,如果相差甚远反效果(自我认知不够,自欺欺人).<br> • 避免技术罗列,以实际项目用到的技术为准,适当发散.</p>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/work/">work</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2017/03/01/Interview-thought/#more">
                     More >></a>
             </p>
             
