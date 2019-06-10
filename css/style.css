@@ -3658,6 +3658,9 @@ img.ug-sepia-effect {
   border-bottom: 2px solid #5ad1ed;
   font-size: 12px;
 }
+.local-search-input-cls:focus {
+  outline: none;
+}
 #local-search-close {
   content: 'x';
   position: absolute;
