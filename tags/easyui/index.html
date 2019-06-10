@@ -5,12 +5,12 @@
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   
-  <title>Tag: EasyUI | Tao.liang&#39;s Blog</title>
+  <title>Tag: easyui | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="乐于分享,喜欢环境音乐的小码农一枚">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tao.liang's Blog">
-<meta property="og:url" content="http://kiritor.github.io/tags/EasyUI/index.html">
+<meta property="og:url" content="http://kiritor.github.io/tags/easyui/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
 <meta property="og:description" content="乐于分享,喜欢环境音乐的小码农一枚">
 <meta name="twitter:card" content="summary">
@@ -240,7 +240,7 @@
 	
 	<!--是否开启最近通知-->
 	
-	最近打算回归学习,记录一点东西,慢慢找回写博客的习惯...
+	🍁唯愿君心似我心...
 
 
 	
@@ -248,7 +248,7 @@
 
       <div class="body-wrap">
   
-    <article id="post-easyui-parser" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-easyui-draggable" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -262,8 +262,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2015/03/26/easyui-parser/" class="article-date">
-  	<time datetime="2015-03-26T15:58:08.000Z" itemprop="datePublished">Mar 26 2015</time>
+        <a href="/2015/03/27/easyui-draggable/" class="article-date">
+  	<time datetime="2015-03-27T03:35:01.000Z" itemprop="datePublished">Mar 27 2015</time>
 </a>
 
     </div>
@@ -277,7 +277,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/easyui-parser/">EasyUI基础入门之Parser(解析器)</a>
+      <a class="article-title" href="/2015/03/27/easyui-draggable/">EasyUI基础入门之Draggable(拖拽)</a>
     </h1>
   
 
@@ -293,7 +293,8 @@
             
 
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)<br>
+            <p>前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。</p>
+<h1 id="Draggable是什么"><a href="#Draggable是什么" class="headerlink" title="Draggable是什么"></a>Draggable是什么</h1><p>Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。<br>Draggble覆盖默认值$.fn.draggable.defaults。<br>
             
         </div>
 
@@ -301,7 +302,7 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Parser/">Parser</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/draggable/">draggable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li></ul>
 	</div>
 
 
@@ -314,7 +315,229 @@
             
             <p class="article-more-link">
                 <a  href="
-                    /2015/03/26/easyui-parser/#more">
+                    /2015/03/27/easyui-draggable/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-easyui-loader" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/03/27/easyui-loader/" class="article-date">
+  	<time datetime="2015-03-27T02:39:13.000Z" itemprop="datePublished">Mar 27 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/easyui-loader/">EasyUI基础入门之easyloader(加载器)</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。</p>
+<h1 id="什么是EasyLoader"><a href="#什么是EasyLoader" class="headerlink" title="什么是EasyLoader"></a>什么是EasyLoader</h1><p>正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loader/">loader</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/03/27/easyui-loader/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-jquery-easyui" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/03/26/jquery-easyui/" class="article-date">
+  	<time datetime="2015-03-26T14:45:08.000Z" itemprop="datePublished">Mar 26 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/26/jquery-easyui/">JQuery EasyUi框架学习</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。</p>
+<h1 id="关于EasyUI"><a href="#关于EasyUI" class="headerlink" title="关于EasyUI"></a>关于EasyUI</h1><p>EasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。现阶段来说,在开发web项目时,前端的开发我们更喜欢使用jQuery代替原生的javascript,原因大概如下方面:<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/03/26/jquery-easyui/#more">
                     More >></a>
             </p>
             
