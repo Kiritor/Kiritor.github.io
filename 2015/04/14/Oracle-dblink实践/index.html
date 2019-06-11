@@ -356,6 +356,7 @@
 <p>出现这个问题是因为跨库连接查询的数据表存在CLOB、或则BLOB类型的字段。需要注意:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1、不能使用select * from x</div><div class="line">2、不能将blob、clob类型的字段出现在脚本中。</div></pre></td></tr></table></figure></p>
 <p>解决方案有两种,第一种:select X.name的形式,去掉blob类型的字段,这种方法不是非常恰当(除非不需要blob类型的字段)<br>第二种方案:使用零时表,之后把远程的含BLOB字段的表导入到零时表中,再导入到表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">global</span> <span class="keyword">temporary</span> <span class="keyword">table</span> demo_temp <span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> demo;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> demo_temp <span class="keyword">select</span> * <span class="keyword">from</span> demo@D_LINK;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> demo <span class="keyword">select</span> * <span class="keyword">from</span> demo_temp;</div><div class="line"><span class="keyword">commit</span>;</div></pre></td></tr></table></figure></p>
 
+            
             </br>
             <p>本文链接：
                 <a href="http://kiritor.github.io/2015/04/14/Oracle-dblink实践/">
@@ -368,6 +369,7 @@
 
                 <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
+            
             
         </div>
 

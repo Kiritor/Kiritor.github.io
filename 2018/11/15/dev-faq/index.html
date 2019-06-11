@@ -346,6 +346,7 @@ Dash开发者必备的API文档聚合工具,随查随用,简单快捷，学会�
 <p>构建springboot+mybatis通用maper、通用service时，使用 <strong>@Resource</strong> 注解报错如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">No qualifying bean of type <span class="string">'tk.mybatis.mapper.common.Mapper&lt;?&gt;'</span> available: expected single matching bean but found <span class="number">2</span>: roleMapper,userMapper</div></pre></td></tr></table></figure></p>
 <p>原因在于多个mapper继承了通用mapper, 又使用了泛型，<strong>@Resource</strong>注解无法装配,采用 <strong>@Autowired</strong>解决。</p>
 <h3 id="查看GitLab版本号"><a href="#查看GitLab版本号" class="headerlink" title="查看GitLab版本号"></a>查看GitLab版本号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /opt/gitlab/embedded/service/gitlab-rails/VERSION</div></pre></td></tr></table></figure>
+            
             </br>
             <p>本文链接：
                 <a href="http://kiritor.github.io/2018/11/15/dev-faq/">
@@ -358,6 +359,7 @@ Dash开发者必备的API文档聚合工具,随查随用,简单快捷，学会�
 
                 <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
+            
             
         </div>
 

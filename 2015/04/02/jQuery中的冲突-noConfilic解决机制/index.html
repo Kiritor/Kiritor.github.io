@@ -363,6 +363,7 @@
 <p> 这是较为理想的方式,因为可以改变最少的代码来实现全面的兼容性<br> 2、其他库后于jQuery被引用<br>你可以参考上述做一些冲突解决的方法,其实其根本就不冲突,你可以使用jQuery变量做一些jQuery的处理工作。同时可以使用()方法作为其他库的快捷方式。<br> 3、不同版本jQuery、且有其他库<br>可以参考上述示例,将jQuery完全移到另一个命名空间。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var dom = &#123;&#125;;</div><div class="line">dom.query = jQuery.noConflict(<span class="literal">true</span>);</div><div class="line">// 新 jQuery 的代码</div><div class="line">dom.query(<span class="string">"div p"</span>).hide();</div><div class="line">// 另一个库 $() 的代码</div><div class="line">$(<span class="string">"content"</span>).style.display = <span class="string">'none'</span>;</div><div class="line">// 另一个版本 jQuery 的代码</div><div class="line">jQuery(<span class="string">"div &gt; p"</span>).hide();</div></pre></td></tr></table></figure></p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>   jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。</p>
 
+            
             </br>
             <p>本文链接：
                 <a href="http://kiritor.github.io/2015/04/02/jQuery中的冲突-noConfilic解决机制/">
@@ -375,6 +376,7 @@
 
                 <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
             </div>
+            
             
         </div>
 
