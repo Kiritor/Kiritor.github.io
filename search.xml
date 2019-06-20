@@ -33,7 +33,7 @@
     <entry>
       <title>中台的思考</title>
       <link href="/2019/04/28/%E4%B8%AD%E5%8F%B0/"/>
-      <content type="html"><![CDATA[<h2 id="中台"><a href="#中台" class="headerlink" title="中台"></a>中台</h2><p>中台更像是一种企业架构,结合互联网技术和行业特性,将企业核心能力(技术&amp;业务)以共享服务中心进行沉淀,形成”大中台、小前台”的组织和业务机制,供企业快速降低成本的进行规模化创新，前台业务快速演变。</p><a id="more"></a><h3 id="业务中台"><a href="#业务中台" class="headerlink" title="业务中台"></a>业务中台</h3><p>业务角度来看,沉淀能力(技术&amp;业务),可以支持快速创新,让研发更灵活,业务更便捷,应对未来不可预知的市场变化。业务中台即是微服务的业务平台: 用户中心、订单中心、会员中心等各种微服务集散地,基于前台业务发展,灵活快速组合。</p><h3 id="技术中台"><a href="#技术中台" class="headerlink" title="技术中台"></a>技术中台</h3><p>技术角度来看: 技术中台是为了搭建一个灵活快速应对变化的架构,更快实现前端业务。战略层面上重视业务架构设计,战术层面上即是基于业务架构设计进行相关技术/平台选型: 微服务架构、DevOps平台,PaaS平台、容器云等,这也是”领域驱动设计 DDD”所倡导的: 面向领域级、业务设计直通技术设计的系统分析方法。</p>]]></content>
+      <content type="html"><![CDATA[<h2 id="中台"><a href="#中台" class="headerlink" title="中台"></a>中台</h2><p>中台更像是一种企业架构,结合互联网技术和行业特性,将企业核心能力(技术&amp;业务)以共享服务中心进行沉淀,形成”大中台、小前台”的组织和业务机制,供企业快速降低成本的进行规模化创新，前台业务快速演变。</p><h3 id="业务中台"><a href="#业务中台" class="headerlink" title="业务中台"></a>业务中台</h3><p>业务角度来看,沉淀能力(技术&amp;业务),可以支持快速创新,让研发更灵活,业务更便捷,应对未来不可预知的市场变化。业务中台即是微服务的业务平台: 用户中心、订单中心、会员中心等各种微服务集散地,基于前台业务发展,灵活快速组合。<br><a id="more"></a></p><h3 id="技术中台"><a href="#技术中台" class="headerlink" title="技术中台"></a>技术中台</h3><p>技术角度来看: 技术中台是为了搭建一个灵活快速应对变化的架构,更快实现前端业务。战略层面上重视业务架构设计,战术层面上即是基于业务架构设计进行相关技术/平台选型: 微服务架构、DevOps平台,PaaS平台、容器云等,这也是”领域驱动设计 DDD”所倡导的: 面向领域级、业务设计直通技术设计的系统分析方法。</p>]]></content>
       
       <categories>
           
@@ -357,9 +357,9 @@
     </entry>
     
     <entry>
-      <title>Mac实用小技巧</title>
-      <link href="/2016/04/18/Mac-Skills/"/>
-      <content type="html"><![CDATA[<p>使用Mac已经很长一段时间了,从最开始的生疏到慢慢熟悉,掌握了一些实用的小技巧,这里略作整理,不定期更新.</p><h3 id="终端忽略大小写补全"><a href="#终端忽略大小写补全" class="headerlink" title="终端忽略大小写补全"></a>终端忽略大小写补全</h3><p>打开终端,输入:<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano .inputrc</div></pre></td></tr></table></figure></p><p>在里面粘贴如下语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> completion-ignore-case on</div><div class="line"><span class="built_in">set</span> show-all-if-ambiguous on</div><div class="line">TAB: menu-complete</div></pre></td></tr></table></figure></p><p>Control+O,回车保存,重启中断,OK~,之后按Tab键即可自动补全~</p>]]></content>
+      <title>Mac设置环境变量</title>
+      <link href="/2016/04/18/Mac-Env/"/>
+      <content type="html"><![CDATA[<p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p><h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br><a id="more"></a></p><h2 id="Mac环境变量配置"><a href="#Mac环境变量配置" class="headerlink" title="Mac环境变量配置"></a>Mac环境变量配置</h2><p>如果是Bourne Shell设置环境变量的地方如下</p><h3 id="etc-profile"><a href="#etc-profile" class="headerlink" title="./etc/profile"></a>./etc/profile</h3><p>全局(共有配置),不管是哪个用户,登陆时都会读取该文件。不建议修改此文件.</p><h3 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="./etc/bashrc"></a>./etc/bashrc</h3><p>全局(共有)配置,bash shell执行时，不管何种方式,都会读取次文件。一般在这个文件中添加系统级别的环境变量.</p><h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</div><div class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> MAVEN_HOME</div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</div><div class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></div></pre></td></tr></table></figure></p><p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>]]></content>
       
       <categories>
           
@@ -377,9 +377,9 @@
     </entry>
     
     <entry>
-      <title>Mac设置环境变量</title>
-      <link href="/2016/04/18/Mac-Env/"/>
-      <content type="html"><![CDATA[<p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p><h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br><a id="more"></a></p><h2 id="Mac环境变量配置"><a href="#Mac环境变量配置" class="headerlink" title="Mac环境变量配置"></a>Mac环境变量配置</h2><p>如果是Bourne Shell设置环境变量的地方如下</p><h3 id="etc-profile"><a href="#etc-profile" class="headerlink" title="./etc/profile"></a>./etc/profile</h3><p>全局(共有配置),不管是哪个用户,登陆时都会读取该文件。不建议修改此文件.</p><h3 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="./etc/bashrc"></a>./etc/bashrc</h3><p>全局(共有)配置,bash shell执行时，不管何种方式,都会读取次文件。一般在这个文件中添加系统级别的环境变量.</p><h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</div><div class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> MAVEN_HOME</div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</div><div class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></div></pre></td></tr></table></figure></p><p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>]]></content>
+      <title>Mac实用小技巧</title>
+      <link href="/2016/04/18/Mac-Skills/"/>
+      <content type="html"><![CDATA[<p>使用Mac已经很长一段时间了,从最开始的生疏到慢慢熟悉,掌握了一些实用的小技巧,这里略作整理,不定期更新.</p><h3 id="终端忽略大小写补全"><a href="#终端忽略大小写补全" class="headerlink" title="终端忽略大小写补全"></a>终端忽略大小写补全</h3><p>打开终端,输入:<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano .inputrc</div></pre></td></tr></table></figure></p><p>在里面粘贴如下语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> completion-ignore-case on</div><div class="line"><span class="built_in">set</span> show-all-if-ambiguous on</div><div class="line">TAB: menu-complete</div></pre></td></tr></table></figure></p><p>Control+O,回车保存,重启中断,OK~,之后按Tab键即可自动补全~</p>]]></content>
       
       <categories>
           
@@ -718,9 +718,9 @@
       
         <tags>
             
-            <tag> oracle </tag>
-            
             <tag> 物化视图 </tag>
+            
+            <tag> oracle </tag>
             
         </tags>
       
