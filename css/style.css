@@ -222,11 +222,6 @@ a {
   font-size: 12px;
   font-family: '微软雅黑';
 }
-.resume {
-  font-family: "微软雅黑";
-  font-size: 12px;
-  margin: 4px 10px 10px;
-}
 .ck-prev {
   border-radius: 0;
   height: 140px;
@@ -246,61 +241,6 @@ a {
 }
 .ck-prev:hover {
   background: #f5f5f5 url("../img/arrow-left.png") no-repeat scroll 50% center;
-}
-#centerwell {
-  position: relative;
-  height: 140px;
-  line-height: 140px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #fff;
-}
-#centerwell li {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  float: left;
-  border-right: #f5f5f5 0px solid;
-  background: #fff;
-  overflow: hidden;
-}
-#centerwell h3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  text-indent: -9999px;
-  width: 140px;
-  height: 140px;
-  cursor: pointer;
-}
-#centerwell div {
-  position: absolute;
-  left: 155px;
-  top: 0;
-  height: 140px;
-  width: auto;
-  color: #5f5f5f;
-  font-size: 15px;
-  line-height: 30px;
-  font-family: GeogrotesqueMedium, Helvetica, Arial, sans-serif;
-  letter-spacing: 0pt;
-}
-#centerwell div label {
-  margin-right: 10px;
-  padding: auto 5px auto 5px;
-  font-size: 12px;
-  display: inline-block;
-}
-#centerwell div span {
-  font-size: 12px;
-}
-#aboutMe h3 {
-  background: url("../img/behance_btn.png") no-repeat #fff;
-}
-#work h3 {
-  background: url("../img/work.png") no-repeat #fff;
 }
 #container {
   position: relative;
@@ -3807,4 +3747,15 @@ img.ug-sepia-effect {
   padding: 6px 12px;
   border-raduis: 2px;
   line-height: 18px;
+}
+.resume {
+  border: 1px solid #fff;
+  margin: 2px 10px 4px 6px;
+  background: #fff;
+  -webkit-transition: all 0.2s ease-in;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  font-size: 12px;
+  font-family: '微软雅黑';
 }
