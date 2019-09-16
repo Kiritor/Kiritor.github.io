@@ -7,21 +7,17 @@
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
-  <title>Mac设置环境变量 | Tao.liang&#39;s Blog</title>
+  <title>Archives: 2019/9 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Mac设置环境变量">
-<meta property="og:url" content="http://kiritor.github.io/2016/04/18/Mac-Env/index.html">
+  <meta name="description" content="乐于分享,喜欢环境音乐的小码农一枚">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tao.liang's Blog">
+<meta property="og:url" content="http://kiritor.github.io/archives/2019/09/index.html">
 <meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
-<meta property="og:updated_time" content="2016-04-20T12:57:38.000Z">
+<meta property="og:description" content="乐于分享,喜欢环境音乐的小码农一枚">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac设置环境变量">
-<meta name="twitter:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+<meta name="twitter:title" content="Tao.liang's Blog">
+<meta name="twitter:description" content="乐于分享,喜欢环境音乐的小码农一枚">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -235,7 +231,9 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 	
 </div>
 
-      <div class="body-wrap"><article id="post-Mac-Env" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="false-长寿菩提古镇" class="article article-type-false" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -249,8 +247,8 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
     </script>
     
     <div class="article-meta">
-        <a href="/2016/04/18/Mac-Env/" class="article-date">
-  	<time datetime="2016-04-18T15:34:07.000Z" itemprop="datePublished">Apr 18 2016</time>
+        <a href="/2019/09/15/长寿菩提古镇/" class="article-date">
+  	<time datetime="2019-09-15T14:03:48.000Z" itemprop="datePublished">Sep 15 2019</time>
 </a>
 
     </div>
@@ -260,87 +258,57 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         <input type="hidden" class="isFancy" />
         
         
-        <header class="article-header">
-            
-  
-    <h1 class="article-title" itemprop="name">
-      Mac设置环境变量
-    </h1>
-  
-
-
-        </header>
-        
-        <div class="article-info article-info-post">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
-	</div>
-
-
-            <div class="clearfix"></div>
-        </div>
-        
-        
 
         <div class="article-entry" itemprop="articleBody">
 
             
+            
 
-            <p class="toc-button" id="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell类型"><span class="toc-number">1.</span> <span class="toc-text">Shell类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac环境变量配置"><span class="toc-number">2.</span> <span class="toc-text">Mac环境变量配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#etc-profile"><span class="toc-number">2.1.</span> <span class="toc-text">./etc/profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc-bashrc"><span class="toc-number">2.2.</span> <span class="toc-text">./etc/bashrc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bash-profile"><span class="toc-number">2.3.</span> <span class="toc-text">~/.bash_profile</span></a></li></ol></li></ol>
-</div>
-<script>
-    $(function(){
+            
+            <html>
+<head>
+<meta charset="UTF-8">
+<style>
+    .gallery {
+        box-shadow:inset 0 0 2px 2px #ccc;
+    }
+	.title {
+	    font-size: 1.5em;
+	}
+	
+</style>
+</head>
+<body>
 
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
+    <p class="title">古镇游玩~</p>
+	<p>最近工作没那么忙,心情却开心不起来,睡眠也不好,所以约着同学去长寿古镇住一晚上,放松下心情。</p>
+	
+
+    <div id="changshou-guzhen" class="gallery" style="display: none;box-shadow:inset 0 0 2px 2px #ccc;">
+        <img alt="客栈一角,感觉住在里面心里都好了许多" src="http://a3.qpic.cn/psb?/V12eXMTe3Ox3m7/UZOWwTLFDzS9HgmhpMS.KvcDrWG6X1XHu9dLwIgBc40!/b/dE4BAAAAAAAA&bo=OASgBQAAAAARB6k!&rf=viewer_4" data-description="客栈一角,感觉住在里面心情都好了">
+        <img alt="客栈一角,感觉住在里面心里都好了许多" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/2FnPDZQwloKAxlK2bdUewdu3i5Q6YW*l6aqqo19XmqA!/b/dFYBAAAAAAAA&bo=OASgBQAAAAARN5k!&rf=viewer_4" data-description="客栈一角,感觉住在里面心情都好了">
+        <img alt="客栈一角,感觉住在里面心里都好了许多" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/ox8ZW9JI14E37Ec7oxbJ8G5WkoV65gDlRUfpk.u2CUc!/b/dAQBAAAAAAAA&bo=OASgBQAAAAARN5k!&rf=viewer_4" data-description="客栈一角,感觉住在里面心情都好了">
+        <img alt="客栈一角,感觉住在里面心里都好了许多" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/FQ44oPdbpfYwAgftEQEIq1lXjrCMutUA.iabe.Edhb8!/b/dFMBAAAAAAAA&bo=OASgBQAAAAARN5k!&rf=viewer_4" data-description="客栈一角,感觉住在里面心情都好了">
+        <img alt="客栈一角,感觉住在里面心里都好了许多" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/FQ44oPdbpfYwAgftEQEIq1lXjrCMutUA.iabe.Edhb8!/b/dFMBAAAAAAAA&bo=OASgBQAAAAARN5k!&rf=viewer_4" data-description="客栈一角,感觉住在里面心情都好了">
+        <img alt="古镇一角,可惜天气不好,落日余晖意境会更好" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/KVX4rnUgJ.k2b*jv3Ed7cwi.OqcGHiolNzH9Y5M1npU!/b/dL4AAAAAAAAA&bo=OASgBQAAAAARJ4k!&rf=viewer_4" data-description="古镇一角,可惜天气不好,落日余晖意境会更好">
+        <img alt="很有爱的墙~" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/TcGP1OcwgiRMmEpnvbY3BKO1AlROqYPF4NKcSOpDSN8!/b/dFIBAAAAAAAA&bo=OASgBQAAAAARJ4k!&rf=viewer_4" data-description="很有爱的墙~">
+        <img alt="这上面写满了多少人的小心思呢" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/RN9cN766Mei2smgRm0jiM*nxnF9GNuaSYIJ*.Tg0EHs!/b/dDUBAAAAAAAA&bo=OASgBQAAAAARF7k!&rf=viewer_4" data-description="这上面写满了多少人的小心思呢">
+        <img alt="水潭里有五颜六色的东西" src="http://m.qpic.cn/psb?/V12eXMTe3Ox3m7/OaiA*HZKN04GMBHZVEZ9JjpnRNcVfQgzyurLdL.YQBo!/b/dL8AAAAAAAAA&bo=OASgBQAAAAARJ4k!&rf=viewer_4" data-description="水潭里有五颜六色的东西">
+        
+
+      </div>
+    <p>很奇怪的是,古镇虽然商业化比较严重,但是却少有旅游景点的那种扑面而来的商业化气息。大概是因为古镇坐落于市区,本身就是周围居民的生活娱乐圈子吧,很有生活气息,晚上热闹的很~</p>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            jQuery("#changshou-guzhen").unitegallery();
 
         });
-        $(".toc-article").hover(function(){
+    </script>
+</body>
 
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
+</html>
 
-            
-            
-
-            
-            <p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p>
-<h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br><a id="more"></a></p>
-<h2 id="Mac环境变量配置"><a href="#Mac环境变量配置" class="headerlink" title="Mac环境变量配置"></a>Mac环境变量配置</h2><p>如果是Bourne Shell设置环境变量的地方如下</p>
-<h3 id="etc-profile"><a href="#etc-profile" class="headerlink" title="./etc/profile"></a>./etc/profile</h3><p>全局(共有配置),不管是哪个用户,登陆时都会读取该文件。不建议修改此文件.</p>
-<h3 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="./etc/bashrc"></a>./etc/bashrc</h3><p>全局(共有)配置,bash shell执行时，不管何种方式,都会读取次文件。一般在这个文件中添加系统级别的环境变量.</p>
-<h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</div><div class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> MAVEN_HOME</div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</div><div class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></div></pre></td></tr></table></figure></p>
-<p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>
-
-            
-            </br>
-            <p>本文链接：
-                <a href="http://kiritor.github.io/2016/04/18/Mac-Env/">
-                    http://kiritor.github.io/2016/04/18/Mac-Env/
-                </a>
-            </p>
             
             <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
@@ -352,98 +320,22 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         </div>
 
         
+        <div class="article-info article-info-index">
+            
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/life/">life</a>
+	</div>
+
+
+            
+            <div class="clearfix"></div>
+        </div>
+        
     </div>
     
-        <div id="socialShare" style="margin-left:40px;display:none;">
-</div>
-<script>
-    $(function () {
-        var width = document.body.scrollWidth;
-        if (width > 550) {
-            $("#socialShare").css("display", "block");
-            $("#socialShare").socialShare({
-                content: 'Nice!不错的资源...',
-                url: window.location.href,
-                titile: ''
-            });
-        }
-    });
-</script>
     
-    
-        
-            <div class="donateContainer">
-    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
-    <span id="donate" class="donate" onclick="donate()">打赏</span>
-    <div id="QR" style="display: none;">
-
-        <div id="alipay" style="display: inline-block">
-            <a href="http://kiritor.github.io/img/weixin.jpg" class="fancybox fancybox.image" rel="group">
-                <img id="alipay_qr" src="http://kiritor.github.io/img/weixin.JPG">
-            </a>
-
-        </div>
-        <div id="wechat" style="display: inline-block">
-            <a href="http://kiritor.github.io/img/zhifubao.jpg" class="fancybox fancybox.image" rel="group">
-                <img id="wechat_qr" src="http://kiritor.github.io/img/zhifubao.JPG">
-            </a>
-
-        </div>
-    </div>
-    <script>
-        function donate() {
-            var qr = document.getElementById('QR');
-            if (qr.style.display === 'none') {
-                qr.style.display = 'block';
-            } else {
-                qr.style.display = 'none'
-            }
-
-        };
-    </script>
-</div>
-        
-    
-    
-        
-<nav id="article-nav">
-  
-    <a href="/2016/04/18/Mac-Skills/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Mac实用小技巧
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/04/04/ini配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Shiro-ini配置</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-
-        
-            
-                <div id="vcomments" style="margin: auto 30px auto 30px;"></div>
-<script>
-    new Valine({
-        av: AV,
-        el: '#vcomments',
-        appId: 'lxxWlIzQxwQ6sYeozabbQN2e-gzGzoHsz',
-        appKey: 'PQ3KTORxjUaJf9oRo5dfXmUr',
-        placeholder: '快来说点什么吧!',
-        emoticon_url: 'https://cloud.panjunwen.com/alu',
-        emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
-        notify: false,
-        verify: false
-    })
-</script>
-            
-        
     
 
 </article>
@@ -477,6 +369,10 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
         $("#commentDiv").css("display", "none");
     }
 </script>
+  
+  
+
+
 </div>
       <!--
 <footer id="footer">
