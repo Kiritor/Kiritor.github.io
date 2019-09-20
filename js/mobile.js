@@ -9,7 +9,7 @@
 	var $tag, $aboutme, $friends;
 	//构造函数
 	function Mobile(opts){
-		//构造函数需要的参数
+		//构造函数需要的参
 		this.ctn = opts.ctn;
 		//构造四步
 		this.init();
