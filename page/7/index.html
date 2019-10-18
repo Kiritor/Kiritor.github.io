@@ -238,7 +238,7 @@
 -->
 
   
-    <article id="post-GolangPrjManager" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-easyui-parser" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -252,8 +252,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2015/06/05/GolangPrjManager/" class="article-date">
-  	<time datetime="2015-06-05T01:34:07.000Z" itemprop="datePublished">Jun 5 2015</time>
+        <a href="/2015/03/26/easyui-parser/" class="article-date">
+  	<time datetime="2015-03-26T15:58:08.000Z" itemprop="datePublished">Mar 26 2015</time>
 </a>
 
     </div>
@@ -267,7 +267,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/05/GolangPrjManager/">Golang工程管理</a>
+      <a class="article-title" href="/2015/03/26/easyui-parser/">EasyUI基础入门之Parser(解析器)</a>
     </h1>
   
 
@@ -283,8 +283,7 @@
             
 
             
-            <h1 id="Go工程管理"><a href="#Go工程管理" class="headerlink" title="Go工程管理"></a>Go工程管理</h1><p>&#160; &#160; &#160; &#160;接触Go也有一段时间了,也写了一些零星的代码,零星的代码无法像工程一样管理起来让我有一种挫败感.而且实际的开发中,也不可能只有一个单一的源文件,逐步编译无意于一场灾难.因此有必要学习一下Go是如何来管理工程的了.<br>&#160; &#160; &#160; &#160;Go工程管理的一个亮点在于消除了工程文件的感念,完全用目录结构和包名来推导工程结构和构建顺序.Go自身提供了良好的工程化管理,几乎不依赖于IDE.</p>
-<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#160; &#160; &#160; &#160;在详细实践GO的工程管理之前,先理解下相关概念,这有助于我们理解Go的工程管理:<span class="color">安装路径</span>、<span class="color">官方包路径</span>、<span class="color">项目路径</span><br>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)<br>
             
         </div>
 
@@ -292,229 +291,7 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程管理/">工程管理</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/golang/">golang</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2015/06/05/GolangPrjManager/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
-    <article id="post-GolangArraySlice" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2015/06/04/GolangArraySlice/" class="article-date">
-  	<time datetime="2015-06-04T11:41:31.000Z" itemprop="datePublished">Jun 4 2015</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/04/GolangArraySlice/">Go语言数组&amp;数组切片整理</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&#160; &#160; &#160; &#160;<strong><span class="color">数组</span></strong>是编程语言中最常用的功能之一,顾名思义,数组就是指一系列同一类型数据的集合.数组是很有价值的数据结构,因为它的内存分配是连续的,意味着迭代和移动非常迅速.数组看起来是比较简单的,但是一个数组的设计核心的几个问题需要解决,如::</p>
-<p>&#160; &#160; &#160; &#160;<em> <strong>固定大小或可变大小?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>是类型的一部分?</strong><br>&#160; &#160; &#160; &#160;<em> <strong>多维数组的模型?</strong><br>&#160; &#160; &#160; &#160;</em> <strong>空数组的意义</strong><br>&#160; &#160; &#160; &#160;<em> <em>*…</em></em></p>
-<p>&#160; &#160; &#160; &#160;这些问题的解决影响着数组仅仅是语言的一个功能还是其设计的核心部分.<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/append/">append</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slice/">slice</a></li></ul>
-	</div>
-
-
-            
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/golang/">golang</a>
-	</div>
-
-
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2015/06/04/GolangArraySlice/#more">
-                    More >></a>
-            </p>
-            
-            <div class="clearfix"></div>
-        </div>
-        
-    </div>
-    
-    
-    
-
-</article>
-
-
-<script>
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
-                isMobile.Windows());
-        }
-    };
-    if (isMobile.any()) {
-        //移动端不显示目录和评论
-        $("#toc-button").css("display", "none");
-        $("#commentDiv").css("display", "none");
-    }
-</script>
-  
-    <article id="post-jQueryPlugindevGuide" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-    <div class="article-meta">
-        <a href="/2015/05/06/jQueryPlugindevGuide/" class="article-date">
-  	<time datetime="2015-05-06T13:14:05.000Z" itemprop="datePublished">May 6 2015</time>
-</a>
-
-    </div>
-    
-    <div class="article-inner">
-        
-        <input type="hidden" class="isFancy" />
-        
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/06/jQueryPlugindevGuide/">自己动手开发jQuery插件</a>
-    </h1>
-  
-
-
-        </header>
-        
-        
-
-        <div class="article-entry" itemprop="articleBody">
-
-            
-
-            
-
-            
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br>
-            
-        </div>
-
-        
-        <div class="article-info article-info-index">
-            
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plugin/">plugin</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EasyUI/">EasyUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Parser/">Parser</a></li></ul>
 	</div>
 
 
@@ -527,7 +304,7 @@
             
             <p class="article-more-link">
                 <a  href="
-                    /2015/05/06/jQueryPlugindevGuide/#more">
+                    /2015/03/26/easyui-parser/#more">
                     More >></a>
             </p>
             
@@ -571,7 +348,7 @@
     }
 </script>
   
-    <article id="post-noTOC-Bootstrap-案例集锦" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <article id="photo-colleage-life" class="article article-type-photo" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -585,8 +362,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2015/04/22/Bootstrap-案例集锦/" class="article-date">
-  	<time datetime="2015-04-22T02:13:17.000Z" itemprop="datePublished">Apr 22 2015</time>
+        <a href="/2015/03/26/colleage-life/" class="article-date">
+  	<time datetime="2015-03-26T15:30:52.000Z" itemprop="datePublished">Mar 26 2015</time>
 </a>
 
     </div>
@@ -600,7 +377,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/22/Bootstrap-案例集锦/">Bootstrap-案例集锦</a>
+      <a class="article-title" href="/2015/03/26/colleage-life/">毕业随照</a>
     </h1>
   
 
@@ -612,26 +389,11 @@
         <div class="article-entry" itemprop="articleBody">
 
             
+
             
 
             
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
-<h2 id="顶部菜单"><a href="#顶部菜单" class="headerlink" title="顶部菜单"></a>顶部菜单</h2><p>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
-<center><img src="http://kiritor.github.io/img/bootstrap_top.png" alt="顶部"></center>
-            
-            </br>
-            <p>本文链接：
-                <a href="http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/">
-                    http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/
-                </a>
-            </p>
-            
-            <p>-- <acronym title="End of File">EOF</acronym> --</p>
-
-            <div class="post-info">
-
-                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
-            </div>
+            <p>似乎真的到了该说再见的时候了。<br>向这段充满欢笑，充满浪漫，充满豪情壮志，<br>也充满酸涩与淡淡忧郁的学生时代。<br>
             
         </div>
 
@@ -639,16 +401,22 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/header/">header</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/毕业/">毕业</a></li></ul>
 	</div>
 
 
             
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/front/">front</a>
+	<a class="article-category-link" href="/categories/life/">life</a>
 	</div>
 
 
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/03/26/colleage-life/#more">
+                    More >></a>
+            </p>
             
             <div class="clearfix"></div>
         </div>
@@ -690,7 +458,7 @@
     }
 </script>
   
-    <article id="post-Go语言时间处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jquery-easyui" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -704,8 +472,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2015/04/15/Go语言时间处理/" class="article-date">
-  	<time datetime="2015-04-15T06:55:24.000Z" itemprop="datePublished">Apr 15 2015</time>
+        <a href="/2015/03/26/jquery-easyui/" class="article-date">
+  	<time datetime="2015-03-26T14:45:08.000Z" itemprop="datePublished">Mar 26 2015</time>
 </a>
 
     </div>
@@ -719,7 +487,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/15/Go语言时间处理/">Go语言时间处理</a>
+      <a class="article-title" href="/2015/03/26/jquery-easyui/">JQuery EasyUi框架学习</a>
     </h1>
   
 
@@ -735,8 +503,8 @@
             
 
             
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小可以表示到nanosecond(微毫秒,十亿分之1秒)。<br>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。</p>
+<h1 id="关于EasyUI"><a href="#关于EasyUI" class="headerlink" title="关于EasyUI"></a>关于EasyUI</h1><p>EasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。现阶段来说,在开发web项目时,前端的开发我们更喜欢使用jQuery代替原生的javascript,原因大概如下方面:<br>
             
         </div>
 
@@ -744,20 +512,20 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easyui/">easyui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
 	</div>
 
 
             
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/golang/">golang</a>
+	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
             
             <p class="article-more-link">
                 <a  href="
-                    /2015/04/15/Go语言时间处理/#more">
+                    /2015/03/26/jquery-easyui/#more">
                     More >></a>
             </p>
             
@@ -803,7 +571,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
     </nav>
   
 

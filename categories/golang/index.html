@@ -827,10 +827,337 @@
     }
 </script>
   
+    <article id="post-Golang操作MySQL数据库-使用mymysql驱动" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
+  	<time datetime="2015-04-09T01:34:07.000Z" itemprop="datePublished">Apr 9 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/golang/page/2/">2</a><a class="extend next" rel="next" href="/categories/golang/page/2/">Next &raquo;</a>
-    </nav>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/">Golang操作MySQL数据库,使用mymysql驱动</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+<h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mymysql/">mymysql</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-Golang-Import的理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/03/Golang-Import的理解/" class="article-date">
+  	<time datetime="2015-04-03T06:59:14.000Z" itemprop="datePublished">Apr 3 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/03/Golang-Import的理解/">Golang Import的理解</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>初学go不久,在使用beego的时候发现了不同的import方式,于是查阅相关资料,做个备注。<br>初期我们编写go语言的时候经常使用import这个命令来导入包文件,导入的方式一般如下方式:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/import/">import</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/03/Golang-Import的理解/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-golang-install" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/03/27/golang-install/" class="article-date">
+  	<time datetime="2015-03-27T07:52:33.000Z" itemprop="datePublished">Mar 27 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/golang-install/">Windows下搭建go语言开发环境</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博客打算从SAE转移到github上,须花些时间。这段时间一直在学习go语言,还在入门阶段,不过也算了解了一些语法。由于最近博客搬家,也没啥可写的,就写一下自己开发go语言的配置吧。<br><strong>Bracket + Git</strong><br>由于初学并没有采用集成开发环境(liteIDE,eclipse等),因为我想熟悉下go的相关命令,以及go工程项目的管理。<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/03/27/golang-install/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
   
 
 

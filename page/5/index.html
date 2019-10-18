@@ -238,7 +238,7 @@
 -->
 
   
-    <article id="post-Mac-Env" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jQueryPlugindevGuide" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -252,8 +252,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2016/04/18/Mac-Env/" class="article-date">
-  	<time datetime="2016-04-18T15:34:07.000Z" itemprop="datePublished">Apr 18 2016</time>
+        <a href="/2015/05/06/jQueryPlugindevGuide/" class="article-date">
+  	<time datetime="2015-05-06T13:14:05.000Z" itemprop="datePublished">May 6 2015</time>
 </a>
 
     </div>
@@ -267,7 +267,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/18/Mac-Env/">Mac设置环境变量</a>
+      <a class="article-title" href="/2015/05/06/jQueryPlugindevGuide/">自己动手开发jQuery插件</a>
     </h1>
   
 
@@ -283,8 +283,7 @@
             
 
             
-            <p>在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.</p>
-<h2 id="Shell类型"><a href="#Shell类型" class="headerlink" title="Shell类型"></a>Shell类型</h2><p>首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL<br>如果输出的是:csh或者tcsh.那么就是C Shell.<br>如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.<br>Max OS X 10.2之前默认的是C Shell.<br>Mac os X 10.3之后默认的是Bourne Shell.<br>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用越来越广泛,现如今的前端框架基本上都使用了jQuery。jQuery凭借其简洁的API,对DOM强大的操控性,易于扩展,开源,社区化的模式越来越受到开发人员的喜爱。jQuery的迅速流行不仅仅是因为jQuery本身的优势,其易于扩展的插件,开源的社区(良好的生态社区)使得jQuery插件越来越丰富稳定极大的简化了web开发人员的工作,这也是jQuery最为成功的地方。<br>&nbsp;&nbsp;&nbsp;&nbsp;jQuery的使用并不算复杂,开发中肯定接触了不少的插件.不过,我们不能仅仅只能使用工具,还要学会如何去编写自己的工具:jQuery插件。<br>
             
         </div>
 
@@ -292,7 +291,349 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plugin/">plugin</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/05/06/jQueryPlugindevGuide/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-noTOC-Bootstrap-案例集锦" class="article article-type-post-noTOC" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/22/Bootstrap-案例集锦/" class="article-date">
+  	<time datetime="2015-04-22T02:13:17.000Z" itemprop="datePublished">Apr 22 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/22/Bootstrap-案例集锦/">Bootstrap-案例集锦</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+            
+
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想用Java做一个管理系统(不限),夯实一下所学到的东西,其实一直有这个想法,奈何总是难以付诸行动。在开发中自己前端后端都在负责,但是前端也只是个半吊子前端,对easyui比较熟悉,但是体验太差,想着还是有必要学习一下bootstrap。bootstrap有很多的模板可选择,本着学习的效果,自己还是不使用开源的模板,一步一步去实现。下面就是实现过程中的一些小小案例</p>
+<h2 id="顶部菜单"><a href="#顶部菜单" class="headerlink" title="顶部菜单"></a>顶部菜单</h2><p>借助于bootstrap和一些图标字体,加上一些自定义的css代码实现的漂亮的顶部菜单,一般用于管理系统。效果如下:</p>
+<center><img src="http://kiritor.github.io/img/bootstrap_top.png" alt="顶部"></center>
+            
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/">
+                    http://kiritor.github.io/2015/04/22/Bootstrap-案例集锦/
+                </a>
+            </p>
+            
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+            <div class="post-info">
+
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+            </div>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/header/">header</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/front/">front</a>
+	</div>
+
+
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-Go语言时间处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/15/Go语言时间处理/" class="article-date">
+  	<time datetime="2015-04-15T06:55:24.000Z" itemprop="datePublished">Apr 15 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/15/Go语言时间处理/">Go语言时间处理</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;一次群里面的朋友在问Unix时间戳的转换问题,刚好无聊在写go代码,于是就查询了下time包,实现了时间戳转换为时间。不用说time包开发中基本是必须用到的包之一,因此也就顺便做一个总结了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;查看官方文档,time包里面包含了许多数据类型,不过最常见,使用的最多的必然要属Time了,这个Time类型最小可以表示到nanosecond(微毫秒,十亿分之1秒)。<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
+	</div>
+
+
+            
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/golang/">golang</a>
+	</div>
+
+
+            
+            <p class="article-more-link">
+                <a  href="
+                    /2015/04/15/Go语言时间处理/#more">
+                    More >></a>
+            </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+
+</article>
+
+
+<script>
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() ||
+                isMobile.Windows());
+        }
+    };
+    if (isMobile.any()) {
+        //移动端不显示目录和评论
+        $("#toc-button").css("display", "none");
+        $("#commentDiv").css("display", "none");
+    }
+</script>
+  
+    <article id="post-Oracle-dblink实践" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+    <div class="article-meta">
+        <a href="/2015/04/14/Oracle-dblink实践/" class="article-date">
+  	<time datetime="2015-04-14T09:22:49.000Z" itemprop="datePublished">Apr 14 2015</time>
+</a>
+
+    </div>
+    
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy" />
+        
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/14/Oracle-dblink实践/">Oracle dblink实践</a>
+    </h1>
+  
+
+
+        </header>
+        
+        
+
+        <div class="article-entry" itemprop="articleBody">
+
+            
+
+            
+
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;dblink的方式是通过创建dblink到远程数据库,执行远程程序,这样一来,模块间的数据流转就会变得非常简单,各自模块无需提供数据接口。但是有一个问题是,模块底层数据库之间不是耦合的,在系统实际上线之前我们要规范好各个模块数据库之间的link关系,之后按照规范,部署数据库实例,前期的准备工作比较麻烦。<br>
+            
+        </div>
+
+        
+        <div class="article-info article-info-index">
+            
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dblink/">dblink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
 	</div>
 
 
@@ -305,7 +646,7 @@
             
             <p class="article-more-link">
                 <a  href="
-                    /2016/04/18/Mac-Env/#more">
+                    /2015/04/14/Oracle-dblink实践/#more">
                     More >></a>
             </p>
             
@@ -349,7 +690,7 @@
     }
 </script>
   
-    <article id="post-Mac-Skills" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Oracle之物化视图" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -363,8 +704,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2016/04/18/Mac-Skills/" class="article-date">
-  	<time datetime="2016-04-18T15:34:07.000Z" itemprop="datePublished">Apr 18 2016</time>
+        <a href="/2015/04/14/Oracle之物化视图/" class="article-date">
+  	<time datetime="2015-04-14T07:27:41.000Z" itemprop="datePublished">Apr 14 2015</time>
 </a>
 
     </div>
@@ -378,7 +719,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/18/Mac-Skills/">Mac实用小技巧</a>
+      <a class="article-title" href="/2015/04/14/Oracle之物化视图/">Oracle之物化视图</a>
     </h1>
   
 
@@ -394,8 +735,8 @@
             
 
             
-            <p>使用Mac已经很长一段时间了,从最开始的生疏到慢慢熟悉,掌握了一些实用的小技巧,这里略作整理,不定期更新.</p>
-<h3 id="终端忽略大小写补全"><a href="#终端忽略大小写补全" class="headerlink" title="终端忽略大小写补全"></a>终端忽略大小写补全</h3><p>打开终端,输入:<br>
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;项目中,物料的摘要字段是通过视图拼接各个基础字段形成的,单条查询并不会存在性能问题。但是考虑到物料的结构化,对摘要进行搜索的时候,如果物料库的大小以量级的大小增加,那么性能将是一个严重的问题。单纯的视图优化(索引等)并不能根本上解决该问题。经过一些思考,决定采用物化视图的方式来解决。</p>
+<h2 id="物化视图概述"><a href="#物化视图概述" class="headerlink" title="物化视图概述"></a>物化视图概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;物化视图(material view)是相对于普通视图而言的,普通的视图是虚拟表,本质上是DBMS转换为对视图SQL语句的查询,性能上没有好处。物化视图可以看成是一种特殊的物理表,他包括一个查询结果的数据库对象,可以是远程数据库的本地副本,也可以是基于数据基本求和的汇总表。物化视图存储基于远程的数据(本地可以以),也被称为快照。<br>
             
         </div>
 
@@ -403,7 +744,7 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物化视图/">物化视图</a></li></ul>
 	</div>
 
 
@@ -416,7 +757,7 @@
             
             <p class="article-more-link">
                 <a  href="
-                    /2016/04/18/Mac-Skills/#more">
+                    /2015/04/14/Oracle之物化视图/#more">
                     More >></a>
             </p>
             
@@ -460,7 +801,7 @@
     }
 </script>
   
-    <article id="post-ini配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -474,8 +815,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2016/04/04/ini配置/" class="article-date">
-  	<time datetime="2016-04-04T07:30:00.000Z" itemprop="datePublished">Apr 4 2016</time>
+        <a href="/2015/04/12/hexo/" class="article-date">
+  	<time datetime="2015-04-12T15:16:53.000Z" itemprop="datePublished">Apr 12 2015</time>
 </a>
 
     </div>
@@ -489,7 +830,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/04/ini配置/">Shiro-ini配置</a>
+      <a class="article-title" href="/2015/04/12/hexo/">像极客一样去写作~</a>
     </h1>
   
 
@@ -505,8 +846,7 @@
             
 
             
-            <p>Shiro的配置十分灵活,支持ini、XML等方式.它的配置是从根对象securityManager开始的.</p>
-<h2 id="根对象SecrityManager"><a href="#根对象SecrityManager" class="headerlink" title="根对象SecrityManager"></a>根对象SecrityManager</h2><p>回顾Shiro的架构图可以知道,shiro是从根对象SecurityManager进行身份验证和授权的,这个对象是线程安全且整个应用只有一个,shiro提供了SecurityUtils让我们绑定它为全局的,方便后续使用.<br>
+            <p>写博客也有很长一段时间了,各个平台都有过相当时间的尝试。CSDN-&gt;开源中国-&gt;博客园-&gt;SAE(Wordpress)~~~~回顾一下,在CSDN的时间是最长的,从大学到毕业吧,那时候的文章也是初级的,当做一些学习笔记,积累了不少人气,也挺怀恋的:<br>
             
         </div>
 
@@ -514,20 +854,20 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 	</div>
 
 
             
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
+	<a class="article-category-link" href="/categories/front/">front</a>
 	</div>
 
 
             
             <p class="article-more-link">
                 <a  href="
-                    /2016/04/04/ini配置/#more">
+                    /2015/04/12/hexo/#more">
                     More >></a>
             </p>
             
@@ -571,7 +911,7 @@
     }
 </script>
   
-    <article id="post-shiro-Authorization" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Go语言日志处理" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -585,8 +925,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2016/03/10/shiro-Authorization/" class="article-date">
-  	<time datetime="2016-03-10T07:30:00.000Z" itemprop="datePublished">Mar 10 2016</time>
+        <a href="/2015/04/10/Go语言日志处理/" class="article-date">
+  	<time datetime="2015-04-10T09:34:40.000Z" itemprop="datePublished">Apr 10 2015</time>
 </a>
 
     </div>
@@ -600,7 +940,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/shiro-Authorization/">Shiro-Authorization(授权)</a>
+      <a class="article-title" href="/2015/04/10/Go语言日志处理/">Go语言日志处理</a>
     </h1>
   
 
@@ -613,10 +953,55 @@
 
             
 
+            <p class="toc-button" id="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+            
             
 
             
-            <h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>授权,也叫访问控制,即在应用中控制控制谁能访问那些资源(比如访问页面,编辑数据等).在授权中,有几个关键的对象需要了解:<strong>主体(Subject)</strong>、<strong>资源(Resources)</strong>、<strong>权限(Permission)</strong>、<strong>角色(Role)</strong>.<br><strong>主体:</strong>即访问应用的用户,在shiro中使用Subject代表主体,用户只有在授权之后才能访问相应的资源.<br><strong>资源:</strong>在应用中用户可以访问、操作的任何东西都可以称作为资源(某个页面,按钮等),用户只有授权之后才能访问.<br><strong>权限:</strong>安全策略中的原子授权单位,通过权限可以表示用户在应用中有没有操作某个资源的权利.Tips：权限仅仅反映了用户在某个资源上的操作允不允许,不反应谁去执行此操作,权限赋予给用户这个操作Shiro并不关心,而是需要应用系统自己去实现。Shiro支持<strong>粗粒度权限</strong>和<strong>细粒度权限</strong>,后续在深入.<br>
+            <p>Go语言有一个标准的库(log),提供了最基本的日志记录功能。</p>
+
+            
+            </br>
+            <p>本文链接：
+                <a href="http://kiritor.github.io/2015/04/10/Go语言日志处理/">
+                    http://kiritor.github.io/2015/04/10/Go语言日志处理/
+                </a>
+            </p>
+            
+            <p>-- <acronym title="End of File">EOF</acronym> --</p>
+
+            <div class="post-info">
+
+                <p>转载请注明出处 署名-非商业性使用-禁止演绎 3.0 国际（CC BY-NC-ND 3.0）</p>
+            </div>
             
         </div>
 
@@ -624,22 +1009,16 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shiro/">shiro</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
 	</div>
 
 
             
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
+	<a class="article-category-link" href="/categories/golang/">golang</a>
 	</div>
 
 
-            
-            <p class="article-more-link">
-                <a  href="
-                    /2016/03/10/shiro-Authorization/#more">
-                    More >></a>
-            </p>
             
             <div class="clearfix"></div>
         </div>
@@ -681,7 +1060,7 @@
     }
 </script>
   
-    <article id="post-Oracle-instance-tablespase-user-table" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Golang操作MySQL数据库-使用mymysql驱动" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -695,8 +1074,8 @@
     </script>
     
     <div class="article-meta">
-        <a href="/2015/12/23/Oracle-instance-tablespase-user-table/" class="article-date">
-  	<time datetime="2015-12-23T08:28:19.000Z" itemprop="datePublished">Dec 23 2015</time>
+        <a href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/" class="article-date">
+  	<time datetime="2015-04-09T01:34:07.000Z" itemprop="datePublished">Apr 9 2015</time>
 </a>
 
     </div>
@@ -710,7 +1089,7 @@
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/Oracle-instance-tablespase-user-table/">Oracle-数据库实例、表空间、用户、表之间的关系(转)</a>
+      <a class="article-title" href="/2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/">Golang操作MySQL数据库,使用mymysql驱动</a>
     </h1>
   
 
@@ -726,11 +1105,8 @@
             
 
             
-            <p>完整的Oracle数据库通常由两部分组成:<strong>Oracle数据库</strong>和<strong>数据库实例</strong>。</p>
-<blockquote>
-<p>   1)数据库是一系列物理文件的集合(数据文件,控制文件,联机日志,参数文件等);<br>   2)Oracle数据库实例则是一组Oracle后台进程/线程以及在服务器分配的共享内存区;</p>
-</blockquote>
-<p>在启动数据库服务时,实际上实在服务器内存中创建一个Oracle实例(即在服务器内存中分配共享内存的后台内存),然后由这个oracle数据库实例来访问和控制磁盘中的数据文件。Oracle有一个很大的内存块,称为全局区(SGA)<br>
+            <p>玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql</p>
+<h2 id="MyMySQL驱动"><a href="#MyMySQL驱动" class="headerlink" title="MyMySQL驱动"></a>MyMySQL驱动</h2><p>MyMySQL的原作者是波兰的<a href="https://github.com/ziutek/mymysql">ziutek</a>,他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。<br>
             
         </div>
 
@@ -738,20 +1114,20 @@
         <div class="article-info article-info-index">
             
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库实例/">数据库实例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用户/">用户</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表空间/">表空间</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mymysql/">mymysql</a></li></ul>
 	</div>
 
 
             
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/work/">work</a>
+	<a class="article-category-link" href="/categories/golang/">golang</a>
 	</div>
 
 
             
             <p class="article-more-link">
                 <a  href="
-                    /2015/12/23/Oracle-instance-tablespase-user-table/#more">
+                    /2015/04/09/Golang操作MySQL数据库-使用mymysql驱动/#more">
                     More >></a>
             </p>
             
@@ -797,7 +1173,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
