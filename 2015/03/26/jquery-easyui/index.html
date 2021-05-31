@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
   <title>JQuery EasyUi框架学习 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。
-关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
+  <meta name="description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。 关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
+<meta name="keywords" content="easyui,jquery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JQuery EasyUi框架学习">
 <meta property="og:url" content="http://kiritor.github.io/2015/03/26/jquery-easyui/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。
-关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
+<meta property="og:description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。 关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2016-12-22T01:20:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery EasyUi框架学习">
-<meta name="twitter:description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。
-关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
+<meta name="twitter:description" content="前言新项目的开发前端技术打算采用EasyUI框架,项目组长将前端EasyUI这块的任务分配给了我.在进行开发之前,需要我这菜鸟对EasyUI框架进行一些基础的入门学习。之后会在学习的过程中将自己遇到的问题和有用的东西记录下来。 关于EasyUIEasyUI框架是基于JQuery的,使用它帮助我们快捷的构建web网页。EasyUI框架是一个简单、易用、强大的轻量级web前端javascript框架。">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -38,7 +37,7 @@
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -340,9 +339,9 @@
 3. EasyUI提供了构建更加现代化,交互性的js程序应用。
 4. 通过EasyUI我们可以编写一些html标记来定义用户界面。
 5. 极大的提升项目开发的时间。
-</code></pre><p>EasyUI的使用<br>最基本的使用就是引入easyui.min.js文件，以及其对应的jquery.min.js文件。注意的是jquery-easyui是基于jquery的,因此jquery.min.js文件最好先于easyui.min.js先引入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.easyui.min.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+</code></pre><p>EasyUI的使用<br>最基本的使用就是引入easyui.min.js文件，以及其对应的jquery.min.js文件。注意的是jquery-easyui是基于jquery的,因此jquery.min.js文件最好先于easyui.min.js先引入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-easyui-1.3.6/jquery.easyui.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p>前面也说道了,EasyUI是插件集合,需要用到的时候在自行引入就可以了。</p>
-<h1 id="EasyUI的下载和学习"><a href="#EasyUI的下载和学习" class="headerlink" title="EasyUI的下载和学习"></a>EasyUI的下载和学习</h1><p>EasyUI的下载推荐EasyUI官网:<a href="http://www.jeasyui.com/" target="_blank" rel="external">http://www.jeasyui.com/</a> EasyUI的学习,官网上已经提供了非常丰富的学习实例,而且Demo非常丰富。这里推荐几个有用学easyui的站点：</p>
+<h1 id="EasyUI的下载和学习"><a href="#EasyUI的下载和学习" class="headerlink" title="EasyUI的下载和学习"></a>EasyUI的下载和学习</h1><p>EasyUI的下载推荐EasyUI官网:<a href="http://www.jeasyui.com/" target="_blank" rel="noopener">http://www.jeasyui.com/</a> EasyUI的学习,官网上已经提供了非常丰富的学习实例,而且Demo非常丰富。这里推荐几个有用学easyui的站点：</p>
 <pre><code>1. EasyUI官网
 2. JQueryEasyUI中文社区:http://bbs.jeasyuicn.com/(张宇、夏季)
 3. EasyUI学习班:http://www.jeasyuicn.com/

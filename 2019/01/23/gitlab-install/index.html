@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
   <title>GitLab使用自定义签名开启HTTPS | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下:
-生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
+  <meta name="description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下: 生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
+<meta name="keywords" content="gitlab,https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GitLab使用自定义签名开启HTTPS">
 <meta property="og:url" content="http://kiritor.github.io/2019/01/23/gitlab-install/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下:
-生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
+<meta property="og:description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下: 生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-11T09:03:46.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitLab使用自定义签名开启HTTPS">
-<meta name="twitter:description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下:
-生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
+<meta name="twitter:description" content="前言公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下: 生成CA私钥ca.key在gitlab目录下新建ssl目录，生成私钥ca.key123$ mkdir ssl$ cd ssl$ openssl genrsa -out ca.key">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -38,7 +37,7 @@
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -328,13 +327,13 @@
 
             
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>公司需要搭建自己的GitLab作为代码管理平台，因为是部署到阿里云，所以使用https访问gitlab相对安全。更好的做法是购买域名，之后再去买SSL证书。在域名没有的前提下, 可以使用自签名的证书。配置方式如下:</p>
-<h2 id="生成CA私钥ca-key"><a href="#生成CA私钥ca-key" class="headerlink" title="生成CA私钥ca.key"></a>生成CA私钥ca.key</h2><p>在gitlab目录下新建ssl目录，生成私钥ca.key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir ssl</div><div class="line">$ <span class="built_in">cd</span> ssl</div><div class="line">$ openssl genrsa -out ca.key 2048</div></pre></td></tr></table></figure></p>
+<h2 id="生成CA私钥ca-key"><a href="#生成CA私钥ca-key" class="headerlink" title="生成CA私钥ca.key"></a>生成CA私钥ca.key</h2><p>在gitlab目录下新建ssl目录，生成私钥ca.key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ssl</span><br><span class="line">$ <span class="built_in">cd</span> ssl</span><br><span class="line">$ openssl genrsa -out ca.key 2048</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="生成根证书"><a href="#生成根证书" class="headerlink" title="生成根证书"></a>生成根证书</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>新建一个配置文件<strong>openssl.ca.conf</strong>,内容如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">RANDFILE               = <span class="variable">$ENV</span>::HOME/.rnd</div><div class="line"></div><div class="line"> [ req ]</div><div class="line"> string_mask = utf8only</div><div class="line"> utf8        = yes</div><div class="line"> default_bits           = 2048</div><div class="line"> default_keyfile        = ca.key</div><div class="line"> distinguished_name     = req_distinguished_name</div><div class="line"> prompt                 = no</div><div class="line"></div><div class="line"> [ req_distinguished_name ]</div><div class="line"> C                      = CN</div><div class="line"> ST                     = ChongQing</div><div class="line"> L                      = ChongQing</div><div class="line"> O                      = XXX Inc.</div><div class="line"> OU                     = IT XXX.</div><div class="line"> CN                     = Custom CA</div></pre></td></tr></table></figure></p>
+<h2 id="生成根证书"><a href="#生成根证书" class="headerlink" title="生成根证书"></a>生成根证书</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>新建一个配置文件<strong>openssl.ca.conf</strong>,内容如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">RANDFILE               = <span class="variable">$ENV</span>::HOME/.rnd</span><br><span class="line"></span><br><span class="line"> [ req ]</span><br><span class="line"> string_mask = utf8only</span><br><span class="line"> utf8        = yes</span><br><span class="line"> default_bits           = 2048</span><br><span class="line"> default_keyfile        = ca.key</span><br><span class="line"> distinguished_name     = req_distinguished_name</span><br><span class="line"> prompt                 = no</span><br><span class="line"></span><br><span class="line"> [ req_distinguished_name ]</span><br><span class="line"> C                      = CN</span><br><span class="line"> ST                     = ChongQing</span><br><span class="line"> L                      = ChongQing</span><br><span class="line"> O                      = XXX Inc.</span><br><span class="line"> OU                     = IT XXX.</span><br><span class="line"> CN                     = Custom CA</span><br></pre></td></tr></table></figure></p>
 <p><strong>Tips:</strong>通过配置文件req_distinguished_name指定组织信息</p>
-<h3 id="生成CA根证书ca-crt"><a href="#生成CA根证书ca-crt" class="headerlink" title="生成CA根证书ca.crt"></a>生成CA根证书ca.crt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req -config openssl_ca.conf -new -x509 -days 7305 -key ca.key -out ca.crt</div></pre></td></tr></table></figure>
+<h3 id="生成CA根证书ca-crt"><a href="#生成CA根证书ca-crt" class="headerlink" title="生成CA根证书ca.crt"></a>生成CA根证书ca.crt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -config openssl_ca.conf -new -x509 -days 7305 -key ca.key -out ca.crt</span><br></pre></td></tr></table></figure>
 <p><strong>Tips:</strong>这里也可以不指定-config openssl_ca.conf直接输入组织信息,不从配置文件指定</p>
-<h2 id="生成server私钥"><a href="#生成server私钥" class="headerlink" title="生成server私钥"></a>生成server私钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl genrsa -out server.key 2048</div></pre></td></tr></table></figure>
+<h2 id="生成server私钥"><a href="#生成server私钥" class="headerlink" title="生成server私钥"></a>生成server私钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.key 2048</span><br></pre></td></tr></table></figure>
 <h2 id="生成签名请求CSR文件"><a href="#生成签名请求CSR文件" class="headerlink" title="生成签名请求CSR文件"></a>生成签名请求CSR文件</h2><p>通过服务器私钥生成签名请求CSR文件server.csr</p>
 <h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><p>准备一个配置文件<strong>openssl_server.conf</strong></p>
 

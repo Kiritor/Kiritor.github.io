@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
   <title>Spring Boot(二):war包形式发布 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.
-
-在POM.XML文件中将jar改为war
-
-
-添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
+  <meta name="description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.  在POM.XML文件中将jar改为war   添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
+<meta name="keywords" content="springboot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot(二):war包形式发布">
 <meta property="og:url" content="http://kiritor.github.io/2017/04/05/springboot-war/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.
-
-在POM.XML文件中将jar改为war
-
-
-添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
+<meta property="og:description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.  在POM.XML文件中将jar改为war   添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-08-30T14:51:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot(二):war包形式发布">
-<meta name="twitter:description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.
-
-在POM.XML文件中将jar改为war
-
-
-添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
+<meta name="twitter:description" content="在上一篇入门文章中,也提及了Spring Boot可以发布成war包运行在外包的tomcat中.具体做法如下.  在POM.XML文件中将jar改为war   添加依赖.12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -50,7 +37,7 @@
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -313,12 +300,12 @@
 <li>在POM.XML文件中将<packaging>jar</packaging>改为<packaging>war</packaging></li>
 </ol>
 <ol>
-<li>添加依赖.<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>添加依赖.<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <a id="more"></a>
 <p>将tomcat的范围改为provided,编译时需要.</p>
-<p>3.接下来添加ServletInitializer类,内容如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.kiritor.springboot02;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.boot.builder.SpringApplicationBuilder;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.web.support.SpringBootServletInitializer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletInitializer</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder application)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> application.sources(Application.class);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.接下来添加ServletInitializer类,内容如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kiritor.springboot02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.builder.SpringApplicationBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.support.SpringBootServletInitializer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletInitializer</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder application)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> application.sources(Application<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其中Application为标注有@SpringBootApplication注解的主启动类.</p>
 <ol>
 <li>需要注意的问题是,如果配置了server.context-path=/spring-boot配置项,则该配置项的值应该和war包名字一致.</li>
@@ -398,11 +385,11 @@
         
 <nav id="article-nav">
   
-    <a href="/2017/04/05/springboot/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/05/springboot配置详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Springboot
+          Spring Boot(三):配置详解
         
       </div>
     </a>

@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
   <title>Docker实践 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：
-
-容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。
-容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。
-容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
+  <meta name="description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：  容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。 容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。 容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
+<meta name="keywords" content="docker,k8s,容器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker实践">
 <meta property="og:url" content="http://kiritor.github.io/2018/02/02/Docker/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：
-
-容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。
-容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。
-容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
+<meta property="og:description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：  容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。 容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。 容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g3r8qea0e2j30fw0d0jrt.jpg">
 <meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g3r8tmjltbj30xe0mgmzy.jpg">
 <meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g3r8r52pqgj30j8079wey.jpg">
@@ -30,11 +24,7 @@
 <meta property="og:updated_time" content="2019-06-11T10:03:05.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实践">
-<meta name="twitter:description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：
-
-容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。
-容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。
-容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
+<meta name="twitter:description" content="容器Docker是世界领先的软件容器平台，Docker的理念是架构与容器之上的。概括来说，容器就是将软件打包成标准化单元，以用于开发、交付和部署：  容器镜像是轻量的、可执行的独立软件包，包含软件运行所需的所有内容:代码、运行环境、系统工具、系统库和设置。 容器化软件适用于就要Linux和Windows的应用，在和人环境中都能够始终如一的运行。 容器富裕了软件独立性，免受外在环境诧异的影响(比如开">
 <meta name="twitter:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g3r8qea0e2j30fw0d0jrt.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
@@ -52,7 +42,7 @@
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">

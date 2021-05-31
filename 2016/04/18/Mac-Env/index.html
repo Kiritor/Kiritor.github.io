@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
   
   <title>Mac设置环境变量 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+  <meta name="description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记. Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+<meta name="keywords" content="mac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac设置环境变量">
 <meta property="og:url" content="http://kiritor.github.io/2016/04/18/Mac-Env/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
-<meta property="og:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
+<meta property="og:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记. Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2016-04-20T12:57:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac设置环境变量">
-<meta name="twitter:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记.
-Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
+<meta name="twitter:description" content="在mac,linux中配置环境变量对于新手来说,是一个有点头痛的问题.因为经常看到不同的方式配置环境变量.到底应该怎么配置,配置在什么地方(全局/用户级).做个简要的笔记. Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命令echo $SHELL如果输出的是:csh或者tcsh.那么就是C Shell.如果输出的事:bash,sh,zsh,那么就是Bourne She">
   
     <link rel="alternative" href="/atom.xml" title="Tao.liang&#39;s Blog" type="application/atom+xml">
   
@@ -38,7 +37,7 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -332,8 +331,8 @@ Shell类型首先需要判断下使用的Mac OS X是什么样的Shell,使用命�
 <h2 id="Mac环境变量配置"><a href="#Mac环境变量配置" class="headerlink" title="Mac环境变量配置"></a>Mac环境变量配置</h2><p>如果是Bourne Shell设置环境变量的地方如下</p>
 <h3 id="etc-profile"><a href="#etc-profile" class="headerlink" title="./etc/profile"></a>./etc/profile</h3><p>全局(共有配置),不管是哪个用户,登陆时都会读取该文件。不建议修改此文件.</p>
 <h3 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="./etc/bashrc"></a>./etc/bashrc</h3><p>全局(共有)配置,bash shell执行时，不管何种方式,都会读取次文件。一般在这个文件中添加系统级别的环境变量.</p>
-<h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</div><div class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> MAVEN_HOME</div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</div><div class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></div></pre></td></tr></table></figure></p>
-<p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>
+<h3 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h3><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!一般在这个文件添加用户级的环境变量,比较建议使用该方式配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/contents/Home</span><br><span class="line">MAVEN_HOME=/Users/lcore/dev/application/apache-maven-3.2.5</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MAVEN_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"><span class="built_in">export</span> GOPATH=~/dev/code/go/</span><br><span class="line"><span class="comment">#export GOBIN=/usr/local/go/bin</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span></span><br></pre></td></tr></table></figure></p>
+<p>如果想立即生效,即可执行下面的语句:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure></p>
 
             
             </br>

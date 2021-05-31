@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076">
   <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   -->
@@ -10,11 +10,13 @@
   <title>Oracle导出、导入、备份 | Tao.liang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑">
+<meta name="keywords" content="oracle,imp,exp,备份">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle导出、导入、备份">
 <meta property="og:url" content="http://kiritor.github.io/2015/06/18/Oracle导出、导入、备份/index.html">
-<meta property="og:site_name" content="Tao.liang's Blog">
+<meta property="og:site_name" content="Tao.liang&#39;s Blog">
 <meta property="og:description" content="Oracle数据库导入、导出imp/exp&amp;#160; &amp;#160; &amp;#160; &amp;#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.&amp;#160; &amp;#160; &amp;#160; &amp;#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://kiritor.github.io/img/exp.png">
 <meta property="og:image" content="http://kiritor.github.io/img/imp.png">
 <meta property="og:updated_time" content="2016-12-22T01:26:09.000Z">
@@ -38,7 +40,7 @@
   <script src="/js/av.min.js"></script>
   <script src="/js/valine.min.js"></script>
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -330,17 +332,17 @@
             <h2 id="Oracle数据库导入、导出imp-exp"><a href="#Oracle数据库导入、导出imp-exp" class="headerlink" title="Oracle数据库导入、导出imp/exp"></a>Oracle数据库导入、导出imp/exp</h2><p>&#160; &#160; &#160; &#160;imp/exp命令可以实现oracle数据库的还原、备份、迁移.<br>&#160; &#160; &#160; &#160;实际的开发中,由于测试和开发”并行”,会有开发库、测试库的数据迁移,切换,以及数据库升级等。这些操作都伴随着数据库的导入、导出操作.对于Oracle通过导出、导入来进行数据库的迁移(逻辑)是非常方便的,只要安装了oracle客户端,并建立了连接(通过Net configuration Assistant添加正确的服务命名),你就可以把远端的数据库导出到本地,同样你也可以把dmp文件从本地导入到远端数据库服务器中.利用这个功能,可以构建两个相同的数据库:开发库、测试库,并且快速的实现两个库之间数据的迁移.<br><a id="more"></a></p>
 <h2 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h2><p>&#160; &#160; &#160;可以在SQLPLUS或者直接在CMD命令行中执行.<br>&#160; &#160; &#160;Tips:在sqlplus环境下执行时需要在前面加’!’号:SQL&gt;!exp …SQL&gt;!imp</p>
 <h2 id="exp导出命令"><a href="#exp导出命令" class="headerlink" title="exp导出命令"></a>exp导出命令</h2><p>&#160; &#160; &#160;exp命令有三种模式(FULL:完全、OWNER:用户、TABLES:表)</p>
-<h3 id="FULL-完全模式"><a href="#FULL-完全模式" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式表示导出整个数据库,必须具备特殊的权限.一个实际的例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出整个数据库</div><div class="line">exp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
+<h3 id="FULL-完全模式"><a href="#FULL-完全模式" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式表示导出整个数据库,必须具备特殊的权限.一个实际的例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   //导出整个数据库</span><br><span class="line">exp demo/demo@demo file=F:\demo.dmp full=y</span><br></pre></td></tr></table></figure></p>
 <p><center><img src="http://kiritor.github.io/img/exp.png" alt="exp"></center></p>
-<h3 id="OWNER-用户模式"><a href="#OWNER-用户模式" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;用户模式表示导出某个用户下的所有对象及数据(基表、视图、存储过程等).一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   //导出ecisdemo用户下的所有对象</div><div class="line">exp demo/demo@demo owner=user1 file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
-<p>&#160; &#160; &#160;当然,也可以同时导出多个用户的数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//导出user1、user2用户下的对象</div><div class="line">exp demo/demo@demo file=F:\user.dmp owner(user1,user2)</div></pre></td></tr></table></figure></p>
-<h3 id="TABLES-表模式"><a href="#TABLES-表模式" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式处于用户模式级别下的,用法也比较的灵活,一些例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//导出某个用户下的表table1、table2</div><div class="line">exp demo/demo@demo owner=user1 tables(table1,table2) file=F:\user1.dmp </div><div class="line">//数据过滤</div><div class="line">//导出数据库中标table1中的字段name已"LCore"开头的数据导出</div><div class="line">exp demo/demo@demo owner=user1 tables(table1) query=\"where name like'LCore%'\" file=F:\user1.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="OWNER-用户模式"><a href="#OWNER-用户模式" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;用户模式表示导出某个用户下的所有对象及数据(基表、视图、存储过程等).一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   //导出ecisdemo用户下的所有对象</span><br><span class="line">exp demo/demo@demo owner=user1 file=F:\user1.dmp</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160;当然,也可以同时导出多个用户的数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//导出user1、user2用户下的对象</span><br><span class="line">exp demo/demo@demo file=F:\user.dmp owner(user1,user2)</span><br></pre></td></tr></table></figure></p>
+<h3 id="TABLES-表模式"><a href="#TABLES-表模式" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式处于用户模式级别下的,用法也比较的灵活,一些例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//导出某个用户下的表table1、table2</span><br><span class="line">exp demo/demo@demo owner=user1 tables(table1,table2) file=F:\user1.dmp </span><br><span class="line">//数据过滤</span><br><span class="line">//导出数据库中标table1中的字段name已"LCore"开头的数据导出</span><br><span class="line">exp demo/demo@demo owner=user1 tables(table1) query=\"where name like'LCore%'\" file=F:\user1.dmp</span><br></pre></td></tr></table></figure></p>
 <h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>&#160; &#160; &#160;也可以对导出的数据进行压缩,在上面的命令加上compress=y即可</p>
 <h2 id="imp导入命令"><a href="#imp导入命令" class="headerlink" title="imp导入命令"></a>imp导入命令</h2><p>&#160; &#160; &#160;与exp命令相对的,imp也有三种模式:</p>
-<h3 id="FULL-完全模式-1"><a href="#FULL-完全模式-1" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式下的命令也比较简单,例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imp demo/demo@demo file=F:\demo.dmp full=y</div></pre></td></tr></table></figure></p>
-<h3 id="OWNER-用户模式-1"><a href="#OWNER-用户模式-1" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;imp的用户模式导入必须指定FROMUSER:源用户,TOUSER:目标用户这样才能导入数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">将用户fuser的对象导入到用户tuser</div><div class="line">imp demo/demo@demo fromuser=fuser touser=tuser file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="FULL-完全模式-1"><a href="#FULL-完全模式-1" class="headerlink" title="FULL:完全模式"></a>FULL:完全模式</h3><p>&#160; &#160; &#160;完全模式下的命令也比较简单,例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imp demo/demo@demo file=F:\demo.dmp full=y</span><br></pre></td></tr></table></figure></p>
+<h3 id="OWNER-用户模式-1"><a href="#OWNER-用户模式-1" class="headerlink" title="OWNER:用户模式"></a>OWNER:用户模式</h3><p>&#160; &#160; &#160;imp的用户模式导入必须指定FROMUSER:源用户,TOUSER:目标用户这样才能导入数据,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将用户fuser的对象导入到用户tuser</span><br><span class="line">imp demo/demo@demo fromuser=fuser touser=tuser file=F:\demo.dmp</span><br></pre></td></tr></table></figure></p>
 <p>&#160; &#160; &#160;Tips:需要注意的是如果是相同用户的话,就没有必要指定FROMUSER和TOUSER参数了.</p>
-<h3 id="TABLES-表模式-1"><a href="#TABLES-表模式-1" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式的导入也比较简单,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//表table1导入</div><div class="line">imp demo/demo@demo tables=(table1) file=F:\demo.dmp</div></pre></td></tr></table></figure></p>
+<h3 id="TABLES-表模式-1"><a href="#TABLES-表模式-1" class="headerlink" title="TABLES:表模式"></a>TABLES:表模式</h3><p>&#160; &#160; &#160;表模式的导入也比较简单,一个例子:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//表table1导入</span><br><span class="line">imp demo/demo@demo tables=(table1) file=F:\demo.dmp</span><br></pre></td></tr></table></figure></p>
 <p><center><img src="http://kiritor.github.io/img/imp.png" alt="imp"></center><br>&#160; &#160; &#160;通过上面的例子及命令,实际导入、导出已经够了.</p>
 <h3 id="忽略错误"><a href="#忽略错误" class="headerlink" title="忽略错误"></a>忽略错误</h3><p>&#160; &#160; &#160;在导入的过程中可能存在一些错误,例如已经存在该表了,可以使用ignore=y来忽略创建错误.</p>
 <h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>&#160; &#160; &#160;有时候,需要对导入、导出操作做日志,也很简单,可以使用log=fileName即可.</p>
